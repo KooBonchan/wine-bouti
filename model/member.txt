@@ -1,0 +1,46 @@
+회원: member
+
+회원번호
+이름
+비밀번호
+이메일
+주소
+우편번호
+프로필 이미지 이름
+실제 이미지 이름
+
+username: varchar(30) PK
+password: varchar(80)
+-- BCrypt 60, SHA256 64, SHA512 128
+email: varchar(50) 
+address: varchar(400)
+zipcode: varchar(10)
+profileImgName: varchar(30)
+realImgName: varchar(50)
+-- UUID 36 + path
+
+
+
+회원권한: Auth -- Spring Security 적용을 위해
+
+회원명
+권한
+
+username: varchar(30) FK
+auth: varchar(20)
+-- ROLE_MEMBER or ROLE_MERCHANT or ROLE_ADMIN
+
+
+
+
+
+
+
+
+자동 로그인: persistent_login -- Spring Security Default
+create table persistent_logins (
+  username varchar2(64) not null,
+  series varchar2(64) not null,
+  token varchar2(64) not null,
+  last_used timestamp not null
+);
