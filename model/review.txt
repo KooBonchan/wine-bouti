@@ -1,13 +1,14 @@
 작성자 - 이창현, 김보민
 
-리뷰
- - 상품번호 FK -> 상품
- - 작성자
- - 주문번호
- - 내용 - 150자 제한
- - 별점 - 1~5 정수
- - 공개/비공개
- - 비밀번호 (비공개일 경우에만)
- - 판매자 댓글
- - 작성일
- - 수정일
+리뷰 review
+idx - 리뷰번호
+productIdx - 상품번호 FK -> 상품
+writerIdx - 작성자
+purchaseIdx - 주문번호
+content - 내용 - 150자 제한
+star - 별점 - 1~5 정수
+isOpen - 공개/비공개
+password - 비밀번호 (비공개일 경우에만)
+response - 판매자 댓글
+writeDate - 작성일
+updateDate - 수정일

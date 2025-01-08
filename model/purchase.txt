@@ -2,50 +2,55 @@
 
 주문서 Purchase
 
-결제번호
-주문자
-주소
-총 가격
+idx       결제번호
+buyer     주문자
+address    주소
+totalAmount 총 가격
 
 
 
-주문-상품
+주문-상품 Purchase_Product
 
-주문번호
-상품번호
-상품 개수
+purchaseIdx 주문번호
+productIdx  상품번호
+quantity    상품 개수
 
 
 
-주문-쿠폰
+주문-쿠폰 Purchase_Coupon
 
-주문번호
-쿠폰번호
-상품개수
+PurchaseIdx 주문번호
+CouponIdx 쿠폰번호
+
 
 
 
 장바구니 Cart
 
-회원번호
-상품번호
-구매 개수
-예상 가격
+memberIdx   회원번호
+productIdx  상품번호
+quantity    구매 개수
+totalAmount 예상 가격
+
+
 
 
 최근 본 상품 RecentVisits
 
-조회 인덱스 idx pk auto_increment
-회원번호
-상품번호
+idx        조회 인덱스 pk auto_increment
+memberIdx  회원번호
+productIdx 상품번호
 
 
 
-쿠폰
 
-쿠폰이름 - 두드림
-정가할인
-비율할인
+
+
+쿠폰 Coupon
+
+name            쿠폰이름 - 두드림
+fixedDiscount   정가할인
+percentDiscount 비율할인
 
 
 
