@@ -137,3 +137,13 @@ quantity
 - https://github.com/spartaKotlinTeamSober/wachu_server
 - https://github.com/joohongkim1/WineSns_Web_App
 - https://www.figma.com/design/EM4HvIdJLbfFOG4d9AZCv8/%EC%99%80%EC%9D%B8..%EA%B2%8C%EB%90%98%EB%84%A4-%EC%99%80%EC%9D%B4%EC%96%B4%ED%94%84%EB%A0%88%EC%9E%84
+
+### 참고 사이트
+
+- https://www.fortnumandmason.com/
+- https://www.virginwines.co.uk/
+- https://domestiquewine.com/collections/structured-reds
+
+---
+반례
+- https://www.virginwines.co.uk/
