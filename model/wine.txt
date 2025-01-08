@@ -1,60 +1,17 @@
-예시
+작성자 - 이창현
 
-와인
-상품번호
-영어 이름 
-한글 이름
-원산지
-생산연도
-도수
-용량
-가격
+와인 wine
 
+상품번호 -> 상품 idx
+와인 종류   type
+외국어 이름 originalName 
+용량 volume
 
-와인 이미지
-와인 상품번호 FK
-저장된 이미지 이름
-원본 이미지 이름
-저장된 이미지 경로
+-- 상세 필터 -- 
 
-
-{
-  "name": "Young Cabernet Sauvignon",
-  "type": "Red Wine",
-  "origin": "Chile",
-  "vintage": 2023,
-  "alcohol_content": "13.5%",
-  "volume": "750ml",
-  "price": "30 USD",
-  "grape_variety": "Cabernet Sauvignon",
-  "grape_growing_region": "Maipo Valley",
-  "harvest_time": "Late March",
-  "fermentation_method": "Stainless Steel Tanks",
-  "aging_process": "No Oak Aging",
-  "aging_duration": "3 months",
-  "color": "Deep Ruby Red",
-  "aroma": {
-    "fruit_notes": ["Blackcurrant", "Cherry", "Plum"],
-    "herbal_notes": ["Mint", "Spices"],
-    "wood_notes": ["Vanilla"]
-  },
-  "taste": {
-    "mouthfeel": "Fresh, medium tannin",
-    "sweetness": "Dry",
-    "acidity": "High",
-    "tannins": "Moderate",
-    "finish": "Short"
-  },
-  "style": "Fresh, Fruity",
-  "aging_potential": "Drink Now, Short Aging Potential",
-  "food_pairing": {
-    "meat": ["Grilled Steak", "Lamb", "BBQ"],
-    "cheese": ["Cheddar", "Parmesan"],
-    "other": ["Pasta", "Grilled Vegetables"]
-  },
-  "serving_temperature": "16-18°C",
-  "producer": "Viña Santa Rita",
-  "export_markets": ["USA", "UK", "Korea"],
-  "rating": 88,
-  "awards": ["Gold Medal - Wine Spectator"]
-}
+원산지    origin
+생산연도  vintage
+도수 - % alcohol_content
+신맛 - 강 중 약 acidity
+단맛 - 강 중 약 sweetness
+타닌 - 강 중 약 tannins

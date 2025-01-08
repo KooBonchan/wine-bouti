@@ -1,0 +1,13 @@
+상품 Product
+
+상품번호 idx
+카테고리 - 와인, 세트상품, 페어링, category  
+한글이름 koreanName
+상품 이미지
+productImgName
+realProductImgName 
+상세설명 - 와인 배경, 생산 날짜, 와인 라벨 해석, -- 긴 이미지
+detailImgName
+realDetailImgName
+원가격 originalPrice
+할인가격 price

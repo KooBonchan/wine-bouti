@@ -1,4 +1,4 @@
-# 와인샵 프로젝트
+# 와인부띠: 와인샵 프로젝트
 <!-- TODO: 팀명, 프로젝트명 변경 -->
 
 팀원
@@ -63,73 +63,7 @@
 
 
 ### Modeling sample
-```
-product
--
-idx
-content string
-realFilename
-originalFilename
 
-# 상품 디테일
-
-wine
--
-idx long
-type string
-price int
-country string
-style string
-
-pairing
--
-idx long
-name varchar2(50)
-price int
-
-set
--
-idx long
-price int
-
-accessory
--
-idx long
-name string
-
-#
-
-md_recommend
--
-wineidx long fk >- wine.idx
-pairingidx long fk >- pairing.idx
-
-# 사용자
-
-review
--
-idx 
-productIdx
-writer
-content
-star
-regDate
-
-Member
--
-username
-password
-email
-address
-phone
-
-cart
--
-memberIdx
-itemIdx
-quantity
-
-```
 ---
 
 ### 참고 프로젝트
@@ -143,6 +77,8 @@ quantity
 - https://www.fortnumandmason.com/
 - https://www.virginwines.co.uk/
 - https://domestiquewine.com/collections/structured-reds
+- https://www.redtongue.co.kr/982
+- https://www.wine.com/
 
 ---
 반례
