@@ -1,4 +1,4 @@
-package com.wineshop.persistence;
+package com.winebouti.persistence;
 
 import static org.junit.Assert.fail;
 

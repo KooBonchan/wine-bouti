@@ -5,13 +5,14 @@
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
-	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
-	    http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
-	    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 	
-
 	<bean id="propertyPlaceholderConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
@@ -33,10 +34,10 @@
 	<!-- JDBC MyBatis -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="configLocation" value="classpath:/com/wineshop/mybatis-config.xml" />
-		<property name="mapperLocations" value="classpath:/com/wineshop/mapper/*.xml" />
+		<property name="configLocation" value="classpath:/com/winebouti/mybatis-config.xml" />
+		<property name="mapperLocations" value="classpath:/com/winebouti/mapper/*.xml" />
 	</bean>
-  <mybatis-spring:scan base-package="com.wineshop.repository" />
+  <mybatis-spring:scan base-package="com.winebouti.mapper" />
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
@@ -46,5 +47,15 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 	<tx:annotation-driven transaction-manager="transactionManager" />
+
+  <!-- AOP AspectJ -->
+  <aop:aspectj-autoproxy />
+  <context:component-scan base-package="com.winebouti.aop" />
+  
+  
+  <context:component-scan base-package="com.winebouti.service" />
+  
+  
+
 
 </beans>
