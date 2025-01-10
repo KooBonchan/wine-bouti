@@ -1,6 +1,7 @@
-create database project_wineshop;
+-- drop database project_winebouti;
+create database project_winebouti;
 
-drop user project_wineshop;
-create user project_wineshop@localhost identified by '12345';
+-- drop user 'project_winebouti'@'localhost';
+create user 'project_winebouti'@'localhost' identified by '12345';
 
-grant all privileges on project_wineshop.* to project_wineshop@localhost;
+grant all privileges on project_winebouti.* to 'project_winebouti'@'localhost';

@@ -113,10 +113,11 @@ function goodsDetail(){
 			      </c:otherwise>
 			      </c:choose>
 		     </c:forEach>
+		     </form>  
 		   </c:otherwise>
-	      </c:choose>
+	     </c:choose>
 		 </ul>
-     </form>		 
+     	 
 	</div>
 	 <div>
 	 <c:choose>
