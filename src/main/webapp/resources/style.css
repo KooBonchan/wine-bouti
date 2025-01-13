@@ -1,0 +1,525 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-family: "맑은 고딕";
+    color: #333333;
+}
+
+html, body {
+    background-color: #ffffff;
+    font-size: 20px;
+    margin: 0 auto; /* 중앙 정렬 */
+}
+
+/* 링크 기본 스타일 */
+a {
+    text-decoration: none;
+    display: block;
+}
+
+/* 헤더 */
+header {
+ background-color: #333333;
+}
+
+
+/* 메뉴 스타일 */
+.menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    background-color:  #333333;
+    margin: 0 auto;
+    
+    
+}
+
+/* 네비게이션 스타일 */
+.navi {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    width: 100%;
+
+}
+
+.navi > li {
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.navi > li > a {
+    width: 180px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    color: #ffffff;
+    margin: 0;
+}
+
+/* 네비게이션 링크 hover 스타일 */
+.navi > li > a:hover {
+    background-color: aqua;
+}
+
+/* 서브 메뉴 숨기기 및 스타일링 */
+.submenu {
+    display: none;
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 180px;
+    background-color: #333333;
+    padding: 0;
+    z-index: 2;
+}
+
+.submenu li {
+    width: 100%;
+}
+
+.submenu li a {
+    padding: 10px;
+    background-color: #333333;
+    color: #ffffff;
+}
+
+.submenu li a:hover {
+    background-color: #a4bbbe;
+}
+
+/* 서브 메뉴 표시 */
+.navi > li:hover > .submenu {
+    display: block;
+}
+
+/* 본문 영역 */
+.bodywrap {
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* 슬라이드 네비게이션 스타일 */
+.dot-nav {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    
+}
+
+.dot-nav li {
+    margin: 0 5px;
+    width: 10px;
+    height: 10px;
+    background-color: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.dot-nav li.active {
+    background-color: #333;
+}
+/* 이미지 슬라이드 스타일링 */
+.imgslide {
+    position: relative;
+    width: 100%;  
+    height: auto;  /* 이미지의 비율에 맞게 높이를 자동으로 조정 */
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.slidelist {
+    display: flex;
+    transition: margin-left 0.5s ease-in-out;
+    width: 100%;
+}
+
+.slide-item {
+    height: 100%;  /* 슬라이드 높이에 맞게 자식 아이템 크기 조정 */
+    width: 100%;
+    flex-shrink: 0;
+    height: auto;  /* 높이를 자동으로 조정 */
+}
+
+/* 이미지 크기 조정 */
+.slide-item img {
+    width: 100%;  
+    height: auto;  /* 이미지의 비율에 맞게 자동으로 높이를 설정 */
+    object-fit: contain;  /* 이미지가 잘리지 않게 비율을 유지 */
+}
+
+/* 슬라이드 내비게이션 버튼 */
+button.prev, button.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(122, 122, 122, 0);
+    color: rgb(185, 185, 185);
+    border: none;
+    font-size: 30px;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+button.prev {
+    left: 100px;
+}
+
+button.next {
+    right: 100px;
+}
+
+button.prev:hover, button.next:hover {
+    color: #333333;
+}
+
+/* 갤러리 영역 */
+.parent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 250px;
+    margin: 0 auto;
+    gap: 20px;
+}
+
+.gallery {
+    margin-top: 300px;
+    margin-bottom: 100px;
+    width: 400px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.gallery h4 {
+    text-align: center;
+    margin: 0 0 20px 0;
+    font-size: 18px;
+}
+
+.gallery ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    gap: 30px;
+}
+
+.gallery ul li {
+    text-align: center;
+}
+
+.gallery img {
+    width: 100px;
+    height: 100px;
+    padding: 10px;
+}
+
+.gallery li:hover {
+    opacity: 0.5;
+}
+
+.gallery li span {
+    display: block;
+    margin-top: -10px;
+    font-size: 14px;
+    color: #333;
+    text-align: center;
+}
+
+
+/* container: shop 요소들을 가로로 배치하고, 중앙 정렬 */
+.container {
+    display: flex;  /* Flexbox를 사용하여 가로로 배치 */
+    justify-content: center;  /* 가로로 중앙 정렬 */
+    align-items: flex-start;  /* 세로로 시작 위치에 정렬 */
+    gap: 0px;  /* 각 shop 간의 간격 */
+    text-align: center;
+    margin: 20px 0; /* 상하 여백 */
+    flex-wrap: wrap; /* 줄 바꿈이 가능하도록 설정 */
+    max-width: 100%; /* 부모의 너비를 벗어나지 않도록 설정 */
+    margin-top: 180px;
+}
+
+.container2 {
+    display: flex;  /* Flexbox를 사용하여 가로로 배치 */
+    justify-content: center;  /* 가로로 중앙 정렬 */
+    align-items: flex-start;  /* 세로로 시작 위치에 정렬 */
+    gap: 0px;  /* 각 shop 간의 간격 */
+    text-align: center;
+    margin: 20px 0; /* 상하 여백 */
+    flex-wrap: wrap; /* 줄 바꿈이 가능하도록 설정 */
+    max-width: 100%; /* 부모의 너비를 벗어나지 않도록 설정 */
+    margin-top: 10px;
+}
+
+
+/* 메인 타이틀 스타일 */
+.main-title {
+    font-size: 40px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 30px; /* 상단 여백 */
+    margin-top: 20px;  /* 위쪽 여백 수정 */
+}
+
+/* 메뉴 스타일 */
+.menu_Shop {
+    display: flex;
+    justify-content: center; /* 메뉴 항목을 가로로 중앙 정렬 */
+    gap: 20px; /* 메뉴 항목 간의 간격 */
+    margin-bottom: 30px; /* 메뉴와 쇼핑 아이템 사이에 여백 */
+    margin-top: 30px;
+}
+
+.menu-item {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer; /* 마우스 커서를 포인터로 변경 */
+    padding: 10px 20px; /* 텍스트 주위에 여백 추가 */
+    border: 2px solid #333; /* 테두리 추가 */
+    border-radius: 20px; /* 라운드 모서리 처리 */
+    transition: all 0.3s; /* 호버 시 모든 속성이 부드럽게 변하도록 설정 */
+    
+}
+
+.menu-item:hover {
+    color: #e74c3c; /* 호버 시 텍스트 색상 변경 */
+    border-color: #e74c3c; /* 호버 시 테두리 색상 변경 */
+}
+
+/* shop 스타일 */
+.shop {
+    border: none;
+    padding: 10px;
+    background-color: white;
+    width: 200px;  /* 기존 크기 유지 */
+    box-sizing: border-box; /* 패딩과 테두리가 포함된 너비 설정 */
+    text-align: center;
+    height: 350px;
+}
+
+.img {
+    width: 100%;
+    height: 160px;  /* 기존 100px에서 50px 증가 */
+    background-color: gray;
+    margin-bottom: 10px;
+}
+
+.title {
+    margin-bottom: 5px;
+}
+
+.shop-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+.shop-content {
+    font-size: 14px;
+    color: #666;
+}
+
+.shop-price {
+    margin-top: 40px;
+    font-size: 14px;
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+
+
+
+/* 콘텐츠 영역 */
+.content {
+    margin-top: 100px;
+    width: 100%;
+    height: 200px;
+    background-color: #6b6b6b;
+}
+
+.tabmenu {
+    width: 390px;
+    height: 200px;
+    margin-right: 10px;
+}
+
+.notice, .gallery {
+    width: 100%;
+    height: 100%;
+}
+
+/* 기타 영역 */
+.otherwarp {
+    display: flex;
+    justify-content: flex-end;
+    width: 530px;
+    background-color: #a19a9a;
+}
+
+.banner {
+    width: 400px;
+    height: 200px;
+    background-color: #a19a9a;
+}
+
+.shortcut {
+    width: 400px;
+    height: 200px;
+    background-color: #a19a9a;
+}
+
+
+
+
+
+
+/* 각 박스 스타일 */
+
+.cs-info {
+    width: 800px;
+}
+
+.cs-title {
+    font-size: 40px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    width: 100%;
+    margin-top: 130px;
+}
+
+.cs-title2 {
+    font-size: 30px;
+    font-weight: lighter;
+    color: #333;
+    text-align: center;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 100px;
+}
+
+.box {
+    margin-top: 100px;
+    width: 400px;
+    height: 290px;
+    background-color: #cccccc;
+    text-align: center;
+    line-height: 100px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 5px;
+    border-radius: 15px;
+    position: relative;  /* 자식 요소인 이미지가 박스를 채울 수 있도록 */
+}
+
+/* 마지막 박스의 margin-right 제거 */
+.box3 {
+    margin-right: 0;
+}
+
+/* 이미지 스타일 */
+.box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+/* .bolssler2 부모 컨테이너 스타일 */
+.bolssler2 {
+    display: flex;  /* 박스를 수평으로 정렬 */
+    justify-content: center;  /* 박스들을 수평으로 중앙 정렬 */
+    align-items: center;  /* 세로로 중앙 정렬 */
+    width: 100%;
+    height: 200px;  /* 부모 컨테이너 높이 설정 */
+    gap:20px;
+}
+
+/* 푸터 기본 스타일 */
+footer {
+    width: 100%;
+    background-color: #1f1f21;
+    padding: 40px 20px;  /* 상하 여백을 추가하여 깔끔한 디자인 */
+    margin-top: 300px;
+    color: white;  /* 푸터 전체 텍스트 색상 하얀색으로 설정 */
+}
+
+/* 푸터 내용 컨테이너 */
+.footer-container {
+    color: white;  /* 모든 텍스트를 하얀색으로 설정 */
+    display: flex;
+    background-color: none;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1350px;
+    margin: 0 auto;
+    height: 200px;
+}
+
+/* 기업 이미지 */
+.logo img {
+    width: 150px;
+    height: auto;
+}
+
+/* 연락처 및 정보 */
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border-bottom: 2px solid white;  /* 밑줄을 하얀색으로 변경 */
+    padding-bottom: 10px;  /* 밑줄과 내용 간의 간격 조정 */
+}
+
+/* 텍스트 스타일: 모든 p 태그에 하얀색 텍스트 적용 */
+.contact-info p {
+    font-size: 14px;
+    color: white;  /* 모든 p 태그를 하얀색으로 설정 */
+}
+
+/* SNS 아이콘 */
+.social-media {
+    display: flex;
+    justify-content: flex-end;  /* SNS 아이콘을 오른쪽 정렬 */
+}
+
+.social-media a {
+    color: white;  /* SNS 링크 텍스트 색상 하얀색으로 설정 */
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.social-media img {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s;
+}
+
+.social-media a:hover img {
+    transform: scale(1.1);
+}
