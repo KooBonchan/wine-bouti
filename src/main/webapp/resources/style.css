@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     list-style: none;
+    box-sizing: border-box;
     font-family: "맑은 고딕";
     color: #333333;
 }
@@ -506,6 +507,7 @@ footer {
 .social-media {
     display: flex;
     justify-content: flex-end;  /* SNS 아이콘을 오른쪽 정렬 */
+    margin-top: 10px;
 }
 
 .social-media a {
