@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+#form-reply #content{
+  resize:none;
+}
+#form-reply button{
+  height:100%;
+}
+
+#reply-header span{
+  cursor: pointer;
+  font-size:2rem;
+  color:#666;
+}
+
+#reply-container {
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  border: 1px solid #ccc;
+}
+#reply-container .writer{
+  width: 100px;
+  font-weight: bold;
+}
+#reply-container .content{
+  width: 400px;
+}
+#reply-container td {
+  padding: 10px;
+  text-align: left;
+  vertical-align: middle;
+  font-size: 14px;
+  line-height: 1.6;
+} 
