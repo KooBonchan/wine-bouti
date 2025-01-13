@@ -9,12 +9,12 @@ public class ProductController {
 	
 	
 	@GetMapping("")
-	public String home() { return "home"; }
+	public String home() { return "main.tiles"; }
 	
 	@GetMapping("{productIdx}")
 	public String productDetails(
 		@PathVariable("productIdx") long productIdx
 	) {
-		return "details";
+		return "details.tiles";
 	}
 }

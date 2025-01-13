@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE tiles-definitions PUBLIC
-       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
-       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
-	<definition name="baseLayout"
-		template="/WEB-INF/views/common/layout.jsp">
+	<definition name="baseLayout" template="/WEB-INF/views/layout/layout.jsp">
 		<put-attribute name="title" value="레이아웃 페이지" />
-		<put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
-		<put-attribute name="side" value="/WEB-INF/views/common/side.jsp" />
+		<put-attribute name="header" value="/WEB-INF/views/layout/header.jsp" />
+		<put-attribute name="side" value="/WEB-INF/views/layout/side.jsp" />
 		<put-attribute name="body" value="" />
-		<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
-		<put-attribute name="quickMenu" value="/WEB-INF/views/common/quickMenu.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/views/layout/footer.jsp" />
+		<put-attribute name="quickMenu" value="/WEB-INF/views/layout/quickMenu.jsp" />
+		
+	</definition>
+	
+	<definition name="*.tiles" extends="baseLayout">
+	 <put-attribute name="style" value="/resources/style/{1}.css" />
+	 <put-attribute name="js" value="/resources/js/{1}.js" />
+	 <put-attribute name="title" value="{1}" />
+	 <put-attribute name="body" value="/WEB-INF/views/{1}.jsp" />
 	</definition>
 </tiles-definitions>
 

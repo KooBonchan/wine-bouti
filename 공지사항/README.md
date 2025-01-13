@@ -32,6 +32,23 @@ git push
 
 ## 커밋 메시지 규칙 : 작업한 내용을 한줄요약하기
 
+## 파일 이름 규칙
+
+- css 파일 위치: `resources/style`
+- js 파일 위치: `resources/js`
+- 파일 경로와 뷰 경로 일치하게 저장
+  - ex) Main page
+    - `WEB-INF/views/main.jsp`
+    - `resources/style/main.css`
+    -  `resources/js/main.js`
+  - ex) Mypage page
+    - `WEB-INF/views/member/mypage.jsp`
+    - `resources/style/member/mypage.css`
+    - `resources/js/member/mypage.js`
+- `controller`에서 String으로 리턴하여 뒤에 .tiles 붙이기 (tiles.xml 참조)
+  - ex) `return "main.tiles";`
+  
+  
 ---
 
 ## TODO 리스트
@@ -51,3 +68,11 @@ git push
 - [ ] RDS
 
 ### 구현
+
+
+
+
+### 프로젝트 마무리 시
+
+- [ ] 서버에 저장된 jQuery 날리기
+- [ ] AWS에 톰캣 올려서 배포하기

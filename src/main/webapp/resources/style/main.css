@@ -1,0 +1,258 @@
+@charset "UTF-8"; 
+
+/* Image Slide */
+.dot-nav {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+}
+.dot-nav li {
+    margin: 0 5px;
+    width: 10px;
+    height: 10px;
+    background-color: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.dot-nav li.active {
+    background-color: #333;
+}
+
+.imgslide {
+    position: relative;
+    width: 100%;  
+    height: auto;  /* 이미지의 비율에 맞게 높이를 자동으로 조정 */
+    overflow: hidden;
+    margin: 0 auto;
+}
+.slidelist {
+    display: flex;
+    transition: margin-left 0.5s ease-in-out;
+    width: 100%;
+}
+.slide-item {
+    height: 100%;  /* 슬라이드 높이에 맞게 자식 아이템 크기 조정 */
+    width: 100%;
+    flex-shrink: 0;
+    height: auto;  /* 높이를 자동으로 조정 */
+}
+.slide-item img {
+    width: 100%;  
+    height: auto;  /* 이미지의 비율에 맞게 자동으로 높이를 설정 */
+    object-fit: contain;  /* 이미지가 잘리지 않게 비율을 유지 */
+}
+
+button.prev, button.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(122, 122, 122, 0);
+    color: rgb(185, 185, 185);
+    border: none;
+    font-size: 30px;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+}
+button.prev {
+    left: 100px;
+}
+button.next {
+    right: 100px;
+}
+button.prev:hover, button.next:hover {
+    color: #333333;
+}
+
+
+/* Gallery */
+
+.parent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 250px;
+    margin: 0 auto;
+    gap: 20px;
+}
+.gallery {
+    margin-top: 300px;
+    margin-bottom: 100px;
+    width: 400px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.gallery h4 {
+    text-align: center;
+    margin: 0 0 20px 0;
+    font-size: 18px;
+}
+.gallery ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    gap: 30px;
+}
+.gallery ul li {
+    text-align: center;
+}
+.gallery img {
+    width: 100px;
+    height: 100px;
+    padding: 10px;
+}
+.gallery li:hover {
+    opacity: 0.5;
+}
+.gallery li span {
+    display: block;
+    margin-top: -10px;
+    font-size: 14px;
+    color: #333;
+    text-align: center;
+}
+
+
+/* Product Image List */
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0px;
+    text-align: center;
+    margin: 20px 0;
+    flex-wrap: wrap;
+    max-width: 100%;
+    margin-top: 180px;
+}
+.main-title {
+    font-size: 40px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+.menu_Shop {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+.menu-item {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    padding: 10px 20px;
+    border: 2px solid #333;
+    border-radius: 20px;
+    transition: all 0.3s;
+}
+.menu-item:hover {
+    color: #e74c3c;
+    border-color: #e74c3c;
+}
+
+.shop {
+    border: none;
+    padding: 10px;
+    background-color: white;
+    width: 200px;
+    box-sizing: border-box;
+    text-align: center;
+    height: 350px;
+}
+.img {
+    width: 100%;
+    height: 160px;
+    background-color: gray;
+    margin-bottom: 10px;
+}
+.title {
+    margin-bottom: 5px;
+}
+.shop-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+.shop-content {
+    font-size: 14px;
+    color: #666;
+}
+.shop-price {
+    margin-top: 40px;
+    font-size: 14px;
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+/* MD Showcase */
+
+.cs-info {
+    width: 800px;
+}
+.cs-title {
+    font-size: 40px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    width: 100%;
+    margin-top: 130px;
+}
+.cs-title2 {
+    font-size: 30px;
+    font-weight: lighter;
+    color: #333;
+    text-align: center;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 100px;
+}
+.bolssler2 {
+    display: flex;  /* 박스를 수평으로 정렬 */
+    justify-content: center;  /* 박스들을 수평으로 중앙 정렬 */
+    align-items: center;  /* 세로로 중앙 정렬 */
+    width: 100%;
+    height: 200px;  /* 부모 컨테이너 높이 설정 */
+    gap:20px;
+}
+.box {
+    margin-top: 100px;
+    width: 400px;
+    height: 290px;
+    background-color: #cccccc;
+    text-align: center;
+    line-height: 100px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 5px;
+    border-radius: 15px;
+    position: relative;
+}
+.box3 {
+    margin-right: 0;
+}
+.box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}

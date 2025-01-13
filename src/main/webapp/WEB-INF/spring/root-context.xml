@@ -51,11 +51,6 @@
   <!-- AOP AspectJ -->
   <aop:aspectj-autoproxy />
   <context:component-scan base-package="com.winebouti.aop" />
-  
-  
   <context:component-scan base-package="com.winebouti.service" />
   
-  
-
-
 </beans>
