@@ -13,6 +13,7 @@ html, body {
 	background-color: #ffffff;
 	font-size: 20px;
 	margin: 0 auto;
+	min-width: 1024px;
 }
 a {
 	text-decoration: none;
@@ -37,62 +38,112 @@ header {
 	background-color: #333333;
 	margin: 0 auto;
 }
+
+/* 네비게이션 스타일 */
 .navi {
-	display: flex;
-	justify-content: center;
-	padding: 0;
-	width: 100%;
-}
-.navi>li {
-	position: relative;
-	margin: 0;
-	padding: 0;
-}
-.navi>li>a {
-	width: 180px;
-	height: 40px;
-	line-height: 40px;
-	font-size: 16px;
-	font-weight: bold;
-	text-align: center;
-	color: #ffffff;
-	margin: 0;
-}
-.navi>li>a:hover {
-	background-color: aqua;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    width: 100%;
+
 }
 
+.navi > li {
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.navi > li > a {
+    width: 180px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    color: #ffffff;
+    margin: 0;
+}
+
+/* 네비게이션 링크 hover 스타일 */
+.navi > li > a:hover {
+    background-color: rgb(181, 245, 245);
+    font-size: 18px;
+    color: #000;
+}
+
+/* 서브 메뉴 숨기기 및 스타일링 */
 .submenu {
-	display: none;
-	position: absolute;
-	top: 40px;
-	left: 0;
-	width: 180px;
-	background-color: #333333;
-	padding: 0;
-	z-index: 2;
-}
-.submenu li {
-	width: 100%;
-}
-.submenu li a {
-	padding: 10px;
-	background-color: #333333;
-	color: #ffffff;
-}
-.submenu li a:hover {
-	background-color: #a4bbbe;
-}
-.navi>li:hover>.submenu {
-	display: block;
+    display: none;
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 180px;
+    background-color: #333333;
+    padding: 0;
+    z-index: 2;
 }
 
+.submenu li {
+    width: 100%;
+}
+
+.submenu li a {
+    padding: 10px;
+    background-color: #333333;
+    color: #ffffff;
+}
+
+.submenu li a:hover {
+    background-color: #a4bbbe;
+    color: #000;
+}
+
+/* 서브 메뉴 표시 */
+.navi > li:hover > .submenu {
+    display: block;
+}
+
+
+* 반응형: 1200px 이하일 때 */
+@media (max-width: 1200px) {
+    .navi > li > a {
+        width: auto; /* 너비 자동으로 조정 */
+        font-size: 14px; /* 폰트 크기 줄이기 */
+        height: auto;
+        line-height: 30px; /* 줄 높이 조정 */
+        padding: 5px 20px; /* 좌우 여백 늘리기 */
+    }
+
+    .submenu {
+         width: 100px;
+    }
+
+    .navi {
+        justify-content: center; /* 가운데 정렬 유지 */
+        padding-left: 0; /* 왼쪽 패딩 제거 */
+    }
+
+    /* 네비게이션 항목 간 간격 추가 */
+    .navi > li {
+        margin: 0 25px; /* 항목 간격을 더 넓히기 */
+        font-size: 14px; /* hover 시 폰트 크기 */
+        width: auto; /* 너비 자동으로 조정 */
+    }
+
+    .navi > li > a:hover {
+        font-size: 14px; /* hover 시 폰트 크기 */
+        width: auto; /* 너비 자동으로 조정 */
+    }
+}
+
+/***************************************************************************/
 /* layout/footer.jsp */
 footer {
 	width: 100%;
 	background-color: #1f1f21;
 	padding: 40px 20px;
-	margin-top: 300px;
+	margin-top: 250px;
 	color: white;
 }
 .footer-container {
@@ -104,7 +155,7 @@ footer {
 	align-items: center;
 	max-width: 1350px;
 	margin: 0 auto;
-	height: 200px;
+	height: 280px;
 }
 
 .logo img {
