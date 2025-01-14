@@ -1,3 +1,42 @@
+-- Member 테이블 삭제
+DROP TABLE IF EXISTS Member;
+
+-- Auth 테이블 삭제
+DROP TABLE IF EXISTS Auth;
+
+-- persistent_login 테이블 삭제
+DROP TABLE IF EXISTS persistent_login;
+
+-- Product 테이블 삭제
+DROP TABLE IF EXISTS Product;
+
+-- Wine 테이블 삭제
+DROP TABLE IF EXISTS Wine;
+
+-- Cart 테이블 삭제
+DROP TABLE IF EXISTS Cart;
+
+-- Purchase 테이블 삭제
+DROP TABLE IF EXISTS Purchase;
+
+-- Review 테이블 삭제
+DROP TABLE IF EXISTS Review;
+
+-- Purchase_Product 테이블 삭제
+DROP TABLE IF EXISTS Purchase_Product;
+
+-- Coupon 테이블 삭제
+DROP TABLE IF EXISTS Coupon;
+
+-- CouponDetail 테이블 삭제
+DROP TABLE IF EXISTS CouponDetail;
+
+-- Purchase_Coupon 테이블 삭제
+DROP TABLE IF EXISTS Purchase_Coupon;
+
+-- RecentVisits 테이블 삭제
+DROP TABLE IF EXISTS RecentVisits;
+
 -- Member 테이블 생성
 CREATE TABLE Member (
     member_id INT PRIMARY KEY AUTO_INCREMENT, -- `memberidx` -> `member_id`로 변경
