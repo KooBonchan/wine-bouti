@@ -23,6 +23,8 @@
 		<beans:property name="preparerFactoryClass"
 			value="org.springframework.web.servlet.view.tiles3.SpringBeanPreparerFactory" />
 	</beans:bean>
+	<beans:bean class="org.springframework.web.multipart.support.StandardServletMultipartResolver"
+    id="multipartResolver"></beans:bean>
 	<beans:bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
     <beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />
   </beans:bean>

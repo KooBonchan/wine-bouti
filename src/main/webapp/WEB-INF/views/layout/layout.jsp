@@ -16,11 +16,9 @@
 
 <body>
   <header><tiles:insertAttribute name="header" /></header>
-			<%-- <aside><tiles:insertAttribute name="side" /></aside> --%>
+	<%-- <aside><tiles:insertAttribute name="side" /></aside> --%>
 	<div class="bodywrap"><tiles:insertAttribute name="body" /></div>
-		<%-- <tiles:insertAttribute name="quickMenu" /> --%>
-		
-  	
-  <footer><tiles:insertAttribute name="footer" /></footer>
+  <%-- <tiles:insertAttribute name="quickMenu" /> --%>
+	<footer><tiles:insertAttribute name="footer" /></footer>
 </body>
 </html>
