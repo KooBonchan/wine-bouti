@@ -45,10 +45,10 @@ git push
     - `WEB-INF/views/member/mypage.jsp`
     - `resources/style/member/mypage.css`
     - `resources/js/member/mypage.js`
-- `controller`에서 String으로 리턴하여 뒤에 .tiles 붙이기 (tiles.xml 참조)
+- `controller`에서 String으로 리턴하여 뒤에 .tiles 붙이기 (tiles/layout-templates.xml 참조)
   - ex) `return "main.tiles";`
-  
-  
+- `.css`, `.js` 등 `resources`에서 파일 가져올 때 `<c:url value="" />` JSTL 태그 사용할 것 (layout/layout.jsp 참조)
+
 ---
 
 ## TODO 리스트
@@ -76,3 +76,7 @@ git push
 
 - [ ] 서버에 저장된 jQuery 날리기
 - [ ] AWS에 톰캣 올려서 배포하기
+
+### 하면 좋고 아니면 아쉽고
+
+- [ ] 여러 페이지에서 재사용 가능한 코드 components로 분리하기 - tiles/components.xml

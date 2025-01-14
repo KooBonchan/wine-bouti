@@ -15,10 +15,14 @@
 	
 	<definition name="*.tiles" extends="baseLayout">
 	 <put-attribute name="style" value="/resources/style/{1}.css" />
-	 <put-attribute name="js" value="/resources/js/{1}.js" />
 	 <put-attribute name="title" value="{1}" />
 	 <put-attribute name="body" value="/WEB-INF/views/{1}.jsp" />
 	</definition>
+	<definition name="*/*.tiles" extends="baseLayout">
+   <put-attribute name="style" value="/resources/style/{1}/{2}.css" />
+   <put-attribute name="title" value="{2}" />
+   <put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
+  </definition>
 </tiles-definitions>
 
 

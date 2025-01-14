@@ -11,10 +11,10 @@ public class ProductController {
 	@GetMapping("")
 	public String home() { return "main.tiles"; }
 	
-	@GetMapping("{productIdx}")
+	@GetMapping("product/{productIdx}")
 	public String productDetails(
 		@PathVariable("productIdx") long productIdx
 	) {
-		return "details.tiles";
+		return "product/details.tiles";
 	}
 }
