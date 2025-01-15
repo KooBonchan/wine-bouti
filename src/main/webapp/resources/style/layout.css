@@ -105,7 +105,7 @@ header {
 }
 
 
-* 반응형: 1200px 이하일 때 */
+/* 반응형: 1200px 이하일 때 */
 @media (max-width: 1200px) {
     .navi > li > a {
         width: auto; /* 너비 자동으로 조정 */
@@ -139,54 +139,132 @@ header {
 
 /***************************************************************************/
 /* layout/footer.jsp */
-footer {
-	width: 100%;
-	background-color: #1f1f21;
-	padding: 40px 20px;
-	margin-top: 250px;
-	color: white;
-}
-.footer-container {
-	color: white;
-	display: flex;
-	background-color: none;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	align-items: center;
-	max-width: 1350px;
-	margin: 0 auto;
-	height: 280px;
+
+
+.logo-cs-info {
+    display: flex;  /* flexbox로 가로 배치 */
+    align-items: center;  /* 세로 중앙 정렬 */
+    gap: 20px;  /* 로고와 cs-info 사이에 간격 */
 }
 
+/* 기업 이미지 */
 .logo img {
-	width: 150px;
-	height: auto;
+    width: 150px;
+    height: auto;
 }
+
+/* cs-info 설정 */
+.cs-info {
+    width: 700px;  /* 너비 설정 */
+}
+
+
 .contact-info {
-	display: flex;
-	flex-direction: column;
-	gap: 15px;
-	border-bottom: 2px solid white;
-	padding-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border-bottom: 2px solid white;  /* 밑줄을 하얀색으로 변경 */
+    padding-bottom: 10px;  /* 밑줄과 내용 간의 간격 조정 */
 }
+모든 p 태그에 하얀색 텍스트 적용 */
 .contact-info p {
-	font-size: 14px;
-	color: white;
+    font-size: 14px;
+    color: white;  /* 모든 p 태그를 하얀색으로 설정 */
 }
+
+/* SNS 아이콘 */
 .social-media {
-	display: flex;
-	justify-content: flex-end;
+    display: flex;
+    justify-content: flex-end;  /* SNS 아이콘을 오른쪽 정렬 */
+    margin-top: 10px;
 }
+
 .social-media a {
-	color: white;
-	display: inline-block;
-	margin: 0 10px;
+    color: white;  /* SNS 링크 텍스트 색상 하얀색으로 설정 */
+    display: inline-block;
+    margin: 0 10px;
 }
+
 .social-media img {
-	width: 30px;
-	height: 30px;
-	transition: transform 0.3s;
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s;
 }
+
 .social-media a:hover img {
-	transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+
+
+/* 푸터 기본 스타일 */
+/* 푸터 기본 스타일 */
+footer {
+    width: 100%;
+    background-color: #1f1f21;
+    padding: 40px 20px;  /* 상하 여백을 추가하여 깔끔한 디자인 */
+    margin-top: 250px;
+    color: white;  /* 푸터 전체 텍스트 색상 하얀색으로 설정 */
+    display: flex;  /* 플렉스박스 사용 */
+    justify-content: center;  /* 수평 가운데 정렬 */
+    align-items: center;  /* 수직 가운데 정렬 */
+    text-align: center;  /* 텍스트 가운데 정렬 */
+}
+
+/* 푸터 내용 컨테이너 */
+.footer-container {
+    color: white;  /* 모든 텍스트를 하얀색으로 설정 */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 600px;
+    margin: 0 auto;
+    height: 280px;
+}
+
+/* 기업 이미지 */
+.logo img {
+    width: 150px;
+    height: auto;
+}
+
+/* 연락처 및 정보 */
+/* 연락처 및 정보 */
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border-bottom: 2px solid white;  /* 밑줄을 하얀색으로 변경 */
+    padding-bottom: 10px;  /* 밑줄과 내용 간의 간격 조정 */
+    align-items: flex-start;  /* 왼쪽 정렬 */
+}
+
+/* 텍스트 스타일: 모든 p 태그에 하얀색 텍스트 적용 */
+.contact-info p {
+    font-size: 14px;
+    color: white;  /* 모든 p 태그를 하얀색으로 설정 */
+}
+
+/* SNS 아이콘 */
+.social-media {
+    display: flex;
+    justify-content: flex-end;  /* SNS 아이콘을 오른쪽 정렬 */
+    margin-top: 10px;
+}
+
+.social-media a {
+    color: white;  /* SNS 링크 텍스트 색상 하얀색으로 설정 */
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.social-media img {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s;
+}
+
+.social-media a:hover img {
+    transform: scale(1.1);
 }
