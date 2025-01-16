@@ -50,11 +50,11 @@
     </insert>
     <insert id="insertProductList" parameterType="PurchaseVO">
     	INSERT INTO purchase_product (purchase_id, product_id, quantity)
-    	VALUES (
-    	<foreach collection="products" separator="),(" nullable="false" item="product" >
+    	VALUES
+    	<foreach collection="products" nullable="false" item="product" 
+    		open="(" separator="),(" close=")">
     		#{purchaseId}, #{product.productId}, #{product.quantity}
     	</foreach>
-    	)
     </insert>
     
     
