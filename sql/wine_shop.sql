@@ -1,18 +1,20 @@
-use winebouti;
+use project_winebouti;
 
-DROP TABLE IF EXISTS Member;
-DROP TABLE IF EXISTS Auth;
-DROP TABLE IF EXISTS persistent_login;
-DROP TABLE IF EXISTS Product;
-DROP TABLE IF EXISTS Wine;
-DROP TABLE IF EXISTS Cart;
-DROP TABLE IF EXISTS Purchase;
-DROP TABLE IF EXISTS Review;
-DROP TABLE IF EXISTS Purchase_Product;
-DROP TABLE IF EXISTS Coupon;
-DROP TABLE IF EXISTS CouponDetail;
-DROP TABLE IF EXISTS Purchase_Coupon;
-DROP TABLE IF EXISTS RecentVisits;
+set foreign_key_checks = 0;
+DROP TABLE IF EXISTS Member cascade;
+DROP TABLE IF EXISTS Auth  cascade;
+DROP TABLE IF EXISTS persistent_login cascade;
+DROP TABLE IF EXISTS Product         cascade;
+DROP TABLE IF EXISTS Wine            cascade;
+DROP TABLE IF EXISTS Cart            cascade;
+DROP TABLE IF EXISTS Purchase        cascade;
+DROP TABLE IF EXISTS Review         cascade;
+DROP TABLE IF EXISTS Purchase_Product cascade;
+DROP TABLE IF EXISTS Coupon          cascade;
+DROP TABLE IF EXISTS CouponDetail    cascade;
+DROP TABLE IF EXISTS Purchase_Coupon cascade;
+DROP TABLE IF EXISTS RecentVisits   cascade;
+set foreign_key_checks = 1;
 
 CREATE TABLE Member (
     member_id BIGINT PRIMARY KEY AUTO_INCREMENT,
