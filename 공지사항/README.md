@@ -8,6 +8,37 @@
 |  | 웹디자인 | DB, VO | RESTful, Ajax |
 | OpenAPI 연결 | Spring Security | MyBatis | Controller, Routing |
 
+### 상품 리스트 구현 순서
+
+- [ ] 기본 상품 리스트 페이지 구현하기
+	- [ ] Front Wireframe
+	- [ ] DB - Repository
+	- [ ] Service
+	- [ ] Controller
+	- [ ] JSP
+- [ ] 메인화면에서 보여질 상품 리스트 구현하기
+	- [ ] 2개의 추천상품과 10개의 최신상품으로 구성
+- [ ] 상품 페이징 기능 구현하기
+- [ ] 상품 필터링 기능 구현하기
+	- [ ] 대분류와 상세분류 구분하기
+
+### 리뷰 구현 순서
+
+ - [ ] 기본 상품 상세 페이지 구현하기
+ 	- [ ] Front Wireframe
+ 	- [ ] DB - Repository
+ 	- [ ] Service
+ 	- [ ] Controller
+ 	- [ ] JSP
+ - [ ] 기본 리뷰 기능 구현하기 - Ajax
+ 	- [ ] RestController ~ Repository, DB
+ 	- [ ] JavaScript로 Ajax 구현하기
+ - [ ] 리뷰에 이미지 업로드 기능 구현하기
+ 	- [ ] MIME type 확인을 통한 유효성 검사 구현
+ 	- [ ] Upload, View --> 이미지 저장, 섬네일 저장까지, Thumbnailator 사용
+ 	- [ ] Update Delete 구현
+ - [ ] 무한 스크롤 구현하기 - README 하단 참고문헌 참고하여 구현
+
 ## 깃 브랜치 설정하기
 
 ### 최초실행 (main 브랜치에서)
@@ -55,21 +86,26 @@ git push
 
 ### 다이어그램
 
-- [x] ERD 그리기
-- [ ] Usecase Diagram
+- [v] ERD 그리기
+- [v] Usecase Diagram
 - [ ] Sequence Diagram
 
 ### 환경설정
 
-- [X] MySQL
-- [ ] Git
-- [ ] Spring
-- [X] AWS EC2 Tomcat
+- [v] MySQL
+- [v] Git
+- [v] Spring
+- [ ] AWS EC2 Tomcat
 - [ ] RDS
 
 ### 구현
 
-
+- 분할받은 각 기능마다 이하의 순서로 구현 진행
+- [ ] DB
+- [ ] Repository
+- [ ] Service
+- [ ] Controller
+- [ ] View
 
 
 ### 프로젝트 마무리 시
@@ -80,3 +116,4 @@ git push
 ### 하면 좋고 아니면 아쉽고
 
 - [ ] 여러 페이지에서 재사용 가능한 코드 components로 분리하기 - tiles/components.xml
+- [ ] 챗봇 기능
