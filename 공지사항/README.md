@@ -86,15 +86,15 @@ git push
 
 ### 다이어그램
 
-- [v] ERD 그리기
-- [v] Usecase Diagram
+- [x] ERD 그리기
+- [x] Usecase Diagram
 - [ ] Sequence Diagram
 
 ### 환경설정
 
-- [v] MySQL
-- [v] Git
-- [v] Spring
+- [x] MySQL
+- [x] Git
+- [x] Spring
 - [ ] AWS EC2 Tomcat
 - [ ] RDS
 
