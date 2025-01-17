@@ -13,5 +13,4 @@ public class PurchaseVO {
 	private String address;
 	private long totalAmount;
 	private List<PurchaseProductVO> products;
-
 }

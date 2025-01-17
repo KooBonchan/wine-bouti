@@ -23,4 +23,11 @@ public class ProductServiceImpl implements ProductService {
     public List<ReviewVO> getReviewsByProductId(int product_id) {
         return productMapper.getReviewsByProductId(product_id);
     }
+    
+    @Override
+    public List<ProductVO> getRedWines() {
+        // ProductRepository를 사용하여 레드 와인 상품 목록을 조회하는 로직 구현
+        return productMapper.findRedWines();
+    }
+
 }

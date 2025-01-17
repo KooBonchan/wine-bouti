@@ -11,5 +11,7 @@ import com.winebouti.vo.ReviewVO;
 public interface ProductMapper {
 
     ProductVO getProductById(int product_id);  
-    List<ReviewVO> getReviewsByProductId(int product_id); 
+    List<ReviewVO> getReviewsByProductId(int product_id);
+    
+    List<ProductVO> findRedWines();
 }
