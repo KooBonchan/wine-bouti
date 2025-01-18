@@ -11,4 +11,3 @@ detailImgName
 realDetailImgName
 원가격 originalPrice
 할인가격 price
-
