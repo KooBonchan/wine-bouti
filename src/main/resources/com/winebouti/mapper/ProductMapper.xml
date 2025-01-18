@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.winebouti.mapper.ProductMapper">
+
+    <!-- 상품 ID로 상품 조회 -->
+    <select id="getProductById" resultType="com.winebouti.vo.ProductVO" parameterType="int">
+        SELECT * 
+        FROM Product
+        WHERE product_id = #{product_id}
+    </select>
+
+    <!-- 상품 ID로 리뷰 조회 -->
+    <select id="getReviewsByProductId" resultType="com.winebouti.vo.ReviewVO" parameterType="int">
+        SELECT * 
+        FROM Review
+        WHERE product_id = #{product_id}
+    </select>
+
+</mapper>
