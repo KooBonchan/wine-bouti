@@ -1,18 +1,20 @@
 package com.winebouti.service;
 
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
 import com.winebouti.mapper.ProductMapper;
 import com.winebouti.vo.ProductVO;
 import com.winebouti.vo.ReviewVO;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-import java.util.List;
+import lombok.RequiredArgsConstructor;
 
 @Service
+@RequiredArgsConstructor
 public class ProductServiceImpl implements ProductService {
 
-    @Autowired
-    private ProductMapper productMapper;
+	private final ProductMapper productMapper;
 
     /* 양정민 */
     
