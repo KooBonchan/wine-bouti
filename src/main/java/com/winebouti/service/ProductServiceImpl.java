@@ -14,6 +14,8 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductMapper productMapper;
 
+    /* 양정민 */
+    
     @Override
     public ProductVO getProductById(int product_id) {
         return productMapper.getProductById(product_id);
@@ -23,6 +25,11 @@ public class ProductServiceImpl implements ProductService {
     public List<ReviewVO> getReviewsByProductId(int product_id) {
         return productMapper.getReviewsByProductId(product_id);
     }
+    
+    
+    
+    
+    /* 이창현 */
     
     @Override
     public List<ProductVO> getRedWines() {
