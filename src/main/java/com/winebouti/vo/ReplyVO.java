@@ -6,9 +6,9 @@ import lombok.ToString;
 
 @Getter @Setter @ToString
 public class ReplyVO {
-	private int productId;
-    private int memberId;
-    private int purchaseId;
+	private long productId;
+    private long memberId;
+    private long purchaseId;
     private String content;
     private int star;
     private boolean isOpen;

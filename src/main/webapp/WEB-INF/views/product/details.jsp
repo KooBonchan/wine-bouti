@@ -4,24 +4,24 @@
 <!-- 상품 상세 페이지 -->
 <div class="product-detail">
     <!-- 상품 이름 표시 -->
-    <h2>${product.korean_name}</h2>
+    <h2>${product.koreanName}</h2>
 
     <!-- 상품 썸네일 이미지 (클릭 시 확대) -->
     <div class="product-images">
-        <img src="<c:url value='/resources/images/${product.product_image_name}'/>" 
+        <img src="<c:url value='/resources/images/${product.productImageName}'/>" 
              alt="Product Image" 
              id="thumbnail" 
-             onclick="showImageModal('<c:url value='/resources/images/${product.real_product_image_name}'/>')">
+             onclick="showImageModal('<c:url value='/resources/images/${product.realProductImageName}'/>')">
     </div>
 
     <!-- 상품 가격 표시 -->
     <div class="product-price">
-        <h3>Price: ₩<c:out value="${product.original_price}"/></h3>
+        <h3>Price: ₩<c:out value="${product.originalPrice}"/></h3>
     </div>
 
     <!-- 상세 이미지 표시 -->
     <div class="product-description">
-        <img src="<c:url value='/resources/images/${product.detail_image_name}'/>" alt="Detailed Description">
+        <img src="<c:url value='/resources/images/${product.detailImageName}'/>" alt="Detailed Description">
     </div>
 </div>
 
@@ -41,13 +41,13 @@
         <!-- 이미지 첨부 및 리뷰 작성 버튼 -->
         <div class="col-3">
             <input type="file" name="image" id="image" accept="image/*" class="form-control mb-2">
-            <button type="button" class="btn btn-primary w-100" onclick="submitReply(<c:out value='${product.product_id}'/>)">Submit Review</button>
+            <button type="button" class="btn btn-primary w-100" onclick="submitReply(<c:out value='${product.productId}'/>)">Submit Review</button>
         </div>
     </form>
 
     <!-- 리뷰 새로고침 버튼 -->
     <div id="reply-header">
-        <span onclick="loadReplies(<c:out value='${product.product_id}'/>)">&#x21bb; Refresh Reviews</span>
+        <span onclick="loadReplies(<c:out value='${product.productId}'/>)">&#x21bb; Refresh Reviews</span>
     </div>
 
     <!-- 리뷰 목록 테이블 -->

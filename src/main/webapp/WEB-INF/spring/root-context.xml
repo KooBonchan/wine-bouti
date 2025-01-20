@@ -37,7 +37,7 @@
 		<property name="configLocation" value="classpath:/com/winebouti/mybatis-config.xml" />
 		<property name="mapperLocations" value="classpath:/com/winebouti/mapper/*.xml" />
 	</bean>
-  <mybatis-spring:scan base-package="com.winebouti.mapper" />
+  	<mybatis-spring:scan base-package="com.winebouti.mapper" />
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
@@ -52,5 +52,6 @@
   <aop:aspectj-autoproxy />
   <context:component-scan base-package="com.winebouti.aop" />
   <context:component-scan base-package="com.winebouti.service" />
+  
   
 </beans>

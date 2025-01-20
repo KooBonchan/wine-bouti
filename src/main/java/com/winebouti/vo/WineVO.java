@@ -6,7 +6,7 @@ import lombok.ToString;
 
 @Getter @Setter @ToString
 public class WineVO {
-	
+	private long wineId;
 	private String type;
     private String originalName;
     private int volume;

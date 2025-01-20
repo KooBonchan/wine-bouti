@@ -2,6 +2,7 @@ package com.winebouti.service;
 
 import com.winebouti.vo.ProductVO;
 import com.winebouti.vo.ReviewVO;
+import com.winebouti.vo.WineVO;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ public interface ProductService {
     
     
     /* 이창현  */
-    List<ProductVO> getRedWines();
+    List<WineVO> getRedWines();
     
     
 }

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.winebouti.service.ProductService;
 import com.winebouti.vo.ProductVO;
 import com.winebouti.vo.ReviewVO;
+import com.winebouti.vo.WineVO;
 
 import lombok.RequiredArgsConstructor;
 
@@ -44,7 +45,7 @@ public class ProductController {
     /* 이창현 */
     @GetMapping("/red-wine") // 레드 와인 목록 페이지 매핑
     public String redWineList(Model model) {
-        List<ProductVO> redWines = productService.getRedWines(); // 서비스 메서드 호출
+        List<WineVO> redWines = productService.getRedWines(); // 서비스 메서드 호출
         model.addAttribute("products", redWines); // Model에 상품 목록 추가
         return "product/wine.tiles"; // 뷰 이름 반환
     }

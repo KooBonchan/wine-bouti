@@ -8,7 +8,7 @@ import lombok.ToString;
 @Getter @Setter @ToString
 public class ProductVO {
 
-    private int productId;
+    private long productId;
 	private String category;
     private String koreanName;
     private String productImageName;

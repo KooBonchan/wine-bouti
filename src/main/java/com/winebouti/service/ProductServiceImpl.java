@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.winebouti.mapper.ProductMapper;
 import com.winebouti.vo.ProductVO;
 import com.winebouti.vo.ReviewVO;
+import com.winebouti.vo.WineVO;
 
 import lombok.RequiredArgsConstructor;
 
@@ -34,7 +35,7 @@ public class ProductServiceImpl implements ProductService {
     /* 이창현 */
     
     @Override
-    public List<ProductVO> getRedWines() {
+    public List<WineVO> getRedWines() {
         // ProductRepository를 사용하여 레드 와인 상품 목록을 조회하는 로직 구현
         return productMapper.findRedWines();
     }
