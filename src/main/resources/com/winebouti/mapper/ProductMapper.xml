@@ -25,5 +25,15 @@
   <select id="findRedWines" resultType="WineVO">
     SELECT * FROM Wine
   </select>
-
+ <select id="findWhiteWines" resultType="WineVO">
+    SELECT * FROM Wine
+  </select>
+  
+ <select id="findsparkleWines" resultType="WineVO">
+    SELECT * FROM Wine
+  </select>
+  
+  <select id="findgiftWines" resultType="WineVO">
+    SELECT * FROM Wine
+  </select>
 </mapper>

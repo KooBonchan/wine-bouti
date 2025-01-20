@@ -8,8 +8,14 @@ import com.winebouti.vo.WineVO;
 
 public interface ProductMapper {
 
-    ProductVO getProductById(int product_id);  
+   
+
+	ProductVO getProductById(int product_id);  
     List<ReviewVO> getReviewsByProductId(int product_id);
     
     List<WineVO> findRedWines();
+	List<WineVO> findWhiteWines();
+	List<WineVO> findsparkleWines();
+	List<WineVO> findgiftWines();
+    
 }

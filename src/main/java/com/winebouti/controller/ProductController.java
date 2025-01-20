@@ -47,7 +47,25 @@ public class ProductController {
     public String redWineList(Model model) {
         List<WineVO> redWines = productService.getRedWines(); // 서비스 메서드 호출
         model.addAttribute("products", redWines); // Model에 상품 목록 추가
-        return "product/wine.tiles"; // 뷰 이름 반환
+        return "product/redwine.tiles"; // 뷰 이름 반환
+    }
+    @GetMapping("/white-wine")
+    public String whiteWineList(Model model) {
+        List<WineVO> whiteWine = productService.getwhiteWine(); // 서비스에서 화이트 와인 목록을 가져옵니다.
+        model.addAttribute("products", whiteWine); // 모델에 "products" 속성으로 추가
+        return "product/white-wine.tiles"; // 해당 JSP 페이지를 반환
+    }
+    @GetMapping("/sparkle-wine")
+    public String sparkleWineList(Model model) {
+        List<WineVO> sparkleWine = productService.getsparkleWine(); // 서비스에서 화이트 와인 목록을 가져옵니다.
+        model.addAttribute("products", sparkleWine); // 모델에 "products" 속성으로 추가
+        return "product/sparkle-wine.tiles"; // 해당 JSP 페이지를 반환
     }
     
+    @GetMapping("/gift-wine")
+    public String giftWineList(Model model) {
+        List<WineVO> giftWine = productService.getgiftWine(); // 서비스에서 화이트 와인 목록을 가져옵니다.
+        model.addAttribute("products", giftWine); // 모델에 "products" 속성으로 추가
+        return "product/gift-wine.tiles"; // 해당 JSP 페이지를 반환
+    }
 }

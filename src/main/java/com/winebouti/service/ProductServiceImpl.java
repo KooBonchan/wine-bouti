@@ -40,4 +40,22 @@ public class ProductServiceImpl implements ProductService {
         return productMapper.findRedWines();
     }
 
+	@Override
+	public List<WineVO> getwhiteWine() {
+		// TODO Auto-generated method stub
+		return productMapper.findWhiteWines();
+	}
+
+	@Override
+	public List<WineVO> getsparkleWine() {
+		// TODO Auto-generated method stub
+		return productMapper.findsparkleWines();
+	}
+
+	@Override
+	public List<WineVO> getgiftWine() {
+		// TODO Auto-generated method stub
+		return productMapper.findgiftWines();
+	}
+
 }

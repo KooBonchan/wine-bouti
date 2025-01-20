@@ -15,6 +15,9 @@ public interface ProductService {
     
     /* 이창현  */
     List<WineVO> getRedWines();
+	List<WineVO> getwhiteWine();
+	List<WineVO> getsparkleWine();
+	List<WineVO> getgiftWine();
     
     
 }
