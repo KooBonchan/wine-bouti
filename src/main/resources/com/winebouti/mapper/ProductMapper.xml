@@ -22,10 +22,8 @@
 
 
   <!-- 이창현 -->
-  <select id="findRedWines">
-    SELECT *
-    FROM Wine
-    WHERE wine_id = #{wineId}
+  <select id="findRedWines" resultType="WineVO">
+    SELECT * FROM Wine
   </select>
 
 </mapper>

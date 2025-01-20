@@ -1,5 +1,19 @@
 # 공지사항
 
+-----------------------
+## 25.01.20. 공지사항
+- 게시일 7일, 이후로는 이 파일 맨 밑으로 내리겠습니다.
+- web.xml 등의 설정파일은 건들기 전에 에러 상황을 카톡으로 주시거나 이슈 남기세요.
+- 메인 페이지 정상 작동합니다.
+- details 페이지 정상 작동합니다.
+  - URL 경로: localhost:8092/winebouti/product/details/1
+  - URL 경로: localhost:8092/winebouti/product/1
+- red-wine 페이지 정상 작동합니다.
+  - URL 경로: localhost:8092/winebouti/product/red-wine
+- 프로젝트 진행 구역 구분했습니다. 구분되지 않은 파일의 경우 작업할 파일에 자기 이름 주석으로 쓰고 작업해주세요.
+- 자기 페이지가 열리지 않을 경우 빨리 이슈로 올려주세요.
+- 김보민씨는 Member 자기 정보 수정 페이지 + 로그인/회원가입 페이지 작업해주세요.
+
 ## 작업 분배
 
 | 구본찬 | 김보민 | 이창현 | 양정민 |
@@ -7,6 +21,7 @@
 | 주문/결제 | 회원 | 상품 리스트 | 리뷰 |
 |  | 웹디자인 | DB, VO | RESTful, Ajax |
 | OpenAPI 연결 | Spring Security | MyBatis | Controller, Routing |
+
 
 ### 상품 리스트 구현 순서
 
