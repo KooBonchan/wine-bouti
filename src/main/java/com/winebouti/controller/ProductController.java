@@ -31,13 +31,21 @@ public class ProductController {
     // 상품 상세 페이지
     @GetMapping({"/details/{product_id}", "{product_id}"})
     public String productDetails(@PathVariable("product_id") int product_id, Model model) {
+        // 상품 상세 정보 가져오기
         ProductVO product = productService.getProductById(product_id);
+
+        // 상품 리뷰 리스트 가져오기
         List<ReviewVO> reviews = productService.getReviewsByProductId(product_id);
 
-        model.addAttribute("product", product);
-        model.addAttribute("reviews", reviews);
+        // 추천 와인 리스트 가져오기 (레드 와인 예시)
+        List<WineVO> recommendedWines = productService.findRedWines();
 
-        return "product/details.tiles";  // Tiles 연결
+        // Model에 데이터 추가
+        model.addAttribute("product", product);           // 상품 정보
+        model.addAttribute("reviews", reviews);           // 리뷰 리스트
+        model.addAttribute("recommendedWines", recommendedWines); // 추천 와인 리스트
+
+        return "product/details.tiles";  // 상품 상세 페이지 Tiles 연결
     }
     
     
