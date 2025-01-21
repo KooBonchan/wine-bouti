@@ -10,10 +10,8 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class FileUtils {
 	
-	@SuppressWarnings("unused")
-	private static final String BASE_PATH = "C:\\upload";
-	@SuppressWarnings("unused")
-	private static final String THUMBNAIL_FOLDER = "thumbnail";
+	public static final String BASE_PATH = "C:\\upload";
+	public static final String THUMBNAIL_FOLDER = "thumbnail";
 	
 	public static String getPathByDate() {
 		return new SimpleDateFormat("yy-MM-dd")
