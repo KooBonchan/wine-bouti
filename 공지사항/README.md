@@ -4,6 +4,7 @@
 ## 25.01.20. 공지사항
 - 게시일 7일, 이후로는 이 파일 맨 밑으로 내리겠습니다.
 - web.xml 등의 설정파일은 건들기 전에 에러 상황을 카톡으로 주시거나 이슈 남기세요.
+- 중요: sql에서 id를 int에서 bigint로, vo에서 int를 long으로 바꿨습니다. sql 폴더에서 wine_shop.sql, wine_shop_data_sample.sql 한바퀴씩 돌려주세요.
 - 메인 페이지 정상 작동합니다.
 - details 페이지 정상 작동합니다.
   - URL 경로: localhost:8092/winebouti/product/details/1
