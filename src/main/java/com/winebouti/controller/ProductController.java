@@ -31,13 +31,21 @@ public class ProductController {
     // 상품 상세 페이지
     @GetMapping({"/details/{product_id}", "{product_id}"})
     public String productDetails(@PathVariable("product_id") int product_id, Model model) {
+        // 상품 상세 정보 가져오기
         ProductVO product = productService.getProductById(product_id);
+
+        // 상품 리뷰 리스트 가져오기
         List<ReviewVO> reviews = productService.getReviewsByProductId(product_id);
 
-        model.addAttribute("product", product);
-        model.addAttribute("reviews", reviews);
+        // 추천 와인 리스트 가져오기 (레드 와인 예시)
+        List<WineVO> recommendedWines = productService.findRedWines();
 
-        return "product/details.tiles";  // Tiles 연결
+        // Model에 데이터 추가
+        model.addAttribute("product", product);           // 상품 정보
+        model.addAttribute("reviews", reviews);           // 리뷰 리스트
+        model.addAttribute("recommendedWines", recommendedWines); // 추천 와인 리스트
+
+        return "product/details.tiles";  // 상품 상세 페이지 Tiles 연결
     }
     
     
@@ -57,14 +65,14 @@ public class ProductController {
     }
     @GetMapping("/sparkle-wine")
     public String sparkleWineList(Model model) {
-        List<WineVO> sparkleWine = productService.getsparkleWine(); // 서비스에서 화이트 와인 목록을 가져옵니다.
+        List<WineVO> sparkleWine = productService.getSparkleWine(); // 서비스에서 화이트 와인 목록을 가져옵니다.
         model.addAttribute("products", sparkleWine); // 모델에 "products" 속성으로 추가
         return "product/sparkle-wine.tiles"; // 해당 JSP 페이지를 반환
     }
     
     @GetMapping("/gift-wine")
     public String giftWineList(Model model) {
-        List<WineVO> giftWine = productService.getgiftWine(); // 서비스에서 화이트 와인 목록을 가져옵니다.
+        List<WineVO> giftWine = productService.getGiftWine(); // 서비스에서 화이트 와인 목록을 가져옵니다.
         model.addAttribute("products", giftWine); // 모델에 "products" 속성으로 추가
         return "product/gift-wine.tiles"; // 해당 JSP 페이지를 반환
     }

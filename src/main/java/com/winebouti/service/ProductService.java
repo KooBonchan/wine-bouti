@@ -9,15 +9,26 @@ import java.util.List;
 public interface ProductService {
 	/* 양정민  */
 	
-    ProductVO getProductById(int product_id);
-    List<ReviewVO> getReviewsByProductId(int product_id);
+
+	// 상품 ID로 상세 조회
+	ProductVO getProductById(int product_id);
+
+	// 상품 ID로 리뷰 리스트 조회
+	List<ReviewVO> getReviewsByProductId(int product_id);
+
+	// 레드 와인 리스트 조회
+	List<WineVO> findRedWines();
+
+	// 카테고리별 상품 리스트 조회
+	List<ProductVO> findProductsByCategory(String category);
     
     
+	
     /* 이창현  */
     List<WineVO> getRedWines();
 	List<WineVO> getwhiteWine();
-	List<WineVO> getsparkleWine();
-	List<WineVO> getgiftWine();
+	List<WineVO> getSparkleWine();
+	List<WineVO> getGiftWine();
     
     
 }
