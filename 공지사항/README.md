@@ -1,6 +1,17 @@
 # 공지사항
 
 -----------------------
+## 25.01.22. 공지사항
+- assets/upload에서 이미지 파일 위치 수정했습니다.
+- 이미지 뷰 API 작성했습니다. 확인해주세요. 다음은 테스트 성공한 이미지입니다.
+- <img src="../assets/image_for_readme/test_result.png"  width="200" height="400" /> <img src="../assets/image_for_readme/test_result2.png"  width="200" height="400" />
+- 썸네일 경로는 localhost:8092/winebouti/api/image/thumbnail/[파일 경로]/[이미지 이름]입니다.
+- 이미지 경로는 localhost:8092/winebouti/api/image/[파일 경로]/[이미지 이름]입니다.
+  - 단, 파일 경로에서 "/"는 _SLASH_로, 이미지 이름에서 "."는 _DOT_로 바꿔야 합니다. 자바의 util/FileUtils.java 파일 확인해주세요.
+- 앞으로 공지에 경로 작성 시 localhost:8092/winebouti/까지는 생략하겠습니다.
+- 사용할 테스트 이미지파일은 C:/upload와 (프로젝트 폴더)/assets/upload에 둘 다 올려주세요. c:upload는 실제 테스트용, assets/upload는 깃에 올리는 용입니다.
+- 테스트 이미지 잘 나오는거 확인하고 천천히 파일 업로드 구현해도 될 거 같습니다.
+
 ## 25.01.20. 공지사항
 - 게시일 7일, 이후로는 이 파일 맨 밑으로 내리겠습니다.
 - web.xml 등의 설정파일은 건들기 전에 에러 상황을 카톡으로 주시거나 이슈 남기세요.
