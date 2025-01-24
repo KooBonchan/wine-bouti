@@ -325,9 +325,9 @@ button.prev:hover, button.next:hover {
 }
 
 .box {
-    margin-top: 100px;
-    width: 420px;
-    height: 290px;
+	margin-top:50px;  
+    width: 420px;   /* 고정된 너비 */
+    height: 290px;  /* 고정된 높이 */
     background-color: #cccccc;
     text-align: center;
     line-height: 100px;
@@ -336,21 +336,33 @@ button.prev:hover, button.next:hover {
     font-weight: bold;
     margin-right: 5px;
     border-radius: 15px;
-    position: relative;  /* 자식 요소인 이미지가 박스를 채울 수 있도록 */
+    position: relative; /* 자식 요소인 이미지가 박스를 채울 수 있도록 */
+    overflow: hidden;   /* 박스를 벗어나는 요소를 숨기도록 */
 }
 
-/* 마지막 박스의 margin-right 제거 */
 .box3 {
     margin-right: 0;
 }
 
-/* 이미지 스타일 */
-.box img {
+
+/* 링크는 박스를 완전히 감싸도록 */
+.box a {
+    display: block;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    position: absolute;  /* 링크가 이미지 위에 완전히 덮도록 */
+    top: 0;
+    left: 0;
+}
+
+/* .box의 이미지 스타일 */
+.box img {
+    width: 100%;    /* 이미지를 박스 너비에 맞게 */
+    height: 100%;   /* 이미지를 박스 높이에 맞게 */
+    object-fit: cover;  /* 비율을 유지하면서 이미지를 채우도록 */
     border-radius: 15px;
 }
+
 
 /* .bolssler2 부모 컨테이너 스타일 */
 .bolssler2 {
@@ -359,9 +371,10 @@ button.prev:hover, button.next:hover {
     align-items: center;  /* 세로로 중앙 정렬 */
     width: 100%;
     height: 200px;  /* 부모 컨테이너 높이 설정 */
-    min-width:1024px;
+    min-width: 1024px;
     gap: 20px;
 }
+
 
 /* 1024px 이하에서 배경 이미지 변경 */
 @media screen and (max-width: 1200px) {
@@ -381,6 +394,7 @@ button.prev:hover, button.next:hover {
     }
 
     .box {
+		margin-top:50px;    
         width: 300px !important;  /* 고정된 너비 */
         height: 290px !important; /* 고정된 높이 */
         background-image: url("../images/hellomd/bi2.png"); /* 새로운 배경 이미지 */

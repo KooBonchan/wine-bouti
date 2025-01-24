@@ -28,23 +28,23 @@
 		<ul>
 			<li><a href="#">
         <img src="<c:url value="/resources/images/shop/gallery1.png" />" alt="이미지1" />
-        <span>이미지1</span>
+        <span>red wine</span>
 			</a></li>
 			<li><a href="#">
         <img src="<c:url value="/resources/images/shop/gallery2.png" />" alt="이미지2" />
-        <span>이미지2</span>
+        <span>white wine</span>
 			</a></li>
 			<li><a href="#">
         <img src="<c:url value="/resources/images/shop/gallery3.png" />" alt="이미지3" />
-        <span>이미지3</span>
+        <span>sparkling wine</span>
 			</a></li>
 			<li><a href="#">
         <img src="<c:url value="/resources/images/shop/gallery4.png" />" alt="이미지4" />
-        <span>이미지4</span>
+        <span>wine pairing</span>
 			</a></li>
 			<li><a href="#">
         <img src="<c:url value="/resources/images/shop/gallery5.png" />" alt="이미지5" />
-        <span>이미지5</span>
+        <span>gift set</span>
 			</a></li>
 		</ul>
 	</div>
@@ -151,13 +151,19 @@
 	<div class="cs-title2">Shop Showcase</div>
 	<div class="bolssler2">
 		<div class="box box1">
-		  <img src="<c:url value="/resources/images/hellomd/bi1.jpg" />" alt="MD image 3" />
+		  <a href="<c:url value='/resources/static-pages/md_hello.html' />">
+		    <img src="<c:url value='/resources/images/hellomd/bi1.jpg' />" alt="MD image 3" />
+		  </a>
 		</div>
 		<div class="box box2">
-		  <img src="<c:url value="/resources/images/hellomd/cook1.jpg" />" alt="MD image 2" />
+		  <a href="<c:url value='/resources/static-pages/md_cook.html' />">
+		    <img src="<c:url value='/resources/images/hellomd/cook1.jpg' />" alt="MD image 2" />
+		  </a>
 		</div>
 		<div class="box box3">
-		  <img src="<c:url value="/resources/images/hellomd/wine1.jpg" />" alt="MD image 1" />
+		  <a href="<c:url value='/resources/static-pages/md_wine.html' />">
+		    <img src="<c:url value='/resources/images/hellomd/wine1.jpg' />" alt="MD image 1" />
+		  </a>
 		</div>
 	</div>
 </div>

@@ -12,8 +12,9 @@
                 <ul class="submenu">
                     <li><a href="<c:url value='/product/red-wine' />">레드와인</a></li> <!-- 레드 와인 페이지로 이동 -->
                     <li><a href="<c:url value='/product/white-wine' />">화이트</a></li> <!-- 화이트 와인 페이지로 이동 -->
-                    <li><a href="<c:url value='/product/sparkle-wine' />">스파클</a></li> <!-- 스파클링 와인 페이지로 이동 -->
-                    <li><a href="<c:url value='/product/gift-wine' />">기프트</a></li> <!-- 기프트 와인 페이지로 이동 -->
+                    <li><a href="<c:url value='/product/sparkle-wine' />">스파클링</a></li> <!-- 스파클링 와인 페이지로 이동 -->
+                     <li><a href="<c:url value='/product/pairing-wine' />">페어링</a></li> <!-- 페어링 페이지로 이동 -->
+                    <li><a href="<c:url value='/product/gift-wine' />">선물세트</a></li> <!-- 기프트 와인 페이지로 이동 -->
                 </ul>
             </li>
             <li><a href="#">이벤트</a>
@@ -26,7 +27,6 @@
             <li><a href="#">혜택</a>
                 <ul class="submenu">
                     <li><a href="#">적립</a></li>
-                    <li><a href="#">VIP</a></li>
                     <li><a href="#">추천</a></li>
                 </ul>
             </li>
@@ -35,14 +35,13 @@
                     <li><a href="#">FAQ</a></li>
                     <li><a href="#">문의</a></li>
                     <li><a href="#">배송</a></li>
-                    <li><a href="#">교환</a></li>
                 </ul>
             </li>
             <li><a href="#">MD</a>
                 <ul class="submenu">
-                    <li><a href="#">브랜드</a></li>
-                    <li><a href="#">레시피</a></li>
-                    <li><a href="#">와인</a></li>
+                    <li><a href="#">wine bouti</a></li>
+                    <li><a href="#">이달의 레시피</a></li>
+                    <li><a href="#">이달의 와인</a></li>
                 </ul>
             </li>
         </ul>

@@ -16,9 +16,11 @@ html, body {
 	min-width: 1024px;
 }
 a {
-	text-decoration: none;
-	display: block;
+    text-decoration: none;
+    display: block; /* 링크가 이미지 전체를 감싸도록 */
 }
+
+
 .bodywrap {
     width: 100%;
     margin: 0 auto;
