@@ -16,9 +16,11 @@ html, body {
 	min-width: 1024px;
 }
 a {
-	text-decoration: none;
-	display: block;
+    text-decoration: none;
+    display: block; /* 링크가 이미지 전체를 감싸도록 */
 }
+
+
 .bodywrap {
     width: 100%;
     margin: 0 auto;
@@ -145,6 +147,11 @@ header {
     display: flex;  /* flexbox로 가로 배치 */
     align-items: center;  /* 세로 중앙 정렬 */
     gap: 20px;  /* 로고와 cs-info 사이에 간격 */
+}
+
+.phone{
+    font-size: 14px;
+    color: white;  /* 모든 p 태그를 하얀색으로 설정 */
 }
 
 /* 기업 이미지 */
