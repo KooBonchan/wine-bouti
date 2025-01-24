@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.winebouti.service.ProductService;
+import com.winebouti.service.ReviewService;
 import com.winebouti.vo.ProductVO;
 import com.winebouti.vo.ReviewVO;
 import com.winebouti.vo.WineVO;
@@ -20,11 +21,17 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ProductController {
     private final ProductService productService;
+    private final ReviewService reviewService;
 
     /* 양정민 */
-    // 기본 리뷰 작성 페이지
+    // 상품 상세페이지
     @GetMapping("/details")
-    public String productDetailsDefault() {
+    public String productDetailsDefault(Model model) {
+    	
+    	//review list
+    	List<ReviewVO> reviews = reviewService.getAllReviews();
+    	model.addAttribute("reviews",reviews);
+    	
         return "product/details.tiles";
     }
 
