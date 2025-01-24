@@ -147,6 +147,11 @@ header {
     gap: 20px;  /* 로고와 cs-info 사이에 간격 */
 }
 
+.phone{
+    font-size: 14px;
+    color: white;  /* 모든 p 태그를 하얀색으로 설정 */
+}
+
 /* 기업 이미지 */
 .logo img {
     width: 150px;

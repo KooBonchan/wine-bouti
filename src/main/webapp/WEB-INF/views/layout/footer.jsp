@@ -30,7 +30,7 @@
         <!-- SNS 아이콘 -->
         <div class="social-media">
 		    <a href="https://facebook.com" target="_blank">
-		        <img src="/resources/images/icon/facebook.svg" alt="Facebook" width="100" height="100">
+		       <img src="/resources/images/icon/X.svg" alt="Twitter" width="100" height="100">
 		    </a>
 		    <a href="https://twitter.com" target="_blank">
 		        <img src="/resources/images/icon/X.svg" alt="Twitter" width="100" height="100">
