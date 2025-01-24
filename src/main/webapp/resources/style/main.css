@@ -235,8 +235,15 @@ button.prev:hover, button.next:hover {
 }
 
 .shop-content {
-    font-size: 14px;
+    font-size: 15px;
     color: #666;
+    display: flex;  /* 플렉스박스를 사용하여 가로 정렬 */
+    align-items: center;  /* 세로 가운데 정렬 */
+    justify-content: center;  /* 자식 요소들을 가로로 가운데 정렬 */
+}
+
+.shop-content .flag {
+    margin-right: 10px;  /* 이미지와 텍스트 사이에 간격을 설정 */
 }
 
 .shop-price {
@@ -245,6 +252,8 @@ button.prev:hover, button.next:hover {
     color: #e74c3c;
     font-weight: bold;
 }
+
+
 
 
 /* 1250px 이하에서의 스타일 */
@@ -399,5 +408,6 @@ button.prev:hover, button.next:hover {
     .box img {
         display: none;
     }
+   
 }
 

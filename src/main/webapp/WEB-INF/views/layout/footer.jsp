@@ -30,13 +30,13 @@
         <!-- SNS 아이콘 -->
         <div class="social-media">
 		    <a href="https://facebook.com" target="_blank">
-		       <img src="/resources/images/icon/X.svg" alt="Twitter" width="100" height="100">
+		        <img src="<c:url value='/resources/images/icon/facebook.svg'/>" alt="Facebook">
 		    </a>
 		    <a href="https://twitter.com" target="_blank">
-		        <img src="/resources/images/icon/X.svg" alt="Twitter" width="100" height="100">
+		        <img src="<c:url value='/resources/images/icon/x.svg'/>" alt="Twitter" width="100" height="100">
 		    </a>
 		    <a href="https://instagram.com" target="_blank">
-		        <img src="/resources/images/icon/instagram.svg" alt="Instagram" width="100" height="100">
+		        <img src="<c:url value='/resources/images/icon/instar.png'/>" alt="Instagram" width="100" height="100">
 		    </a>
 		</div>
     </div>

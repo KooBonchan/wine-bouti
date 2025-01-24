@@ -11,7 +11,7 @@
 	<annotation-driven />
 	<resources mapping="/resources/**" location="/resources/" />
 
-  <!-- Tiles View Resolver Setup -->
+  	<!-- Tiles View Resolver Setup -->
 	<beans:bean
 		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer"
 		id="tilesConfigurer">
@@ -23,20 +23,13 @@
 		<beans:property name="preparerFactoryClass"
 			value="org.springframework.web.servlet.view.tiles3.SpringBeanPreparerFactory" />
 	</beans:bean>
-	<beans:bean class="org.springframework.web.multipart.support.StandardServletMultipartResolver"
-    id="multipartResolver"></beans:bean>
+	<beans:bean class="org.springframework.web.multipart.support.StandardServletMultipartResolver" id="multipartResolver"></beans:bean>
 	<beans:bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
     <beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />
   </beans:bean>
 	
-  <!-- Commons File Upload Setup -->
-  <!-- <beans:bean id="multipartResolver"  class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-    <beans:property name="maxUploadSize" value="52428800" />
-    <beans:property name="maxInMemorySize" value="52428800" />
-    <beans:property name="defaultEncoding" value="utf-8" />
-  </beans:bean> -->
   
   
-	<context:component-scan base-package="com.winebouti.controller" />
+  <context:component-scan base-package="com.winebouti.controller" />
 	
 </beans:beans>

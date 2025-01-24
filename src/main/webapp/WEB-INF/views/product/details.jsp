@@ -1,37 +1,175 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>상품 상세 페이지</title>
 
-<div class="product-detail"><pre>
-본문 내용입니다.
-사진 이미지 - Thumbnail, 클릭 시 확대
-가격
-상세내용 이미지
-</pre>
+<!-- CSS 파일 연결 -->
+<link rel="stylesheet" type="text/css"
+	href="<c:url value='/resources/style/product/details.css' />">
+</head>
+<body>
+	<div class="container">
+		<!-- 헤더 -->
+		<header>
+			<h1>Grapes&Wine</h1>
+		</header>
 
-</div>
+		<!-- 상품 상세 정보 섹션 -->
+		<main class="product-section">
+			<!-- 상품 이미지 및 기본 정보 -->
+			<div class="product-detail">
+				<div class="image-wrapper">
+					<img
+						src="<c:url value='/resources/images/${product.productImageName}' />"
+						alt="상품 이미지">
+				</div>
+				<div class="product-info">
+					<h2>${product.koreanName}
+						<span>${product.alcoholContent}%</span>
+					</h2>
+					<p>${product.origin}</p>
+					<p class="price">${product.originalPrice}원</p>
 
-<!-- 코드로 배우는 스프링 댓글 코드 -->
-<!-- 별점 및 이미지(1개) 첨부 가능하도록 변경 -->
-<!-- 주문 영수증 / 주문번호 첨부? -->
-<section>
-	<form name="form-reply" id="form-reply" onsubmit="return false;" class="row">
-	  <div class="col-12 mb-1 mt-3">
-	    <span id="writer">Leave your comments</span>
-	  </div>
-	  <div class="col-9">
-	      <textarea name="content" id="content" class="form-control" rows="4" placeholder="Comment" required></textarea>
-	  </div>
-	  <div class="col-3">
-	      <button type="button" class="btn btn-primary w-100" onclick="submitReply(<c:out value="${board.idx}"/>)">Reply</button>
-	  </div>
-	</form>
-	<div id="reply-header">
-	  <span onclick="loadReplies(<c:out value="${board.idx}"/>)">&#x21bb;</span>
-	</div>
-	<table id="reply-container">
-	  <!-- Table content will be dynamically populated here -->
-	  <!-- 파일 입출력 파트 참고하여 썸네일 이미지 클릭 시 원본 이미지 팝업으로 보여주도록 -->
-	</table>
-</section>
+					<!-- 상품 속성 (바디, 산도, 당도, 탄닌) -->
+					<div class="attributes">
+						<span>바디: ${product.body}</span> <span>산도:
+							${product.acidity}</span> <span>당도: ${product.sweetness}</span> <span>탄닌:
+							${product.tannin}</span>
+					</div>
 
-<script src="<c:url value='/resources/js/product/details.js' />"></script>
+					<!-- 버튼 섹션 -->
+					<div class="action-buttons">
+						<button class="btn add-to-cart">장바구니</button>
+						<button class="btn buy-now">바로 구매하기</button>
+					</div>
+				</div>
+			</div>
+
+			<!-- 탭 네비게이션 -->
+			<div class="tabs">
+				<button class="tablinks active" onclick="openTab(event, 'Product')">Product</button>
+				<button class="tablinks" onclick="openTab(event, 'Review')">Review
+					(0)</button>
+			</div>
+
+			<!-- Product 탭 -->
+			<div id="Product" class="tabcontent active">
+				<h3>상품 상세 정보</h3>
+				<p>이곳에 상품에 대한 상세 설명을 추가하세요.</p>
+			</div>
+
+
+			<!-- Review 탭 -->
+			<div id="Review" class="tabcontent">
+				<!-- 리뷰 섹션 -->
+				<section>
+
+					<!-- 리뷰 목록 테이블 -->
+					<table id="reply-container" class="table table-bordered">
+						<thead>
+							<tr>
+								<th>Writer</th>
+								<th>Content</th>
+								<th>Image</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<!-- 동적으로 리뷰가 추가되는 영역 -->
+						</tbody>
+					</table>
+
+					<!-- 리뷰 작성 폼 -->
+					<form name="form-reply" id="form-reply"
+						enctype="multipart/form-data" class="row">
+						<div class="col-12 mb-1 mt-3">
+							<span id="writer">Leave your review</span>
+						</div>
+
+						<!-- 리뷰 입력창 -->
+						<div class="col-9">
+							<textarea name="content" id="content" class="form-control"
+								rows="4" placeholder="Write your review here..." required></textarea>
+						</div>
+
+						<!-- 별점 입력 -->
+						<div class="col-3">
+							<div class="star-rating">
+								<input type="radio" id="star5" name="rating" value="5"><label
+									for="star5">☆</label> <input type="radio" id="star4"
+									name="rating" value="4"><label for="star4">☆</label> <input
+									type="radio" id="star3" name="rating" value="3"><label
+									for="star3">☆</label> <input type="radio" id="star2"
+									name="rating" value="2"><label for="star2">☆</label> <input
+									type="radio" id="star1" name="rating" value="1"><label
+									for="star1">☆</label>
+							</div>
+						</div>
+
+						<!-- 이미지 첨부 및 리뷰 작성 버튼 -->
+						<div class="col-3">
+							<input type="file" name="image" id="image" accept="image/*"
+								class="form-control mb-2">
+							<button type="button" class="btn btn-primary w-100"
+								onclick="submitReply(<c:out value='${product.productId}' />)">Submit
+								Review</button>
+						</div>
+					</form>
+				</section>
+			</div>
+
+			<!-- 이미지 확대 모달 창 -->
+			<div id="imageModal" class="modal" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">Image View</h5>
+							<button type="button" class="close" onclick="closeImageModal()">&times;</button>
+						</div>
+						<div class="modal-body text-center">
+							<img id="modalImage" src="" class="img-fluid" />
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- 팝업 알림 모달 -->
+			<div id="alertModal" class="modal fade" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">Notification</h5>
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+						</div>
+						<div class="modal-body" id="modal-body"></div>
+					</div>
+				</div>
+			</div>
+
+			<!-- 리뷰 및 이미지 모달 관련 JS 파일 연결 -->
+			<script src="<c:url value='/resources/js/product/details.js' />"></script>
+			<script>
+        // 이미지 모달 창 열기
+        function showImageModal(imageUrl) {
+            document.getElementById('modalImage').src = imageUrl;
+            document.getElementById('imageModal').style.display = 'block';
+        }
+
+        // 이미지 모달 창 닫기
+        function closeImageModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+
+        // 팝업 알림창
+        function showModal(message) {
+            document.getElementById("modal-body").innerText = message;
+            $("#alertModal").modal("show");
+        }
+    </script>
+</body>
+</html>

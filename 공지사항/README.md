@@ -1,5 +1,31 @@
 # 공지사항
 
+-----------------------
+## 25.01.22. 공지사항
+- assets/upload에서 이미지 파일 위치 수정했습니다.
+- 이미지 뷰 API 작성했습니다. 확인해주세요. 다음은 테스트 성공한 이미지입니다.
+- <img src="../assets/image_for_readme/test_result.png"  width="200" height="400" /> <img src="../assets/image_for_readme/test_result2.png"  width="200" height="400" />
+- 썸네일 경로는 localhost:8092/winebouti/api/image/thumbnail/[파일 경로]/[이미지 이름]입니다.
+- 이미지 경로는 localhost:8092/winebouti/api/image/[파일 경로]/[이미지 이름]입니다.
+  - 단, 파일 경로에서 "/"는 _SLASH_로, 이미지 이름에서 "."는 _DOT_로 바꿔야 합니다. 자바의 util/FileUtils.java 파일 확인해주세요.
+- 앞으로 공지에 경로 작성 시 localhost:8092/winebouti/까지는 생략하겠습니다.
+- 사용할 테스트 이미지파일은 C:/upload와 (프로젝트 폴더)/assets/upload에 둘 다 올려주세요. c:upload는 실제 테스트용, assets/upload는 깃에 올리는 용입니다.
+- 테스트 이미지 잘 나오는거 확인하고 천천히 파일 업로드 구현해도 될 거 같습니다.
+
+## 25.01.20. 공지사항
+- 게시일 7일, 이후로는 이 파일 맨 밑으로 내리겠습니다.
+- web.xml 등의 설정파일은 건들기 전에 에러 상황을 카톡으로 주시거나 이슈 남기세요.
+- 중요: sql에서 id를 int에서 bigint로, vo에서 int를 long으로 바꿨습니다. sql 폴더에서 wine_shop.sql, wine_shop_data_sample.sql 한바퀴씩 돌려주세요.
+- 메인 페이지 정상 작동합니다.
+- details 페이지 정상 작동합니다.
+  - URL 경로: localhost:8092/winebouti/product/details/1
+  - URL 경로: localhost:8092/winebouti/product/1
+- red-wine 페이지 정상 작동합니다.
+  - URL 경로: localhost:8092/winebouti/product/red-wine
+- 프로젝트 진행 구역 구분했습니다. 구분되지 않은 파일의 경우 작업할 파일에 자기 이름 주석으로 쓰고 작업해주세요.
+- 자기 페이지가 열리지 않을 경우 빨리 이슈로 올려주세요.
+- 김보민씨는 Member 자기 정보 수정 페이지 + 로그인/회원가입 페이지 작업해주세요.
+
 ## 작업 분배
 
 | 구본찬 | 김보민 | 이창현 | 양정민 |
@@ -7,6 +33,38 @@
 | 주문/결제 | 회원 | 상품 리스트 | 리뷰 |
 |  | 웹디자인 | DB, VO | RESTful, Ajax |
 | OpenAPI 연결 | Spring Security | MyBatis | Controller, Routing |
+
+
+### 상품 리스트 구현 순서
+
+- [ ] 기본 상품 리스트 페이지 구현하기
+	- [ ] Front Wireframe
+	- [ ] DB - Repository
+	- [ ] Service
+	- [ ] Controller
+	- [ ] JSP
+- [ ] 메인화면에서 보여질 상품 리스트 구현하기
+	- [ ] 2개의 추천상품과 10개의 최신상품으로 구성
+- [ ] 상품 페이징 기능 구현하기
+- [ ] 상품 필터링 기능 구현하기
+	- [ ] 대분류와 상세분류 구분하기
+
+### 리뷰 구현 순서
+
+ - [ ] 기본 상품 상세 페이지 구현하기
+ 	- [ ] Front Wireframe
+ 	- [ ] DB - Repository
+ 	- [ ] Service
+ 	- [ ] Controller
+ 	- [ ] JSP
+ - [ ] 기본 리뷰 기능 구현하기 - Ajax
+ 	- [ ] RestController ~ Repository, DB
+ 	- [ ] JavaScript로 Ajax 구현하기
+ - [ ] 리뷰에 이미지 업로드 기능 구현하기
+ 	- [ ] MIME type 확인을 통한 유효성 검사 구현
+ 	- [ ] Upload, View --> 이미지 저장, 섬네일 저장까지, Thumbnailator 사용
+ 	- [ ] Update Delete 구현
+ - [ ] 무한 스크롤 구현하기 - README 하단 참고문헌 참고하여 구현
 
 ## 깃 브랜치 설정하기
 
@@ -56,20 +114,25 @@ git push
 ### 다이어그램
 
 - [x] ERD 그리기
-- [ ] Usecase Diagram
+- [x] Usecase Diagram
 - [ ] Sequence Diagram
 
 ### 환경설정
 
-- [X] MySQL
-- [ ] Git
-- [ ] Spring
-- [X] AWS EC2 Tomcat
+- [x] MySQL
+- [x] Git
+- [x] Spring
+- [ ] AWS EC2 Tomcat
 - [ ] RDS
 
 ### 구현
 
-
+- 분할받은 각 기능마다 이하의 순서로 구현 진행
+- [ ] DB
+- [ ] Repository
+- [ ] Service
+- [ ] Controller
+- [ ] View
 
 
 ### 프로젝트 마무리 시
@@ -80,3 +143,4 @@ git push
 ### 하면 좋고 아니면 아쉽고
 
 - [ ] 여러 페이지에서 재사용 가능한 코드 components로 분리하기 - tiles/components.xml
+- [ ] 챗봇 기능

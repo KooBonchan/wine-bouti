@@ -62,11 +62,20 @@
         </div>
     </div> <!-- 제목 추가 -->
     <div class="shop">
-      <div class="img"></div>
-      <div class="title shop-title">Shop Title</div>
-      <div class="title shop-content">Shop content</div>
-      <div class="title shop-price">Shop price</div>
+    <div class="img">
+        <img src="<c:url value='/resources/images/winelist/redwine1.jpg' />" alt="Shop Image">
     </div>
+    <div class="title shop-title">루이라뚜르 피노누아 </div>
+    
+    <div class="title shop-content">
+    <img src="https://flagcdn.com/w40/fr.png" alt="France Flag" width="20" height="20" class="flag">
+    [프랑스]
+</div>
+    
+    <div class="title shop-price">45,000원</div>
+
+</div>
+
     <div class="shop">
       <div class="img"></div>
       <div class="title shop-title">Shop Title</div>
