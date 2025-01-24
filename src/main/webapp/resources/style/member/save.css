@@ -1,0 +1,247 @@
+/* 제목 스타일 */
+h2 {
+    font-size: 28px;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+/* 입력 필드 스타일 */
+input[type="text"] {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* 입력 필드 체크 결과 스타일 */
+#check-result {
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* 체크 결과 스타일 */
+#check-result.green {
+    color: green;
+}
+
+#check-result.red {
+    color: #333; /* 빨간색을 #333으로 변경 */
+}
+
+/* 제출 버튼 스타일 */
+input[type="submit"] {
+    padding: 12px 20px;
+    background-color: #808080;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #333; /* 빨간색을 #333으로 변경 */
+}
+
+
+/* 작은 화면에서의 스타일 조정 */
+@media (max-width: 600px) {
+    .form-container {
+        width: 90%;
+        padding: 20px;
+    }
+    h2 {
+        font-size: 24px;
+    }
+    input[type="text"], input[type="submit"] {
+        font-size: 14px;
+    }
+}
+
+/* form-container 중앙 정렬 */
+.form-container {
+    margin: 100px auto;
+    width: 100%;
+    max-width: 400px;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 로그인 폼 스타일 */
+.login-form-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.login-form-container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* 입력 필드 스타일 */
+.login-form-container input[type="text"],
+.login-form-container input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border 0.3s ease;
+}
+
+/* 입력 필드 포커스 시 스타일 */
+.login-form-container input[type="text"]:focus,
+.login-form-container input[type="password"]:focus {
+    border-color: #333;
+    outline: none;
+}
+
+/* 제출 버튼 스타일 */
+.login-form-container input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color:  #808080;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* 제출 버튼 호버 시 스타일 */
+.login-form-container input[type="submit"]:hover {
+    background-color: #333; /* 빨간색을 #333으로 변경 */
+}
+
+/* 작은 화면에서 폼을 다루기 위한 반응형 디자인 */
+@media (max-width: 600px) {
+    .form-container, .login-form-container {
+        padding: 20px;
+    }
+
+    
+
+/* 콘텐츠 박스 */
+.main-container {
+    text-align: center;
+    padding: 40px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 제목 스타일 */
+h2 {
+    font-size: 28px;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+/* 테이블 스타일 */
+.member-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border: 1px solid #ddd;
+}
+
+.member-table th, .member-table td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.member-table th {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.member-table td {
+    background-color: #fff;
+    color: #666;
+}
+
+/* 공통 버튼 스타일 */
+.btn {
+    padding: 6px 15px;
+    font-size: 14px;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #555;
+}
+
+/* 조회 버튼 */
+.btn-view {
+    background-color: #808080;
+}
+
+/* 삭제 버튼 */
+.btn-delete {
+    background-color: #333; /* 빨간색을 #333으로 변경 */
+}
+
+.btn-delete:hover {
+    background-color: #333; /* 빨간색을 #333으로 변경 */
+}
+
+/* 링크 스타일 (회원 이메일 클릭 시) */
+.member-link {
+    color: #808080;
+    text-decoration: none;
+    font-weight: 500;
+    background-color: transparent;
+}
+
+.member-link:hover {
+    color: #333;
+    text-decoration: underline;
+    background-color: transparent;
+}
+
+/* 모바일 대응 */
+@media (max-width: 600px) {
+    .main-container {
+        padding: 25px;
+        width: 90%;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    .member-table th, .member-table td {
+        padding: 10px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 12px;
+    }
+}
+    
