@@ -7,7 +7,8 @@
 ![Frontend Stacks](https://skillicons.dev/icons?i=figma,html,css,jquery&theme=light)
 
 ### 환경설정
-- assets/upload 폴더를 C:/upload 폴더로 옮깁니다.
+- 환경변수 UPLOAD_DIR를 설정합니다.
+- assets/upload 폴더의 내용을 해당 폴더로 이동합니다.
 
 ### Repositories
  - [Figma Repository](https://www.figma.com/design/RndhZXRwcqwp1USI1bE5Ud/WINE-BOUTI?node-id=0-1&t=8rYDeam9JFPIerhG-1)
