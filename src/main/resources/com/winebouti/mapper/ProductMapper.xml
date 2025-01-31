@@ -43,4 +43,7 @@
   <select id="findGiftWines" resultType="WineVO">
     SELECT * FROM Wine
   </select>
+   <select id="findpairingWines" resultType="WineVO">
+    SELECT * FROM Wine
+  </select>
 </mapper>

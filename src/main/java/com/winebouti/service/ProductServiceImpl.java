@@ -71,4 +71,10 @@ public class ProductServiceImpl implements ProductService {
 		return productMapper.findGiftWines();
 	}
 
+	@Override
+	public List<WineVO> getpairingWine() {
+		// TODO Auto-generated method stub
+		return productMapper.findpairingWines();
+	}
+
 }
