@@ -17,12 +17,14 @@
             <button class="accordion">나라</button>
             <div class="panel">
                 <div class="filter">
-                    <select id="country">
-                        <option value="all">전체</option>
-                        <option value="france">프랑스</option>
-                        <option value="italy">이탈리아</option>
-                        <option value="spain">스페인</option>
-                    </select>
+                    <input type="checkbox" id="korea" name="country" value="korea">
+                    <label for="korea">한국</label><br>
+                    <input type="checkbox" id="france" name="country" value="france">
+                    <label for="france">프랑스</label><br>
+                    <input type="checkbox" id="italy" name="country" value="italy">
+                    <label for="italy">이탈리아</label><br>
+                    <input type="checkbox" id="spain" name="country" value="spain">
+                    <label for="spain">스페인</label>
                 </div>
             </div>
 
@@ -30,11 +32,12 @@
             <button class="accordion">가격</button>
             <div class="panel">
                 <div class="filter">
-                    <select id="price">
-                        <option value="all">전체</option>
-                        <option value="low">가격 낮은 순</option>
-                        <option value="high">가격 높은 순</option>
-                    </select>
+                    <input type="checkbox" id="lowPrice" name="price" value="low">
+                    <label for="lowPrice">저렴한 가격</label><br>
+                    <input type="checkbox" id="mediumPrice" name="price" value="medium">
+                    <label for="mediumPrice">중간 가격</label><br>
+                    <input type="checkbox" id="highPrice" name="price" value="high">
+                    <label for="highPrice">고급 가격</label>
                 </div>
             </div>
 
@@ -42,10 +45,12 @@
             <button class="accordion">추천</button>
             <div class="panel">
                 <div class="filter">
-                    <select id="recommend">
-                        <option value="all">전체</option>
-                        <option value="recommended">추천</option>
-                    </select>
+                    <input type="checkbox" id="topRecommendation" name="recommendation" value="top">
+                    <label for="topRecommendation">추천 1</label><br>
+                    <input type="checkbox" id="bestSeller" name="recommendation" value="bestSeller">
+                    <label for="bestSeller">베스트 셀러</label><br>
+                    <input type="checkbox" id="newArrival" name="recommendation" value="newArrival">
+                    <label for="newArrival">신상품</label>
                 </div>
             </div>
 
@@ -66,11 +71,12 @@
             <button class="accordion">세트</button>
             <div class="panel">
                 <div class="filter">
-                    <select id="set">
-                        <option value="all">전체</option>
-                        <option value="yes">페어링+와인1</option>
-                        <option value="no">페어링+와인2</option>
-                    </select>
+                    <input type="checkbox" id="set1" name="set" value="set1">
+                    <label for="set1">세트 1</label><br>
+                    <input type="checkbox" id="set2" name="set" value="set2">
+                    <label for="set2">세트 2</label><br>
+                    <input type="checkbox" id="set3" name="set" value="set3">
+                    <label for="set3">세트 3</label>
                 </div>
             </div>
         </div>
