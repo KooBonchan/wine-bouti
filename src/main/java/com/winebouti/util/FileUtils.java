@@ -10,13 +10,12 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class FileUtils {
 	
-	
     public static final String BASE_PATH = System.getenv("UPLOAD_DIR") != null
 	    ? System.getenv("UPLOAD_DIR")
 	    : "C:\\upload";
     public static final String THUMBNAIL_FOLDER = "thumbnail";
 	
-	public static String getPathByDate() {
+    public static String getPathByDate() {
 		return new SimpleDateFormat("yy-MM-dd")
 				.format(new Date())
 				.replace("-", File.separator);

@@ -252,6 +252,13 @@ button.prev:hover, button.next:hover {
     color: #e74c3c;
     font-weight: bold;
 }
+.shop-content .flag-emoji {
+    margin-right: 10px; /* 이모티콘 오른쪽에 10px 여백 추가 */
+    font-size: 18px; /* 이모티콘 크기를 조금 키움 (원하는 경우) */
+    display: inline-block; /* 기본적으로 inline으로 설정 */
+}
+
+
 
 
 
