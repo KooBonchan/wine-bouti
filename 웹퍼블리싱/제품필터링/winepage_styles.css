@@ -1,0 +1,225 @@
+/* 페이지의 기본 스타일 설정 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;  /* 수평 중앙 정렬 */
+    align-items: center;  /* 수직 중앙 정렬 */
+    height: 100vh;
+}
+
+/* 전체 컨테이너 설정 */
+.container {
+    display: flex;
+    flex-direction: column;  /* 세로 방향으로 나누기 */
+    height: 800px;  /* 고정된 높이 설정 */
+    width: 1200px;  /* 고정된 너비 설정 */
+    margin: 0 auto;  /* 수평 중앙 정렬 */
+    align-items: center;  /* 수직 중앙 정렬 */
+}
+
+/* 상단 div 설정 */
+.top {
+    background-color: none;
+    min-height: 650px;  /* 최소 높이를 설정하여 공간 확보 */
+    display: flex;
+    gap: 20px; /* 각 칸 사이에 간격 추가 */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* 상단 내 개별 칸 설정 */
+.top-left {
+    background-color: none;
+    width: 500px;  /* 고정된 너비 720px */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;  /* 상하로 나누기 */
+    gap: 0; /* 상하 간격 없애기 */
+    box-sizing: border-box;
+    height: 100%;  /* 부모 높이에 맞게 100% */
+}
+
+.top-right-container {
+    background-color: none;
+    box-sizing: border-box;
+    border-radius: 8px; /* 모서리 둥글게 처리 */
+    width: 480px;  /* 고정된 너비 480px */
+}
+
+.top-right {
+    background-color: none;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column; /* 세로 방향으로 배치 */
+    justify-content: space-between; /* 위쪽과 아래쪽에 내용이 배치되도록 */
+    height: 470px;
+}
+
+/* 와인 이미지 섹션의 상하 칸 */
+.top-left-top, .top-left-bottom {
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* .top-left-top을 더 크게 보이게 설정 */
+.top-left-top {
+    background-color: #d0d0d0;
+    width: 100%;  /* 너비 100%로 설정 */
+    height: 450px;  /* 고정된 높이 설정 */
+    margin: 0 auto;  /* 수평 중앙 정렬 */
+    display: flex;
+    justify-content: center;  /* 콘텐츠를 수평 중앙 정렬 */
+    align-items: center;  /* 콘텐츠를 수직 중앙 정렬 */
+}
+
+.top-left-bottom {
+    display: flex;  /* Flexbox를 사용 */
+    justify-content: center;  /* 자식 요소들을 수평 중앙 정렬 */
+    gap: 10px;  /* 칸 사이에 간격 추가 */
+    margin-top: 10px;  /* 상단에 붙도록 여백 추가 */
+}
+
+/* 상단 특성 칸을 정사각형으로 설정하고 크기를 조금 더 키움 */
+.top-left-bottom > div {
+    background-color: #c0c0c0;
+    width: 20%;  /* 각 칸의 너비를 15%로 설정 */
+    padding-top:  20%;  /* 너비에 비례하여 세로 높이 설정 (정사각형 비율) */
+    box-sizing: border-box;
+    position: relative;  /* 내부 콘텐츠의 정렬을 위해 필요 */
+    cursor: pointer; /* 클릭 가능한 느낌 */
+}
+
+/* 내부 텍스트 중앙 정렬 */
+.top-left-bottom > div h3 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);  /* 중앙 정렬 */
+}
+
+/* 하단 div 설정 */
+.bottom {
+    background-color: none;
+    width: 1100px;
+    height: 100%;  /* 고정된 높이 설정 */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* 새로운 리뷰 영역 추가 */
+.review-content {
+    background-color: #c8c8c8;
+    padding: 20px;
+    margin-top: 20px;
+    box-sizing: border-box;
+    height: auto;  /* 높이가 자동으로 늘어나게 설정 */
+    max-height: none;  /* 최대 높이 제한 없애기 */
+}
+
+/* 바디, 산도, 타닌 */
+.wine-details div {
+    font-size: 16px;
+}
+
+/* 바디, 산도, 타닌 그룹을 가로로 배치 */
+.wine-body, .wine-acidity, .wine-tannins {
+    display: flex;
+    gap: 10px; /* 옵션 간 간격 */
+    justify-content: center; /* 가운데 정렬 */
+}
+
+/* 바디, 산도, 타닌 옵션들을 가로로 배치 */
+.wine-body .body-option,
+.wine-acidity .acidity-option,
+.wine-tannins .tannin-option {
+    width: 80px;
+    display: inline-flex; /* inline-block 대신 inline-flex 사용 */
+    justify-content: center; /* 수평 가운데 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
+    padding: 5px;
+    background-color: #f2f2f2;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+
+/* 바디 설명 */
+.wine-body label,
+.wine-acidity label,
+.wine-tannins label {
+    font-weight: bold;
+    text-align: center; /* 라벨 텍스트도 가운데 정렬 */
+}
+
+
+/* 상세 페이지 및 리뷰 리스트 크기 조정 */
+.details-reviews {
+    display: flex;
+    gap: 0; /* 간격을 없앰 */
+    margin-top: 0; /* 마진 제거 */
+    justify-content: flex-end; /* 오른쪽 정렬 */
+}
+
+.details, .reviews-list {
+    background-color:none;
+    padding: 10px;  /* 더 작은 패딩 설정 */
+    width: 15%;  /* 두 칸의 너비를 15%로 설정, 훨씬 더 작게 */
+    box-sizing: border-box;
+    font-size: 12px;  /* 글자 크기를 12px로 설정 */
+    display: flex;
+    justify-content: center;  /* 중앙 정렬 */
+    align-items: center;  /* 수직 중앙 정렬 */
+    text-align: center;  /* 텍스트 가운데 정렬 */
+}
+
+.details h3, .reviews-list h3 {
+    font-size: 14px;  /* 제목 글자 크기도 작게 설정 */
+    margin: 0; /* 제목의 여백을 없앰 */
+}
+
+/* 마우스 오버 시 색상 변화 */
+.details:hover, .reviews-list:hover {
+    background-color: #d9d9d9;/* 색상 변경 (원하는 색상으로 수정 가능) */
+}
+
+/* 수량 선택, 바로구매, 장바구니 스타일 */
+.price-info {
+    border-bottom: 1px solid #c0c0c0; /* 윗부분에 3px 두께의 검은색 선 추가 */
+    border-top: 1px solid #c0c0c0; /* 윗부분에 3px 두께의 검은색 선 추가 */
+    height: 100px;
+    display: flex; /* 플렉스 박스로 설정 */
+    justify-content: center; /* 가운데 정렬 */
+    align-items: center; /* 세로 방향 중앙 정렬 */
+    gap: 10px; /* 버튼 간 간격을 추가 */
+}
+
+.price-info input {
+    padding: 5px;
+    margin-right: 10px;
+    width: 40px;  /* 수량 입력 칸을 좁게 설정 */
+}
+
+.price-info label {
+    margin-right: 10px;
+}
+
+.price-info button {
+    padding: 10px 15px;
+    background-color: #fff; /* 배경을 흰색으로 설정 */
+    color: black; /* 글자색 검정으로 설정 */
+    border: 1px solid #ccc; /* 테두리를 추가 */
+    border-radius: 10px; /* 라운드 처리 */
+    cursor: pointer;
+    font-size: 10px;  /* 글자 크기를 줄임 */
+    transition: background-color 0.3s; /* 배경 색상 변화에 부드러운 애니메이션 추가 */
+}
+
+.price-info button:hover {
+    background-color: #f0f0f0; /* 호버 시 배경색 변경 */
+}
+
