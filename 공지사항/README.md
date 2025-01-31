@@ -1,6 +1,12 @@
 # 공지사항
 
 -----------------------
+
+## 25.01.26. 공지사항
+- 파일업로드 방식 바뀌었습니다.
+- 
+
+
 ## 25.01.22. 공지사항
 - assets/upload에서 이미지 파일 위치 수정했습니다.
 - 이미지 뷰 API 작성했습니다. 확인해주세요. 다음은 테스트 성공한 이미지입니다.
@@ -12,19 +18,6 @@
 - 사용할 테스트 이미지파일은 C:/upload와 (프로젝트 폴더)/assets/upload에 둘 다 올려주세요. c:upload는 실제 테스트용, assets/upload는 깃에 올리는 용입니다.
 - 테스트 이미지 잘 나오는거 확인하고 천천히 파일 업로드 구현해도 될 거 같습니다.
 
-## 25.01.20. 공지사항
-- 게시일 7일, 이후로는 이 파일 맨 밑으로 내리겠습니다.
-- web.xml 등의 설정파일은 건들기 전에 에러 상황을 카톡으로 주시거나 이슈 남기세요.
-- 중요: sql에서 id를 int에서 bigint로, vo에서 int를 long으로 바꿨습니다. sql 폴더에서 wine_shop.sql, wine_shop_data_sample.sql 한바퀴씩 돌려주세요.
-- 메인 페이지 정상 작동합니다.
-- details 페이지 정상 작동합니다.
-  - URL 경로: localhost:8092/winebouti/product/details/1
-  - URL 경로: localhost:8092/winebouti/product/1
-- red-wine 페이지 정상 작동합니다.
-  - URL 경로: localhost:8092/winebouti/product/red-wine
-- 프로젝트 진행 구역 구분했습니다. 구분되지 않은 파일의 경우 작업할 파일에 자기 이름 주석으로 쓰고 작업해주세요.
-- 자기 페이지가 열리지 않을 경우 빨리 이슈로 올려주세요.
-- 김보민씨는 Member 자기 정보 수정 페이지 + 로그인/회원가입 페이지 작업해주세요.
 
 ## 작업 분배
 
@@ -144,3 +137,26 @@ git push
 
 - [ ] 여러 페이지에서 재사용 가능한 코드 components로 분리하기 - tiles/components.xml
 - [ ] 챗봇 기능
+
+
+
+
+
+
+---
+
+## 지난 공지사항
+
+## 25.01.20. 공지사항
+- 게시일 7일, 이후로는 이 파일 맨 밑으로 내리겠습니다.
+- web.xml 등의 설정파일은 건들기 전에 에러 상황을 카톡으로 주시거나 이슈 남기세요.
+- 중요: sql에서 id를 int에서 bigint로, vo에서 int를 long으로 바꿨습니다. sql 폴더에서 wine_shop.sql, wine_shop_data_sample.sql 한바퀴씩 돌려주세요.
+- 메인 페이지 정상 작동합니다.
+- details 페이지 정상 작동합니다.
+  - URL 경로: localhost:8092/winebouti/product/details/1
+  - URL 경로: localhost:8092/winebouti/product/1
+- red-wine 페이지 정상 작동합니다.
+  - URL 경로: localhost:8092/winebouti/product/red-wine
+- 프로젝트 진행 구역 구분했습니다. 구분되지 않은 파일의 경우 작업할 파일에 자기 이름 주석으로 쓰고 작업해주세요.
+- 자기 페이지가 열리지 않을 경우 빨리 이슈로 올려주세요.
+- 김보민씨는 Member 자기 정보 수정 페이지 + 로그인/회원가입 페이지 작업해주세요.

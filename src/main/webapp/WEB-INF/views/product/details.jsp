@@ -69,59 +69,38 @@
 				<!-- 리뷰 섹션 -->
 				<section>
 
-					<!-- 리뷰 목록 테이블 -->
-					<table id="reply-container" class="table table-bordered">
+					<!-- 리뷰 목록 -->
+					<h1>리뷰 목록</h1>
+					<table border="1">
 						<thead>
 							<tr>
-								<th>Writer</th>
-								<th>Content</th>
-								<th>Image</th>
-								<th>Action</th>
+								<th>ID</th>
+								<th>작성자</th>
+								<th>내용</th>
+								<th>작성일</th>
 							</tr>
 						</thead>
 						<tbody>
-							<!-- 동적으로 리뷰가 추가되는 영역 -->
+							<c:forEach var="review" items="${reviews}">
+								<tr>
+									<td>${review.review_id}</td>
+									<td>${review.user_name}</td>
+									<td>${review.content}</td>
+									<td>${review.created_at}</td>
+								</tr>
+							</c:forEach>
 						</tbody>
 					</table>
-
-					<!-- 리뷰 작성 폼 -->
-					<form name="form-reply" id="form-reply"
-						enctype="multipart/form-data" class="row">
-						<div class="col-12 mb-1 mt-3">
-							<span id="writer">Leave your review</span>
-						</div>
-
-						<!-- 리뷰 입력창 -->
-						<div class="col-9">
-							<textarea name="content" id="content" class="form-control"
-								rows="4" placeholder="Write your review here..." required></textarea>
-						</div>
-
-						<!-- 별점 입력 -->
-						<div class="col-3">
-							<div class="star-rating">
-								<input type="radio" id="star5" name="rating" value="5"><label
-									for="star5">☆</label> <input type="radio" id="star4"
-									name="rating" value="4"><label for="star4">☆</label> <input
-									type="radio" id="star3" name="rating" value="3"><label
-									for="star3">☆</label> <input type="radio" id="star2"
-									name="rating" value="2"><label for="star2">☆</label> <input
-									type="radio" id="star1" name="rating" value="1"><label
-									for="star1">☆</label>
-							</div>
-						</div>
-
-						<!-- 이미지 첨부 및 리뷰 작성 버튼 -->
-						<div class="col-3">
-							<input type="file" name="image" id="image" accept="image/*"
-								class="form-control mb-2">
-							<button type="button" class="btn btn-primary w-100"
-								onclick="submitReply(<c:out value='${product.productId}' />)">Submit
-								Review</button>
-						</div>
-					</form>
-				</section>
 			</div>
+
+			<!-- 리뷰 작성 폼 -->
+			<form name="form-reply" id="form-reply" action="/reviews/create"
+				method="POST" enctype="multipart/form-data" class="row">
+				<div class="col-12 mb-1 mt-3">
+					<span id="writer">Leave your review</span>
+				</div>
+				<!-- 추가 필드와 파일 업로드 영역 필요 -->
+			</form>
 
 			<!-- 이미지 확대 모달 창 -->
 			<div id="imageModal" class="modal" tabindex="-1" role="dialog">
@@ -154,22 +133,22 @@
 			<!-- 리뷰 및 이미지 모달 관련 JS 파일 연결 -->
 			<script src="<c:url value='/resources/js/product/details.js' />"></script>
 			<script>
-        // 이미지 모달 창 열기
-        function showImageModal(imageUrl) {
-            document.getElementById('modalImage').src = imageUrl;
-            document.getElementById('imageModal').style.display = 'block';
-        }
+				// 이미지 모달 창 열기
+				function showImageModal(imageUrl) {
+					document.getElementById('modalImage').src = imageUrl;
+					document.getElementById('imageModal').style.display = 'block';
+				}
 
-        // 이미지 모달 창 닫기
-        function closeImageModal() {
-            document.getElementById('imageModal').style.display = 'none';
-        }
+				// 이미지 모달 창 닫기
+				function closeImageModal() {
+					document.getElementById('imageModal').style.display = 'none';
+				}
 
-        // 팝업 알림창
-        function showModal(message) {
-            document.getElementById("modal-body").innerText = message;
-            $("#alertModal").modal("show");
-        }
-    </script>
+				// 팝업 알림창
+				function showModal(message) {
+					document.getElementById("modal-body").innerText = message;
+					$("#alertModal").modal("show");
+				}
+			</script>
 </body>
 </html>
