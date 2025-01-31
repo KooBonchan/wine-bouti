@@ -6,9 +6,11 @@
     <script src="http://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <!-- CSS 경로 수정 -->
     <title>회원가입</title>
-    <%-- <link rel="stylesheet" href="<c:url value='/resources/css/save.css' />" /> --%>
+   
+  <link rel="stylesheet" href="<c:url value='/resources/style/member/save.css' />" /> 
 </head>
 <body>
+    
     <!-- 폼을 감싸는 컨테이너 추가 -->
     <div class="form-container">
         <h2>회원가입</h2> 

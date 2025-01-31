@@ -1,6 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="Member">
-    
+<mapper namespace="com.winebouti.mapper.MemberMapper">
+    <insert id="save" parameterType="com.winebouti.vo.MemberVO">
+        INSERT INTO member (email, password, name)
+        VALUES (#{email}, #{password}, #{name})
+    </insert>
+
+    <!-- 로그인 -->
+    <select id="login" resultType="com.winebouti.vo.MemberVO" parameterType="com.winebouti.vo.MemberVO">
+        SELECT * FROM member WHERE email = #{email} AND password = #{password}
+    </select>
+
+    <!-- 모든 회원 조회 -->
+    <select id="findAll" resultType="com.winebouti.vo.MemberVO">
+        SELECT * FROM member
+    </select>
+
+    <!-- 회원 ID로 조회 -->
+    <select id="findById" resultType="com.winebouti.vo.MemberVO" parameterType="long">
+        SELECT * FROM member WHERE id = #{id}
+    </select>
+
+    <!-- 회원 삭제 -->
+    <delete id="delete" parameterType="long">
+        DELETE FROM member WHERE id = #{id}
+    </delete>
+
+    <!-- 이메일로 회원 조회 -->
+    <select id="findByMemberEmail" resultType="com.winebouti.vo.MemberVO" parameterType="String">
+        SELECT * FROM member WHERE email = #{loginEmail}
+    </select>
+
+    <!-- 회원 정보 수정 -->
+    <update id="update" parameterType="com.winebouti.vo.MemberVO">
+        UPDATE member
+        SET password = #{password}, name = #{name}
+        WHERE email = #{email}
+    </update>
 </mapper>

@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>마이페이지입니다.</title>
+<link rel="stylesheet" href="<c:url value='/resources/style/member/save.css' />" />
 </head>
 <body>
 
