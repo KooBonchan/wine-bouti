@@ -83,4 +83,11 @@ public class ProductController {
         model.addAttribute("products", giftWine); // 모델에 "products" 속성으로 추가
         return "product/gift-wine.tiles"; // 해당 JSP 페이지를 반환
     }
+    
+    @GetMapping("/pairing-wine")
+    public String pairingWineList(Model model) {
+        List<WineVO> pairingWine = productService.getpairingWine(); // 서비스에서 화이트 와인 목록을 가져옵니다.
+        model.addAttribute("products", pairingWine); // 모델에 "products" 속성으로 추가
+        return "product/pairingwine.tiles"; // 해당 JSP 페이지를 반환
+    }
 }

@@ -1,104 +1,440 @@
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html>
-<head>
-    <title>레드 와인 목록</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            width: 80%;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        h1 {
-            text-align: center;
-            color: #2c3e50;
-        }
-
-        .wine-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
-
-        .wine-item {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            width: 30%;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            text-align: center;
-            transition: transform 0.2s;
-        }
-
-        .wine-item:hover {
-            transform: translateY(-10px);
-        }
-
-        .wine-item img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-
-        .wine-item h3 {
-            margin-top: 10px;
-            font-size: 18px;
-            color: #e74c3c;
-        }
-
-        .wine-item p {
-            font-size: 14px;
-            color: #7f8c8d;
-        }
-
-        .wine-item a {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 10px 20px;
-            background-color: #e74c3c;
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-        }
-
-        .wine-item a:hover {
-            background-color: #c0392b;
-        }
-    </style>
-</head>
-<body>
-
-    <div class="container">
-        <h1>레드 와인 목록</h1>
-        <div class="wine-list">
-            <!-- 레드 와인 목록 반복 시작 -->
-            <c:forEach var="wine" items="${redWines}">
-                <div class="wine-item">
-                    <!-- 와인 이미지 -->
-                    <img src="${wine.imageUrl}" alt="${wine.name}">
-                    <!-- 와인 이름 -->
-                    <h3>${wine.name}</h3>
-                    <!-- 와인 가격 -->
-                    <p>가격: ${wine.price}원</p>
-                    <!-- 와인 상세 페이지로 링크 -->
-                    <a href="/product/details/${wine.id}">상세보기</a>
+       <div class="container">
+        <div class="left">
+            <div class="title-container">
+                <h2>Find your wine</h2>
+            </div>
+            <!-- 나라 선택 필터 (아코디언 방식) -->
+            <button class="accordion">나라</button>
+            <div class="panel">
+                <div class="filter">
+                    <input type="checkbox" id="korea" name="country" value="korea">
+                    <label for="korea">한국</label><br>
+                    <input type="checkbox" id="france" name="country" value="france">
+                    <label for="france">프랑스</label><br>
+                    <input type="checkbox" id="italy" name="country" value="italy">
+                    <label for="italy">이탈리아</label><br>
+                    <input type="checkbox" id="spain" name="country" value="spain">
+                    <label for="spain">스페인</label>
                 </div>
-            </c:forEach>
-            <!-- 레드 와인 목록 반복 끝 -->
-        </div>
-    </div>
+            </div>
 
-</body>
-</html>
+            <!-- 가격 선택 필터 (아코디언 방식) -->
+            <button class="accordion">가격</button>
+            <div class="panel">
+                <div class="filter">
+                    <input type="checkbox" id="lowPrice" name="price" value="low">
+                    <label for="lowPrice">저렴한 가격</label><br>
+                    <input type="checkbox" id="mediumPrice" name="price" value="medium">
+                    <label for="mediumPrice">중간 가격</label><br>
+                    <input type="checkbox" id="highPrice" name="price" value="high">
+                    <label for="highPrice">고급 가격</label>
+                </div>
+            </div>
+
+            <!-- 추천 필터 (아코디언 방식) -->
+            <button class="accordion">추천</button>
+            <div class="panel">
+                <div class="filter">
+                    <input type="checkbox" id="topRecommendation" name="recommendation" value="top">
+                    <label for="topRecommendation">추천 1</label><br>
+                    <input type="checkbox" id="bestSeller" name="recommendation" value="bestSeller">
+                    <label for="bestSeller">베스트 셀러</label><br>
+                    <input type="checkbox" id="newArrival" name="recommendation" value="newArrival">
+                    <label for="newArrival">신상품</label>
+                </div>
+            </div>
+
+            <!-- 와인 종류 필터 (아코디언 방식) -->
+            <button class="accordion">와인 종류</button>
+            <div class="panel">
+                <div class="filter">
+                    <input type="checkbox" id="redWine" name="wine" value="red">
+                    <label for="redWine">레드 와인</label><br>
+                    <input type="checkbox" id="whiteWine" name="wine" value="white">
+                    <label for="whiteWine">화이트 와인</label><br>
+                    <input type="checkbox" id="sparklingWine" name="wine" value="sparkling">
+                    <label for="sparklingWine">스파클링 와인</label>
+                </div>
+            </div>
+
+            <!-- 세트 필터 (아코디언 방식) -->
+            <button class="accordion">세트</button>
+            <div class="panel">
+                <div class="filter">
+                    <input type="checkbox" id="set1" name="set" value="set1">
+                    <label for="set1">세트 1</label><br>
+                    <input type="checkbox" id="set2" name="set" value="set2">
+                    <label for="set2">세트 2</label><br>
+                    <input type="checkbox" id="set3" name="set" value="set3">
+                    <label for="set3">세트 3</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="right">
+        
+            <!-- 상품 이미지 그리드 -->
+            <div class="product-grid-container">
+                <div class="product-grid">
+                     <!-- 추가 상품들 -->
+                     <div class="product-item">
+                        <div class="image-placeholder" onclick="openPopup(this)"></div>
+                        <div class="product-info">
+                            <p class="wine-name">와인 이름 (4)</p>
+                            <p class="origin">원산지: 아파트</p>
+                            <p class="price">가격: 35,000원</p>
+
+                            <div class="wine-details">
+                                <p class="body">바디: 중간</p> <!-- 바디 추가 -->
+                                <p class="acidity">산도: 높음</p> <!-- 산도 추가 -->
+                                <p class="tannins">탄닌: 강함</p> <!-- 탄닌 추가 -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-item">
+                        <div class="image-placeholder" onclick="openPopup(this)"></div>
+                        <div class="product-info">
+                            <p class="wine-name">와인 이름 (4)</p>
+                            <p class="origin">원산지: 스페인</p>
+                            <p class="price">가격: 35,000원</p>
+
+                            <div class="wine-details">
+                                <p class="body">바디: 중간</p> <!-- 바디 추가 -->
+                                <p class="acidity">산도: 높음</p> <!-- 산도 추가 -->
+                                <p class="tannins">탄닌: 강함</p> <!-- 탄닌 추가 -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-item">
+                        <div class="image-placeholder" onclick="openPopup(this)"></div>
+                        <div class="product-info">
+                            <p class="wine-name">와인 이름 (4)</p>
+                            <p class="origin">원산지: 스페인</p>
+                            <p class="price">가격: 35,000원</p>
+
+                            <div class="wine-details">
+                                <p class="body">바디: 중간</p> <!-- 바디 추가 -->
+                                <p class="acidity">산도: 높음</p> <!-- 산도 추가 -->
+                                <p class="tannins">탄닌: 강함</p> <!-- 탄닌 추가 -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-item">
+                        <div class="image-placeholder" onclick="openPopup(this)"></div>
+                        <div class="product-info">
+                            <p class="wine-name">와인 이름 (4)</p>
+                            <p class="origin">원산지: 스페인</p>
+                            <p class="price">가격: 35,000원</p>
+
+                            <div class="wine-details">
+                                <p class="body">바디: 중간</p> <!-- 바디 추가 -->
+                                <p class="acidity">산도: 높음</p> <!-- 산도 추가 -->
+                                <p class="tannins">탄닌: 강함</p> <!-- 탄닌 추가 -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 추가 상품들 -->
+             <!-- 추가 상품들 -->
+             <div class="product-item">
+                <div class="image-placeholder" onclick="openPopup(this)"></div>
+                <div class="product-info">
+                    <p class="wine-name">와인 이름 (4)</p>
+                    <p class="origin">원산지: 스페인</p>
+                    <p class="price">가격: 35,000원</p>
+
+                    <div class="wine-details">
+                        <p class="body">바디: 중간</p> <!-- 바디 추가 -->
+                        <p class="acidity">산도: 높음</p> <!-- 산도 추가 -->
+                        <p class="tannins">탄닌: 강함</p> <!-- 탄닌 추가 -->
+                    </div>
+                </div>
+            </div>
+            <div class="product-item">
+                <div class="image-placeholder" onclick="openPopup(this)"></div>
+                <div class="product-info">
+                    <p class="wine-name">와인 이름 (4)</p>
+                    <p class="origin">원산지: 스페인</p>
+                    <p class="price">가격: 35,000원</p>
+
+                    <div class="wine-details">
+                        <p class="body">바디: 중간</p> <!-- 바디 추가 -->
+                        <p class="acidity">산도: 높음</p> <!-- 산도 추가 -->
+                        <p class="tannins">탄닌: 강함</p> <!-- 탄닌 추가 -->
+                    </div>
+                </div>
+            </div>
+            <div class="product-item">
+                <div class="image-placeholder" onclick="openPopup(this)"></div>
+                <div class="product-info">
+                    <p class="wine-name">와인 이름 (4)</p>
+                    <p class="origin">원산지: 스페인</p>
+                    <p class="price">가격: 35,000원</p>
+
+                    <div class="wine-details">
+                        <p class="body">바디: 중간</p> <!-- 바디 추가 -->
+                        <p class="acidity">산도: 높음</p> <!-- 산도 추가 -->
+                        <p class="tannins">탄닌: 강함</p> <!-- 탄닌 추가 -->
+                    </div>
+                </div>
+            </div>
+            <div class="product-item">
+                <div class="image-placeholder" onclick="openPopup(this)"></div>
+                <div class="product-info">
+                    <p class="wine-name">와인 이름 (4)</p>
+                    <p class="origin">원산지: 스페인</p>
+                    <p class="price">가격: 35,000원</p>
+
+                    <div class="wine-details">
+                        <p class="body">바디: 중간</p> <!-- 바디 추가 -->
+                        <p class="acidity">산도: 높음</p> <!-- 산도 추가 -->
+                        <p class="tannins">탄닌: 강함</p> <!-- 탄닌 추가 -->
+                    </div>
+                </div>
+            </div>
+                       <!-- 추가 상품들 -->
+                      <!-- 추가 상품들 -->
+                      <div class="product-item">
+                        <div class="image-placeholder" onclick="openPopup(this)"></div>
+                        <div class="product-info">
+                            <p class="wine-name">와인 이름 (4)</p>
+                            <p class="origin">원산지: 스페인</p>
+                            <p class="price">가격: 35,000원</p>
+
+                            <div class="wine-details">
+                                <p class="body">바디: 중간</p> <!-- 바디 추가 -->
+                                <p class="acidity">산도: 높음</p> <!-- 산도 추가 -->
+                                <p class="tannins">탄닌: 강함</p> <!-- 탄닌 추가 -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-item">
+                        <div class="image-placeholder" onclick="openPopup(this)"></div>
+                        <div class="product-info">
+                            <p class="wine-name">와인 이름 (4)</p>
+                            <p class="origin">원산지: 스페인</p>
+                            <p class="price">가격: 35,000원</p>
+
+                            <div class="wine-details">
+                                <p class="body">바디: 중간</p> <!-- 바디 추가 -->
+                                <p class="acidity">산도: 높음</p> <!-- 산도 추가 -->
+                                <p class="tannins">탄닌: 강함</p> <!-- 탄닌 추가 -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-item">
+                        <div class="image-placeholder" onclick="openPopup(this)"></div>
+                        <div class="product-info">
+                            <p class="wine-name">와인 이름 (4)</p>
+                            <p class="origin">원산지: 스페인</p>
+                            <p class="price">가격: 35,000원</p>
+
+                            <div class="wine-details">
+                                <p class="body">바디: 중간</p> <!-- 바디 추가 -->
+                                <p class="acidity">산도: 높음</p> <!-- 산도 추가 -->
+                                <p class="tannins">탄닌: 강함</p> <!-- 탄닌 추가 -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-item">
+                        <div class="image-placeholder" onclick="openPopup(this)"></div>
+                        <div class="product-info">
+                            <p class="wine-name">와인 이름 (4)</p>
+                            <p class="origin">원산지: 스페인</p>
+                            <p class="price">가격: 35,000원</p>
+
+                            <div class="wine-details">
+                                <p class="body">바디: 중간</p> <!-- 바디 추가 -->
+                                <p class="acidity">산도: 높음</p> <!-- 산도 추가 -->
+                                <p class="tannins">탄닌: 강함</p> <!-- 탄닌 추가 -->
+                            </div>
+                        </div>
+                    </div>
+                         <!-- 추가 상품들 -->
+                          <!-- 추가 상품들 -->
+                          <div class="product-item">
+                            <div class="image-placeholder" onclick="openPopup(this)"></div>
+                            <div class="product-info">
+                                <p class="wine-name">와인 이름 (4)</p>
+                                <p class="origin">원산지: 스페인</p>
+                                <p class="price">가격: 35,000원</p>
+    
+                                <div class="wine-details">
+                                    <p class="body">바디: 중간</p> <!-- 바디 추가 -->
+                                    <p class="acidity">산도: 높음</p> <!-- 산도 추가 -->
+                                    <p class="tannins">탄닌: 강함</p> <!-- 탄닌 추가 -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <div class="image-placeholder" onclick="openPopup(this)"></div>
+                            <div class="product-info">
+                                <p class="wine-name">와인 이름 (4)</p>
+                                <p class="origin">원산지: 스페인</p>
+                                <p class="price">가격: 35,000원</p>
+    
+                                <div class="wine-details">
+                                    <p class="body">바디: 중간</p> <!-- 바디 추가 -->
+                                    <p class="acidity">산도: 높음</p> <!-- 산도 추가 -->
+                                    <p class="tannins">탄닌: 강함</p> <!-- 탄닌 추가 -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <div class="image-placeholder" onclick="openPopup(this)"></div>
+                            <div class="product-info">
+                                <p class="wine-name">와인 이름 (4)</p>
+                                <p class="origin">원산지: 스페인</p>
+                                <p class="price">가격: 35,000원</p>
+    
+                                <div class="wine-details">
+                                    <p class="body">바디: 중간</p> <!-- 바디 추가 -->
+                                    <p class="acidity">산도: 높음</p> <!-- 산도 추가 -->
+                                    <p class="tannins">탄닌: 강함</p> <!-- 탄닌 추가 -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <div class="image-placeholder" onclick="openPopup(this)"></div>
+                            <div class="product-info">
+                                <p class="wine-name">와인 이름 (4)</p>
+                                <p class="origin">원산지: 스페인</p>
+                                <p class="price">가격: 35,000원</p>
+    
+                                <div class="wine-details">
+                                    <p class="body">바디: 중간</p> <!-- 바디 추가 -->
+                                    <p class="acidity">산도: 높음</p> <!-- 산도 추가 -->
+                                    <p class="tannins">탄닌: 강함</p> <!-- 탄닌 추가 -->
+                                </div>
+                            </div>
+                        </div>
+                             <!-- 추가 상품들 -->
+                       <!-- 추가 상품들 -->
+                       <div class="product-item">
+                        <div class="image-placeholder" onclick="openPopup(this)"></div>
+                        <div class="product-info">
+                            <p class="wine-name">와인 이름 (4)</p>
+                            <p class="origin">원산지: 스페인</p>
+                            <p class="price">가격: 35,000원</p>
+
+                            <div class="wine-details">
+                                <p class="body">바디: 중간</p> <!-- 바디 추가 -->
+                                <p class="acidity">산도: 높음</p> <!-- 산도 추가 -->
+                                <p class="tannins">탄닌: 강함</p> <!-- 탄닌 추가 -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-item">
+                        <div class="image-placeholder" onclick="openPopup(this)"></div>
+                        <div class="product-info">
+                            <p class="wine-name">와인 이름 (4)</p>
+                            <p class="origin">원산지: 스페인</p>
+                            <p class="price">가격: 35,000원</p>
+
+                            <div class="wine-details">
+                                <p class="body">바디: 중간</p> <!-- 바디 추가 -->
+                                <p class="acidity">산도: 높음</p> <!-- 산도 추가 -->
+                                <p class="tannins">탄닌: 강함</p> <!-- 탄닌 추가 -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-item">
+                        <div class="image-placeholder" onclick="openPopup(this)"></div>
+                        <div class="product-info">
+                            <p class="wine-name">와인 이름 (4)</p>
+                            <p class="origin">원산지: 스페인</p>
+                            <p class="price">가격: 35,000원</p>
+
+                            <div class="wine-details">
+                                <p class="body">바디: 중간</p> <!-- 바디 추가 -->
+                                <p class="acidity">산도: 높음</p> <!-- 산도 추가 -->
+                                <p class="tannins">탄닌: 강함</p> <!-- 탄닌 추가 -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-item">
+                        <div class="image-placeholder" onclick="openPopup(this)"></div>
+                        <div class="product-info">
+                            <p class="wine-name">와인 이름 (4)</p>
+                            <p class="origin">원산지: 스페인</p>
+                            <p class="price">가격: 35,000원</p>
+
+                            <div class="wine-details">
+                                <p class="body">바디: 중간</p> <!-- 바디 추가 -->
+                                <p class="acidity">산도: 높음</p> <!-- 산도 추가 -->
+                                <p class="tannins">탄닌: 강함</p> <!-- 탄닌 추가 -->
+                            </div>
+                        </div>
+                    </div>
+                         <!-- 추가 상품들 -->
+                         <div class="product-item">
+                            <div class="image-placeholder" onclick="openPopup(this)"></div>
+                            <div class="product-info">
+                                <p class="wine-name">와인 이름 (4)</p>
+                                <p class="origin">원산지: 스페인</p>
+                                <p class="price">가격: 35,000원</p>
+    
+                                <div class="wine-details">
+                                    <p class="body">바디: 중간</p> <!-- 바디 추가 -->
+                                    <p class="acidity">산도: 높음</p> <!-- 산도 추가 -->
+                                    <p class="tannins">탄닌: 강함</p> <!-- 탄닌 추가 -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <div class="image-placeholder" onclick="openPopup(this)"></div>
+                            <div class="product-info">
+                                <p class="wine-name">와인 이름 (4)</p>
+                                <p class="origin">원산지: 스페인</p>
+                                <p class="price">가격: 35,000원</p>
+    
+                                <div class="wine-details">
+                                    <p class="body">바디: 중간</p> <!-- 바디 추가 -->
+                                    <p class="acidity">산도: 높음</p> <!-- 산도 추가 -->
+                                    <p class="tannins">탄닌: 강함</p> <!-- 탄닌 추가 -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <div class="image-placeholder" onclick="openPopup(this)"></div>
+                            <div class="product-info">
+                                <p class="wine-name">와인 이름 (4)</p>
+                                <p class="origin">원산지: 스페인</p>
+                                <p class="price">가격: 35,000원</p>
+    
+                                <div class="wine-details">
+                                    <p class="body">바디: 중간</p> <!-- 바디 추가 -->
+                                    <p class="acidity">산도: 높음</p> <!-- 산도 추가 -->
+                                    <p class="tannins">탄닌: 강함</p> <!-- 탄닌 추가 -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <div class="image-placeholder" onclick="openPopup(this)"></div>
+                            <div class="product-info">
+                                <p class="wine-name">와인 이름 (4)</p>
+                                <p class="origin">원산지: 스페인</p>
+                                <p class="price">가격: 35,000원</p>
+    
+                                <div class="wine-details">
+                                    <p class="body">바디: 중간</p> <!-- 바디 추가 -->
+                                    <p class="acidity">산도: 높음</p> <!-- 산도 추가 -->
+                                    <p class="tannins">탄닌: 강함</p> <!-- 탄닌 추가 -->
+                                    
+                                </div>
+                                
+                            </div>
+                        </div>
+                        
+                        </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+<script src="<c:url value='/resources/js/product/winescript.js' />"></script>
+        

@@ -29,6 +29,7 @@ public interface ProductService {
 	List<WineVO> getwhiteWine();
 	List<WineVO> getSparkleWine();
 	List<WineVO> getGiftWine();
+	List<WineVO> getpairingWine();
     
     
 }

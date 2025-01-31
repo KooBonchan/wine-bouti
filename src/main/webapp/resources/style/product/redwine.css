@@ -1,0 +1,247 @@
+/* 페이지의 기본 스타일 설정 */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff; /* 전체 배경을 화이트로 */
+}
+
+/* 전체 컨테이너 설정 */
+.container {
+    display: flex;
+    margin: 0 auto;
+}
+
+.title-container {
+    margin-top: 30px;
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd; /* 라인 추가 */
+}
+
+.title-container h2 {
+    font-size: 20px;
+    font-weight: 200;
+    margin: 0; /* 기본 margin 제거 */
+}
+
+/* 왼쪽 div 설정 */
+.left {
+    background-color: #ffffff;
+    width: 300px; /* 고정된 폭 */
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    height: 100vh; /* 화면 전체 높이로 설정 */
+    flex-shrink: 0; /* 화면 크기에 관계없이 크기 줄어들지 않도록 설정 */
+}
+
+/* 오른쪽 div 설정 */
+.right {
+    background-color: #ffffff;
+    width: 75%; /* 오른쪽 섩션을 75%로 넓힘 */
+    padding: 20px 40px; /* 좌우 여백을 추가 */
+    box-sizing: border-box;
+}
+
+/* 아코디언 버튼 스타일 */
+.accordion {
+    color: #333;
+    cursor: pointer;
+    padding: 12px;
+    width: 100%;
+    text-align: left;
+    border: 1px solid #ffffff;
+    outline: none;
+    font-size: 16px;
+    font-weight: 600;
+    transition: 0.3s;
+    border-radius: 5px;
+    margin-bottom: 8px;
+    background-color: #ffffff;
+}
+
+.accordion:hover {
+    background-color: #f1f1f1; /* 마우스 오버 시 배경 색상 */
+}
+
+.accordion:after {
+    content: '\002B'; /* 기본 '+' 아이콘 */
+    font-size: 20px;
+    color: #333;
+    float: right;
+}
+
+.accordion.active:after {
+    content: "\2212"; /* 열렸을 때 '-' 아이콘 */
+}
+
+/* 아코디언 패널 스타일 */
+.panel {
+    display: none; /* 기본적으로 패널은 접혀있도록 설정 */
+    padding: 12px;
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    margin-bottom: 8px;
+}
+
+/* 아코디언이 열렸을 때 패널을 보여주기 위한 클래스 */
+.active-panel {
+    display: block; /* 패널을 펼침 */
+}
+
+/* 필터 항목 스타일 */
+.filter select, .filter input[type="checkbox"] {
+    margin: 8px 0;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: border 0.3s ease;
+}
+
+.filter select:focus, .filter input[type="checkbox"]:focus {
+    border-color: #007BFF; /* 포커스 시 파란색 테두리 */
+}
+
+.filter label {
+    font-size: 14px;
+    color: #333;
+    font-weight: 500;
+}
+
+.filter input[type="checkbox"] {
+    width: auto;
+    margin-right: 10px;
+}
+
+/* 세련된 스크롤바 스타일 */
+.left {
+    scrollbar-width: thin;
+    scrollbar-color: #ffffff #ffffff;
+}
+
+.left::-webkit-scrollbar {
+    width: 8px;
+}
+
+.left::-webkit-scrollbar-thumb {
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+
+.left::-webkit-scrollbar-thumb:hover {
+    background-color: #ffffff;
+}
+
+.left::-webkit-scrollbar-track {
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+
+/* 상품 그리드 */
+.product-grid-container {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 15px;
+    justify-items: center;
+    align-items: center;
+    padding: 20px;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.product-item {
+    width: 200px;
+    height: 300px;
+    gap: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: hidden;
+    border-radius: 8px;
+    position: relative;
+}
+
+.product-item .product-info {
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    border-radius: 8px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-sizing: border-box;
+}
+
+.product-item .wine-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin: 5px 0;
+}
+
+.product-item .origin {
+    font-size: 14px;
+    color: #777;
+    margin: 3px 0;
+}
+
+.product-item .price {
+    font-size: 14px;
+    font-weight: 500;
+    color: #007BFF;
+    margin: 5px 0;
+}
+
+.product-item .image-placeholder {
+    width: 100%;
+    height: 0;
+    padding-top: 100%;
+    background-color: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+}
+
+/* 와인 정보 항목 추가 스타일 */
+.product-item .product-info .wine-details {
+    display: flex;
+    justify-content: space-between;  /* 항목들이 가로로 고르게 배치되도록 */
+    align-items: center;
+    margin-top: 5px;  /* 상단 여백 추가 */
+}
+
+/* 바디 */
+/* 상품 항목 내 바디, 산도, 탄닌 정보 숨기기 */
+.product-item .body,
+.product-item .acidity,
+.product-item .tannins {
+    display: none;  /* 기본적으로 숨김 */
+}
+
+/* 팝업창 내 와인 상세 정보 스타일 */
+.popup-content .wine-details {
+    display: block;  /* 팝업에서는 정보 표시 */
+}
+
+/* 팝업창 안의 세부 정보 */
+.popup-content .wine-details p {
+    font-size: 14px;  /* 글자 크기 적당히 조정 */
+    color: #333;
+    margin: 5px 0;
+}

@@ -26,16 +26,16 @@
 <div class="parent">
 	<div class="gallery">
 		<ul>
-			<li><a href="#">
+			<li><a href="/winebouti/product/red-wine">
         <img src="<c:url value="/resources/images/shop/gallery1.png" />" alt="이미지1" />
         
         <span>레드와인</span>
 			</a></li>
-			<li><a href="#">
+			<li><a href="/winebouti/product/white-wine">
         <img src="<c:url value="/resources/images/shop/gallery2.png" />" alt="이미지2" />
         <span>화이트와인</span>
 			</a></li>
-			<li><a href="#">
+			<li><a href="/winebouti/product/sparkle-wine">
         <img src="<c:url value="/resources/images/shop/gallery3.png" />" alt="이미지3" />
         <span>스파클링와인</span>
 			</a></li>
@@ -64,7 +64,7 @@
     </div> <!-- 제목 추가 -->
     <div class="shop">
     <div class="img">
-        <img src="<c:url value='/assets/upload/test/thumbnail/redwine1.jpg' />" alt="Shop Image">
+        <img src="<c:url value='/Users/project/wine-bouti/assets/upload/test/thumbnail/redwine1.jpg' />" alt="Shop Image">
     </div>
     <div class="title shop-title">루이라뚜르 피노누아 </div>
     
