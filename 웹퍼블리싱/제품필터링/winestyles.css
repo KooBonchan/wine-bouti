@@ -40,7 +40,7 @@ body {
 /* 오른쪽 div 설정 */
 .right {
     background-color: #ffffff;
-    width: 75%; /* 오른쪽 섹션을 75%로 넓힘 */
+    width: 75%; /* 오른쪽 섩션을 75%로 넓힘 */
     padding: 20px 40px; /* 좌우 여백을 추가 */
     box-sizing: border-box;
 }
@@ -79,12 +79,17 @@ body {
 
 /* 아코디언 패널 스타일 */
 .panel {
-    display: block;
+    display: none; /* 기본적으로 패널은 접혀있도록 설정 */
     padding: 12px;
     background-color: #ffffff;
     border: 1px solid #ffffff;
     border-radius: 5px;
     margin-bottom: 8px;
+}
+
+/* 아코디언이 열렸을 때 패널을 보여주기 위한 클래스 */
+.active-panel {
+    display: block; /* 패널을 펼침 */
 }
 
 /* 필터 항목 스타일 */
@@ -168,7 +173,6 @@ body {
     align-items: flex-start;
     overflow: hidden;
     border-radius: 8px;
-    /* background-color: #f5f5f5; */
     position: relative;
 }
 
@@ -242,4 +246,3 @@ body {
     color: #333;
     margin: 5px 0;
 }
-
