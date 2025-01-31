@@ -3,7 +3,31 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.winebouti.mapper.ReviewMapper">
-    <select id="selectAllReviews" resultType="com.winebouti.vo.ReviewVO">
-        SELECT * FROM review; <!-- 리뷰 테이블 -->
-    </select>
+	<select id="selectAllReviews"
+		resultType="com.winebouti.vo.ReviewVO">
+		SELECT * FROM review; <!-- 리뷰 테이블 -->
+	</select>
+	<insert id="insertReview"
+		parameterType="com.winebouti.vo.ReviewVO" useGeneratedKeys="true"
+		keyProperty="reviewId">
+		INSERT INTO Review
+		(product_id, member_id, purchase_id, content, star, is_open, password, write_date)
+		VALUES
+		(#{productId}, #{memberId}, #{purchaseId}, #{content}, #{star}, #{isOpen},
+		#{password}, NOW());
+	</insert>
+
+	<resultMap id="reviewMap" type="com.winebouti.vo.ReviewVO">
+		<result column="review_id" property="reviewId" />
+		<result column="product_id" property="productId" />
+		<result column="member_id" property="memberId" />
+		<result column="purchase_id" property="purchaseId" />
+		<result column="content" property="content" />
+		<result column="star" property="star" />
+		<result column="is_open" property="isOpen" />
+		<result column="response" property="response" />
+		<result column="write_date" property="writeDate" />
+		<result column="update_date" property="updateDate" />
+	</resultMap>
+
 </mapper>

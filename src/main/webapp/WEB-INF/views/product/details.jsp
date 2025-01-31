@@ -6,149 +6,152 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>상품 상세 페이지</title>
+<title>와인 상세 페이지</title>
 
 <!-- CSS 파일 연결 -->
 <link rel="stylesheet" type="text/css"
 	href="<c:url value='/resources/style/product/details.css' />">
+
+<script src="<c:url value='/resources/js/product/details.js' />"></script>
 </head>
 <body>
 	<div class="container">
-		<!-- 헤더 -->
-		<header>
-			<h1>Grapes&Wine</h1>
-		</header>
-
-		<!-- 상품 상세 정보 섹션 -->
-		<main class="product-section">
-			<!-- 상품 이미지 및 기본 정보 -->
-			<div class="product-detail">
-				<div class="image-wrapper">
-					<img
-						src="<c:url value='/resources/images/${product.productImageName}' />"
-						alt="상품 이미지">
+		<div class="top">
+			<div class="top-left">
+				<div class="top-left-top" id="wine-image">
+					<img id="main-wine-image"
+						src="<c:url value='/resources/images/wine1.jpg' />" alt="와인 이미지"
+						style="width: 100%; height: auto;">
 				</div>
-				<div class="product-info">
-					<h2>${product.koreanName}
-						<span>${product.alcoholContent}%</span>
-					</h2>
-					<p>${product.origin}</p>
-					<p class="price">${product.originalPrice}원</p>
-
-					<!-- 상품 속성 (바디, 산도, 당도, 탄닌) -->
-					<div class="attributes">
-						<span>바디: ${product.body}</span> <span>산도:
-							${product.acidity}</span> <span>당도: ${product.sweetness}</span> <span>탄닌:
-							${product.tannin}</span>
+				<div class="top-left-bottom">
+					<div onclick="changeWineImage(1)">
+						<h3>와인 이미지 1</h3>
 					</div>
-
-					<!-- 버튼 섹션 -->
-					<div class="action-buttons">
-						<button class="btn add-to-cart">장바구니</button>
-						<button class="btn buy-now">바로 구매하기</button>
+					<div onclick="changeWineImage(2)">
+						<h3>와인 이미지 2</h3>
+					</div>
+					<div onclick="changeWineImage(3)">
+						<h3>와인 이미지 3</h3>
 					</div>
 				</div>
 			</div>
-
-			<!-- 탭 네비게이션 -->
-			<div class="tabs">
-				<button class="tablinks active" onclick="openTab(event, 'Product')">Product</button>
-				<button class="tablinks" onclick="openTab(event, 'Review')">Review
-					(0)</button>
+			<div class="top-right-container">
+				<div class="top-right">
+					<h2>와인이름</h2>
+					<div class="popup-content">
+						<div class="wine-info">
+							<!-- 바디 상세 설명 -->
+							<div class="wine-body">
+								<label for="body">바디:</label>
+								<div class="body-option">가벼운</div>
+								<div class="body-option">중간</div>
+								<div class="body-option">무거운</div>
+							</div>
+							<!-- 산도 상세 설명 -->
+							<div class="wine-acidity">
+								<label for="acidity">산도:</label>
+								<div class="acidity-option">낮은</div>
+								<div class="acidity-option">중간</div>
+								<div class="acidity-option">높은</div>
+							</div>
+							<!-- 타닌 상세 설명 -->
+							<div class="wine-tannins">
+								<label for="tannins">타닌:</label>
+								<div class="tannin-option">부드러운</div>
+								<div class="tannin-option">중간</div>
+								<div class="tannin-option">강한</div>
+							</div>
+						</div>
+					</div>
+					<ul>
+						<li>가격: 50,000원</li>
+						<li>할인: 10% (5,000원 할인)</li>
+						<li>배송비: 무료</li>
+					</ul>
+					<!-- 수량, 바로구매, 장바구니 입력 폼 추가 -->
+					<div class="price-info">
+						<label for="quantity">수량:</label> <input type="number"
+							id="quantity" name="quantity" value="1" min="1">
+						<button type="button">바로 구매</button>
+						<button type="button">장바구니</button>
+					</div>
+				</div>
 			</div>
+		</div>
+		<div class="bottom">
+			<!-- 상세 페이지 및 리뷰 리스트 -->
+			<div class="details-reviews">
+				<!-- 상세 페이지 -->
+				<div class="details" onclick="showContent('details')">
+					<h3>상세 페이지</h3>
+				</div>
+				<!-- 리뷰 리스트 -->
+				<div class="reviews-list" onclick="showContent('reviews')">
+					<h3>리뷰 리스트</h3>
 
-			<!-- Product 탭 -->
-			<div id="Product" class="tabcontent active">
-				<h3>상품 상세 정보</h3>
-				<p>이곳에 상품에 대한 상세 설명을 추가하세요.</p>
+				</div>
 			</div>
-
-
-			<!-- Review 탭 -->
-			<div id="Review" class="tabcontent">
-				<!-- 리뷰 섹션 -->
-				<section>
-
-					<!-- 리뷰 목록 -->
-					<h1>리뷰 목록</h1>
-					<table border="1">
-						<thead>
-							<tr>
-								<th>ID</th>
-								<th>작성자</th>
-								<th>내용</th>
-								<th>작성일</th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach var="review" items="${reviews}">
+			<div class="detailsview">
+				<div id="details-content" class="details-content">
+					<h3>상세 페이지</h3>
+					<p>여기에는 와인에 대한 소개나 추가적인 설명을 추가할 수 있습니다.</p>
+				</div>
+				<div id="reviews-content" class="review-content"
+					style="display: none;">
+					<div class="rating-summary">
+						<div class="rating">
+							<h3>상품 만족도: 4.5/5</h3>
+							<h3>☆☆☆☆☆</h3>
+						</div>
+						<div class="reviews">
+							<h3>총 리뷰 120개</h3>
+							<!-- 리뷰 남기기 -->
+							<div class="review-form">
+								<button
+									onclick="window.location.href='<c:url value="/review"/>'">리뷰
+									남기기</button>
+							</div>
+						</div>
+					</div>
+					<h3>리뷰 내용</h3>
+					<p>여기에는 리뷰 리스트</p>
+					<section>
+						<!-- 리뷰 목록 -->
+						<h1>리뷰 목록</h1>
+						<table border="1">
+							<thead>
 								<tr>
-									<td>${review.review_id}</td>
-									<td>${review.user_name}</td>
+									<th>리뷰 ID</th>
+									<th>상품 ID</th>
+									<th>회원 ID</th>
+									<th>구매 ID</th>
+									<th>리뷰 내용</th>
+									<th>별점</th>
+									<th>공개 여부</th>
+									<th>답변</th>
+									<th>작성 날짜</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach var="review" items="${reviews}">
+								<tr>
+									<td>${review.reviewId}</td>
+									<td>${review.userName}</td>
 									<td>${review.content}</td>
 									<td>${review.created_at}</td>
-								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
-			</div>
-
-			<!-- 리뷰 작성 폼 -->
-			<form name="form-reply" id="form-reply" action="/reviews/create"
-				method="POST" enctype="multipart/form-data" class="row">
-				<div class="col-12 mb-1 mt-3">
-					<span id="writer">Leave your review</span>
-				</div>
-				<!-- 추가 필드와 파일 업로드 영역 필요 -->
-			</form>
-
-			<!-- 이미지 확대 모달 창 -->
-			<div id="imageModal" class="modal" tabindex="-1" role="dialog">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title">Image View</h5>
-							<button type="button" class="close" onclick="closeImageModal()">&times;</button>
-						</div>
-						<div class="modal-body text-center">
-							<img id="modalImage" src="" class="img-fluid" />
-						</div>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+					</section>
+					<!-- 페이지 넘기기 -->
+					<div class="review-pagination">
+						<button onclick="prevPage()">이전</button>
+						<button onclick="nextPage()">다음</button>
 					</div>
 				</div>
 			</div>
-
-			<!-- 팝업 알림 모달 -->
-			<div id="alertModal" class="modal fade" tabindex="-1" role="dialog">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title">Notification</h5>
-							<button type="button" class="close" data-dismiss="modal">&times;</button>
-						</div>
-						<div class="modal-body" id="modal-body"></div>
-					</div>
-				</div>
-			</div>
-
-			<!-- 리뷰 및 이미지 모달 관련 JS 파일 연결 -->
-			<script src="<c:url value='/resources/js/product/details.js' />"></script>
-			<script>
-				// 이미지 모달 창 열기
-				function showImageModal(imageUrl) {
-					document.getElementById('modalImage').src = imageUrl;
-					document.getElementById('imageModal').style.display = 'block';
-				}
-
-				// 이미지 모달 창 닫기
-				function closeImageModal() {
-					document.getElementById('imageModal').style.display = 'none';
-				}
-
-				// 팝업 알림창
-				function showModal(message) {
-					document.getElementById("modal-body").innerText = message;
-					$("#alertModal").modal("show");
-				}
-			</script>
+		</div>
+	</div>
 </body>
 </html>

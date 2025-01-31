@@ -12,9 +12,9 @@ import lombok.Setter;
 @Data
 public class ReviewVO {
 
-	private long review_id;
-	private long product_id;
-	private String user_name;
+	private long reviewId;
+	private long productId;
+	private String userName;
 	private String content;
 	private int rating;
 	private String created_at;
@@ -26,6 +26,7 @@ public class ReviewVO {
 	private String response;
 	private Date writeDate;
 	private Date updateDate;
+	private Long purchaseId;
 	
 
 }

@@ -9,5 +9,7 @@ import com.winebouti.vo.ReviewVO;
 @Service
 public interface ReviewService {
 	   List<ReviewVO> getAllReviews();
+
+	void register(ReviewVO vo);
 	}
 

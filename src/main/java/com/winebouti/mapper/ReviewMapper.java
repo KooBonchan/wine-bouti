@@ -8,4 +8,6 @@ public interface ReviewMapper {
 	
 	List<ReviewVO> selectAllReviews();
 
+	void insertReview(ReviewVO review);
+
 }
