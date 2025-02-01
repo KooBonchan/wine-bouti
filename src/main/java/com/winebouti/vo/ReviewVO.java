@@ -20,13 +20,15 @@ public class ReviewVO {
 	private String created_at;
 	
 	private String productName;
-	private Long memberId;
+	private long memberId;
 	private int star;
 	private boolean isOpen;
 	private String response;
 	private Date writeDate;
 	private Date updateDate;
 	private Long purchaseId;
+	
+	private String imagePath; //이미지경로
 	
 
 }

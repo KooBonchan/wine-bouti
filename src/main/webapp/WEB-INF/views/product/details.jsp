@@ -107,9 +107,8 @@
 							<h3>총 리뷰 120개</h3>
 							<!-- 리뷰 남기기 -->
 							<div class="review-form">
-								<button
-									onclick="window.location.href='<c:url value="/review"/>'">리뷰
-									남기기</button>
+								<button onclick="window.location.href='<c:url value="/review/write?productId=${product.productId}"/>'">리뷰 남기기</button>
+
 							</div>
 						</div>
 					</div>
@@ -117,32 +116,12 @@
 					<p>여기에는 리뷰 리스트</p>
 					<section>
 						<!-- 리뷰 목록 -->
-						<h1>리뷰 목록</h1>
-						<table border="1">
-							<thead>
-								<tr>
-									<th>리뷰 ID</th>
-									<th>상품 ID</th>
-									<th>회원 ID</th>
-									<th>구매 ID</th>
-									<th>리뷰 내용</th>
-									<th>별점</th>
-									<th>공개 여부</th>
-									<th>답변</th>
-									<th>작성 날짜</th>
-								</tr>
-							</thead>
-							<tbody>
-								<c:forEach var="review" items="${reviews}">
-								<tr>
-									<td>${review.reviewId}</td>
-									<td>${review.userName}</td>
-									<td>${review.content}</td>
-									<td>${review.created_at}</td>
-									</tr>
-								</c:forEach>
-							</tbody>
-						</table>
+						<div class="review-section">
+							<h2>리뷰</h2>
+
+							<%@ include file="../review/list.jsp" %>
+
+						</div>
 					</section>
 					<!-- 페이지 넘기기 -->
 					<div class="review-pagination">

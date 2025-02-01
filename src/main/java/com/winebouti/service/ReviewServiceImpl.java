@@ -17,24 +17,37 @@ import lombok.extern.log4j.Log4j;
 public class ReviewServiceImpl implements ReviewService {
 
     @Autowired
-    private ReviewMapper reviewMapper;
+    private ReviewMapper reviewMapper; //주입
 
+    // 리뷰 ID로 리뷰 조회
+    @Override
+    public ReviewVO getReviewById(int reviewId) {
+        return reviewMapper.getReviewById(reviewId);
+    }
+
+    // 모든 리뷰 조회
     @Override
     public List<ReviewVO> getAllReviews() {
         return reviewMapper.selectAllReviews();
     }
     
-    //등록
-    public void register(ReviewVO review) {
-    	 log.info("리뷰 저장 요청: " + review);
-    	    reviewMapper.insertReview(review);
-    	    log.info("리뷰 저장 완료");
+
+    // 리뷰 추가
+    @Override
+    public void insertReview(ReviewVO review) {
+        reviewMapper.insertReview(review);
     }
-    
-//    @Override
-//	public ReviewVO get(Long bno) {
-//		log.info("get..........." + bno);
-//		return reviewMapper.read(bno);
-//	}
+
+    // 리뷰 수정
+    @Override
+    public void updateReview(ReviewVO review) {
+        reviewMapper.updateReview(review);
+    }
+
+    // 리뷰 삭제
+    @Override
+    public int deleteReview(Long reviewId) {
+    return reviewMapper.deleteReview(reviewId); 
+    }
 }
 

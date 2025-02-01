@@ -23,6 +23,11 @@
    <put-attribute name="title" value="{2}" />
    <put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
   </definition>
+  
+  	<definition name="review/edit.tiles" extends="baseLayout">
+    <put-attribute name="body" value="/WEB-INF/views/review/edit.jsp" />
+	</definition>
+  
 </tiles-definitions>
 
 

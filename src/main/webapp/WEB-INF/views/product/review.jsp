@@ -143,29 +143,34 @@
 <body>
     <div class="container">
         <h1>review</h1>
-        <form id="reviewForm">
+        <form id="reviewForm" action="${pageContext.request.contextPath}/review/write" method="post" enctype="multipart/form-data">
+		   <input type="hidden" name="productId" value="${param.productId}">
+		    <input type="hidden" name="memberId" value="${sessionScope.loggedInUserId}"> 
+           
+    
             <div class="title-rating">
                 <label for="title">
                     <input type="text" id="title" name="title" placeholder="리뷰 제목" required>
                 </label>
                 <div class="rating">
-                    <label>평점</label>
-                    <input type="radio" id="rating1" name="rating" value="1">
-                    <label for="rating1">1</label>
-                    <input type="radio" id="rating2" name="rating" value="2">
-                    <label for="rating2">2</label>
-                    <input type="radio" id="rating3" name="rating" value="3">
-                    <label for="rating3">3</label>
-                    <input type="radio" id="rating4" name="rating" value="4">
-                    <label for="rating4">4</label>
-                    <input type="radio" id="rating5" name="rating" value="5">
-                    <label for="rating5">5</label>
+                     <label>평점</label>
+			        <input type="radio" id="rating1" name="star" value="1">
+			        <label for="rating1">1</label>
+			        <input type="radio" id="rating2" name="star" value="2">
+			        <label for="rating2">2</label>
+			        <input type="radio" id="rating3" name="star" value="3">
+			        <label for="rating3">3</label>
+			        <input type="radio" id="rating4" name="star" value="4">
+			        <label for="rating4">4</label>
+			        <input type="radio" id="rating5" name="star" value="5">
+			        <label for="rating5">5</label>
                 </div>
             </div>
 
-            <label for="reviewText">
-                <textarea id="reviewText" name="reviewText" rows="5" placeholder="리뷰 내용을 작성하세요" required></textarea>
-            </label>
+            <label for="content">
+    			<textarea id="content" name="content" rows="5" placeholder="리뷰 내용을 작성하세요" required></textarea>
+			</label>
+
             
             <!-- 사진 첨부 필드 추가 -->
             <div class="file-upload">
@@ -177,7 +182,8 @@
                 </div>
             </div>
 
-            <input type="submit" value="리뷰 제출">
+            <input type="submit" id="submitBtn" value="리뷰 제출">
+
         </form>
     </div>
 
@@ -186,13 +192,16 @@
             event.preventDefault();
             
             let title = document.getElementById("title").value;
-            let reviewText = document.getElementById("reviewText").value;
-            let rating = document.querySelector('input[name="rating"]:checked')?.value;
+            let content  = document.getElementById("content").value;
+            let rating = document.querySelector('input[name="star"]:checked')?.value;
             let image = document.getElementById("imageUpload").files[0];
 
-            if (title && reviewText && rating) {
+            if (title && content && rating) {
                 let imageInfo = image ? `첨부된 이미지: ${image.name}` : "이미지가 첨부되지 않았습니다.";
-                alert(`리뷰가 제출되었습니다!\n제목: ${title}\n평점: ${rating}\n리뷰 내용: ${reviewText}\n${imageInfo}`);
+                alert(`리뷰가 제출되었습니다!\n제목: ${title}\n평점: ${rating}\n리뷰 내용: ${content}\n${imageInfo}`);
+                
+                this.submit();
+                
             } else {
                 alert("모든 필드를 채워주세요.");
             }
