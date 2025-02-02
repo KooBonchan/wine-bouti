@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.mysql.cj.exceptions.NumberOutOfRange;
 import com.winebouti.mapper.ProductMapper;
 import com.winebouti.mapper.PurchaseMapper;
 import com.winebouti.vo.MemberVO;
@@ -16,7 +15,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class PurchaseServiceImpl {
+public class PurchaseServiceImpl implements PurchaseService {
 	private final PurchaseMapper purchaseMapper;
 	private final ProductMapper productMapper;
 	
@@ -36,19 +35,23 @@ public class PurchaseServiceImpl {
 	}
 	
 	@Transactional
-	public void storePurchaseInfo(PurchaseVO purchaseVO) {		
+	public void storePurchaseInfo(PurchaseVO purchaseVO) throws ArithmeticException {
+		if(purchaseVO.getTotalAmount() <= 0) {
+			purchaseVO.setTotalAmount(calculateTotalAmount(purchaseVO));
+		}
 		purchaseMapper.insertMetadata(purchaseVO);
 		purchaseMapper.insertProductList(purchaseVO);
 	}
 	
-	public int calculateTotalAmount(PurchaseVO purchaseVO) {
+	public int calculateTotalAmount(PurchaseVO purchaseVO) throws ArithmeticException{
 		int total = 0;
 		for(var purchaseProduct : purchaseVO.getProducts()) {
+			// TODO: int -> long
 			ProductVO productVO = productMapper.getProductById((int)purchaseProduct.getProductId());
 			int price = productVO.getOriginalPrice();
 			int tempTotal = total + price * purchaseProduct.getQuantity();
 			if(total > tempTotal) {
-				throw new NumberOutOfRange("total amount exceeded int range");
+				throw new ArithmeticException("Overflow occurred or unexpected negative value for quantity or price.");
 			}
 			total = tempTotal;
 		}
