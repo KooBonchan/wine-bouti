@@ -19,5 +19,6 @@ public interface ProductMapper {
 	List<WineVO> findWhiteWines();
 	List<WineVO> findSparkleWines();
 	List<WineVO> findGiftWines();
+	List<WineVO> findpairingWines();
         
 }

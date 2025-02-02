@@ -29,7 +29,7 @@ public class ApiImageController {
 		@PathVariable("path") String path,
 		@PathVariable("filename") String filename
 	){
-		log.info(path + ": " +  filename);
+		
 		path = decodeImagePath(path);
 		filename = decodeRealFileName(filename);
 		File dir = new File(BASE_PATH, path + File.separator + THUMBNAIL_FOLDER);
@@ -41,6 +41,7 @@ public class ApiImageController {
 					.headers(headers)
 					.body(FileCopyUtils.copyToByteArray(file));
 		} catch(IOException e) {
+			
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
 		catch (Exception e) {
