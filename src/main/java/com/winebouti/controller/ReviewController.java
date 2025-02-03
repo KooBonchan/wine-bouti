@@ -36,7 +36,7 @@ public class ReviewController {
 
     // 리뷰 상세 조회
 	@GetMapping("/detail/{reviewId}")
-	public String reviewDetail(@PathVariable int reviewId, Model model) {
+	public String reviewDetail(@PathVariable long reviewId, Model model) {
 	    ReviewVO review = reviewService.getReviewById(reviewId);
 	    
 	    if (review == null) {
@@ -109,7 +109,7 @@ public class ReviewController {
 
     // 리뷰 수정
     @GetMapping("/edit/{reviewId}")
-    public String editReviewForm(@PathVariable int reviewId, Model model) {
+    public String editReviewForm(@PathVariable long reviewId, Model model) {
         ReviewVO review = reviewService.getReviewById(reviewId);
         if (review == null) {
             return "redirect:/product/details.tiles"; // 리뷰가 없을 경우 상세 페이지로 이동

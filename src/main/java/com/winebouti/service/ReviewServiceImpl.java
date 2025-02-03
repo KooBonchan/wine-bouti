@@ -21,7 +21,7 @@ public class ReviewServiceImpl implements ReviewService {
 
     // 리뷰 ID로 리뷰 조회
     @Override
-    public ReviewVO getReviewById(int reviewId) {
+    public ReviewVO getReviewById(long reviewId) {
         return reviewMapper.getReviewById(reviewId);
     }
 
@@ -46,7 +46,7 @@ public class ReviewServiceImpl implements ReviewService {
 
     // 리뷰 삭제
     @Override
-    public int deleteReview(Long reviewId) {
+    public int deleteReview(long reviewId) {
     return reviewMapper.deleteReview(reviewId); 
     }
 }

@@ -9,8 +9,8 @@ import com.winebouti.vo.WineVO;
 public interface ProductMapper {
 
 	/* 양정민 */
-	ProductVO getProductById(int product_id);  
-    List<ReviewVO> getReviewsByProductId(int product_id);
+	ProductVO getProductById(long product_id);  
+    List<ReviewVO> getReviewsByProductId(long product_id);
     List<ProductVO> findProductsByCategory(String category);
     
     

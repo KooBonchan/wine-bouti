@@ -11,10 +11,10 @@ public interface ProductService {
 	
 
 	// 상품 ID로 상세 조회
-	ProductVO getProductById(int product_id);
+	ProductVO getProductById(long product_id);
 
 	// 상품 ID로 리뷰 리스트 조회
-	List<ReviewVO> getReviewsByProductId(int product_id);
+	List<ReviewVO> getReviewsByProductId(long product_id);
 
 	// 레드 와인 리스트 조회
 	List<WineVO> findRedWines();
