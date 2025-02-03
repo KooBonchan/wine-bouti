@@ -46,8 +46,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 	public int calculateTotalAmount(PurchaseVO purchaseVO) throws ArithmeticException{
 		int total = 0;
 		for(var purchaseProduct : purchaseVO.getProducts()) {
-			// TODO: int -> long
-			ProductVO productVO = productMapper.getProductById((int)purchaseProduct.getProductId());
+			ProductVO productVO = productMapper.getProductById(purchaseProduct.getProductId());
 			int price = productVO.getOriginalPrice();
 			int tempTotal = total + price * purchaseProduct.getQuantity();
 			if(total > tempTotal) {

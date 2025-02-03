@@ -12,38 +12,59 @@
 		<div>기타</div>
 	</div>
 
-	<div class="cart-item">
-		<div>
-			<img src="/api/placeholder/80/80" alt="Product" class="product-image">
-		</div>
-		<div>원터 미들컷 부츠</div>
-		<div class="quantity-control">
-			<input type="number" value="1" min="1" class="quantity-input">
-			<button class="button">수정</button>
-		</div>
-		<div>30,000원</div>
-		<div>
-			<button class="button">삭제</button>
-			<button class="button">주문하기</button>
-		</div>
-	</div>
-
-	<div class="cart-item">
-		<div>
-			<img src="/api/placeholder/80/80" alt="Product" class="product-image">
-		</div>
-		<div>원터 미들컷 부츠</div>
-		<div class="quantity-control">
-			<input type="number" value="1" min="1" class="quantity-input">
-			<button class="button">수정</button>
-		</div>
-		<div>30,000원</div>
-		<div>
-			<button class="button">삭제</button>
-			<button class="button">주문하기</button>
-		</div>
-	</div>
-
+  <div class="cart-items">
+    <div class="cart-item">
+	    <div>
+	      <img src="<c:url value='/api/image/thumbnail/test/redwine1_DOT_jpg' />" alt="Product" class="product-image">
+	    </div>
+	    <div>원터 미들컷 부츠</div>
+	    <div class="quantity-control">
+	      <input type="number" value="1" min="1" class="quantity-input">
+	      <button class="button">수정</button>
+	    </div>
+	    <div>30,000원</div>
+	    <div>
+	      <button class="button">삭제</button>
+	      <button class="button">주문하기</button>
+	    </div>
+	  </div>
+	  <div class="cart-item">
+	    <div>
+	      <img src="<c:url value='/api/image/thumbnail/test/redwine1_DOT_jpg' />" alt="Product" class="product-image">
+	    </div>
+	    <div>원터 미들컷 부츠</div>
+	    <div class="quantity-control">
+	      <input type="number" value="1" min="1" class="quantity-input">
+	      <button class="button">수정</button>
+	    </div>
+	    <div>30,000원</div>
+	    <div>
+	      <button class="button">삭제</button>
+	      <button class="button">주문하기</button>
+	    </div>
+	  </div>
+    <c:forEach items="${sessionScope.cartDTO.cartItem }" var="product" >
+      <c:out value="product" />
+			<div class="cart-item">
+				<div>
+					<img
+						src="<c:url value='/api/image/thumbnail/test/redwine1_DOT_jpg' />"
+						alt="Product" class="product-image" />
+				</div>
+				<div>원터 미들컷 부츠</div>
+				<div class="quantity-control">
+					<input type="number" value="1" min="1" class="quantity-input">
+					<button class="button">수정</button>
+				</div>
+				<div>30,000원</div>
+				<div>
+					<button class="button">삭제</button>
+					<button class="button">주문하기</button>
+				</div>
+			</div>
+		</c:forEach>
+  </div>
+  
 	<div class="summary">
 		<div>
 			총 상품가격<br>50,000원
@@ -74,3 +95,6 @@
 		<button class="action-button">쇼핑계속하기</button>
 	</div>
 </div>
+<script>
+
+</script>
