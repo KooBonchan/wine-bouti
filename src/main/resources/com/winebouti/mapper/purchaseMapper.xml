@@ -2,4 +2,61 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.winebouti.mapper.PurchaseMapper">
+    <resultMap type="PurchaseVO" id="PurchaseMap">
+    	<id column="purchase_id" property="purchaseId" />
+    	<result column="member_id" property="memberId" />
+    	<result column="address" property="address" />
+    	<result column="total_amount" property="totalAmount" />
+    	<collection property="products" resultMap="PurchaseProduct"></collection>
+    </resultMap>
+    
+    <resultMap type="com.winebouti.vo.PurchaseProductVO" id="PurchaseProduct">
+    	<result column="purchase_id" property="purchaseId"/>
+    	<result column="product_id" property="productId" />
+    	<result column="quantity" property="quantity"/>
+    </resultMap>
+    
+    
+    <select id="findAll" resultMap="PurchaseMap">
+    	SELECT p.purchase_id, member_id, address, total_amount, product_id, quantity
+    	FROM purchase p
+    		LEFT OUTER JOIN purchase_product pp
+    		ON p.purchase_id = pp.purchase_id
+    	ORDER BY p.purchase_id
+    </select>
+    <select id="findByMemberId" resultMap="PurchaseMap">
+    	SELECT p.purchase_id, member_id, address, total_amount, product_id, quantity
+    	FROM purchase p
+    		LEFT OUTER JOIN purchase_product pp
+    		ON p.purchase_id = pp.purchase_id
+    	WHERE p.member_id = #{memberId}
+    	ORDER BY p.purchase_id
+    </select>
+    <select id="findById" resultMap="PurchaseMap">
+    	SELECT p.purchase_id, member_id, address, total_amount, product_id, quantity
+    	FROM purchase p
+    		LEFT OUTER JOIN purchase_product pp
+    		ON p.purchase_id = pp.purchase_id
+    	WHERE p.purchase_id = #{id}
+    	ORDER BY p.purchase_id
+    </select>
+    
+    
+    
+    <insert id="insertMetadata" parameterType="PurchaseVO"
+    	useGeneratedKeys="true" keyColumn="purchase_id" keyProperty="purchaseId">
+    	INSERT INTO purchase (member_id, address, total_amount)
+    	VALUES (#{memberId}, #{address}, #{totalAmount})
+    </insert>
+    <insert id="insertProductList" parameterType="PurchaseVO">
+    	INSERT INTO purchase_product (purchase_id, product_id, quantity)
+    	VALUES
+    	<foreach collection="products" nullable="false" item="product" 
+    		open="(" separator="),(" close=")">
+    		#{purchaseId}, #{product.productId}, #{product.quantity}
+    	</foreach>
+    </insert>
+    
+    
+    
 </mapper>

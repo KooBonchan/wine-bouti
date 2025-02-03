@@ -154,12 +154,6 @@ header {
     color: white;  /* 모든 p 태그를 하얀색으로 설정 */
 }
 
-/* 기업 이미지 */
-.logo img {
-    width: 150px;
-    height: auto;
-}
-
 /* cs-info 설정 */
 .cs-info {
     width: 700px;  /* 너비 설정 */
@@ -229,12 +223,16 @@ footer {
 }
 
 /* 기업 이미지 */
+.logo{
+	margin-left: 2rem;
+	height: 50px;
+}
 .logo img {
-    width: 150px;
-    height: auto;
+	width: 50px;
+	height: auto;
+  margin-top: 5px;
 }
 
-/* 연락처 및 정보 */
 /* 연락처 및 정보 */
 .contact-info {
     display: flex;

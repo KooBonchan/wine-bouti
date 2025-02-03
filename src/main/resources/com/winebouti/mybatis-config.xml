@@ -3,8 +3,8 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-<!--     	<typeAlias type="com.winebouti.vo.PurchaseVO" alias="PurchaseVO"/>
- -->    	<typeAlias type="com.winebouti.vo.ReviewVO" alias="ReviewVO"/>
+    	<typeAlias type="com.winebouti.vo.PurchaseVO" alias="PurchaseVO"/>
+    	<typeAlias type="com.winebouti.vo.ReviewVO" alias="ReviewVO"/>
     	<typeAlias type="com.winebouti.vo.ProductVO" alias="ProductVO"/>
     	<typeAlias type="com.winebouti.vo.WineVO" alias="WineVO"/>
     	
