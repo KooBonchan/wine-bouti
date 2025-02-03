@@ -4,7 +4,7 @@
 
 <div class="wrap">
     <div class="logo">
-        <img src="" alt="와인 쇼핑몰 로고">
+        <img src="#" alt="와인 쇼핑몰 로고">
     </div>
     <nav class="menu">
         <ul class="navi">

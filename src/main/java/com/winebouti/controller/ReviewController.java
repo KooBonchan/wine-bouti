@@ -65,46 +65,48 @@ public class ReviewController {
     
     @PostMapping("/write")
     public String submitReview(
-        @RequestParam("productId") Long productId,  
-        @RequestParam("memberId") Long memberId,   
+        @RequestParam("productId") Long productId,
+        @RequestParam("memberId") Long memberId,
         @RequestParam("content") String content,
         @RequestParam("star") int star,
-        @RequestParam(value = "imageUpload", required = false) MultipartFile imageFile,
-        RedirectAttributes redirectAttributes) {
-
-        // 올바른 값이 넘어오는지 로그 출력
-        if (productId == null || memberId == null || productId == 0 || memberId == 0) {
-            System.out.println("🚨 잘못된 productId 또는 memberId가 전달됨!");
-            redirectAttributes.addFlashAttribute("error", "올바른 상품 ID 및 회원 정보를 입력하세요.");
-            return "redirect:/product/details";
-        }
-
+        @RequestParam(value = "file", required = false) MultipartFile file,
+        RedirectAttributes redirectAttributes
+    ) {
+        // 리뷰 객체 생성 및 데이터 설정
         ReviewVO review = new ReviewVO();
         review.setProductId(productId);
         review.setMemberId(memberId);
         review.setContent(content);
         review.setStar(star);
 
-        // 이미지 저장 (선택 사항)
-        if (imageFile != null && !imageFile.isEmpty()) {
+        // 업로드된 파일이 있으면 저장
+        if (file != null && !file.isEmpty()) {
             String uploadDir = "C:/upload/review/";
-            String originalFilename = imageFile.getOriginalFilename();
-            String uniqueFilename = UUID.randomUUID().toString() + "_" + originalFilename;
+            File uploadFolder = new File(uploadDir);
+            if (!uploadFolder.exists()) {
+                uploadFolder.mkdirs(); // 폴더가 없으면 생성
+            }
 
-            File destFile = new File(uploadDir + uniqueFilename);
             try {
-                imageFile.transferTo(destFile);
-                review.setImagePath(uniqueFilename); // DB에 저장할 이미지 경로
+                String originalFilename = file.getOriginalFilename();
+                String uniqueFilename = UUID.randomUUID().toString() + "_" + originalFilename;
+                File destFile = new File(uploadDir + uniqueFilename);
+                file.transferTo(destFile);
+                review.setImagePath(uniqueFilename); // 저장된 파일명을 DB에 저장
             } catch (IOException e) {
                 e.printStackTrace();
+                redirectAttributes.addFlashAttribute("error", "파일 업로드 중 오류 발생!");
+                return "redirect:/review/write";
             }
         }
 
+        // 리뷰 저장
         reviewService.insertReview(review);
         redirectAttributes.addFlashAttribute("message", "리뷰가 성공적으로 등록되었습니다!");
 
         return "redirect:/review/list";
     }
+
     // 리뷰 수정
     @GetMapping("/edit/{reviewId}")
     public String editReviewForm(@PathVariable int reviewId, Model model) {
