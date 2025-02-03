@@ -8,5 +8,5 @@ import lombok.ToString;
 public class PurchaseProductVO {
 	private long purchaseId;
 	private long productId;
-	private long quantity;
+	private int quantity;
 }

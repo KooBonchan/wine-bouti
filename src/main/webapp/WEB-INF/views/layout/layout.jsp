@@ -9,6 +9,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title><tiles:insertAttribute name="title" /></title>
 	<link rel="stylesheet" href="<c:url value='/resources/style/layout.css' />" />
+	<link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
 	<link rel="stylesheet" href='${contextPath}<tiles:getAsString name="style"/>' />
   
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>

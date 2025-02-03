@@ -62,9 +62,13 @@ input[type="submit"]:hover {
     }
 }
 
+
+
 /* form-container 중앙 정렬 */
 .form-container {
-    margin: 100px auto;
+       margin-top: 100px; /* 위쪽 여백을 100px로 설정 */
+    margin-left: auto; /* 좌우 중앙 정렬 */
+    margin-right: auto; /* 좌우 중앙 정렬 */
     width: 100%;
     max-width: 400px;
     padding: 30px;
@@ -75,8 +79,12 @@ input[type="submit"]:hover {
     align-items: center;
 }
 
+
+
 /* 로그인 폼 스타일 */
-.login-form-container {
+.login-form-container {    top: 50%;          /* 화면의 중간 위치 */
+    left: 50%;         /* 화면의 중간 위치 */
+    transform: translate(-50%, -50%);  /* 중앙 정렬을 정확하게 맞추기 위한 변환 */
     background-color: #fff;
     padding: 30px;
     border-radius: 8px;

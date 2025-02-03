@@ -27,7 +27,7 @@ public class ProductServiceImpl implements ProductService {
 
     // 상품 ID로 리뷰 리스트 조회
     @Override
-    public List<ReviewVO> getReviewsByProductId(int product_id) {
+    public List<ReviewVO> getReviewsByProductId(long product_id) {
         return productMapper.getReviewsByProductId(product_id);
     }
     
