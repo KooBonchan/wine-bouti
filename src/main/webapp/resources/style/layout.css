@@ -2,51 +2,50 @@
 
 /* 공용 레이아웃 */
 * {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-	font-family: "맑은 고딕";
-	color: #333333;
-	box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-family: "맑은 고딕";
+    color: #333333;
+    box-sizing: border-box;
 }
 html, body {
-	background-color: #ffffff;
-	font-size: 20px;
-	margin: 0 auto;
-	min-width: 1024px;
+    background-color: #ffffff;
+    font-size: 20px;
+    margin: 0 auto;
+    min-width: 1024px;
 }
 a {
     text-decoration: none;
     display: block; /* 링크가 이미지 전체를 감싸도록 */
 }
 
-
 .bodywrap {
     width: 100%;
     margin: 0 auto;
 }
 
-
 /* layout/header.jsp */
 header {
-	background-color: #333;
+    background-color: #333;
 }
 .logo{
   margin-left: 2rem;
 }
 .logo img {
-  width: 50px;
+  width: 40px;
   height: auto;
-  margin-top: 5px;
+  margin: 10px 0; /* 위쪽 10px, 아래쪽 10px 마진 적용 */
 }
+
 .menu {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 100%;
-	height: 50px;
-	background-color: #333333;
-	margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    background-color: #333333;
+    margin: 0 auto;
 }
 
 /* 네비게이션 스타일 */
@@ -55,7 +54,6 @@ header {
     justify-content: center;
     padding: 0;
     width: 100%;
-
 }
 
 .navi > li {
@@ -114,7 +112,6 @@ header {
     display: block;
 }
 
-
 /* 반응형: 1200px 이하일 때 */
 @media (max-width: 1200px) {
     .navi > li > a {
@@ -126,7 +123,7 @@ header {
     }
 
     .submenu {
-         width: 100px;
+        width: 100px;
     }
 
     .navi {
@@ -150,12 +147,26 @@ header {
 /***************************************************************************/
 /* layout/footer.jsp */
 
+.info {
+    display: flex;
+    flex-direction: column; /* 세로 정렬 */
+    align-items: center; /* 가운데 정렬 */
+    gap: 30px; /* 내부 요소 간격 조정 */
+    padding: 20px 0; /* 위아래 여백 추가 */
+}
+
+
+/* 기업 이미지 */
+.logo-cs-info .logo {
+    color: white;
+}
 
 .logo-cs-info {
     display: flex;  /* flexbox로 가로 배치 */
     align-items: center;  /* 세로 중앙 정렬 */
-    gap: 20px;  /* 로고와 cs-info 사이에 간격 */
-}
+     gap: 60px; /* 로고와 cs-info 사이 간격 조정 */
+     }
+     
 .logo-footer img {
   width: 150px;
   height: auto;
@@ -165,13 +176,13 @@ header {
 .phone p{
     font-size: 14px;
     color: white!important;  /* 모든 p 태그를 하얀색으로 설정 */
+
 }
 
 /* cs-info 설정 */
 .cs-info {
-    width: 700px;  /* 너비 설정 */
+    width: 600px;  /* 너비 설정 */
 }
-
 
 .contact-info {
     display: flex;
@@ -180,7 +191,8 @@ header {
     border-bottom: 2px solid white;  /* 밑줄을 하얀색으로 변경 */
     padding-bottom: 10px;  /* 밑줄과 내용 간의 간격 조정 */
 }
-모든 p 태그에 하얀색 텍스트 적용 */
+
+/* 텍스트 스타일: 모든 p 태그에 하얀색 텍스트 적용 */
 .contact-info p {
     font-size: 14px;
     color: white;  /* 모든 p 태그를 하얀색으로 설정 */
@@ -209,7 +221,6 @@ header {
     transform: scale(1.1);
 }
 
-
 /* 푸터 기본 스타일 */
 footer {
     width: 100%;
@@ -236,7 +247,6 @@ footer {
 }
 
 /* 기업 이미지 */
-
 
 /* 연락처 및 정보 */
 .contact-info {

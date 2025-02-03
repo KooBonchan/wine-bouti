@@ -229,9 +229,15 @@ button.prev:hover, button.next:hover {
 }
 
 .shop-title {
+	
     font-size: 16px;
     font-weight: bold;
     color: #333;
+    
+     /* 이름 줄이기 */
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .shop-content {
@@ -240,6 +246,8 @@ button.prev:hover, button.next:hover {
     display: flex;  /* 플렉스박스를 사용하여 가로 정렬 */
     align-items: center;  /* 세로 가운데 정렬 */
     justify-content: center;  /* 자식 요소들을 가로로 가운데 정렬 */
+    
+   
 }
 
 .shop-content .flag {
@@ -291,7 +299,6 @@ button.prev:hover, button.next:hover {
     height: 180px;
     padding-bottom: 56.25%; /* 16:9 비율 (높이 = 9/16 * 너비) */
     background-color: #ccc; /* 배경색으로 확인용 */
-    background-image: url('images/icon/x.png'); /* 이미지 경로 */
     background-size: cover;
     background-position: center;
 }
@@ -322,7 +329,7 @@ button.prev:hover, button.next:hover {
 }
 
 .cs-title2 {
-    font-size: 30px;
+    font-size: 20px;
     font-weight: lighter;
     color: #333;
     text-align: center;

@@ -34,7 +34,7 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public boolean login(MemberVO memberVO) {
         try {
-            log.info("Attempting login for member with email: {}", memberVO.getEmail());
+            log.info("Attempting login for member with email: {}", memberVO.getEmail());  // email 사용
             MemberVO loginMember = memberMapper.login(memberVO);
             return loginMember != null;
         } catch (Exception e) {
@@ -48,7 +48,7 @@ public class MemberServiceImpl implements MemberService {
     public List<MemberVO> findAll() {
         try {
             log.info("Fetching all members");
-            return memberMapper.findAll();
+            return memberMapper.findAll();  // 반환 타입을 List<MemberVO>로 수정
         } catch (Exception e) {
             log.error("Error fetching all members", e);
             throw new RuntimeException("회원 목록을 가져오는 데 실패했습니다.");
@@ -57,24 +57,24 @@ public class MemberServiceImpl implements MemberService {
 
     // 회원 ID로 찾기
     @Override
-    public MemberVO findById(Long id) {
+    public MemberVO findById(Long memberId) {  // 'id' -> 'memberId'로 수정
         try {
-            log.info("Fetching member by ID: {}", id);
-            return memberMapper.findById(id);
+            log.info("Fetching member by ID: {}", memberId);
+            return memberMapper.findById(memberId);  // 'id' -> 'memberId'로 수정
         } catch (Exception e) {
-            log.error("Error fetching member by ID: {}", id, e);
+            log.error("Error fetching member by ID: {}", memberId, e);
             throw new RuntimeException("회원 ID로 조회하는 데 실패했습니다.");
         }
     }
 
     // 회원 삭제
     @Override
-    public void delete(Long id) {
+    public void delete(Long memberId) {  // 'id' -> 'memberId'로 수정
         try {
-            log.info("Deleting member with ID: {}", id);
-            memberMapper.delete(id);
+            log.info("Deleting member with ID: {}", memberId);
+            memberMapper.delete(memberId);  // 'id' -> 'memberId'로 수정
         } catch (Exception e) {
-            log.error("Error deleting member with ID: {}", id, e);
+            log.error("Error deleting member with ID: {}", memberId, e);
             throw new RuntimeException("회원 삭제에 실패했습니다.");
         }
     }
@@ -98,7 +98,7 @@ public class MemberServiceImpl implements MemberService {
         try {
             log.info("Updating member: {}", memberVO);
             int result = memberMapper.update(memberVO);
-            return result > 0;
+            return result > 0;  // 성공 여부는 update 쿼리의 영향을 받은 행 수로 판단
         } catch (Exception e) {
             log.error("Error updating member: {}", memberVO, e);
             return false; // 실패 시 false 반환
