@@ -25,7 +25,7 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 		<multipart-config>
-      <location>${UPLOAD_DIR}/temp</location>
+      <location>C:/upload/temp</location>
       <max-file-size>20971520</max-file-size><!-- 20 * 1024 * 1024 -->
       <max-request-size>41943040</max-request-size>
       <file-size-threshold>20971520</file-size-threshold>
