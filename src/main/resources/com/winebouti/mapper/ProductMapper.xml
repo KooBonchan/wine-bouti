@@ -7,8 +7,8 @@
 	<!-- 양정민 -->
 	<!-- 상품 ID로 상품 조회 -->
 	<select id="getProductById"
-		resultType="com.winebouti.vo.ProductVO" parameterType="int">
-		SELECT *
+		resultType="com.winebouti.vo.ProductVO" parameterType="long">
+		SELECT product_id productId
 		FROM
 		Product
 		WHERE product_id = #{productId}

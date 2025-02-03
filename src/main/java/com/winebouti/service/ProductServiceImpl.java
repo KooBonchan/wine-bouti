@@ -21,7 +21,7 @@ public class ProductServiceImpl implements ProductService {
     
 	// 상품 ID로 상품 상세 조회
     @Override
-    public ProductVO getProductById(int product_id) {
+    public ProductVO getProductById(long product_id) {
         return productMapper.getProductById(product_id);
     }
 

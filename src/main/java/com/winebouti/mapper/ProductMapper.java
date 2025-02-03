@@ -9,7 +9,7 @@ import com.winebouti.vo.WineVO;
 public interface ProductMapper {
 
 	/* 양정민 */
-	ProductVO getProductById(int product_id);  
+	//ProductVO getProductById(int product_id);  
     List<ReviewVO> getReviewsByProductId(int product_id);
     List<ProductVO> findProductsByCategory(String category);
     
@@ -20,5 +20,6 @@ public interface ProductMapper {
 	List<WineVO> findSparkleWines();
 	List<WineVO> findGiftWines();
 	List<WineVO> findpairingWines();
-        
+	   // 상품 ID로 상품 조회
+    ProductVO getProductById(long productId);
 }

@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+
+    <!-- Type Aliases 설정 -->
     <typeAliases>
-<!--     	<typeAlias type="com.winebouti.vo.PurchaseVO" alias="PurchaseVO"/>
- -->    	<typeAlias type="com.winebouti.vo.ReviewVO" alias="ReviewVO"/>
-    	<typeAlias type="com.winebouti.vo.ProductVO" alias="ProductVO"/>
-    	<typeAlias type="com.winebouti.vo.WineVO" alias="WineVO"/>
-    	
+        <typeAlias type="com.winebouti.vo.PurchaseVO" alias="PurchaseVO"/>
+        <typeAlias type="com.winebouti.vo.ReviewVO" alias="ReviewVO"/>
+        <typeAlias type="com.winebouti.vo.ProductVO" alias="ProductVO"/>
+        <typeAlias type="com.winebouti.vo.WineVO" alias="WineVO"/>
     </typeAliases>
+
 </configuration>
