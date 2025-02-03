@@ -53,6 +53,6 @@ public class CartController {
   
   @GetMapping("cart")
   public String cart(Model model) {
-    return "";
+    return "cart.tiles";
   }
 }
