@@ -229,9 +229,15 @@ button.prev:hover, button.next:hover {
 }
 
 .shop-title {
+	
     font-size: 16px;
     font-weight: bold;
     color: #333;
+    
+     /* 이름 줄이기 */
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .shop-content {
@@ -240,6 +246,8 @@ button.prev:hover, button.next:hover {
     display: flex;  /* 플렉스박스를 사용하여 가로 정렬 */
     align-items: center;  /* 세로 가운데 정렬 */
     justify-content: center;  /* 자식 요소들을 가로로 가운데 정렬 */
+    
+   
 }
 
 .shop-content .flag {
