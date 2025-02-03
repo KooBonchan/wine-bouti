@@ -210,7 +210,7 @@ input[type="file"] {
             formData.append("uploadFile", image);
 
             $.ajax({
-                url: "uploadAjax.jsp",
+                url: "/winebouti/upload/image",
                 type: "POST",
                 data: formData,
                 contentType: false,
@@ -244,7 +244,7 @@ input[type="file"] {
         };
 
         $.ajax({
-            url: "/review/add", //  리뷰 저장을 처리하는 백엔드 API
+            url: "/winebouti/review/add", //  리뷰 저장을 처리하는 백엔드 API
             type: "POST",
             contentType: "application/json",
             data: JSON.stringify(reviewData),

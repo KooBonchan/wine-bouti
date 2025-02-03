@@ -92,9 +92,11 @@ CREATE TABLE Review (
     response TEXT,
     write_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     update_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    image_path VARCHAR(500) DEFAULT NULL, -- 이미지 파일 경로 추가
     FOREIGN KEY (product_id) REFERENCES Product(product_id) ON DELETE CASCADE,
     FOREIGN KEY (member_id) REFERENCES Member(member_id) ON DELETE CASCADE,
     FOREIGN KEY (purchase_id) REFERENCES Purchase(purchase_id) ON DELETE CASCADE -- Purchase 테이블과 연결
+    
 );
 ALTER TABLE Review ADD FOREIGN KEY (purchase_id) REFERENCES Purchase(purchase_id) ON DELETE CASCADE;
 
