@@ -10,7 +10,7 @@ import com.winebouti.vo.ReviewVO;
 public interface ReviewService {
 
 	   // 리뷰 ID로 리뷰 조회
-	    ReviewVO getReviewById(int reviewId);
+	    ReviewVO getReviewById(long reviewId);
 
 	    // 모든 리뷰 조회
 	    List<ReviewVO> getAllReviews();
@@ -22,7 +22,7 @@ public interface ReviewService {
 	    void updateReview(ReviewVO review);
 
 	    // 리뷰 삭제
-	    int deleteReview(Long reviewId);
+	    int deleteReview(long reviewId);
 
 	}
 

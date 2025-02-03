@@ -34,7 +34,7 @@
 	</update>
 
 	<!-- 리뷰 삭제 -->
-	<delete id="deleteReview" parameterType="Long">
+	<delete id="deleteReview" parameterType="long">
     DELETE FROM Review WHERE review_id = #{reviewId}
 	</delete>
 
