@@ -242,21 +242,21 @@
 <!--  -->
 
 <div class="cs">
-	<div class="cs-title">Shop Showcase</div>
-	<div class="cs-title2">Shop Showcase</div>
+	<div class="cs-title">MD 추천</div>
+	<div class="cs-title2">매달 새로운 추천 상품을 만나보세요</div>
 	<div class="bolssler2">
 		<div class="box box1">
-		  <a href="<c:url value='/resources/static-pages/md_hello.html' />">
+		  <a href="<c:url value='/md/hello' />">
 		    <img src="<c:url value='/resources/images/hellomd/bi1.jpg' />" alt="MD image 3" />
 		  </a>
 		</div>
 		<div class="box box2">
-		  <a href="<c:url value='/resources/static-pages/md_cook.html' />">
+		  <a href="<c:url value='/md/cook' />">
 		    <img src="<c:url value='/resources/images/hellomd/cook1.jpg' />" alt="MD image 2" />
 		  </a>
 		</div>
 		<div class="box box3">
-		  <a href="<c:url value='/resources/static-pages/md_wine.html' />">
+		  <a href="<c:url value='/md/wine' />">
 		    <img src="<c:url value='/resources/images/hellomd/wine1.jpg' />" alt="MD image 1" />
 		  </a>
 		</div>

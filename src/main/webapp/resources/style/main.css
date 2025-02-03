@@ -299,7 +299,6 @@ button.prev:hover, button.next:hover {
     height: 180px;
     padding-bottom: 56.25%; /* 16:9 비율 (높이 = 9/16 * 너비) */
     background-color: #ccc; /* 배경색으로 확인용 */
-    background-image: url('images/icon/x.png'); /* 이미지 경로 */
     background-size: cover;
     background-position: center;
 }
@@ -330,7 +329,7 @@ button.prev:hover, button.next:hover {
 }
 
 .cs-title2 {
-    font-size: 30px;
+    font-size: 20px;
     font-weight: lighter;
     color: #333;
     text-align: center;

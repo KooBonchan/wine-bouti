@@ -7,7 +7,7 @@
     <div class="logo-footer">
         <img src="<c:url value='/resources/images/logo/wine-w.png' />" alt="Company Logo" />
         <div class="phone">
-            <p class="phone">Tel:123-456-7890</p>
+            <p class="phone">Tel : 123-456-7890</p>
 
         </div>
     </div>

@@ -10,8 +10,21 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class StaticController {
-	private final String BASE_PATH = "/static/";
+	private final String BASE_PATH = "static/";
 	
 	@GetMapping("greet")
 	public String greet() { return BASE_PATH + "greet"; }
+	
+	
+	@GetMapping("md/cook")
+	public String mdCook() { return BASE_PATH + "md_cook.tiles"; }
+	
+	
+	@GetMapping("md/hello")
+	public String mdhello() { return BASE_PATH + "md_hello.tiles"; }
+	
+	
+	@GetMapping("md/wine")
+	public String mdwine() { return BASE_PATH + "md_wine.tiles"; }
+	
 }
