@@ -25,13 +25,13 @@ public class UploadController {
     public ResponseEntity<Map<String, String>> uploadImage(@RequestParam("uploadFile") MultipartFile file) {
         Map<String, String> response = new HashMap<>();
 
-        // ✅ 업로드할 폴더가 없으면 생성
+        // 업로드할 폴더가 없으면 생성
         File uploadFolder = new File(uploadDir);
         if (!uploadFolder.exists()) {
             uploadFolder.mkdirs();
         }
 
-        // ✅ 파일 검증 (확장자, 크기 제한)
+        // 파일 검증 (확장자, 크기 제한)
         if (!isValidImageFile(file.getOriginalFilename())) {
             return ResponseEntity.badRequest().body(Map.of("error", "허용되지 않은 파일 형식입니다."));
         }
@@ -47,13 +47,15 @@ public class UploadController {
 
             response.put("fileName", uniqueFilename);
             response.put("uploadPath", uploadDir);
+            response.put("imageUrl", "/api/image/" + uniqueFilename); //이미지 조최 url추가
+            response.put("thumbnailUrl", "/api/image/thumbnail/" + uniqueFilename); // 썸네일
             return ResponseEntity.ok(response);
         } catch (IOException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Map.of("error", "파일 업로드 실패"));
         }
     }
 
-    // ✅ 이미지 확장자 검증
+    // 이미지 확장자 검증
     private boolean isValidImageFile(String filename) {
         String[] allowedExtensions = {".jpg", ".jpeg", ".png", ".gif"};
         return Arrays.stream(allowedExtensions).anyMatch(filename.toLowerCase()::endsWith);
