@@ -1,6 +1,7 @@
 package com.winebouti.vo;
 
-import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -11,7 +12,7 @@ import lombok.Setter;
 @Getter @Setter
 public class CartDTO {
 	private long memberId;
-    private List<CartItemDTO> cartItems;
+    private Map<ProductVO, Integer> cartItems;
     private double totalPrice;
     private int totalQuantity;
 }

@@ -1,58 +1,58 @@
 package com.winebouti.controller;
 
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.winebouti.service.ProductService;
-import com.winebouti.service.ReviewService;
+import com.winebouti.vo.CartDTO;
+import com.winebouti.vo.ProductVO;
 
 import lombok.RequiredArgsConstructor;
 
 @Controller
-@RequestMapping("Cart")
 @RequiredArgsConstructor
+@SessionAttributes("cartDTO")
 public class CartController {
-	private final ProductService productService;
-	/*
-	 * 장바구니 정책: 세션, DB 사용 X
-	 * */
-	/*
-	 * @Controller
-	 * 
-	 * @SessionAttributes("cartDTO") // This will keep "cartDTO" in the session
-	 * automatically public class CartController {
-	 * 
-	 * @RequestMapping("/addToCart") public String
-	 * addToCart(@RequestParam("productId") String productId,
-	 * 
-	 * @RequestParam("quantity") int quantity, HttpSession session, Model model) {
-	 * 
-	 * // Retrieve or create the cart CartDTO cartDTO = (CartDTO)
-	 * session.getAttribute("cartDTO"); if (cartDTO == null) { cartDTO = new
-	 * CartDTO(); cartDTO.setMemberId("some-member-id"); // You would set this
-	 * dynamically based on login cartDTO.setCartItems(new ArrayList<>());
-	 * session.setAttribute("cartDTO", cartDTO); }
-	 * 
-	 * // Fetch the product (You would typically query this from a database) Product
-	 * product = findProductById(productId); // Implement this method to fetch the
-	 * product from DB
-	 * 
-	 * // Add item to cart CartItem cartItem = new CartItem();
-	 * cartItem.setProduct(product); cartItem.setQuantity(quantity);
-	 * cartDTO.getCartItems().add(cartItem);
-	 * 
-	 * // Update the cart in session session.setAttribute("cartDTO", cartDTO);
-	 * 
-	 * // Add cart data to the model so the view can display it
-	 * model.addAttribute("cart", cartDTO);
-	 * 
-	 * return "cartView"; // Return the view to show the cart (update this as per
-	 * your view name) }
-	 * 
-	 * private Product findProductById(String productId) { // For now, just create a
-	 * mock product. In real-world, query the DB. Product product = new Product();
-	 * product.setProductId(productId); product.setName("Sample Product");
-	 * product.setPrice(100.00); // Example price return product; } }
-	 */
-
+  private final ProductService productService;
+  /*
+   * 장바구니 정책: 세션, DB 사용 X, 결제 시 결제 정보만 저장.
+   * 추후 SQL에서 Cart table 제거
+   */
+  @PostMapping("api/addToCart")
+  public ResponseEntity<Integer> addToCart(
+      @RequestParam("productId") long productId,
+      @RequestParam("quantity") int quantity,
+      HttpSession session
+  ) {
+    CartDTO cartDTO = (CartDTO) session.getAttribute("cartDTO");
+    if (cartDTO == null) {
+      cartDTO = new CartDTO();
+      cartDTO.setMemberId(33);
+      cartDTO.setCartItems(new HashMap<>());
+      session.setAttribute("cartDTO", cartDTO);
+    }
+    // TODO
+    ProductVO productVO = productService.getProductById((int)productId);
+    cartDTO.getCartItems()
+      .merge(productVO, quantity, (q1,q2)->q1+q2);
+    
+    return ResponseEntity.ok().body(cartDTO.getCartItems().size());
+  }
+  
+  @GetMapping("cart")
+  public String cart(Model model) {
+    return "";
+  }
 }
