@@ -29,7 +29,9 @@ public class ApiImageController {
 		@PathVariable("path") String path,
 		@PathVariable("filename") String filename
 	){
-		
+		log.info(path);
+		log.info(BASE_PATH);
+		log.info(System.getenv("UPLOAD_DIR"));
 		path = decodeImagePath(path);
 		filename = decodeRealFileName(filename);
 		File dir = new File(BASE_PATH, path + File.separator + THUMBNAIL_FOLDER);

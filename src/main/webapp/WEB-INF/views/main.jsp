@@ -64,7 +64,7 @@
     </div> <!-- 제목 추가 -->
     <div class="shop">
     <div class="img">
-        <img src="<c:url value='/Users/project/wine-bouti/assets/upload/test/thumbnail/redwine1.jpg' />" alt="Shop Image">
+        <img src="<c:url value='api/image/thumbnail/test/redwine1_DOT_jpg' />" alt="Shop Image">
     </div>
     <div class="title shop-title">루이라뚜르 피노누아 </div>
     
@@ -77,7 +77,7 @@
 
     <div class="shop">
     <div class="img">
-        <img src="<c:url value='/resources/images/winelist/spaklewine1.jpg' />" alt="Shop Image">
+        <img src="<c:url value='api/image/thumbnail/test/spaklewine1_DOT_jpg' />" alt="Shop Image">
     </div>
     <div class="title shop-title">고네 메디빌 그랑크뤼..</div>
     
@@ -92,7 +92,7 @@
     
   <div class="shop">
     <div class="img">
-        <img src="<c:url value='/resources/images/winelist/redwine2.jpg' />" alt="Shop Image">
+        <img src="<c:url value='api/image/thumbnail/test/redwine2_DOT_jpg' />" alt="Shop Image">
     </div>
     <div class="title shop-title">피리아토 하모니엄 네로 다..</div>
     
@@ -108,7 +108,7 @@
     
   <div class="shop">
     <div class="img">
-        <img src="<c:url value='/resources/images/winelist/redwine3.jpg' />" alt="Shop Image">
+        <img src="<c:url value='api/image/thumbnail/test/redwine3_DOT_jpg' />" alt="Shop Image">
     </div>
     <div class="title shop-title">이즈웨이 롭 앤 레스</div>
     
@@ -125,7 +125,7 @@
        
 <div class="shop">
     <div class="img">
-        <img src="<c:url value='/resources/images/winelist/redwine4.jpg' />" alt="Shop Image">
+        <img src="<c:url value='api/image/thumbnail/test/redwine4_DOT_jpg' />" alt="Shop Image">
     </div>
     <div class="title shop-title">마틴 레이 오크빌 카베르..</div>
     
@@ -142,7 +142,7 @@
     
    <div class="shop">
     <div class="img">
-        <img src="<c:url value='/resources/images/winelist/redwine5.jpg' />" alt="Shop Image">
+        <img src="<c:url value='api/image/thumbnail/test/redwine5_DOT_jpg' />" alt="Shop Image">
     </div>
     <div class="title shop-title">하디스 틴타라 카베르네 소..</div>
      <div class="title shop-content">
@@ -156,7 +156,7 @@
     
       <div class="shop">
     <div class="img">
-        <img src="<c:url value='/resources/images/winelist/spaklewine2.jpg' />" alt="Shop Image">
+        <img src="<c:url value='api/image/thumbnail/test/spaklewine2_DOT_jpg' />" alt="Shop Image">
     </div>
     <div class="title shop-title">고네 메디빌 프리미에크뤼..</div>
      <div class="title shop-content">
@@ -171,7 +171,7 @@
            
 <div class="shop">
     <div class="img">
-        <img src="<c:url value='/resources/images/winelist/whitewine1.jpg' />" alt="Shop Image">
+        <img src="<c:url value='api/image/thumbnail/test/whitewine1_DOT_jpg' />" alt="Shop Image">
     </div>
     <div class="title shop-title">본테라 더 루스트</div>
     
@@ -189,7 +189,7 @@
              
 <div class="shop">
     <div class="img">
-        <img src="<c:url value='/resources/images/winelist/whitewine2.jpg' />" alt="Shop Image">
+        <img src="<c:url value='api/image/thumbnail/test/whitewine2_DOT_jpg' />" alt="Shop Image">
     </div>
     <div class="title shop-title">노떼 로사 베르멘티노</div>
    <div class="title shop-content">
@@ -202,7 +202,7 @@
     
   <div class="shop">
     <div class="img">
-        <img src="<c:url value='/resources/images/winelist/spaklewine3.jpg' />" alt="Shop Image">
+        <img src="<c:url value='api/image/thumbnail/test/spaklewine3_DOT_jpg' />" alt="Shop Image">
     </div>
     <div class="title shop-title">슐럼베르거 로제 스페셜 브..</div>
    <div class="title shop-content">
@@ -215,7 +215,7 @@
     
    <div class="shop">
     <div class="img">
-        <img src="<c:url value='/resources/images/winelist/whitewine3.jpg' />" alt="Shop Image">
+        <img src="<c:url value='api/image/thumbnail/test/whitewine3_DOT_jpg' />" alt="Shop Image">
     </div>
     <div class="title shop-title">에리미나 화이트 </div>
     
@@ -229,7 +229,7 @@
     
     <div class="shop">
     <div class="img">
-        <img src="<c:url value='/resources/images/winelist/redwine6.jpg' />" alt="Shop Image">
+        <img src="<c:url value='api/image/thumbnail/test/redwine6_DOT_jpg' />" alt="Shop Image">
     </div>
     <div class="title shop-title">토르치코다</div>
    <div class="title shop-content">
