@@ -8,7 +8,16 @@
 	<!-- 상품 ID로 상품 조회 -->
 	<select id="getProductById"
 		resultType="com.winebouti.vo.ProductVO" parameterType="long">
-		SELECT *
+		SELECT
+		  product_id productId,
+		  category,
+		  korean_name koreanName,
+		  product_image_name productImageName,
+		  real_product_image_name realProductImageName,
+		  detail_image_name detailImageName,
+		  real_detail_image_name realDetailImageName,
+		  original_price originalPrice,
+		  once
 		FROM
 		Product
 		WHERE product_id = #{productId}
