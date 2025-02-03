@@ -34,15 +34,15 @@ public class MemberController {
     public String save(@ModelAttribute MemberVO memberVO) { // @ModelAttribute로 MemberVO 객체를 바인딩
         int saveResult = memberService.save(memberVO);
         if (saveResult > 0) {
-            return "redirect:/member/login";
+            return "redirect:/member/login.tiles";
         } else {
-            return "redirect:/member/save";
+            return "redirect:/member/save.tiles";
         }
     }
 
     @GetMapping("login")
     public String loginForm() {
-        return "member/login";
+        return "member/login.tiles";
     }
 
     @PostMapping("login")
@@ -50,9 +50,9 @@ public class MemberController {
         boolean loginResult = memberService.login(memberVO);
         if (loginResult) {
             session.setAttribute("loginEmail", memberVO.getEmail()); // memberVO의 getEmail() 사용
-            return "main";
+            return "main.tiles";
         } else {
-            return "member/login";
+            return "member/login.tiles";
         }
     }
 
@@ -60,20 +60,20 @@ public class MemberController {
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.removeAttribute("loginEmail");
-        return "redirect:/member/login";
+        return "redirect:/member/login.tiles";
     }
 
-    @GetMapping("/")
-    public String findAll(Model model) {
-        List<MemberVO> memberVOList = memberService.findAll(); // List<MemberVO>로 변경
-        model.addAttribute("memberList", memberVOList);
-        return "member/list";
-    }
+//    @GetMapping("/")
+//    public String findAll(Model model) {
+//        List<MemberVO> memberVOList = memberService.findAll(); // List<MemberVO>로 변경
+//        model.addAttribute("memberList", memberVOList);
+//        return "member/list.tiles";
+//    }
 
     @GetMapping("/delete")
     public String delete(@RequestParam("memberId") Long memberId) {
         memberService.delete(memberId);
-        return "redirect:/member/";
+        return "redirect:/member/login.tiles";
     }
 
     @GetMapping("/update")
@@ -81,7 +81,7 @@ public class MemberController {
         String loginEmail = (String) session.getAttribute("loginEmail");
         MemberVO memberVO = memberService.findByMemberEmail(loginEmail); // 변수명 memberVO로 통일
         model.addAttribute("member", memberVO);
-        return "update";
+        return "update.tiles";
     }
 
     @PostMapping("/update")
@@ -90,7 +90,7 @@ public class MemberController {
         if (result) {
             return "redirect:/member?memberId=" + memberVO.getMemberId(); // memberVO의 getMemberId() 사용
         } else {
-            return "index";
+            return "index.tiles";
         }
     }
 
