@@ -5,9 +5,9 @@
 <div class="info">      
 <div class="logo-cs-info">
     <div class="logo-footer">
-        <img src="<c:url value='/resources/images/logo/logo-w.png' />" alt="Company Logo" />
+        <img src="<c:url value='/resources/images/logo/wine-w.png' />" alt="Company Logo" />
         <div class="phone">
-            <p>전화번호: 123-456-7890</p>
+            <p class="phone">전화번호: 123-456-7890</p>
         </div>
     </div>
 
