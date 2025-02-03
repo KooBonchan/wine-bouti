@@ -191,7 +191,7 @@ h1 {
 	<script>
 	// AJAX 리뷰 삭제 기능
 	function deleteReview(reviewId) {
-    console.log("삭제 요청된 reviewId:", reviewId); // ✅ 값 확인용 로그
+    console.log("삭제 요청된 reviewId:", reviewId); // 값 확인용 로그
 
     if (!confirm("정말 삭제하시겠습니까?")) return;
 

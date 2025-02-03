@@ -1,6 +1,5 @@
 package com.winebouti.controller;
 
-import static com.winebouti.util.FileUtils.BASE_PATH;
 import static com.winebouti.util.FileUtils.THUMBNAIL_FOLDER;
 import static com.winebouti.util.FileUtils.decodeImagePath;
 import static com.winebouti.util.FileUtils.decodeRealFileName;
@@ -24,16 +23,20 @@ import lombok.extern.log4j.Log4j;
 @RequestMapping("api/image")
 @Log4j
 public class ApiImageController {
+	
+	private static final String BASE_PATH = "C:/upload/review/"; //  업로드 경로와 동일하게 설정
+	
+	// 썸네일 이미지 반환
+	// 요청 예시: GET /api/image/thumbnail/{path}/{filename}
 	@GetMapping("thumbnail/{path}/{filename}")
 	public ResponseEntity<byte[]> getThumbnail(
 		@PathVariable("path") String path,
 		@PathVariable("filename") String filename
 	){
-		log.info(path);
-		log.info(BASE_PATH);
-		log.info(System.getenv("UPLOAD_DIR"));
 		path = decodeImagePath(path);
 		filename = decodeRealFileName(filename);
+		
+		// 썸네일 폴더 위치
 		File dir = new File(BASE_PATH, path + File.separator + THUMBNAIL_FOLDER);
 		File file = new File(dir, filename);
 		try {
@@ -51,6 +54,8 @@ public class ApiImageController {
 		}
 	}
 	
+	// 원본 이미지 제공 API
+	// 요청 예시: GET /api/image/{path}/{filename}
 	@GetMapping("{path}/{filename}")
 	public ResponseEntity<byte[]> getImage(
 		@PathVariable("path") String path,
@@ -58,6 +63,8 @@ public class ApiImageController {
 	){
 		path = decodeImagePath(path);
 		filename = decodeRealFileName(filename);
+		
+		// 이미지 파일의 전체 경로 설정
 		File dir = new File(BASE_PATH, path);
 		File file = new File(dir, filename);
 		try {
