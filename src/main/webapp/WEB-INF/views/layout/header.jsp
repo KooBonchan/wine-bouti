@@ -39,9 +39,9 @@
             </li>
             <li><a href="#">MD</a>
                 <ul class="submenu">
-                    <li><a href="#">wine bouti</a></li>
-                    <li><a href="#">이달의 레시피</a></li>
-                    <li><a href="#">이달의 와인</a></li>
+                    <li><a href="<c:url value='/resources/static-pages/md_hello.html' />">wine bouti</a></li>
+                    <li><a href="<c:url value='/resources/static-pages/md_cook.html' />">추천 레시피</a></li>
+                    <li><a href="<c:url value='/resources/static-pages/md_wine.html' />">추천 와인</a></li>
                 </ul>
             </li>
         </ul>

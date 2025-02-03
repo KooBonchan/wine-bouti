@@ -7,9 +7,9 @@
  <div class="info">      
 <div class="logo-cs-info">
     <div class="logo">
-        <img src="your-logo-url" alt="Company Logo" />
+        <img src="your-logo-url" alt="Wine Bouti" />
         <div class="phone">
-            <p>전화번호: 123-456-7890</p>
+            <p>Tel:123-456-7890</p>
         </div>
     </div>
 
@@ -17,7 +17,7 @@
         <!-- 연락처 및 정보 -->
         <div class="contact-info">
             <div class="address">
-                <p>오시는 길:</p>
+                <p>오시는 길: 경기도 용인시 기흥구 신구로12번길 32 씨케이솔루션빌딩 3층</p>
             </div>
             <div class="business-info">
                 <p>사업자 번호: 123-45-67890</p>

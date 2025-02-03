@@ -12,7 +12,7 @@ public interface MemberService {
     public boolean login(MemberVO memberVO);
 
     // 전체 회원 조회
-    public List<MemberVO> findAll();
+    public List<MemberVO> findAll();  // 반환 타입을 List<MemberVO>로 수정
 
     // 회원 ID로 찾기
     public MemberVO findById(Long id);

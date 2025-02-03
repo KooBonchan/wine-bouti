@@ -2,43 +2,41 @@
 
 /* 공용 레이아웃 */
 * {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-	font-family: "맑은 고딕";
-	color: #333333;
-	box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-family: "맑은 고딕";
+    color: #333333;
+    box-sizing: border-box;
 }
 html, body {
-	background-color: #ffffff;
-	font-size: 20px;
-	margin: 0 auto;
-	min-width: 1024px;
+    background-color: #ffffff;
+    font-size: 20px;
+    margin: 0 auto;
+    min-width: 1024px;
 }
 a {
     text-decoration: none;
     display: block; /* 링크가 이미지 전체를 감싸도록 */
 }
 
-
 .bodywrap {
     width: 100%;
     margin: 0 auto;
 }
 
-
 /* layout/header.jsp */
 header {
-	background-color: #333;
+    background-color: #333;
 }
 .menu {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 100%;
-	height: 50px;
-	background-color: #333333;
-	margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    background-color: #333333;
+    margin: 0 auto;
 }
 
 /* 네비게이션 스타일 */
@@ -47,7 +45,6 @@ header {
     justify-content: center;
     padding: 0;
     width: 100%;
-
 }
 
 .navi > li {
@@ -106,7 +103,6 @@ header {
     display: block;
 }
 
-
 /* 반응형: 1200px 이하일 때 */
 @media (max-width: 1200px) {
     .navi > li > a {
@@ -118,7 +114,7 @@ header {
     }
 
     .submenu {
-         width: 100px;
+        width: 100px;
     }
 
     .navi {
@@ -142,6 +138,10 @@ header {
 /***************************************************************************/
 /* layout/footer.jsp */
 
+/* 기업 이미지 */
+.logo-cs-info .logo {
+    color: white;
+}
 
 .logo-cs-info {
     display: flex;  /* flexbox로 가로 배치 */
@@ -149,9 +149,14 @@ header {
     gap: 20px;  /* 로고와 cs-info 사이에 간격 */
 }
 
-.phone{
+.phone {
     font-size: 14px;
     color: white;  /* 모든 p 태그를 하얀색으로 설정 */
+}
+
+/* .logo 안의 .phone 텍스트 하얀색으로 설정 */
+.logo .phone p {
+    color: white; /* 하얀색 텍스트 */
 }
 
 /* 기업 이미지 */
@@ -165,7 +170,6 @@ header {
     width: 700px;  /* 너비 설정 */
 }
 
-
 .contact-info {
     display: flex;
     flex-direction: column;
@@ -173,7 +177,8 @@ header {
     border-bottom: 2px solid white;  /* 밑줄을 하얀색으로 변경 */
     padding-bottom: 10px;  /* 밑줄과 내용 간의 간격 조정 */
 }
-모든 p 태그에 하얀색 텍스트 적용 */
+
+/* 텍스트 스타일: 모든 p 태그에 하얀색 텍스트 적용 */
 .contact-info p {
     font-size: 14px;
     color: white;  /* 모든 p 태그를 하얀색으로 설정 */
@@ -201,7 +206,6 @@ header {
 .social-media a:hover img {
     transform: scale(1.1);
 }
-
 
 /* 푸터 기본 스타일 */
 footer {
@@ -234,7 +238,6 @@ footer {
     height: auto;
 }
 
-/* 연락처 및 정보 */
 /* 연락처 및 정보 */
 .contact-info {
     display: flex;

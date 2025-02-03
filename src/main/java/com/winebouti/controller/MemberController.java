@@ -42,7 +42,7 @@ public class MemberController {
 
     @GetMapping("login")
     public String loginForm() {
-        return "login";
+        return "member/login";
     }
 
     @PostMapping("login")
@@ -52,7 +52,7 @@ public class MemberController {
             session.setAttribute("loginEmail", memberVO.getEmail()); // memberVO의 getEmail() 사용
             return "main";
         } else {
-            return "login";
+            return "member/login";
         }
     }
 
@@ -67,7 +67,7 @@ public class MemberController {
     public String findAll(Model model) {
         List<MemberVO> memberVOList = memberService.findAll(); // List<MemberVO>로 변경
         model.addAttribute("memberList", memberVOList);
-        return "list";
+        return "member/list";
     }
 
     @GetMapping("/delete")
