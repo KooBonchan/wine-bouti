@@ -52,7 +52,7 @@ public class CartController {
   }
   
   @GetMapping("cart")
-  public String cart(Model model) {
-    return "";
+  public String cart(HttpSession session, Model model) {
+    return "cart.tiles";
   }
 }

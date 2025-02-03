@@ -3,10 +3,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <div class="wrap">
-    <div class="logo">
-        <img src="" alt="와인 쇼핑몰 로고">
-    </div>
     <nav class="menu">
+    	<div class="logo">
+			<a href="<c:url value='/'/>">
+				<img src="<c:url value='/resources/images/logo/wine-w.png'/>"
+					alt="와인 쇼핑몰 로고" />
+			</a>
+		</div>
+    
         <ul class="navi">
             <li><a href="#">상품</a>
                 <ul class="submenu">

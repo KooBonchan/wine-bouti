@@ -12,7 +12,7 @@ public interface ReviewMapper {
 
 
 	// 리뷰 ID로 리뷰 조회
-    ReviewVO getReviewById(int reviewId);
+    ReviewVO getReviewById(long reviewId);
 
     // 모든 리뷰 조회
     List<ReviewVO> selectAllReviews();
@@ -24,6 +24,6 @@ public interface ReviewMapper {
     void updateReview(ReviewVO review);
 
     // 리뷰 삭제
-    int deleteReview(Long reviewId);
+    int deleteReview(long reviewId);
     
 }

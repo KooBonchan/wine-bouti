@@ -7,7 +7,7 @@
 	<!-- 양정민 -->
 	<!-- 상품 ID로 상품 조회 -->
 	<select id="getProductById"
-		resultType="com.winebouti.vo.ProductVO" parameterType="int">
+		resultType="com.winebouti.vo.ProductVO" parameterType="long">
 		SELECT *
 		FROM
 		Product
@@ -16,7 +16,7 @@
 
 	<!-- 상품 ID로 리뷰 조회 -->
 	<select id="getReviewsByProductId" resultType="ReviewVO"
-		parameterType="int">
+		parameterType="long">
 		SELECT *
 		FROM Review
 		WHERE product_id = #{productId}

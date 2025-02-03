@@ -37,7 +37,7 @@ public class ProductController {
 
     // 상품 상세 페이지
     @GetMapping({"/details/{product_id}", "{product_id}"})
-    public String productDetails(@PathVariable("product_id") int product_id, Model model) {
+    public String productDetails(@PathVariable("product_id") long product_id, Model model) {
         // 상품 상세 정보 가져오기
         ProductVO product = productService.getProductById(product_id);
 

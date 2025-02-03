@@ -21,13 +21,13 @@ public class ProductServiceImpl implements ProductService {
     
 	// 상품 ID로 상품 상세 조회
     @Override
-    public ProductVO getProductById(int product_id) {
+    public ProductVO getProductById(long product_id) {
         return productMapper.getProductById(product_id);
     }
 
     // 상품 ID로 리뷰 리스트 조회
     @Override
-    public List<ReviewVO> getReviewsByProductId(int product_id) {
+    public List<ReviewVO> getReviewsByProductId(long product_id) {
         return productMapper.getReviewsByProductId(product_id);
     }
     

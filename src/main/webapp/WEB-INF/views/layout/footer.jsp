@@ -2,14 +2,13 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
-        <!-- 기업 이미지 -->
- 
- <div class="info">      
+<div class="info">      
 <div class="logo-cs-info">
-    <div class="logo">
-        <img src="your-logo-url" alt="Wine Bouti" />
+    <div class="logo-footer">
+        <img src="<c:url value='/resources/images/logo/wine-w.png' />" alt="Company Logo" />
         <div class="phone">
-            <p>Tel:123-456-7890</p>
+            <p class="phone">Tel:123-456-7890</p>
+
         </div>
     </div>
 
