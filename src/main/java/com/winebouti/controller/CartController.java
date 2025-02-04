@@ -1,6 +1,7 @@
 package com.winebouti.controller;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -9,8 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.winebouti.service.ProductService;
@@ -50,6 +49,21 @@ public class CartController {
   
   @GetMapping("cart")
   public String cart(HttpSession session, Model model) {
+    /*     For debug purpose, create dummy item in session on cart request             */
+    CartDTO cartDTO = (CartDTO) session.getAttribute("cartDTO");
+    if (cartDTO == null) {
+      cartDTO = new CartDTO();
+      cartDTO.setMemberId(33); //TODO: use member ID from security
+      Map<ProductVO, Integer> cartItems = new HashMap<>();
+      for(int i = 1; i <= 5; i++) {
+        ProductVO productVO = productService.getProductById(i);
+        cartItems.merge(productVO, i, (q1,q2)->q1+q2);
+      }
+      cartDTO.setCartItems(cartItems);
+      session.setAttribute("cartDTO", cartDTO);
+    }
+    /***********************************************************************************/
+    
     return "cart.tiles";
   }
 }
