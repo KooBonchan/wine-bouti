@@ -46,7 +46,9 @@ public class MemberController {
     }
 
     @PostMapping("login")
-    public String login(@ModelAttribute MemberVO memberVO, HttpSession session) { // @ModelAttribute로 MemberVO 객체를 바인딩
+    public String login(
+        @ModelAttribute MemberVO memberVO,
+        HttpSession session) { // @ModelAttribute로 MemberVO 객체를 바인딩
         boolean loginResult = memberService.login(memberVO);
         if (loginResult) {
             session.setAttribute("loginEmail", memberVO.getEmail()); // memberVO의 getEmail() 사용

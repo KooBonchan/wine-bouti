@@ -103,7 +103,9 @@
 - https://www.virginwines.co.uk/
 
 ### 참고 문헌
-
-- https://velopert.com/1890
-- https://goldswan.tistory.com/41
-- https://everyflower.tistory.com/211
+- [jQuery 무한스크롤](https://velopert.com/1890)
+- [Tiles3 동적 경로 지정](https://goldswan.tistory.com/41)
+- [Tiles3 동적 경로 지정](https://everyflower.tistory.com/211)
+- [스프링부트 포트원 연결](https://howisitgo1ng.tistory.com/entry/%EC%8A%A4%ED%94%84%EB%A7%81%EC%9C%BC%EB%A1%9C-%ED%8F%AC%ED%8A%B8%EC%9B%90-%EC%82%AC%EC%9A%A9%ED%95%B4%EC%84%9C-%EA%B2%B0%EC%A0%9C-%EA%B5%AC%ED%98%84-%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95Java-Spring-Boot-JPA-PortOne)
+- [스프링부트 포트원 연결](https://velog.io/@blackarea/%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8-%ED%8F%AC%ED%8A%B8%EC%9B%90%EC%95%84%EC%9E%84%ED%8F%AC%ED%8A%B8-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0)
+- [포트원 공식문서 API v2](https://developers.portone.io/api/rest-v2/auth?v=v2)
