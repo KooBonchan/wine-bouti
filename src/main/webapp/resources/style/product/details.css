@@ -1,16 +1,16 @@
 
-
-/* 페이지의 기본 스타일 설정 */
+/* 
+페이지의 기본 스타일 설정
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center;  /* 수평 중앙 정렬 */
-    align-items: center;  /* 수직 중앙 정렬 */
+    justify-content: center;  수평 중앙 정렬
+    align-items: center;  수직 중앙 정렬
     height: 100vh;
 }
-
+ */
 /* 전체 컨테이너 설정 */
 .container {
     display: flex;
