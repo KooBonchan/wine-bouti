@@ -49,5 +49,21 @@
                 </ul>
             </li>
         </ul>
+        
+          <div class="icon-wrapper">
+    <div class="iconlogin">
+     <a href="<c:url value='/member/login'/>">
+            <img src="<c:url value='/resources/images/icon/login.png'/>" alt="로그인 아이콘" />
+        </a>
+    </div>
+    <div class="iconcart">
+        <a href="<c:url value='/'/>">
+            <img src="<c:url value='/resources/images/icon/cart.png'/>" alt="카트 아이콘" />
+        </a>
+    </div>
+</div>
     </nav>
+    
+
+
 </div>

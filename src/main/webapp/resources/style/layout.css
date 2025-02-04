@@ -144,6 +144,26 @@ header {
     }
 }
 
+/* 아이콘을 나란히 배치하는 스타일 */
+.iconlogin, .iconcart {
+    display: inline-block; /* 아이콘을 한 줄에 배치 */
+    margin-right: 25px; /* 두 아이콘 사이의 간격 조정 */
+}
+
+.iconlogin img, .iconcart img {
+    width: 24px;  /* 아이콘 크기 줄이기 */
+    height: auto;  /* 비율에 맞춰 높이 자동 조정 */
+}
+
+/* 아이콘을 나란히 배치할 부모 컨테이너 */
+.icon-wrapper {
+    display: flex;  /* 아이콘을 수평으로 배치 */
+    justify-content: flex-end; /* 오른쪽 정렬 */
+    align-items: center; /* 세로로 가운데 정렬 */
+    margin-right: 30px;
+}
+
+
 /***************************************************************************/
 /* layout/footer.jsp */
 
