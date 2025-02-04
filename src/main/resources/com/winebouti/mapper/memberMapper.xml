@@ -3,8 +3,8 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.winebouti.mapper.MemberMapper">
     <insert id="save" parameterType="com.winebouti.vo.MemberVO">
-        INSERT INTO member (email, password, name)
-        VALUES (#{email}, #{password}, #{name})
+        INSERT INTO member (email, password, username)
+        VALUES (#{email}, #{password}, #{username})
     </insert>
 
     <!-- 로그인 -->
@@ -35,7 +35,7 @@
     <!-- 회원 정보 수정 -->
     <update id="update" parameterType="com.winebouti.vo.MemberVO">
         UPDATE member
-        SET password = #{password}, name = #{name}
+        SET password = #{password}, username = #{username}
         WHERE email = #{email}
     </update>
 </mapper>

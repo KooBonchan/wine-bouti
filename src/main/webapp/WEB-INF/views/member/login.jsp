@@ -8,13 +8,18 @@
 <body>
 
     <!-- 로그인한 상태일 때만 main-container 표시 -->
-    <c:if test="${not empty sessionScope.loginEmail}">
-        <div class="main-container">
-            <h2>${sessionScope.loginEmail} 님 환영합니다.</h2>
+ <!-- 로그인한 상태일 때만 main-container 표시 -->
+<c:if test="${not empty sessionScope.loginEmail}">
+    <div class="main-container_welcome">
+        <h2>${sessionScope.loginEmail} 님<br>
+         환영합니다.</h2>
+        <div class="button-container">
             <button class="action-btn" onclick="location.href = '<c:url value="/member/update" />'">내 정보 수정하기</button>
             <button class="action-btn" onclick="location.href = '<c:url value="/member/logout" />'">로그아웃</button>
         </div>
-    </c:if>
+    </div>
+</c:if>
+
 
     <!-- 로그인 폼 -->
     <c:if test="${empty sessionScope.loginEmail}">
@@ -22,10 +27,10 @@
             <h2>로그인</h2>
             <form action="<c:url value='/member/login'/>" method="post">
                 <p>
-                    <input type="text" name="memberEmail" placeholder="이메일" required>
+                    <input type="text" name="email" placeholder="이메일" required>
                 </p>
                 <p>
-                    <input type="password" name="memberPassword" placeholder="비밀번호" required>
+                    <input type="password" name="password" placeholder="비밀번호" required>
                 </p>
                 <p>
                     <input type="submit" value="로그인">
