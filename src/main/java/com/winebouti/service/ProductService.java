@@ -20,21 +20,14 @@ public interface ProductService {
 	// 상품 ID로 리뷰 리스트 조회
 	List<ReviewVO> getReviewsByProductId(long product_id);
 
-	// 레드 와인 리스트 조회
-	List<WineVO> findRedWines();
-
 	// 카테고리별 상품 리스트 조회
 	List<ProductVO> findProductsByCategory(String category);
     
     
 	
     /* 이창현  */
-    List<WineVO> getRedWines();
-	List<WineVO> getwhiteWine();
-	List<WineVO> getSparkleWine();
-	List<WineVO> getGiftWine();
-	List<WineVO> getpairingWine();
 
+    List<ProductVO> getRedWines();
     
 //	   // 상품 ID로 상품 조회
 //    public static ProductVO getProductById(long productId) {

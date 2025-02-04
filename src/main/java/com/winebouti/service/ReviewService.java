@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.winebouti.util.Criteria;
 import com.winebouti.vo.ReviewVO;
 
 @Service

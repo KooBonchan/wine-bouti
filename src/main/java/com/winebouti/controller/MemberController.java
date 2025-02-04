@@ -46,7 +46,9 @@ public class MemberController {
     }
 
     @PostMapping("login")
-    public String login(@ModelAttribute MemberVO memberVO, HttpSession session) { // @ModelAttribute로 MemberVO 객체를 바인딩
+    public String login(
+        @ModelAttribute MemberVO memberVO,
+        HttpSession session) { // @ModelAttribute로 MemberVO 객체를 바인딩
         boolean loginResult = memberService.login(memberVO);
         if (loginResult) {
             session.setAttribute("loginEmail", memberVO.getEmail()); // memberVO의 getEmail() 사용
@@ -63,12 +65,12 @@ public class MemberController {
         return "redirect:/member/login.tiles";
     }
 
-//    @GetMapping("/")
-//    public String findAll(Model model) {
-//        List<MemberVO> memberVOList = memberService.findAll(); // List<MemberVO>로 변경
-//        model.addAttribute("memberList", memberVOList);
-//        return "member/list.tiles";
-//    }
+    @GetMapping("/")
+    public String findAll(Model model) {
+        List<MemberVO> memberVOList = memberService.findAll(); // List<MemberVO>로 변경
+        model.addAttribute("memberList", memberVOList);
+        return "member/list.tiles";
+    }
 
     @GetMapping("/delete")
     public String delete(@RequestParam("memberId") Long memberId) {
