@@ -17,6 +17,8 @@ public class ProductVO {
     private String realDetailImageName;
     private int originalPrice;
     private boolean once;
+    
+    private WineVO wineDetails;
 
 }
 
