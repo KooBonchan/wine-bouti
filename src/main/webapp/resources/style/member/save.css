@@ -1,4 +1,4 @@
-/* Á¦¸ñ ½ºÅ¸ÀÏ */
+/* ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ */
 h2 {
     font-size: 28px;
     color: #2c3e50;
@@ -6,7 +6,7 @@ h2 {
     font-weight: 600;
 }
 
-/* ÀÔ·Â ÇÊµå ½ºÅ¸ÀÏ */
+/* ï¿½Ô·ï¿½ ï¿½Êµï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ */
 input[type="text"] {
     width: 100%;
     padding: 12px 15px;
@@ -16,23 +16,26 @@ input[type="text"] {
     font-size: 16px;
 }
 
-/* ÀÔ·Â ÇÊµå Ã¼Å© °á°ú ½ºÅ¸ÀÏ */
+/* ï¿½Ô·ï¿½ ï¿½Êµï¿½ Ã¼Å© ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ */
 #check-result {
     font-size: 14px;
     margin-top: 5px;
 }
 
-/* Ã¼Å© °á°ú ½ºÅ¸ÀÏ */
+/* Ã¼Å© ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ */
 #check-result.green {
     color: green;
 }
 
 #check-result.red {
-    color: #333; /* »¡°£»öÀ» #333À¸·Î º¯°æ */
+    color: #333; /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ #333ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
 }
 
-/* Á¦Ãâ ¹öÆ° ½ºÅ¸ÀÏ */
+/* ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½Å¸ï¿½ï¿½ */
 input[type="submit"] {
+	width: 100%;
+	margin-top:20px;
+	margin-bottom:20px;
     padding: 12px 20px;
     background-color: #808080;
     color: white;
@@ -44,11 +47,11 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background-color: #333; /* »¡°£»öÀ» #333À¸·Î º¯°æ */
+    background-color: #333; /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ #333ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
 }
 
 
-/* ÀÛÀº È­¸é¿¡¼­ÀÇ ½ºÅ¸ÀÏ Á¶Á¤ */
+/* ï¿½ï¿½ï¿½ï¿½ È­ï¿½é¿¡ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
 @media (max-width: 600px) {
     .form-container {
         width: 90%;
@@ -64,11 +67,11 @@ input[type="submit"]:hover {
 
 
 
-/* form-container Áß¾Ó Á¤·Ä */
+/* form-container ï¿½ß¾ï¿½ ï¿½ï¿½ï¿½ï¿½ */
 .form-container {
-       margin-top: 100px; /* À§ÂÊ ¿©¹éÀ» 100px·Î ¼³Á¤ */
-    margin-left: auto; /* ÁÂ¿ì Áß¾Ó Á¤·Ä */
-    margin-right: auto; /* ÁÂ¿ì Áß¾Ó Á¤·Ä */
+    margin-top: 100px; 
+    margin-left: auto;
+    margin-right: auto; 
     width: 100%;
     max-width: 400px;
     padding: 30px;
@@ -81,17 +84,19 @@ input[type="submit"]:hover {
 
 
 
-/* ·Î±×ÀÎ Æû ½ºÅ¸ÀÏ */
-.login-form-container {    top: 50%;          /* È­¸éÀÇ Áß°£ À§Ä¡ */
-    left: 50%;         /* È­¸éÀÇ Áß°£ À§Ä¡ */
-    transform: translate(-50%, -50%);  /* Áß¾Ó Á¤·ÄÀ» Á¤È®ÇÏ°Ô ¸ÂÃß±â À§ÇÑ º¯È¯ */
-    background-color: #fff;
+/* ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ */
+.login-form-container {           /* È­ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ ï¿½ï¿½Ä¡ */
+   margin-top: 200px; 
+    margin-left: auto;
+    margin-right: auto; 
+    width: 100%;
+    max-width: 400px;
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .login-form-container h2 {
@@ -100,26 +105,27 @@ input[type="submit"]:hover {
     color: #333;
 }
 
-/* ÀÔ·Â ÇÊµå ½ºÅ¸ÀÏ */
+/* ï¿½Ô·ï¿½ ï¿½Êµï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ */
 .login-form-container input[type="text"],
 .login-form-container input[type="password"] {
     width: 100%;
     padding: 12px;
-    margin: 10px 0;
+    margin: 5px 0;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
     transition: border 0.3s ease;
 }
 
-/* ÀÔ·Â ÇÊµå Æ÷Ä¿½º ½Ã ½ºÅ¸ÀÏ */
+/* ï¿½Ô·ï¿½ ï¿½Êµï¿½ ï¿½ï¿½Ä¿ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ */
 .login-form-container input[type="text"]:focus,
 .login-form-container input[type="password"]:focus {
     border-color: #333;
     outline: none;
+     padding: 12px;
 }
 
-/* Á¦Ãâ ¹öÆ° ½ºÅ¸ÀÏ */
+
 .login-form-container input[type="submit"] {
     width: 100%;
     padding: 12px;
@@ -132,12 +138,34 @@ input[type="submit"]:hover {
     transition: background-color 0.3s ease;
 }
 
-/* Á¦Ãâ ¹öÆ° È£¹ö ½Ã ½ºÅ¸ÀÏ */
+/* ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° È£ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ */
 .login-form-container input[type="submit"]:hover {
-    background-color: #333; /* »¡°£»öÀ» #333À¸·Î º¯°æ */
+    background-color: #333; /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ #333ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
 }
 
-/* ÀÛÀº È­¸é¿¡¼­ ÆûÀ» ´Ù·ç±â À§ÇÑ ¹İÀÀÇü µğÀÚÀÎ */
+
+/* íšŒì› ê°€ì… í…ìŠ¤íŠ¸ ìŠ¤íƒ€ì¼ */
+.login-form-container p {
+    font-size: 16px;
+    color: #333;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.login-form-container p a {
+    color: #0080ff; /* ë§í¬ ê¸°ë³¸ ìƒ‰ìƒ */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.login-form-container p a:hover {
+    color: #333; /* ë§ˆìš°ìŠ¤ë¥¼ ì˜¬ë ¸ì„ ë•Œ ìƒ‰ìƒ ë³€í™” */
+    text-decoration: underline;
+}
+
+
+/* ï¿½ï¿½ï¿½ï¿½ È­ï¿½é¿¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ù·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 @media (max-width: 600px) {
     .form-container, .login-form-container {
         padding: 20px;
@@ -145,7 +173,7 @@ input[type="submit"]:hover {
 
     
 
-/* ÄÜÅÙÃ÷ ¹Ú½º */
+/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ú½ï¿½ */
 .main-container {
     text-align: center;
     padding: 40px;
@@ -157,7 +185,7 @@ input[type="submit"]:hover {
     align-items: center;
 }
 
-/* Á¦¸ñ ½ºÅ¸ÀÏ */
+/* ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ */
 h2 {
     font-size: 28px;
     color: #2c3e50;
@@ -165,7 +193,7 @@ h2 {
     font-weight: 600;
 }
 
-/* Å×ÀÌºí ½ºÅ¸ÀÏ */
+/* ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ */
 .member-table {
     width: 100%;
     border-collapse: collapse;
@@ -189,7 +217,7 @@ h2 {
     color: #666;
 }
 
-/* °øÅë ¹öÆ° ½ºÅ¸ÀÏ */
+/* ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½Å¸ï¿½ï¿½ */
 .btn {
     padding: 6px 15px;
     font-size: 14px;
@@ -204,21 +232,21 @@ h2 {
     background-color: #555;
 }
 
-/* Á¶È¸ ¹öÆ° */
+/* ï¿½ï¿½È¸ ï¿½ï¿½Æ° */
 .btn-view {
     background-color: #808080;
 }
 
-/* »èÁ¦ ¹öÆ° */
+/* ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° */
 .btn-delete {
-    background-color: #333; /* »¡°£»öÀ» #333À¸·Î º¯°æ */
+    background-color: #333; /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ #333ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
 }
 
 .btn-delete:hover {
-    background-color: #333; /* »¡°£»öÀ» #333À¸·Î º¯°æ */
+    background-color: #333; /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ #333ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
 }
 
-/* ¸µÅ© ½ºÅ¸ÀÏ (È¸¿ø ÀÌ¸ŞÀÏ Å¬¸¯ ½Ã) */
+/* ï¿½ï¿½Å© ï¿½ï¿½Å¸ï¿½ï¿½ (È¸ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ ï¿½ï¿½) */
 .member-link {
     color: #808080;
     text-decoration: none;
@@ -232,7 +260,7 @@ h2 {
     background-color: transparent;
 }
 
-/* ¸ğ¹ÙÀÏ ´ëÀÀ */
+/* ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
 @media (max-width: 600px) {
     .main-container {
         padding: 25px;

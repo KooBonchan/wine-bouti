@@ -63,12 +63,12 @@ public class MemberController {
         return "redirect:/member/login.tiles";
     }
 
-//    @GetMapping("/")
-//    public String findAll(Model model) {
-//        List<MemberVO> memberVOList = memberService.findAll(); // List<MemberVO>로 변경
-//        model.addAttribute("memberList", memberVOList);
-//        return "member/list.tiles";
-//    }
+    @GetMapping("/")
+    public String findAll(Model model) {
+        List<MemberVO> memberVOList = memberService.findAll(); // List<MemberVO>로 변경
+        model.addAttribute("memberList", memberVOList);
+        return "member/list.tiles";
+    }
 
     @GetMapping("/delete")
     public String delete(@RequestParam("memberId") Long memberId) {

@@ -52,7 +52,7 @@
         
           <div class="icon-wrapper">
     <div class="iconlogin">
-        <a href="<c:url value='/'/>">
+     <a href="<c:url value='/member/login'/>">
             <img src="<c:url value='/resources/images/icon/login.png'/>" alt="로그인 아이콘" />
         </a>
     </div>
