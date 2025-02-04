@@ -309,3 +309,22 @@ VALUES
 (18, 18),
 (19, 19),
 (20, 20);
+
+
+-- present_set 카테고리 상품 삽입
+INSERT INTO Product (category, korean_name, product_image_name, real_product_image_name, detail_image_name, real_detail_image_name, original_price, once)
+VALUES
+('present_set', '선물 세트 1', 'present_set1.jpg', 'present_set1_real.jpg', 'present_set1_detail.jpg', 'present_set1_detail_real.jpg', 50000, TRUE),
+('present_set', '선물 세트 2', 'present_set2.jpg', 'present_set2_real.jpg', 'present_set2_detail.jpg', 'present_set2_detail_real.jpg', 60000, FALSE),
+('present_set', '선물 세트 3', 'present_set3.jpg', 'present_set3_real.jpg', 'present_set3_detail.jpg', 'present_set3_detail_real.jpg', 70000, TRUE),
+('present_set', '선물 세트 4', 'present_set4.jpg', 'present_set4_real.jpg', 'present_set4_detail.jpg', 'present_set4_detail_real.jpg', 75000, FALSE),
+('present_set', '선물 세트 5', 'present_set5.jpg', 'present_set5_real.jpg', 'present_set5_detail.jpg', 'present_set5_detail_real.jpg', 80000, TRUE);
+
+-- pairing 카테고리 상품 삽입
+INSERT INTO Product (category, korean_name, product_image_name, real_product_image_name, detail_image_name, real_detail_image_name, original_price, once)
+VALUES
+('pairing', '페어링 세트 1', 'pairing_set1.jpg', 'pairing_set1_real.jpg', 'pairing_set1_detail.jpg', 'pairing_set1_detail_real.jpg', 45000, TRUE),
+('pairing', '페어링 세트 2', 'pairing_set2.jpg', 'pairing_set2_real.jpg', 'pairing_set2_detail.jpg', 'pairing_set2_detail_real.jpg', 50000, FALSE),
+('pairing', '페어링 세트 3', 'pairing_set3.jpg', 'pairing_set3_real.jpg', 'pairing_set3_detail.jpg', 'pairing_set3_detail_real.jpg', 55000, TRUE),
+('pairing', '페어링 세트 4', 'pairing_set4.jpg', 'pairing_set4_real.jpg', 'pairing_set4_detail.jpg', 'pairing_set4_detail_real.jpg', 60000, FALSE),
+('pairing', '페어링 세트 5', 'pairing_set5.jpg', 'pairing_set5_real.jpg', 'pairing_set5_detail.jpg', 'pairing_set5_detail_real.jpg', 65000, TRUE);

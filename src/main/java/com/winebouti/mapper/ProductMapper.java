@@ -15,9 +15,9 @@ public interface ProductMapper {
 
   
   /* 이창현 */
-  List<WineVO> findRedWines();
-	List<WineVO> findWhiteWines();
-	List<WineVO> findSparkleWines();
-	List<WineVO> findGiftWines();
-	List<WineVO> findpairingWines();
+  
+  List<ProductVO> selectProductList(String category);
+  List<ProductVO> selectWineListByType(String category);
+  
+  
 }
