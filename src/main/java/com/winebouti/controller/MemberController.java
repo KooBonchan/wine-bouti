@@ -84,7 +84,7 @@ public class MemberController {
         String loginEmail = (String) session.getAttribute("loginEmail");
         MemberVO memberVO = memberService.findByMemberEmail(loginEmail); // 변수명 memberVO로 통일
         model.addAttribute("member", memberVO);
-        return "update.tiles";
+        return "member/update.tiles";
     }
 
     @PostMapping("/update")
