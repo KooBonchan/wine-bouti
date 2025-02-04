@@ -34,6 +34,7 @@ public interface ProductService {
 	List<WineVO> getSparkleWine();
 	List<WineVO> getGiftWine();
 	List<WineVO> getpairingWine();
+
     
 //	   // 상품 ID로 상품 조회
 //    public static ProductVO getProductById(long productId) {

@@ -2,11 +2,14 @@ package com.winebouti.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,48 +18,41 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.winebouti.service.ReviewService;
+import com.winebouti.util.Criteria;
+import com.winebouti.util.PageMaker;
 import com.winebouti.vo.ReviewVO;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
 @Controller
 @Log4j
 @RequestMapping("review")
+@RequiredArgsConstructor
 public class ReviewController {
 
-	@Autowired
-	private ReviewService reviewService;
-	private ReviewVO reviewvo;
+	private final ReviewService reviewService;
 	private String uploadFolder = "C:/upload/review/";
 
-    // 리뷰 상세 조회
-	@GetMapping("/detail/{reviewId}")
-	public String reviewDetail(@PathVariable long reviewId, Model model) {
-	    ReviewVO review = reviewService.getReviewById(reviewId);
-	    
-	    if (review == null) {
-	        return "redirect:/review/list"; // 리뷰가 없으면 목록 페이지로 이동
-	    }
-
-	    model.addAttribute("review", review);
-	    return "review/detail.tiles"; // 리뷰 상세 페이지로 이동
-	}
-    
-    @GetMapping("/list")
-    public String listReviews(Model model) {
-        List<ReviewVO> reviews = reviewService.getAllReviews();
-        model.addAttribute("reviews", reviews);
-        return "review/list.tiles"; // 타일즈 사용 시
+	// 특정 productId의 리뷰 목록 조회 (AJAX 비동기 요청 지원)
+    @GetMapping("/{productId}")
+    public ResponseEntity<List<ReviewVO>> getReviewsByProduct(@PathVariable("productId") long productId) {
+        List<ReviewVO> reviews = reviewService.getReviewsByProductId(productId);
+        return new ResponseEntity<>(reviews, HttpStatus.OK);
     }
+	 
 
     // 리뷰 작성
     @GetMapping("/write")
-    public String writeReviewPage(@RequestParam(value = "productId", required = false, defaultValue = "0") Integer productId, 
+    public String writeReviewPage(
+    		@RequestParam(value = "productId", required = false, defaultValue = "0") Integer productId, 
                                   Model model) {
         model.addAttribute("productId", productId);
         return "product/review.tiles";

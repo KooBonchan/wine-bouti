@@ -28,6 +28,7 @@ public class ReviewVO {
 	private Date updateDate;
 	private long purchaseId;
 	
+	
 	private String imagePath; //이미지경로
 	
 
