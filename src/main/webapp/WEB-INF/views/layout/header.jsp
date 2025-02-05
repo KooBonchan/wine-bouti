@@ -36,7 +36,7 @@
             </li>
             <li><a href="#">고객센터</a>
                 <ul class="submenu">
-                  <li><a href="<c:url value='/md/hello' />">회사정보</a></li>
+                  <li><a href="<c:url value='/greet' />">회사정보</a></li>
                     <li><a href="#">FAQ</a></li>
                     <li><a href="#">문의</a></li>
                     <li><a href="#">배송</a></li>

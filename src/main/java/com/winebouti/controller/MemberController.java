@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -99,6 +100,15 @@ public class MemberController {
         }
     }
 
+    @RequestMapping(value = "/member/update", method = RequestMethod.POST)
+    public String updateMember(MemberVO member, RedirectAttributes redirectAttributes) {
+        boolean result = memberService.update(member);
+        if (result) {
+            redirectAttributes.addFlashAttribute("updateSuccess", true);
+        }
+        return "redirect:/member/updatePage"; // update.jsp를 다시 불러오는 경로
+    }
+    
     @PostMapping("/email-check")
     public @ResponseBody String emailCheck(@RequestParam("memberEmail") String memberEmail) {
         System.out.println("memberEmail = " + memberEmail);
