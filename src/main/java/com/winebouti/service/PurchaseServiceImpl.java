@@ -1,6 +1,7 @@
 package com.winebouti.service;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,8 +31,12 @@ public class PurchaseServiceImpl implements PurchaseService {
 	public List<PurchaseVO> getPurchaseListByMember(MemberVO memberVO){
 		return purchaseMapper.findByMemberId(memberVO.getMemberId());
 	}
-	public PurchaseVO getPurchase(long id) {
-		return purchaseMapper.findById(id);
+	
+	public PurchaseVO getPurchase(String uuid) {
+	  return getPurchase(UUID.fromString(uuid));
+	}
+	public PurchaseVO getPurchase(UUID uuid) {
+		return purchaseMapper.findById(uuid);
 	}
 	
 	@Transactional
