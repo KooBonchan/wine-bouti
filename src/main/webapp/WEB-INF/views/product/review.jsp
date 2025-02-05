@@ -147,8 +147,8 @@ input[type="file"] {
 			action="${pageContext.request.contextPath}/review/write"
 			method="post" enctype="multipart/form-data">
 			<input type="hidden" name="productId" value="${param.productId}">
-			<input type="hidden" name="memberId"
-				value="${sessionScope.loggedInUserId}">
+			<%-- <input type="hidden" name="memberId" value="${sessionScope.loggedInUserId}"> --%>
+			<input type="hidden" name="memberId" value="3">
 
 
 			<div class="title-rating">
@@ -194,19 +194,32 @@ input[type="file"] {
     document.getElementById("reviewForm").addEventListener("submit", function(event) {
         event.preventDefault(); // 기본 폼 제출 방지
         
+        let productIdElement = document.querySelector('input[name="productId"]');
+        let productId = productIdElement ? productIdElement.value : null;
+
+        let memberIdElement = document.querySelector('input[name="memberId"]');
+        let memberId = memberIdElement ? memberIdElement.value : null;
+        
         let title = document.getElementById("title").value;
         let content = document.getElementById("content").value;
         let rating = document.querySelector('input[name="star"]:checked')?.value;
         let image = document.getElementById("imageUpload").files[0];
+        
 
         if (!title || !content || !rating) {
             alert("모든 필드를 채워주세요.");
             return;
         }
+        
+        let formData = new FormData();
+        formData.append("productId", productId);
+        formData.append("memberId", memberId);
+        formData.append("title", title);
+        formData.append("content", content);
+        formData.append("star", rating);
 
         // 이미지가 있으면 먼저 업로드 (Ajax)
         if (image) {
-            let formData = new FormData();
             formData.append("uploadFile", image);
 
             $.ajax({
@@ -235,27 +248,32 @@ input[type="file"] {
     });
 
     // 서버로 리뷰 데이터 전송
-    function sendReviewData(title, content, rating, fileData) {
-        let reviewData = {
-            title: title,
-            content: content,
-            rating: rating,
-            file: fileData // 업로드된 파일 정보 (없으면 null)
-        };
+		let formData = new FormData();
+		formData.append("productId", productId);  // ✅ productId 추가
+		formData.append("memberId", memberId);    // ✅ memberId 추가
+		formData.append("content", content);
+		formData.append("star", rating);
+		
+		if (image) {
+		    formData.append("file", image);  // ✅ 파일 추가
+		}
+		
+		$.ajax({
+		    url: "/review/write",
+		    type: "POST",
+		    data: formData,
+		    processData: false,  // 🚀 `FormData` 사용 시 필수
+		    contentType: false,  // 🚀 `FormData` 사용 시 필수
+		    success: function(response) {
+		        alert("리뷰가 성공적으로 등록되었습니다!");
+		        window.location.href = "/product/details/" + productId;
+		    },
+		    error: function(xhr) {
+		        console.error("리뷰 등록 실패:", xhr.responseText);
+		        alert("리뷰 등록 중 오류가 발생했습니다.");
+		    }
+		});
 
-        $.ajax({
-            url: "/winebouti/review/add", //  리뷰 저장을 처리하는 백엔드 API
-            type: "POST",
-            contentType: "application/json",
-            data: JSON.stringify(reviewData),
-            success: function (response) {
-                alert("리뷰가 성공적으로 등록되었습니다!");
-                window.location.reload();
-            },
-            error: function (xhr) {
-                console.error("리뷰 등록 실패:", xhr.responseText);
-            }
-        });
     }
 
     //  이미지 미리보기 기능 
