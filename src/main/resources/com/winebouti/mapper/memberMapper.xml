@@ -2,12 +2,63 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.winebouti.mapper.MemberMapper">
-    <insert id="save" parameterType="com.winebouti.vo.MemberVO">
-        INSERT INTO member (email, password, username)
-        VALUES (#{email}, #{password}, #{username})
-    </insert>
+	<resultMap id="MemberResultMap" type="com.winebouti.vo.MemberVO">
+	    <id property="memberId" column="member_id"/>
+	    <result property="username" column="username"/>
+	    <result property="password" column="password"/>
+	    <result property="email" column="email"/>
+	    <result property="address" column="address"/>
+	    <result property="zipcode" column="zipcode"/>
+	    <result property="profileImageName" column="profile_image_name"/>
+	    <result property="realProfileImageName" column="real_profile_image_name"/>
+	    
+	    <!-- AuthVO 리스트를 위한 SubResultMap -->
+	    <collection property="auths" ofType="com.winebouti.vo.AuthVO">
+	        <result property="username" column="username"/>
+	        <result property="auth" column="auth"/>
+	    </collection>
+	</resultMap>
 
-    <!-- 로그인 -->
+
+    <insert id="save" parameterType="com.winebouti.vo.MemberVO">
+        INSERT INTO member (email, password, username, address, zipcode)
+        VALUES (#{email}, #{password}, #{username}, #{address}, #{zipcode})
+    </insert>
+    <!-- 회원 정보 수정 -->
+    <update id="update" parameterType="com.winebouti.vo.MemberVO">
+        UPDATE member
+        SET
+        	username = #{username},
+        	address = #{address},
+        	zipcode = #{zipcode}
+        WHERE email = #{email} and password = #{password}
+    </update>
+    <insert id="grantAuth" parameterType="com.winebouti.vo.MemberVO">
+        INSERT INTO auth (auth, username)
+        VALUES ('user', #{username})
+    </insert>
+    
+
+
+    <!-- 회원 삭제 -->
+    <delete id="delete" parameterType="long">
+        DELETE FROM member WHERE id = #{id}
+    </delete>
+
+    <!-- 이메일로 회원 조회 -->
+    <select id="findByMemberEmail" resultMap="MemberResultMap" parameterType="String">
+	    SELECT m.member_id, m.username, m.password, m.email, m.address, m.zipcode, 
+	           m.profile_image_name, m.real_profile_image_name, 
+	           a.auth
+	    FROM member m
+	    LEFT JOIN auth a ON m.username = a.username
+	    WHERE m.email = #{loginEmail}
+	</select>
+
+
+    <!-- ##################################################### -->
+    
+        <!-- 로그인 -->
     <select id="login" resultType="com.winebouti.vo.MemberVO" parameterType="com.winebouti.vo.MemberVO">
         SELECT * FROM member WHERE email = #{email} AND password = #{password}
     </select>
@@ -21,21 +72,4 @@
     <select id="findById" resultType="com.winebouti.vo.MemberVO" parameterType="long">
         SELECT * FROM member WHERE id = #{id}
     </select>
-
-    <!-- 회원 삭제 -->
-    <delete id="delete" parameterType="long">
-        DELETE FROM member WHERE id = #{id}
-    </delete>
-
-    <!-- 이메일로 회원 조회 -->
-    <select id="findByMemberEmail" resultType="com.winebouti.vo.MemberVO" parameterType="String">
-        SELECT * FROM member WHERE email = #{loginEmail}
-    </select>
-
-    <!-- 회원 정보 수정 -->
-    <update id="update" parameterType="com.winebouti.vo.MemberVO">
-        UPDATE member
-        SET password = #{password}, username = #{username}
-        WHERE email = #{email}
-    </update>
 </mapper>

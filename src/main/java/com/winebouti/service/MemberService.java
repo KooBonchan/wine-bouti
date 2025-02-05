@@ -6,7 +6,7 @@ import com.winebouti.vo.MemberVO;
 public interface MemberService {
 
     // 회원 저장
-    public int save(MemberVO memberVO);
+    public void save(MemberVO memberVO);
 
     // 로그인 처리
     public boolean login(MemberVO memberVO);

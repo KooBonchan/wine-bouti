@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,12 +21,13 @@ import com.winebouti.service.MemberService;
 import com.winebouti.vo.MemberVO;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j;
 
 @Controller
 @RequestMapping("member")
 @RequiredArgsConstructor
+@Log4j
 public class MemberController {
-
     private final MemberService memberService;
 
     @GetMapping("save")
@@ -34,10 +37,13 @@ public class MemberController {
 
     @PostMapping("save")
     public String save(@ModelAttribute MemberVO memberVO, RedirectAttributes redirectAttributes) {
-        int saveResult = memberService.save(memberVO);
-        if (saveResult > 0) {
-            return "redirect:/member/login.tiles";
-        } else {
+        try {
+        	memberService.save(memberVO);
+        	return "redirect:/member/login.tiles";
+        }
+        catch(Exception e) {
+        	log.error(e.getMessage());
+        	 log.error("회원 저장에 실패했습니다."); // 예외 처리
             redirectAttributes.addFlashAttribute("error", "회원 저장에 실패했습니다. 다시 시도해 주세요.");
             return "redirect:/member/save.tiles";
         }
@@ -49,18 +55,18 @@ public class MemberController {
         return "member/login.tiles";
     }
 
-    @PostMapping("login")
-    public String login(
-        @ModelAttribute MemberVO memberVO,
-        HttpSession session) { // @ModelAttribute로 MemberVO 객체를 바인딩
-        boolean loginResult = memberService.login(memberVO);
-        if (loginResult) {
-            session.setAttribute("loginEmail", memberVO.getEmail()); // memberVO의 getEmail() 사용
-            return "redirect:/";
-        } else {
-            return "redirect:/member/login";
-        }
-    }
+//    @PostMapping("login")
+//    public String login(
+//        @ModelAttribute MemberVO memberVO,
+//        HttpSession session) { // @ModelAttribute로 MemberVO 객체를 바인딩
+//        boolean loginResult = memberService.login(memberVO);
+//        if (loginResult) {
+//            session.setAttribute("loginEmail", memberVO.getEmail()); // memberVO의 getEmail() 사용
+//            return "redirect:/";
+//        } else {
+//            return "redirect:/member/login";
+//        }
+//    }
 
     // logout
     @GetMapping("/logout")
@@ -82,11 +88,9 @@ public class MemberController {
         return "redirect:/member/login.tiles";
     }
 
+    @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @GetMapping("/update")
-    public String updateForm(HttpSession session, Model model) {
-        String loginEmail = (String) session.getAttribute("loginEmail");
-        MemberVO memberVO = memberService.findByMemberEmail(loginEmail); // 변수명 memberVO로 통일
-        model.addAttribute("member", memberVO);
+    public String updateForm(Model model) {
         return "member/update.tiles";
     }
 

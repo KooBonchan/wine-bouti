@@ -161,7 +161,7 @@ button.prev:hover, button.next:hover {
     text-align: center;
     margin: 20px auto; /* 상하 여백 */
     flex-wrap: wrap; /* 줄 바꿈이 가능하도록 설정 */
-    max-width: 1300px; /* 부모의 너비를 벗어나지 않도록 설정 */
+    width: 1250px;
  	margin-bottom:55px;
 }
 
@@ -276,7 +276,8 @@ button.prev:hover, button.next:hover {
 /* shop 스타일 */
 @media screen and (max-width: 1250px) {
 .container{
-    margin: 20px 100px; /* 상하 여백 */
+    margin: 20px auto; /* 상하 여백 */
+    width: 900px;
 }
 .shop {
     border: none;
