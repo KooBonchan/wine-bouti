@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.winebouti.service.ReviewService;
+import com.winebouti.util.FileUtils;
 import com.winebouti.vo.ReviewVO;
 
 import lombok.RequiredArgsConstructor;
@@ -31,7 +32,7 @@ import lombok.extern.log4j.Log4j;
 public class ReviewController {
 
 	private final ReviewService reviewService;
-	private String uploadFolder = "C:/upload/review/";
+	private final File uploadFolder = new File(FileUtils.BASE_PATH, "review");
 
 	// 특정 productId의 리뷰 목록 조회 (AJAX 비동기 요청 지원)
     @GetMapping("/{productId}")
@@ -69,8 +70,7 @@ public class ReviewController {
 
         // 업로드된 파일이 있으면 저장
         if (file != null && !file.isEmpty()) {
-            String uploadDir = "C:/upload/review/";
-            File uploadFolder = new File(uploadDir);
+            
             if (!uploadFolder.exists()) {
                 uploadFolder.mkdirs(); // 폴더가 없으면 생성
             }
@@ -78,7 +78,7 @@ public class ReviewController {
             try {
                 String originalFilename = file.getOriginalFilename();
                 String uniqueFilename = UUID.randomUUID().toString() + "_" + originalFilename;
-                File destFile = new File(uploadDir + uniqueFilename);
+                File destFile = new File(uploadFolder, uniqueFilename);
                 file.transferTo(destFile);
                 review.setImagePath(uniqueFilename); // 저장된 파일명을 DB에 저장
             } catch (IOException e) {
@@ -86,10 +86,7 @@ public class ReviewController {
                 redirectAttributes.addFlashAttribute("error", "파일 업로드 중 오류 발생!");
                 return "redirect:/review/write";
             }
-            
-            
         }
-
         // 리뷰 저장
         reviewService.insertReview(review);
         redirectAttributes.addFlashAttribute("message", "리뷰가 성공적으로 등록되었습니다!");

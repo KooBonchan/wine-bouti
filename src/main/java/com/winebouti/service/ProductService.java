@@ -2,13 +2,8 @@ package com.winebouti.service;
 
 import java.util.List;
 
-import org.apache.ibatis.session.SqlSession;
-
-import com.winebouti.mapper.ProductMapper;
-import com.winebouti.util.MyBatisUtil;
 import com.winebouti.vo.ProductVO;
 import com.winebouti.vo.ReviewVO;
-import com.winebouti.vo.WineVO;
 
 public interface ProductService {
 	/* 양정민  */
@@ -25,15 +20,7 @@ public interface ProductService {
     
     
 	
-    /* 이창현  */
+  /* 이창현  */
 
-    List<ProductVO> getRedWines();
-    
-//	   // 상품 ID로 상품 조회
-//    public static ProductVO getProductById(long productId) {
-//        try (SqlSession session = MyBatisUtil.getSqlSession()) {
-//            ProductMapper mapper = session.getMapper(ProductMapper.class);
-//            return mapper.getProductById(productId);
-//        }
-//    }
+  List<ProductVO> getRedWines();
 }

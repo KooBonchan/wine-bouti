@@ -1,6 +1,9 @@
 package com.winebouti.controller;
 
-import static com.winebouti.util.FileUtils.*;
+import static com.winebouti.util.FileUtils.BASE_PATH;
+import static com.winebouti.util.FileUtils.THUMBNAIL_FOLDER;
+import static com.winebouti.util.FileUtils.decodeImagePath;
+import static com.winebouti.util.FileUtils.decodeRealFileName;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,8 +17,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.winebouti.util.FileUtils;
 
 import lombok.extern.log4j.Log4j;
 
