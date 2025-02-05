@@ -91,9 +91,10 @@ public class MemberController {
     }
 
     @PostMapping("/update")
-    public String update(@ModelAttribute MemberVO memberVO) { // @ModelAttribute로 MemberVO 객체를 바인딩
+    public String update(@ModelAttribute MemberVO memberVO, RedirectAttributes attributes) { // @ModelAttribute로 MemberVO 객체를 바인딩
         boolean result = memberService.update(memberVO);
         if (result) {
+        	attributes.addFlashAttribute("message", "회원정보가 수정되었습니다.");
             return "redirect:/"; // memberVO의 getMemberId() 사용
         } else {
         	return "redirect:/member/update";

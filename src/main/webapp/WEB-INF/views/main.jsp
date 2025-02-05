@@ -238,6 +238,7 @@
 </div>
     <div class="title shop-price">50,000원</div>
 </div>
+</div>
 
 <!--  -->
 
@@ -262,6 +263,14 @@
 		</div>
 	</div>
 </div>
+
+
+<!-- 모달 메시지 -->
+<c:if test="${not empty message}">
+    <script>
+       alert("<c:out value='${message}' />");
+    </script>
+</c:if>
 
 
 <script src="<c:url value='/resources/js/component/image-slider.js' />"></script>

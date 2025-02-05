@@ -150,7 +150,12 @@ header {
     margin-right: 25px; /* 두 아이콘 사이의 간격 조정 */
 }
 
-.iconlogin img, .iconcart img {
+.iconlogin img {
+    width: auto;  /* 아이콘 크기 줄이기 */
+    height: 24px;  /* 비율에 맞춰 높이 자동 조정 */
+}
+
+.iconcart img {
     width: 24px;  /* 아이콘 크기 줄이기 */
     height: auto;  /* 비율에 맞춰 높이 자동 조정 */
 }

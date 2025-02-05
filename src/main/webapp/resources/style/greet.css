@@ -26,18 +26,20 @@
 	    justify-content: center; /* 가로 중앙 정렬 */
 	    align-items: center; /* 세로 중앙 정렬 */
 	}
-        .card {
-            width: 180px;
-            height: 350px;
-            background-color: #f0f0f0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            border-radius: 10px;
-            text-align: center;
-            padding: 15px;
-        }
+	       .card {
+	    width: 180px;
+	    height: 350px;
+	    background-color: #f0f0f0;
+	    display: flex;
+	    flex-direction: column;
+	    justify-content: center;
+	    align-items: center;
+	    border-radius: 10px;
+	    text-align: center;
+	    padding: 15px;
+	}
+	
+
         .work ul {
             list-style: none;
             padding: 0;
@@ -52,6 +54,14 @@
     line-height: 20px; /* 텍스트를 중앙 정렬 */
 }
 
-	.qr_code{
-		margin-top:20px; 
-	}
+.qr_code {
+    margin-top: 20px;
+    transition: transform 0.3s ease; /* 부드러운 변화를 위해 트랜지션 효과 추가 */
+    display: block; /* 이미지가 block으로 동작하도록 설정 */
+    margin-left: auto; /* 가로 중앙 정렬 */
+    margin-right: auto; /* 가로 중앙 정렬 */
+}
+
+.qr_code:hover {
+    transform: scale(1.1) !important; 
+}
