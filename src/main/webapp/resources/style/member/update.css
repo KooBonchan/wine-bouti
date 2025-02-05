@@ -1,0 +1,42 @@
+.title {
+    text-align: center; /* 텍스트 중앙 정렬 */
+    font-size: 18px; /* 폰트 크기 조정 */
+    font-weight: bold; /* 볼드 처리 */
+    margin: 20px 0; /* 상하 마진 추가 */
+}
+
+.main-container_update {
+	margin-top: 150px; 
+    margin-left: auto;
+    margin-right: auto; 
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+input[type="button"] {
+    width: 100%;
+    padding: 10px;
+    background: #808080;    
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    color: white;
+}
+
+input[type="button"]:hover {
+    background: #333;
+  	color: white;
+}

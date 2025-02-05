@@ -53,9 +53,9 @@ public class MemberController {
         boolean loginResult = memberService.login(memberVO);
         if (loginResult) {
             session.setAttribute("loginEmail", memberVO.getEmail()); // memberVO의 getEmail() 사용
-            return "main.tiles";
+            return "redirect:/";
         } else {
-            return "member/login.tiles";
+            return "redirect:/member/login";
         }
     }
 
@@ -91,9 +91,9 @@ public class MemberController {
     public String update(@ModelAttribute MemberVO memberVO) { // @ModelAttribute로 MemberVO 객체를 바인딩
         boolean result = memberService.update(memberVO);
         if (result) {
-            return "redirect:/member?memberId=" + memberVO.getMemberId(); // memberVO의 getMemberId() 사용
+            return "redirect:/"; // memberVO의 getMemberId() 사용
         } else {
-            return "index.tiles";
+        	return "redirect:/member/update";
         }
     }
 
