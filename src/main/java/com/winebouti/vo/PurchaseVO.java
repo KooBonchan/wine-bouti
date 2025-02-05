@@ -1,16 +1,33 @@
 package com.winebouti.vo;
 
 import java.util.List;
+import java.util.UUID;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Getter @Setter @ToString
+@Getter @ToString
+@AllArgsConstructor
 public class PurchaseVO {
-	private long purchaseId;
+	private UUID purchaseId;
 	private long memberId;
 	private String address;
-	private long totalAmount;
-	private List<PurchaseProductVO> products;
+	private String orderName;
+	private Set<PurchaseProductVO> products;
+	
+	@Setter private long totalPrice;
+  
+	@Builder
+	public PurchaseVO(long memberId, String address, 
+      List<PurchaseProductVO> products, String orderName) {
+    this.purchaseId = UUID.randomUUID();
+    this.memberId = memberId;
+    this.address = address;
+    this.products = products;
+    this.orderName = orderName;
+  }
 }

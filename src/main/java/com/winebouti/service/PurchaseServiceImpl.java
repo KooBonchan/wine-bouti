@@ -36,8 +36,8 @@ public class PurchaseServiceImpl implements PurchaseService {
 	
 	@Transactional
 	public void storePurchaseInfo(PurchaseVO purchaseVO) throws ArithmeticException {
-		if(purchaseVO.getTotalAmount() <= 0) {
-			purchaseVO.setTotalAmount(calculateTotalAmount(purchaseVO));
+		if(purchaseVO.getTotalPrice() <= 0) {
+			purchaseVO.setTotalPrice(calculateTotalAmount(purchaseVO));
 		}
 		purchaseMapper.insertMetadata(purchaseVO);
 		purchaseMapper.insertProductList(purchaseVO);
