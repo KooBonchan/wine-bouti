@@ -93,7 +93,9 @@ public class MemberController {
     public String updateForm(Model model) {
         return "member/update.tiles";
     }
-
+    
+    
+    @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @PostMapping("/update")
     public String update(@ModelAttribute MemberVO memberVO, RedirectAttributes attributes) { // @ModelAttribute로 MemberVO 객체를 바인딩
         boolean result = memberService.update(memberVO);
@@ -104,15 +106,6 @@ public class MemberController {
         	return "redirect:/member/update";
         }
     }
-
-    @RequestMapping(value = "/member/update", method = RequestMethod.POST)
-    public String updateMember(MemberVO member, RedirectAttributes redirectAttributes) {
-        boolean result = memberService.update(member);
-        if (result) {
-            redirectAttributes.addFlashAttribute("updateSuccess", true);
-        }
-        return "redirect:/member/updatePage"; // update.jsp를 다시 불러오는 경로
-    }
     
     @PostMapping("/email-check")
     public @ResponseBody String emailCheck(@RequestParam("memberEmail") String memberEmail) {
@@ -120,4 +113,9 @@ public class MemberController {
         String checkResult = memberService.emailCheck(memberEmail);
         return checkResult;
     }
+    
+    
+    @Secured({"ROLE_USER", "ROLE_ADMIN"})
+    @GetMapping("/mypage")
+    public String mypage() {return "member/mypage.tiles";}
 }

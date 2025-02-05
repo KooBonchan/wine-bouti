@@ -9,7 +9,7 @@
 		<!-- <security:access-denied-handler ref="customAccessDenied" /> -->
         <security:form-login login-page="/member/login" username-parameter="email"
         	login-processing-url="/member/login"/>
-        <security:logout invalidate-session="true" />
+        <security:logout  invalidate-session="true" />
         
         <security:csrf disabled="true"/>
     </security:http>
