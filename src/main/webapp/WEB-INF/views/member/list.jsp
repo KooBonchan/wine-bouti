@@ -12,12 +12,14 @@
         <table class="member-table">
             <thead>
                 <tr>
-                    <th>id</th>
+                    <th>memberId</th>
+                    <th>username</th>
+   					<th>password</th>
                     <th>email</th>
-                    <th>password</th>
-                    <th>name</th>
-                    <th>age</th>
-                    <th>mobile</th>
+                    <th>address</th>
+                    <th>zipcode</th>
+        <!--             <th>profileImageName</th>
+                    <th>realProfileImageName</th> -->
                     <th>조회</th>
                     <th>삭제</th>
                 </tr>
@@ -27,12 +29,14 @@
                     <tr>
                         <td>${member.memberId}</td>
                         <td>
-                            <a href="<c:url value='/ex01/member?memberId=${member.memberId}' />" class="member-link">${member.memberEmail}</a>
+                            <a href="<c:url value='/ex01/member?memberId=${member.memberId}' />" class="member-link">${member.email}</a>
                         </td>
-                        <td>${member.memberPassword}</td>
-                        <td>${member.memberName}</td>
-                        <td>${member.memberAge}</td>
-                        <td>${member.memberMobile}</td>
+                        <td>${member.username}</td>
+                        <td>${member.Password}</td>
+                        <td>${member.address}</td>
+                        <td>${member.zipcode}</td>
+   <%--                      <td>${member.profileImageName}</td>
+                        <td>${member.realProfileImageName}</td> --%>
                         <td>
                             <a href="<c:url value='/ex01/member?memberId=${member.memberId}' />" class="btn btn-view">조회</a>
                         </td>

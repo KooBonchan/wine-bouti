@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.winebouti.service.MemberService;
 import com.winebouti.vo.MemberVO;
@@ -31,14 +32,16 @@ public class MemberController {
     }
 
     @PostMapping("save")
-    public String save(@ModelAttribute MemberVO memberVO) { // @ModelAttribute로 MemberVO 객체를 바인딩
+    public String save(@ModelAttribute MemberVO memberVO, RedirectAttributes redirectAttributes) {
         int saveResult = memberService.save(memberVO);
         if (saveResult > 0) {
             return "redirect:/member/login.tiles";
         } else {
+            redirectAttributes.addFlashAttribute("error", "회원 저장에 실패했습니다. 다시 시도해 주세요.");
             return "redirect:/member/save.tiles";
         }
     }
+
 
     @GetMapping("login")
     public String loginForm() {
@@ -83,7 +86,7 @@ public class MemberController {
         String loginEmail = (String) session.getAttribute("loginEmail");
         MemberVO memberVO = memberService.findByMemberEmail(loginEmail); // 변수명 memberVO로 통일
         model.addAttribute("member", memberVO);
-        return "update.tiles";
+        return "member/update.tiles";
     }
 
     @PostMapping("/update")

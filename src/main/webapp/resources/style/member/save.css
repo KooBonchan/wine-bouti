@@ -7,7 +7,9 @@ h2 {
 }
 
 /* �Է� �ʵ� ��Ÿ�� */
-input[type="text"] {
+input[type="text"],
+input[type="password"],
+input[type="email"] {
     width: 100%;
     padding: 12px 15px;
     margin: 10px 0;
@@ -17,19 +19,32 @@ input[type="text"] {
 }
 
 /* �Է� �ʵ� üũ ��� ��Ÿ�� */
+/* 유효성 검사 결과 표시 */
 #check-result {
     font-size: 14px;
-    margin-top: 5px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 7px;
 }
 
-/* üũ ��� ��Ÿ�� */
+/* 사용 가능한 이메일 */
 #check-result.green {
     color: green;
+    background-color: #d4edda;
+    border: 1px solid #28a745; 
+    padding: 5px;
+    border-radius: 4px;
 }
 
+/* 이미 사용 중인 이메일 */
 #check-result.red {
-    color: #333; /* �������� #333���� ���� */
+    color: red;
+    background-color: #f8d7da; 
+    border: 1px solid #dc3545; 
+    padding: 5px;
+    border-radius: 4px;
 }
+
 
 /* ���� ��ư ��Ÿ�� */
 input[type="submit"] {
@@ -64,6 +79,78 @@ input[type="submit"]:hover {
         font-size: 14px;
     }
 }
+
+/* 메인 페이지에서 환영 메시지 스타일 */
+.main-container_welcome h2 {
+    font-size: 28px;
+    color: #2c3e50;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center; /* 중앙 정렬 */
+    padding: 10px; /* 여백 추가 */
+    background-color: none;
+    border-radius: 8px;
+    border-radius: 5px; /* 둥근 모서리 */
+    width: 100%;
+    max-width: 500px; /* 최대 너비 설정 */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 로그인 페이지에서 h2 스타일 */
+.main-container_welcome h2 { 
+    font-size: 24px;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center; /* 중앙 정렬 */
+    padding: 10px; /* 여백 추가 */
+    border-radius: 5px; /* 둥근 모서리 */
+    width: 100%;
+    max-width: 400px; /* 최대 너비 설정 */
+    margin-left: auto;
+    margin-right: auto;
+}
+/* 메인 컨테이너 스타일 */
+.main-container_welcome {
+	 margin-top: 200px; 
+    margin-left: auto;
+    margin-right: auto; 
+    width: 100%;
+    max-width: 400px;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 버튼 컨테이너 */
+.button-container {
+    display: flex;
+    justify-content: center; /* 버튼들 가운데 정렬 */
+    gap: 20px; /* 버튼 사이 간격 */
+    margin-top: 20px; /* 버튼들 위 여백 */
+}
+
+/* 버튼 스타일 */
+.action-btn {
+    padding: 10px 20px;
+    background-color: #808080;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* 버튼 호버 스타일 */
+.action-btn:hover {
+    background-color: #333; /* 호버 시 색상 변경 */
+}
+
 
 
 
