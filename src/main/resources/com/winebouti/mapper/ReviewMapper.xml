@@ -9,17 +9,24 @@
 	</select>
 
 	<!-- 리뷰 ID로 리뷰 조회 -->
-	<select id="getReviewById"
+	<select id="getReviewsByProductId"
 		resultType="com.winebouti.vo.ReviewVO">
-		SELECT * FROM Review WHERE review_id = #{reviewId}
+		SELECT * FROM review
+		WHERE product_id = #{productId}
+		ORDER BY write_date DESC  <!-- ✅ 올바른 컬럼명으로 변경 -->
 	</select>
 
 
 	<!-- 리뷰 추가 -->
-	<insert id="insertReview" parameterType="com.winebouti.vo.ReviewVO">
-    INSERT INTO Review (product_id, member_id, content, star, image_path, write_date)
-    VALUES (#{productId}, #{memberId}, #{content}, #{star}, #{imagePath}, NOW());
-</insert>
+	<insert id="insertReview"
+		parameterType="com.winebouti.vo.ReviewVO">
+		INSERT INTO Review (product_id, member_id, content,
+		star, image_path,
+		write_date)
+		VALUES (#{productId}, #{memberId},
+		#{content}, #{star}, #{imagePath},
+		NOW());
+	</insert>
 
 	<!-- 리뷰 수정 -->
 	<update id="updateReview"
@@ -35,38 +42,42 @@
 
 	<!-- 리뷰 삭제 -->
 	<delete id="deleteReview" parameterType="long">
-    DELETE FROM Review WHERE review_id = #{reviewId}
+		DELETE FROM Review WHERE
+		review_id = #{reviewId}
 	</delete>
 
 
 	<!-- 이미지 -->
-	<select id="getAllReviews" resultType="com.winebouti.vo.ReviewVO">
-	    SELECT 
-	        review_id AS reviewId,
-	        product_id AS productId,
-	        member_id AS memberId,
-	        title,
-	        content,
-	        star,
-	        write_date AS writeDate,
-	        response,
-	        image_path AS imagePath  <!-- ⭐ 추가된 부분 -->
-	    FROM Review
+	<select id="getAllReviews"
+		resultType="com.winebouti.vo.ReviewVO">
+		SELECT
+		review_id AS reviewId,
+		product_id AS productId,
+		member_id AS
+		memberId,
+		title,
+		content,
+		star,
+		write_date AS writeDate,
+		response,
+		image_path AS imagePath  <!-- ⭐ 추가된 부분 -->
+		FROM Review
 	</select>
-	
-	<resultMap id="reviewResultMap" type="com.winebouti.vo.ReviewVO">
-    <id property="reviewId" column="review_id"/>
-    <result property="productId" column="product_id"/>
-    <result property="memberId" column="member_id"/>
-    <result property="purchaseId" column="purchase_id"/>
-    <result property="content" column="content"/>
-    <result property="star" column="star"/>
-    <result property="isOpen" column="is_open"/>
-    <result property="password" column="password"/>
-    <result property="response" column="response"/>
-    <result property="imagePath" column="image_path"/> 
-    <result property="writeDate" column="write_date"/>
-    <result property="updateDate" column="update_date"/>
+
+	<resultMap id="reviewResultMap"
+		type="com.winebouti.vo.ReviewVO">
+		<id property="reviewId" column="review_id" />
+		<result property="productId" column="product_id" />
+		<result property="memberId" column="member_id" />
+		<result property="purchaseId" column="purchase_id" />
+		<result property="content" column="content" />
+		<result property="star" column="star" />
+		<result property="isOpen" column="is_open" />
+		<result property="password" column="password" />
+		<result property="response" column="response" />
+		<result property="imagePath" column="image_path" />
+		<result property="writeDate" column="write_date" />
+		<result property="updateDate" column="update_date" />
 	</resultMap>
 
 

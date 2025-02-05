@@ -9,20 +9,16 @@ import com.winebouti.vo.ReviewVO;
 @Service
 public interface ReviewService {
 
-	   // 리뷰 ID로 리뷰 조회
-	    ReviewVO getReviewById(long reviewId);
+	ReviewVO getReviewById(long reviewId);
+	
+    List<ReviewVO> getReviewsByProductId(long productId);
+    
+    void insertReview(ReviewVO review);
+    
+    void updateReview(ReviewVO review);
+    
+    int deleteReview(long reviewId);
+}
 
-	    // 모든 리뷰 조회
-	    List<ReviewVO> getAllReviews();
-	    
-	    // 리뷰 추가
-	    void insertReview(ReviewVO review);
-
-	    // 리뷰 수정
-	    void updateReview(ReviewVO review);
-
-	    // 리뷰 삭제
-	    int deleteReview(long reviewId);
-
-	}
+		
 

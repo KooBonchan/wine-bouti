@@ -31,12 +31,7 @@ public class ProductServiceImpl implements ProductService {
         return productMapper.getReviewsByProductId(product_id);
     }
     
-    // 레드 와인 리스트 조회
- 	@Override
- 	public List<WineVO> findRedWines() {
- 		return productMapper.findRedWines();
- 	}
-
+    
  	// 카테고리별 상품 리스트 조회
  	@Override
  	public List<ProductVO> findProductsByCategory(String category) {
@@ -48,33 +43,9 @@ public class ProductServiceImpl implements ProductService {
     /* 이창현 */
     
     @Override
-    public List<WineVO> getRedWines() {
+    public List<ProductVO> getRedWines() {
         // ProductRepository를 사용하여 레드 와인 상품 목록을 조회하는 로직 구현
-        return productMapper.findRedWines();
+        return productMapper.selectWineListByType("red");
     }
-
-	@Override
-	public List<WineVO> getwhiteWine() {
-		// TODO Auto-generated method stub
-		return productMapper.findWhiteWines();
-	}
-
-	@Override
-	public List<WineVO> getSparkleWine() {
-		// TODO Auto-generated method stub
-		return productMapper.findSparkleWines();
-	}
-
-	@Override
-	public List<WineVO> getGiftWine() {
-		// TODO Auto-generated method stub
-		return productMapper.findGiftWines();
-	}
-
-	@Override
-	public List<WineVO> getpairingWine() {
-		// TODO Auto-generated method stub
-		return productMapper.findpairingWines();
-	}
 
 }

@@ -38,21 +38,85 @@
 
 
   <!-- 이창현 -->
-  <select id="findRedWines" resultType="WineVO">
-    SELECT * FROM Wine
-  </select>
- <select id="findWhiteWines" resultType="WineVO">
-    SELECT * FROM Wine
-  </select>
-  
- <select id="findSparkleWines" resultType="WineVO">
-    SELECT * FROM Wine
-  </select>
-  
-  <select id="findGiftWines" resultType="WineVO">
-    SELECT * FROM Wine
-  </select>
-   <select id="findpairingWines" resultType="WineVO">
-    SELECT * FROM Wine
-  </select>
+  <!-- 리절트 맵 정의 -->
+    <resultMap id="productResultMap" type="com.winebouti.vo.ProductVO">
+	    <!-- ProductVO 속성 매핑 -->
+	    <result property="productId" column="product_id"/>
+	    <result property="category" column="category"/>
+	    <result property="koreanName" column="korean_name"/>
+	    <result property="productImageName" column="product_image_name"/>
+	    <result property="realProductImageName" column="real_product_image_name"/>
+	    <result property="detailImageName" column="detail_image_name"/>
+	    <result property="realDetailImageName" column="real_detail_image_name"/>
+	    <result property="originalPrice" column="original_price"/>
+	    <result property="once" column="once"/>
+	    
+	    <!-- WineVO 속성 매핑 -->
+	    <association property="wineDetails" javaType="com.winebouti.vo.WineVO">
+	        <result property="wineId" column="wine_id"/>
+	        <result property="type" column="type"/>
+	        <result property="originalName" column="original_name"/>
+	        <result property="volume" column="volume"/>
+	        <result property="origin" column="origin"/>
+	        <result property="vintage" column="vintage"/>
+	        <result property="alcoholContent" column="alcohol_content"/>
+	        <result property="acidity" column="acidity"/>
+	        <result property="sweetness" column="sweetness"/>
+	        <result property="tannins" column="tannins"/>
+	    </association>
+	</resultMap>
+
+    
+    
+    <!-- 상품 목록 조회 -->
+    <select id="selectProductList" resultMap="productResultMap" parameterType="string">
+        <![CDATA[
+        SELECT
+            product_id,
+            category,
+            korean_name,
+            product_image_name,
+            real_product_image_name,
+            detail_image_name,
+            real_detail_image_name,
+            original_price,
+            once
+        FROM product
+        WHERE category = #{category}
+        ORDER BY product_id DESC
+        LIMIT 10
+        ]]>
+    </select>
+    
+    <select id="selectWineListByType" resultMap="productResultMap" parameterType="string">
+	    <![CDATA[
+	    SELECT 
+	        p.product_id,
+	        p.category,
+	        p.korean_name,
+	        p.product_image_name,
+	        p.real_product_image_name,
+	        p.detail_image_name,
+	        p.real_detail_image_name,
+	        p.original_price,
+	        p.once,
+	        w.wine_id,
+	        w.type,
+	        w.original_name,
+	        w.volume,
+	        w.origin,
+	        w.vintage,
+	        w.alcohol_content,
+	        w.acidity,
+	        w.sweetness,
+	        w.tannins
+	    FROM product p
+	   	INNER JOIN wine w
+	        ON p.product_id = w.wine_id
+	    WHERE w.type = #{type}
+	    ORDER BY p.product_id DESC
+	    LIMIT 24
+	    ]]>
+	</select>
+	    
 </mapper>

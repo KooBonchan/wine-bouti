@@ -1,5 +1,6 @@
 package com.winebouti.controller;
 
+import static com.winebouti.util.FileUtils.BASE_PATH;
 import static com.winebouti.util.FileUtils.THUMBNAIL_FOLDER;
 import static com.winebouti.util.FileUtils.decodeImagePath;
 import static com.winebouti.util.FileUtils.decodeRealFileName;
@@ -24,8 +25,6 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class ApiImageController {
 	
-	private static final String BASE_PATH = "C:/upload/review/"; //  업로드 경로와 동일하게 설정
-	
 	// 썸네일 이미지 반환
 	// 요청 예시: GET /api/image/thumbnail/{path}/{filename}
 	@GetMapping("thumbnail/{path}/{filename}")
@@ -46,7 +45,6 @@ public class ApiImageController {
 					.headers(headers)
 					.body(FileCopyUtils.copyToByteArray(file));
 		} catch(IOException e) {
-			
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
 		catch (Exception e) {

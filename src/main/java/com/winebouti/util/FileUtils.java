@@ -13,7 +13,6 @@ public class FileUtils {
     public static final String BASE_PATH = System.getenv("UPLOAD_DIR") != null
 	    ? System.getenv("UPLOAD_DIR")
 	    : "C:\\upload";
-    public static final String REVIEW_PATH = "review";
     public static final String THUMBNAIL_FOLDER = "thumbnail";
 	
     public static String getPathByDate() {
