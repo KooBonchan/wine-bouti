@@ -1,0 +1,375 @@
+/* ���� ��Ÿ�� */
+h2 {
+    font-size: 28px;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+/* �Է� �ʵ� ��Ÿ�� */
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* �Է� �ʵ� üũ ��� ��Ÿ�� */
+/* 유효성 검사 결과 표시 */
+#check-result {
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 7px;
+}
+
+/* 사용 가능한 이메일 */
+#check-result.green {
+    color: green;
+    background-color: #d4edda;
+    border: 1px solid #28a745; 
+    padding: 5px;
+    border-radius: 4px;
+}
+
+/* 이미 사용 중인 이메일 */
+#check-result.red {
+    color: red;
+    background-color: #f8d7da; 
+    border: 1px solid #dc3545; 
+    padding: 5px;
+    border-radius: 4px;
+}
+
+
+/* ���� ��ư ��Ÿ�� */
+input[type="submit"] {
+	width: 100%;
+	margin-top:20px;
+	margin-bottom:20px;
+    padding: 12px 20px;
+    background-color: #808080;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #333; /* �������� #333���� ���� */
+}
+
+
+/* ���� ȭ�鿡���� ��Ÿ�� ���� */
+@media (max-width: 600px) {
+    .form-container {
+        width: 90%;
+        padding: 20px;
+    }
+    h2 {
+        font-size: 24px;
+    }
+    input[type="text"], input[type="submit"] {
+        font-size: 14px;
+    }
+}
+
+/* 메인 페이지에서 환영 메시지 스타일 */
+.main-container_welcome h2 {
+    font-size: 28px;
+    color: #2c3e50;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center; /* 중앙 정렬 */
+    padding: 10px; /* 여백 추가 */
+    background-color: none;
+    border-radius: 8px;
+    border-radius: 5px; /* 둥근 모서리 */
+    width: 100%;
+    max-width: 500px; /* 최대 너비 설정 */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 로그인 페이지에서 h2 스타일 */
+.main-container_welcome h2 { 
+    font-size: 24px;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center; /* 중앙 정렬 */
+    padding: 10px; /* 여백 추가 */
+    border-radius: 5px; /* 둥근 모서리 */
+    width: 100%;
+    max-width: 400px; /* 최대 너비 설정 */
+    margin-left: auto;
+    margin-right: auto;
+}
+/* 메인 컨테이너 스타일 */
+.main-container_welcome {
+	 margin-top: 200px; 
+    margin-left: auto;
+    margin-right: auto; 
+    width: 100%;
+    max-width: 400px;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 버튼 컨테이너 */
+.button-container {
+    display: flex;
+    justify-content: center; /* 버튼들 가운데 정렬 */
+    gap: 20px; /* 버튼 사이 간격 */
+    margin-top: 20px; /* 버튼들 위 여백 */
+}
+
+/* 버튼 스타일 */
+.action-btn {
+    padding: 10px 20px;
+    background-color: #808080;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* 버튼 호버 스타일 */
+.action-btn:hover {
+    background-color: #333; /* 호버 시 색상 변경 */
+}
+
+
+
+
+/* form-container �߾� ���� */
+.form-container {
+    margin-top: 100px; 
+    margin-left: auto;
+    margin-right: auto; 
+    width: 100%;
+    max-width: 400px;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+/* �α��� �� ��Ÿ�� */
+.login-form-container {           /* ȭ���� �߰� ��ġ */
+   margin-top: 200px; 
+    margin-left: auto;
+    margin-right: auto; 
+    width: 100%;
+    max-width: 400px;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-form-container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* �Է� �ʵ� ��Ÿ�� */
+.login-form-container input[type="text"],
+.login-form-container input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border 0.3s ease;
+}
+
+/* �Է� �ʵ� ��Ŀ�� �� ��Ÿ�� */
+.login-form-container input[type="text"]:focus,
+.login-form-container input[type="password"]:focus {
+    border-color: #333;
+    outline: none;
+     padding: 12px;
+}
+
+
+.login-form-container input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color:  #808080;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* ���� ��ư ȣ�� �� ��Ÿ�� */
+.login-form-container input[type="submit"]:hover {
+    background-color: #333; /* �������� #333���� ���� */
+}
+
+
+/* 회원 가입 텍스트 스타일 */
+.login-form-container p {
+    font-size: 16px;
+    color: #333;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.login-form-container p a {
+    color: #0080ff; /* 링크 기본 색상 */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.login-form-container p a:hover {
+    color: #333; /* 마우스를 올렸을 때 색상 변화 */
+    text-decoration: underline;
+}
+
+
+/* ���� ȭ�鿡�� ���� �ٷ�� ���� ������ ������ */
+@media (max-width: 600px) {
+    .form-container, .login-form-container {
+        padding: 20px;
+    }
+
+    
+
+/* ������ �ڽ� */
+.main-container {
+    text-align: center;
+    padding: 40px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ���� ��Ÿ�� */
+h2 {
+    font-size: 28px;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+/* ���̺� ��Ÿ�� */
+.member-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border: 1px solid #ddd;
+}
+
+.member-table th, .member-table td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.member-table th {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.member-table td {
+    background-color: #fff;
+    color: #666;
+}
+
+/* ���� ��ư ��Ÿ�� */
+.btn {
+    padding: 6px 15px;
+    font-size: 14px;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #555;
+}
+
+/* ��ȸ ��ư */
+.btn-view {
+    background-color: #808080;
+}
+
+/* ���� ��ư */
+.btn-delete {
+    background-color: #333; /* �������� #333���� ���� */
+}
+
+.btn-delete:hover {
+    background-color: #333; /* �������� #333���� ���� */
+}
+
+/* ��ũ ��Ÿ�� (ȸ�� �̸��� Ŭ�� ��) */
+.member-link {
+    color: #808080;
+    text-decoration: none;
+    font-weight: 500;
+    background-color: transparent;
+}
+
+.member-link:hover {
+    color: #333;
+    text-decoration: underline;
+    background-color: transparent;
+}
+
+/* ����� ���� */
+@media (max-width: 600px) {
+    .main-container {
+        padding: 25px;
+        width: 90%;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    .member-table th, .member-table td {
+        padding: 10px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 12px;
+    }
+}
+
+
+
+
+
+    

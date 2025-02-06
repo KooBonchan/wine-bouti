@@ -65,9 +65,9 @@
 			<sec:authorize access="isAuthenticated()">
 				<div class="iconlogin">
 					<a href="<c:url value='/member/mypage'/>">
-					<img
-						src="<c:url value='/resources/images/icon/login_man.png'/>"
-						alt="마이페이지" />
+				   <img src="<c:url value='/resources/images/icon/login_man.png'/>"
+		             alt="마이페이지"
+		             title="마이페이지" /> 
 					</a>
 				</div>
 				<div class="iconcart">

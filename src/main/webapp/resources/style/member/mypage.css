@@ -1,0 +1,82 @@
+/* 메인 컨테이너 */
+.main-container_welcome {
+    margin-top: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 500px;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* 환영 메시지 */
+.main-container_welcome h2 {
+    font-size: 28px;
+    color: #2c3e50;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center;
+    background-color: none;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 버튼 컨테이너 */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* 버튼 스타일 */
+.action-btn {
+    padding: 10px 20px;
+    background-color: #808080;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* 버튼 호버 효과 */
+.action-btn:hover {
+    background-color: #333;
+}
+
+/* 로그아웃 폼 버튼 */
+button.action-btn {
+    padding: 10px 20px;
+    background-color: #808080;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+}
+
+/* 작은 화면에서 반응형 스타일 */
+@media (max-width: 600px) {
+    .main-container_welcome {
+        padding: 20px;
+        width: 90%;
+    }
+
+    .main-container_welcome h2 {
+        font-size: 24px;
+    }
+
+    .action-btn {
+        font-size: 14px;
+    }
+}
