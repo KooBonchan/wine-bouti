@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.winebouti.mapper.MemberMapper;
 import com.winebouti.vo.MemberVO;
@@ -20,17 +21,11 @@ public class MemberServiceImpl implements MemberService {
     private final MemberMapper memberMapper;
 
     @Override
-    public int save(MemberVO memberVO) {
-        try {
-            log.info("Saving member: {}", memberVO); // 로그 추가
-            return memberMapper.save(memberVO);
-        } catch (DataIntegrityViolationException e) {
-            log.error("Data integrity violation error saving member: {}", memberVO, e);
-            throw new RuntimeException("회원 정보가 잘못되었습니다. 필수 정보가 누락되었거나 잘못된 값이 입력되었습니다.");
-        } catch (Exception e) {
-            log.error("Error saving member: {}", memberVO, e);
-            throw new RuntimeException("회원 저장에 실패했습니다."); // 예외 처리
-        }
+    @Transactional
+    public void save(MemberVO memberVO) {
+    	log.info("Saving member: {}", memberVO); // 로그 추가
+        memberMapper.save(memberVO);
+        memberMapper.grantAuth(memberVO);
     }
 
 

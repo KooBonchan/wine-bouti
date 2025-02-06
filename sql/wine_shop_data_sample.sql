@@ -25,26 +25,27 @@ VALUES
 -- Auth 테이블에 샘플 데이터 20개 추가
 INSERT INTO Auth (auth, username)
 VALUES 
-('admin', 'user1'),
-('admin', 'user2'),
-('admin', 'user3'),
-('user', 'user4'),
-('user', 'user5'),
-('user', 'user6'),
-('user', 'user7'),
-('user', 'user8'),
-('user', 'user9'),
-('admin', 'user10'),
-('admin', 'user11'),
-('admin', 'user12'),
-('user', 'user13'),
-('user', 'user14'),
-('user', 'user15'),
-('admin', 'user16'),
-('user', 'user17'),
-('user', 'user18'),
-('user', 'user19'),
-('admin', 'user20');
+(‘ROLE_ADMIN’, 'user1'),
+(‘ROLE_ADMIN’, 'user2'),
+(‘ROLE_ADMIN’, 'user3'),
+(‘ROLE_USER’, 'user4'),
+(‘ROLE_USER’, 'user5'),
+(‘ROLE_USER’, 'user6'),
+(‘ROLE_USER’, 'user7'),
+(‘ROLE_USER’, 'user8'),
+(‘ROLE_USER’, 'user9'),
+(‘ROLE_ADMIN’, 'user10'),
+(‘ROLE_ADMIN’, 'user11'),
+(‘ROLE_ADMIN’, 'user12'),
+(‘ROLE_USER’, 'user13'),
+(‘ROLE_USER’, 'user14'),
+(‘ROLE_USER’, 'user15'),
+(‘ROLE_ADMIN’, 'user16'),
+(‘ROLE_USER’, 'user17'),
+(‘ROLE_USER’, 'user18'),
+(‘ROLE_USER’, 'user19'),
+(‘ROLE_ADMIN’, 'user20');
+
 
 -- persistent_login 테이블에 샘플 데이터 20개 추가
 INSERT INTO persistent_login (series, username, token)

@@ -1,5 +1,7 @@
 package com.winebouti.vo;
 
+import java.util.List;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -17,4 +19,6 @@ public class MemberVO {
 	private String profileImageName;
 	private String realProfileImageName;
 
+	
+	List<AuthVO> auths;
 }

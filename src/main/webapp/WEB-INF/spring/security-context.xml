@@ -5,5 +5,21 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.2.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-
+	<security:http>
+		<!-- <security:access-denied-handler ref="customAccessDenied" /> -->
+        <security:form-login login-page="/member/login" username-parameter="email"
+        	login-processing-url="/member/login"/>
+        <security:logout  invalidate-session="true" />
+        
+        <security:csrf disabled="true"/>
+    </security:http>
+    
+    <bean class="com.winebouti.security.CustomUserDetailsService" id="userDetailsService" />
+    <bean class="com.winebouti.security.CustomNoOpPasswordEncoder" id="passwordEncoder" />
+        
+	<security:authentication-manager>
+        <security:authentication-provider user-service-ref="userDetailsService">
+        	<security:password-encoder ref="passwordEncoder"/>
+        </security:authentication-provider>
+    </security:authentication-manager>
 </beans>
