@@ -26,6 +26,9 @@ public class PurchaseVO {
     this.purchaseId = UUID.randomUUID();
     this.memberId = memberId;
     this.address = address;
+    for(var product : products) {
+      product.setPurchaseId(purchaseId);
+    }
     this.products = products;
     this.orderName = orderName;
   }

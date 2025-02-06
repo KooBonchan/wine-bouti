@@ -1,9 +1,7 @@
 package com.winebouti.service;
 
-import java.util.List;
 import java.util.Optional;
 
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,43 +26,6 @@ public class MemberServiceImpl implements MemberService {
         memberMapper.grantAuth(memberVO);
     }
 
-
-    // 로그인 처리
-    @Override
-    public boolean login(MemberVO memberVO) {
-        try {
-            log.info("Attempting login for member with email: {}", memberVO.getEmail());  // email 사용
-            MemberVO loginMember = memberMapper.login(memberVO);
-            return loginMember != null;
-        } catch (Exception e) {
-            log.error("Login failed for member: {}", memberVO.getEmail(), e);
-            return false; // 로그인 실패 시 false 반환
-        }
-    }
-
-    // 전체 회원 조회
-    @Override
-    public List<MemberVO> findAll() {
-        try {
-            log.info("Fetching all members");
-            return memberMapper.findAll();  // 반환 타입을 List<MemberVO>로 수정
-        } catch (Exception e) {
-            log.error("Error fetching all members", e);
-            throw new RuntimeException("회원 목록을 가져오는 데 실패했습니다.");
-        }
-    }
-
-    // 회원 ID로 찾기
-    @Override
-    public MemberVO findById(Long memberId) {  // 'id' -> 'memberId'로 수정
-        try {
-            log.info("Fetching member by ID: {}", memberId);
-            return memberMapper.findById(memberId);  // 'id' -> 'memberId'로 수정
-        } catch (Exception e) {
-            log.error("Error fetching member by ID: {}", memberId, e);
-            throw new RuntimeException("회원 ID로 조회하는 데 실패했습니다.");
-        }
-    }
 
     // 회원 삭제
     @Override

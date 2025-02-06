@@ -40,14 +40,11 @@ public class ProductController {
 
     
     /* 이창현 */
-
-
     @GetMapping("/red-wine")
     public String getRedWines(Model model) {
         // ProductService에서 getRedWines 메서드를 호출하여 레드 와인 목록을 가져옴
         model.addAttribute("products",productService.getWines("red"));
-        return "product/list.tiles"; // 해당 JSP 페이지를 반환
-    
+        return "product/list.tiles"; // 해당 JSP 페이지를 반환    
     }
     @GetMapping("/white-wine")
     public String whiteWineList(Model model) {
