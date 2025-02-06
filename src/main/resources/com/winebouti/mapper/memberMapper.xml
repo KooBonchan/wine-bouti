@@ -6,6 +6,7 @@
 	    <id property="memberId" column="member_id"/>
 	    <result property="username" column="username"/>
 	    <result property="password" column="password"/>
+	    <result property="phone" column="phone"/>
 	    <result property="email" column="email"/>
 	    <result property="address" column="address"/>
 	    <result property="zipcode" column="zipcode"/>
@@ -21,8 +22,8 @@
 
 
     <insert id="save" parameterType="com.winebouti.vo.MemberVO">
-        INSERT INTO member (email, password, username, address, zipcode)
-        VALUES (#{email}, #{password}, #{username}, #{address}, #{zipcode})
+        INSERT INTO member (email, password, phone, username, address, zipcode)
+        VALUES (#{email}, #{password}, #{phone}, #{username}, #{address}, #{zipcode})
     </insert>
     <!-- 회원 정보 수정 -->
     <update id="update" parameterType="com.winebouti.vo.MemberVO">
@@ -30,12 +31,13 @@
         SET
         	username = #{username},
         	address = #{address},
+        	phone = #{phone},
         	zipcode = #{zipcode}
         WHERE email = #{email} and password = #{password}
     </update>
     <insert id="grantAuth" parameterType="com.winebouti.vo.MemberVO">
         INSERT INTO auth (auth, username)
-        VALUES ('user', #{username})
+        VALUES ('ROLE_USER', #{username})
     </insert>
     
 
@@ -47,7 +49,7 @@
 
     <!-- 이메일로 회원 조회 -->
     <select id="findByMemberEmail" resultMap="MemberResultMap" parameterType="String">
-	    SELECT m.member_id, m.username, m.password, m.email, m.address, m.zipcode, 
+	    SELECT m.member_id, m.username, m.password, m.phone, m.email, m.address, m.zipcode, 
 	           m.profile_image_name, m.real_profile_image_name, 
 	           a.auth
 	    FROM member m

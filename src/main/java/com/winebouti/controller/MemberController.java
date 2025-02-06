@@ -88,14 +88,14 @@ public class MemberController {
         return "redirect:/member/login.tiles";
     }
 
-    @Secured({"ROLE_USER", "ROLE_ADMIN"})
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/update")
     public String updateForm(Model model) {
         return "member/update.tiles";
     }
     
     
-    @Secured({"ROLE_USER", "ROLE_ADMIN"})
+    @PreAuthorize("isAuthenticated()")
     @PostMapping("/update")
     public String update(@ModelAttribute MemberVO memberVO, RedirectAttributes attributes) { // @ModelAttribute로 MemberVO 객체를 바인딩
         boolean result = memberService.update(memberVO);

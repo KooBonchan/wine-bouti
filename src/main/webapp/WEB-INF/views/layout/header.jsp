@@ -7,7 +7,7 @@
 	<nav class="menu">
 		<div class="logo">
 			<a href="<c:url value='/'/>"> <img
-				src="<c:url value='/resources/images/logo/wine-w.png'/>"
+				src="<c:url value='/resources/images/icon/wb-b.png'/>"
 				alt="와인 쇼핑몰 로고" />
 			</a>
 		</div>

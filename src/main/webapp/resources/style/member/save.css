@@ -9,6 +9,7 @@ h2 {
 /* �Է� �ʵ� ��Ÿ�� */
 input[type="text"],
 input[type="password"],
+input[type="phone"],
 input[type="email"] {
     width: 100%;
     padding: 12px 15px;
@@ -194,6 +195,7 @@ input[type="submit"]:hover {
 
 /* �Է� �ʵ� ��Ÿ�� */
 .login-form-container input[type="text"],
+.login-form-container input[type="phone"],
 .login-form-container input[type="password"] {
     width: 100%;
     padding: 12px;
@@ -206,6 +208,7 @@ input[type="submit"]:hover {
 
 /* �Է� �ʵ� ��Ŀ�� �� ��Ÿ�� */
 .login-form-container input[type="text"]:focus,
+.login-form-container input[type="phone"]:focus,
 .login-form-container input[type="password"]:focus {
     border-color: #333;
     outline: none;

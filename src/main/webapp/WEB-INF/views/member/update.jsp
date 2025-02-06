@@ -22,10 +22,16 @@
                 <label for="password">password:</label>
                 <input type="password" name="password" id="password">
             </div>
-            
+          
+              
             <div>
                 <label for="username">이름:</label>
                 <input type="text" name="username" value="<sec:authentication property='principal.memberVO.username'/>">
+            </div>
+            
+              <div>
+                <label for="phone">전화번호:</label>
+                <input type="phone" name="phone" id="phone">
             </div>
             
             <div>

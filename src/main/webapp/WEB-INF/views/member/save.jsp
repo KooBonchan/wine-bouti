@@ -18,6 +18,7 @@
             <p id="check-result"></p>
             <p>비밀번호 : <input type="password" name="password" placeholder="비밀번호"></p>
             <p>이   름 : <input type="text" name="username" placeholder="이름"></p>
+            <p>전화번호 : <input type="text" name="phone" placeholder="번호"></p>
             <p>주   소 : <input type="text" name="address" placeholder="주소"></p>
             <p>우편번호 : <input type="text" name="zipcode" placeholder="우편번호"></p>
             <input type="submit" value="회원가입">

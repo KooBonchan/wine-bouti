@@ -39,6 +39,7 @@
 
 /* 입력 폼 스타일 */
 input[type="text"],
+input[type="phone"],
 input[type="password"] {
     width: 100%;
     padding: 12px;
