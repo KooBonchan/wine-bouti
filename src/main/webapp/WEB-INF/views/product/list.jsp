@@ -90,7 +90,7 @@
 			       <c:if test="${not empty product.wineDetails}">
 			       	<p class="origin">원산지: ${product.wineDetails.origin}</p>
 			       </c:if>
-			       <p class="price">가격: ${product.originalPrice }원</p>
+			       <p class="price">가격: ${product.originalPrice}원</p>
 			
 			       <div class="wine-details">
 			           <p class="body">바디: ${product.wineDetails.sweetness}</p> <!-- 바디 추가 -->

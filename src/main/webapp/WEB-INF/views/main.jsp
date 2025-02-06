@@ -61,22 +61,32 @@
             <div class="menu-item">Menu 4</div>
         </div>
     </div> <!-- 제목 추가 -->
-    <div class="shop">
+<div class="shop">
     <div class="img">
-        <img src="<c:url value='api/image/thumbnail/test/redwine1_DOT_jpg' />" alt="Shop Image">
+        <a href="<c:url value='product/details/${product.id}' />">
+            <img src="<c:url value='api/image/thumbnail/test/redwine1_DOT_jpg' />" alt="Shop Image">
+        </a>
     </div>
-    <div class="title shop-title">루이라뚜르 피노누아 </div>
+    <div class="title shop-title">
+        <a href="<c:url value='product/details/${product.id}' />">루이라뚜르 피노누아</a>
+    </div>
     
     <div class="title shop-content">
-    <img src="https://flagcdn.com/w40/fr.png" alt="France Flag" width="20" height="15" class="flag">
-    [프랑스]
+        <a href="<c:url value='product/details/${product.id}' />">
+            <img src="https://flagcdn.com/w40/fr.png" alt="France Flag" width="20" height="15" class="flag">
+            [프랑스]
+        </a>
+    </div>
+    <div class="title shop-price">
+        <a href="<c:url value='product/details/${product.id}' />">45,000원</a>
+    </div>
 </div>
-    <div class="title shop-price">45,000원</div>
-</div>
+
+
 
     <div class="shop">
     <div class="img">
-        <img src="<c:url value='api/image/thumbnail/test/spaklewine1_DOT_jpg' />" alt="Shop Image">
+        <img src="<c:url value='api/image/thumbnail/test/sparkle_wine1_DOT_jpg' />" alt="Shop Image">
     </div>
     <div class="title shop-title">고네 메디빌 그랑크뤼..</div>
     
@@ -84,9 +94,7 @@
     <img src="https://flagcdn.com/w40/fr.png" alt="France Flag" width="20" height="15" class="flag">
     [프랑스]
 </div>
-    
     <div class="title shop-price">390,000원</div>
-
 </div>
     
   <div class="shop">
@@ -155,7 +163,7 @@
     
       <div class="shop">
     <div class="img">
-        <img src="<c:url value='api/image/thumbnail/test/spaklewine2_DOT_jpg' />" alt="Shop Image">
+        <img src="<c:url value='api/image/thumbnail/test/sparkle_wine2_DOT_jpg' />" alt="Shop Image">
     </div>
     <div class="title shop-title">고네 메디빌 프리미에크뤼..</div>
      <div class="title shop-content">
@@ -201,7 +209,7 @@
     
   <div class="shop">
     <div class="img">
-        <img src="<c:url value='api/image/thumbnail/test/spaklewine3_DOT_jpg' />" alt="Shop Image">
+        <img src="<c:url value='api/image/thumbnail/test/sparkle_wine3_DOT_jpg' />" alt="Shop Image">
     </div>
     <div class="title shop-title">슐럼베르거 로제 스페셜 브..</div>
    <div class="title shop-content">

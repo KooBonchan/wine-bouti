@@ -26,26 +26,21 @@ public class ProductController {
     /* 양정민 */
     // 상품 상세페이지
     
-    @GetMapping("/details/{productId}")  //  URL에 {productId} 포함
+    @GetMapping("/details/{productId}")
     public String getProductDetail(@PathVariable("productId") long productId, Model model) {
-
         ProductVO product = productService.getProductById(productId);
         List<ReviewVO> reviews = reviewService.getReviewsByProductId(productId);
-
+        
         model.addAttribute("product", product);
         model.addAttribute("reviews", reviews);
         model.addAttribute("productId", productId);
-
-        return "product/details.tiles";
+        
+        return "product/details.tiles"; // 상세 페이지로 이동
     }
+
     
     /* 이창현 */
 
-    @Autowired
-    public ProductController(ProductService productService) {
-        this.productService = productService;
-		this.reviewService = null;
-    }
 
     @GetMapping("/red-wine")
     public String getRedWines(Model model) {

@@ -94,6 +94,9 @@ VALUES
 ('Wine', '레드 와인 19', 'wine_red19.jpg', 'wine_red19_DOT_jpg', 'wine_red19_detail.jpg', 'wine_red19_detail_DOT_jpg', 24000, TRUE),
 ('Wine', '화이트 와인 20', 'wine_white20.jpg', 'wine_white20_DOT_jpg', 'wine_white20_detail.jpg', 'wine_white20_detail_DOT_jpg', 25000, FALSE);
 
+
+
+
 -- Wine 테이블에 샘플 데이터 20개 추가
 INSERT INTO Wine (wine_id, type, original_name, volume, origin, vintage, alcohol_content, acidity, sweetness, tannins)
 VALUES 
@@ -335,19 +338,20 @@ VALUES
 
 
 -- Wine 카테고리에서 Sparkle Wine 샘플 데이터 10개 추가
+
 INSERT INTO Product (category, korean_name, product_image_name, real_product_image_name, detail_image_name, real_detail_image_name, original_price, once)
 VALUES 
+('Wine', '스파클 와인 1', 'sparkle_wine1.jpg', 'sparkle_wine1_DOT_jpg', 'sparkle_wine1_detail.jpg', 'sparkle_wine1_detail_DOT_jpg', 15000, TRUE),
+('Wine', '스파클 와인 2', 'sparkle_wine2.jpg', 'sparkle_wine2_DOT_jpg', 'sparkle_wine2_detail.jpg', 'sparkle_wine2_detail_DOT_jpg', 18000, FALSE),
+('Wine', '스파클 와인 3', 'sparkle_wine3.jpg', 'sparkle_wine3_DOT_jpg', 'sparkle_wine3_detail.jpg', 'sparkle_wine3_detail_DOT_jpg', 20000, TRUE),
+('Wine', '스파클 와인 4', 'sparkle_wine4.jpg', 'sparkle_wine4_DOT_jpg', 'sparkle_wine4_detail.jpg', 'sparkle_wine4_detail_DOT_jpg', 25000, FALSE),
+('Wine', '스파클 와인 5', 'sparkle_wine5.jpg', 'sparkle_wine5_DOT_jpg', 'sparkle_wine5_detail.jpg', 'sparkle_wine5_detail_DOT_jpg', 30000, TRUE),
+('Wine', '스파클 와인 6', 'sparkle_wine6.jpg', 'sparkle_wine6_DOT_jpg', 'sparkle_wine6_detail.jpg', 'sparkle_wine6_detail_DOT_jpg', 35000, FALSE),
+('Wine', '스파클 와인 7', 'sparkle_wine7.jpg', 'sparkle_wine7_DOT_jpg', 'sparkle_wine7_detail.jpg', 'sparkle_wine7_detail_DOT_jpg', 22000, TRUE),
+('Wine', '스파클 와인 8', 'sparkle_wine8.jpg', 'sparkle_wine8_DOT_jpg', 'sparkle_wine8_detail.jpg', 'sparkle_wine8_detail_DOT_jpg', 24000, FALSE),
+('Wine', '스파클 와인 9', 'sparkle_wine9.jpg', 'sparkle_wine9_DOT_jpg', 'sparkle_wine9_detail.jpg', 'sparkle_wine9_detail_DOT_jpg', 27000, TRUE),
+('Wine', '스파클 와인 10', 'sparkle_wine10.jpg', 'sparkle_wine10_DOT_jpg', 'sparkle_wine10_detail.jpg', 'sparkle_wine10_detail_DOT_jpg', 32000, FALSE);
 
-('Wine', '스파클 와인 1', 'sparkle_wine1.jpg', 'sparkle_wine1_real.jpg', 'sparkle_wine1_detail.jpg', 'sparkle_wine1_detail_real.jpg', 15000, TRUE),
-('Wine', '스파클 와인 2', 'sparkle_wine2.jpg', 'sparkle_wine2_real.jpg', 'sparkle_wine2_detail.jpg', 'sparkle_wine2_detail_real.jpg', 18000, FALSE),
-('Wine', '스파클 와인 3', 'sparkle_wine3.jpg', 'sparkle_wine3_real.jpg', 'sparkle_wine3_detail.jpg', 'sparkle_wine3_detail_real.jpg', 20000, TRUE),
-('Wine', '스파클 와인 4', 'sparkle_wine4.jpg', 'sparkle_wine4_real.jpg', 'sparkle_wine4_detail.jpg', 'sparkle_wine4_detail_real.jpg', 25000, FALSE),
-('Wine', '스파클 와인 5', 'sparkle_wine5.jpg', 'sparkle_wine5_real.jpg', 'sparkle_wine5_detail.jpg', 'sparkle_wine5_detail_real.jpg', 30000, TRUE),
-('Wine', '스파클 와인 6', 'sparkle_wine6.jpg', 'sparkle_wine6_real.jpg', 'sparkle_wine6_detail.jpg', 'sparkle_wine6_detail_real.jpg', 35000, FALSE),
-('Wine', '스파클 와인 7', 'sparkle_wine7.jpg', 'sparkle_wine7_real.jpg', 'sparkle_wine7_detail.jpg', 'sparkle_wine7_detail_real.jpg', 22000, TRUE),
-('Wine', '스파클 와인 8', 'sparkle_wine8.jpg', 'sparkle_wine8_real.jpg', 'sparkle_wine8_detail.jpg', 'sparkle_wine8_detail_real.jpg', 24000, FALSE),
-('Wine', '스파클 와인 9', 'sparkle_wine9.jpg', 'sparkle_wine9_real.jpg', 'sparkle_wine9_detail.jpg', 'sparkle_wine9_detail_real.jpg', 27000, TRUE),
-('Wine', '스파클 와인 10', 'sparkle_wine10.jpg', 'sparkle_wine10_real.jpg', 'sparkle_wine10_detail.jpg', 'sparkle_wine10_detail_real.jpg', 32000, FALSE);
 
 -- Wine 테이블에 샘플 데이터 15개 추가 (5개의 pairing + 10개의 sparkle)
 INSERT INTO Wine (wine_id, type, original_name, volume, origin, vintage, alcohol_content, acidity, sweetness, tannins)
