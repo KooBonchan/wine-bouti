@@ -84,7 +84,7 @@
         FROM product
         WHERE category = #{category}
         ORDER BY product_id DESC
-        LIMIT 10
+        LIMIT 24
         ]]>
     </select>
     

@@ -52,7 +52,7 @@ CREATE TABLE Product (
     once BOOLEAN
 );
 CREATE TABLE Wine (
-    wine_id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    wine_id BIGINT PRIMARY KEY,
     type VARCHAR(255),
     original_name VARCHAR(255),
     volume INT,

@@ -2,23 +2,17 @@ package com.winebouti.controller;
 
 import java.util.List;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.winebouti.service.ProductService;
 import com.winebouti.service.ReviewService;
-import com.winebouti.util.Criteria;
 import com.winebouti.vo.ProductVO;
 import com.winebouti.vo.ReviewVO;
-import com.winebouti.vo.WineVO;
 
 import lombok.RequiredArgsConstructor;
 
@@ -46,36 +40,44 @@ public class ProductController {
     }
     
     /* 이창현 */
-    @GetMapping("/red-wine") // 레드 와인 목록 페이지 매핑
-    public String redWineList(Model model) {
-        List<ProductVO> redWines = productService.getRedWines(); // 서비스 메서드 호출
-        model.addAttribute("products", redWines); // Model에 상품 목록 추가
-        return "product/redwine.tiles"; // 뷰 이름 반환
+
+    @Autowired
+    public ProductController(ProductService productService) {
+        this.productService = productService;
+		this.reviewService = null;
+    }
+
+    @GetMapping("/red-wine")
+    public String getRedWines(Model model) {
+        // ProductService에서 getRedWines 메서드를 호출하여 레드 와인 목록을 가져옴
+        model.addAttribute("products",productService.getWines("red"));
+        return "product/list.tiles"; // 해당 JSP 페이지를 반환
+    
     }
     @GetMapping("/white-wine")
     public String whiteWineList(Model model) {
-        List<ProductVO> whiteWine = productService.getRedWines(); // 서비스에서 화이트 와인 목록을 가져옵니다.
+        List<ProductVO> whiteWine = productService.getWines("white"); // 서비스에서 화이트 와인 목록을 가져옵니다.
         model.addAttribute("products", whiteWine); // 모델에 "products" 속성으로 추가
-        return "product/white-wine.tiles"; // 해당 JSP 페이지를 반환
+        return "product/list.tiles"; // 해당 JSP 페이지를 반환
     }
     @GetMapping("/sparkle-wine")
     public String sparkleWineList(Model model) {
-        List<ProductVO> sparkleWine = productService.getRedWines(); // 서비스에서 화이트 와인 목록을 가져옵니다.
+        List<ProductVO> sparkleWine = productService.getWines("sparkle"); // 서비스에서 화이트 와인 목록을 가져옵니다.
         model.addAttribute("products", sparkleWine); // 모델에 "products" 속성으로 추가
-        return "product/sparkle-wine.tiles"; // 해당 JSP 페이지를 반환
+        return "product/list.tiles"; // 해당 JSP 페이지를 반환
     }
     
-    @GetMapping("/gift-wine")
-    public String giftWineList(Model model) {
-        List<ProductVO> giftWine = productService.getRedWines(); // 서비스에서 화이트 와인 목록을 가져옵니다.
-        model.addAttribute("products", giftWine); // 모델에 "products" 속성으로 추가
-        return "product/gift-wine.tiles"; // 해당 JSP 페이지를 반환
-    }
-    
-    @GetMapping("/pairing-wine")
-    public String pairingWineList(Model model) {
-        List<ProductVO> pairingWine = productService.getRedWines(); // 서비스에서 화이트 와인 목록을 가져옵니다.
-        model.addAttribute("products", pairingWine); // 모델에 "products" 속성으로 추가
-        return "product/pairingwine.tiles"; // 해당 JSP 페이지를 반환
-    }
+//    @GetMapping("/gift-wine")
+//    public String giftWineList(Model model) {
+//        List<ProductVO> giftWine = productService.getWines(""); // 서비스에서 화이트 와인 목록을 가져옵니다.
+//        model.addAttribute("products", giftWine); // 모델에 "products" 속성으로 추가
+//        return "product/gift-wine.tiles"; // 해당 JSP 페이지를 반환
+//    }
+//    
+//    @GetMapping("/pairing-wine")
+//    public String pairingWineList(Model model) {
+//        List<ProductVO> pairingWine = productService.getRedWines(); // 서비스에서 화이트 와인 목록을 가져옵니다.
+//        model.addAttribute("products", pairingWine); // 모델에 "products" 속성으로 추가
+//        return "product/pairingwine.tiles"; // 해당 JSP 페이지를 반환
+//    }
 }

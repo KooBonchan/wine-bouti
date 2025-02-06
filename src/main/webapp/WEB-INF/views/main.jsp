@@ -28,7 +28,6 @@
 		<ul>
 			<li><a href="/winebouti/product/red-wine">
         <img src="<c:url value="/resources/images/shop/gallery1.png" />" alt="이미지1" />
-        
         <span>레드와인</span>
 			</a></li>
 			<li><a href="/winebouti/product/white-wine">

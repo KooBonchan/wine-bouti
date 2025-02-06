@@ -18,9 +18,6 @@ public interface ProductService {
 	// 카테고리별 상품 리스트 조회
 	List<ProductVO> findProductsByCategory(String category);
     
-    
-	
-  /* 이창현  */
 
-  List<ProductVO> getRedWines();
+    List<ProductVO> getWines(String category);
 }
