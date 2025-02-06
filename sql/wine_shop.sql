@@ -74,7 +74,7 @@ CREATE TABLE Cart (
     FOREIGN KEY (product_id) REFERENCES Product(product_id) ON DELETE CASCADE
 );
 CREATE TABLE Purchase (
-    purchase_id BIGINT PRIMARY KEY AUTO_INCREMENT, -- purchase_id를 BIGINT로 변경
+    purchase_id BINARY(16) primary key default (UUID_TO_BIN(UUID())), -- purchase_id를 BIGINT로 변경
     member_id BIGINT, -- member_id를 BIGINT로 변경
     address VARCHAR(255),
     total_amount INT,
@@ -84,7 +84,7 @@ CREATE TABLE Review (
     review_id BIGINT PRIMARY KEY AUTO_INCREMENT, -- review_id를 BIGINT로 변경
     product_id BIGINT, -- product_id를 BIGINT로 변경
     member_id BIGINT, -- member_id를 BIGINT로 변경
-    purchase_id BIGINT, -- purchase_id를 BIGINT로 변경
+    purchase_id BINARY(16),
     content TEXT,
     star INT,
     is_open BOOLEAN, -- is_open 수정
@@ -102,7 +102,7 @@ ALTER TABLE Review ADD FOREIGN KEY (purchase_id) REFERENCES Purchase(purchase_id
 
 -- Purchase_Product 테이블 생성 (구매 상품 목록)
 CREATE TABLE Purchase_Product (
-    purchase_id BIGINT, -- purchase_id를 BIGINT로 변경
+    purchase_id binary(16),
     product_id BIGINT, -- product_id를 BIGINT로 변경
     quantity INT,
     PRIMARY KEY (purchase_id, product_id),
@@ -131,7 +131,7 @@ CREATE TABLE CouponDetail (
 
 -- Purchase_Coupon 테이블 생성 (구매에 사용된 쿠폰)
 CREATE TABLE Purchase_Coupon (
-    purchase_id BIGINT, -- purchase_id를 BIGINT로 변경
+    purchase_id binary(16),
     coupon_id BIGINT, -- coupon_id를 BIGINT로 변경
     PRIMARY KEY (purchase_id, coupon_id),
     FOREIGN KEY (purchase_id) REFERENCES Purchase(purchase_id) ON DELETE CASCADE,
