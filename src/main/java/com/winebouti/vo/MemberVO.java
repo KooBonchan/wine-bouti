@@ -16,6 +16,7 @@ public class MemberVO {
 	private String email;
 	private String address;
 	private String zipcode;
+	private String phoneNumber;
 	private String profileImageName;
 	private String realProfileImageName;
 

@@ -1,26 +1,27 @@
 -- Member 테이블에 샘플 데이터 20개 추가
-INSERT INTO Member (username, password, email, address, zipcode, profile_image_name, real_profile_image_name)
+INSERT INTO Member (username, password, email, address, zipcode, profile_image_name, real_profile_image_name, phone_number)
 VALUES 
-('user1', 'password1', 'user1@example.com', 'Address 1', '11111', 'user1_profile.jpg', 'user1_real_profile.jpg'),
-('user2', 'password2', 'user2@example.com', 'Address 2', '22222', 'user2_profile.jpg', 'user2_real_profile.jpg'),
-('user3', 'password3', 'user3@example.com', 'Address 3', '33333', 'user3_profile.jpg', 'user3_real_profile.jpg'),
-('user4', 'password4', 'user4@example.com', 'Address 4', '44444', 'user4_profile.jpg', 'user4_real_profile.jpg'),
-('user5', 'password5', 'user5@example.com', 'Address 5', '55555', 'user5_profile.jpg', 'user5_real_profile.jpg'),
-('user6', 'password6', 'user6@example.com', 'Address 6', '66666', 'user6_profile.jpg', 'user6_real_profile.jpg'),
-('user7', 'password7', 'user7@example.com', 'Address 7', '77777', 'user7_profile.jpg', 'user7_real_profile.jpg'),
-('user8', 'password8', 'user8@example.com', 'Address 8', '88888', 'user8_profile.jpg', 'user8_real_profile.jpg'),
-('user9', 'password9', 'user9@example.com', 'Address 9', '99999', 'user9_profile.jpg', 'user9_real_profile.jpg'),
-('user10', 'password10', 'user10@example.com', 'Address 10', '10000', 'user10_profile.jpg', 'user10_real_profile.jpg'),
-('user11', 'password11', 'user11@example.com', 'Address 11', '11111', 'user11_profile.jpg', 'user11_real_profile.jpg'),
-('user12', 'password12', 'user12@example.com', 'Address 12', '12222', 'user12_profile.jpg', 'user12_real_profile.jpg'),
-('user13', 'password13', 'user13@example.com', 'Address 13', '13333', 'user13_profile.jpg', 'user13_real_profile.jpg'),
-('user14', 'password14', 'user14@example.com', 'Address 14', '14444', 'user14_profile.jpg', 'user14_real_profile.jpg'),
-('user15', 'password15', 'user15@example.com', 'Address 15', '15555', 'user15_profile.jpg', 'user15_real_profile.jpg'),
-('user16', 'password16', 'user16@example.com', 'Address 16', '16666', 'user16_profile.jpg', 'user16_real_profile.jpg'),
-('user17', 'password17', 'user17@example.com', 'Address 17', '17777', 'user17_profile.jpg', 'user17_real_profile.jpg'),
-('user18', 'password18', 'user18@example.com', 'Address 18', '18888', 'user18_profile.jpg', 'user18_real_profile.jpg'),
-('user19', 'password19', 'user19@example.com', 'Address 19', '19999', 'user19_profile.jpg', 'user19_real_profile.jpg'),
-('user20', 'password20', 'user20@example.com', 'Address 20', '20000', 'user20_profile.jpg', 'user20_real_profile.jpg');
+('user1', 'password1', 'user1@example.com', 'Address 1', '11111', 'user1_profile.jpg', 'user1_real_profile.jpg', '0103141592'),
+('user2', 'password2', 'user2@example.com', 'Address 2', '22222', 'user2_profile.jpg', 'user2_real_profile.jpg', '0103141593'),
+('user3', 'password3', 'user3@example.com', 'Address 3', '33333', 'user3_profile.jpg', 'user3_real_profile.jpg', '0103141594'),
+('user4', 'password4', 'user4@example.com', 'Address 4', '44444', 'user4_profile.jpg', 'user4_real_profile.jpg', '0103141595'),
+('user5', 'password5', 'user5@example.com', 'Address 5', '55555', 'user5_profile.jpg', 'user5_real_profile.jpg', '0103141596'),
+('user6', 'password6', 'user6@example.com', 'Address 6', '66666', 'user6_profile.jpg', 'user6_real_profile.jpg', '0103141597'),
+('user7', 'password7', 'user7@example.com', 'Address 7', '77777', 'user7_profile.jpg', 'user7_real_profile.jpg', '0103141598'),
+('user8', 'password8', 'user8@example.com', 'Address 8', '88888', 'user8_profile.jpg', 'user8_real_profile.jpg', '0103141599'),
+('user9', 'password9', 'user9@example.com', 'Address 9', '99999', 'user9_profile.jpg', 'user9_real_profile.jpg', '0103141600'),
+('user10', 'password10', 'user10@example.com', 'Address 10', '10000', 'user10_profile.jpg', 'user10_real_profile.jpg', '0103141601'),
+('user11', 'password11', 'user11@example.com', 'Address 11', '11111', 'user11_profile.jpg', 'user11_real_profile.jpg', '0103141602'),
+('user12', 'password12', 'user12@example.com', 'Address 12', '12222', 'user12_profile.jpg', 'user12_real_profile.jpg', '0103141603'),
+('user13', 'password13', 'user13@example.com', 'Address 13', '13333', 'user13_profile.jpg', 'user13_real_profile.jpg', '0103141604'),
+('user14', 'password14', 'user14@example.com', 'Address 14', '14444', 'user14_profile.jpg', 'user14_real_profile.jpg', '0103141605'),
+('user15', 'password15', 'user15@example.com', 'Address 15', '15555', 'user15_profile.jpg', 'user15_real_profile.jpg', '0103141606'),
+('user16', 'password16', 'user16@example.com', 'Address 16', '16666', 'user16_profile.jpg', 'user16_real_profile.jpg', '0103141607'),
+('user17', 'password17', 'user17@example.com', 'Address 17', '17777', 'user17_profile.jpg', 'user17_real_profile.jpg', '0103141608'),
+('user18', 'password18', 'user18@example.com', 'Address 18', '18888', 'user18_profile.jpg', 'user18_real_profile.jpg', '0103141609'),
+('user19', 'password19', 'user19@example.com', 'Address 19', '19999', 'user19_profile.jpg', 'user19_real_profile.jpg', '0103141610'),
+('user20', 'password20', 'user20@example.com', 'Address 20', '20000', 'user20_profile.jpg', 'user20_real_profile.jpg', '0103141611');
+
 
 -- Auth 테이블에 샘플 데이터 20개 추가
 INSERT INTO Auth (auth, username)

@@ -8,6 +8,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Getter @Setter @ToString
+@AllArgsConstructor
 public class PurchaseProductVO {
 	private UUID purchaseId;
 	private long productId;
