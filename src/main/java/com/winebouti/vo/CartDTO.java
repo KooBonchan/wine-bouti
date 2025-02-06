@@ -33,7 +33,18 @@ public class CartDTO {
         .memberId(memberVO.getMemberId())
         .address(memberVO.getAddress())
         .products(products)
+        .orderName(createOrderName())
         .build();
     return purchaseVO;
+  }
+  
+  private String createOrderName() {
+    String baseName = "";
+    for(ProductVO product : cartItems.keySet()) {
+      baseName = product.getKoreanName();
+    }
+    if(cartItems.size() <= 1) return baseName;
+    return baseName + " 외 " + (cartItems.size() - 1) + "개";
+      
   }
 }

@@ -18,6 +18,7 @@ public interface ProductMapper {
   
   List<ProductVO> selectProductList(String category);
   List<ProductVO> selectWineListByType(String category);
+  List<ProductVO> getRedWines();
   
   
 }

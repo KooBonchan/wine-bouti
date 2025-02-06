@@ -25,7 +25,7 @@ public class ProductMapperTest {
 	
 	@Test
 	public void productListTest() {
-		List<ProductVO> products = productMapper.selectProductList("pairing");
+		List<ProductVO> products = productMapper.selectProductList("gift_set");
 		log.info(products);
 		assertNotNull(products);
 		assertTrue(products.size() > 0);
@@ -33,7 +33,7 @@ public class ProductMapperTest {
 	
 	@Test
 	public void wineListTest() {
-		List<ProductVO> products = productMapper.selectWineListByType("spakle");
+		List<ProductVO> products = productMapper.selectWineListByType("sparkle");
 		log.info(products);
 		assertNotNull(products);
 		assertTrue(products.size() > 0);

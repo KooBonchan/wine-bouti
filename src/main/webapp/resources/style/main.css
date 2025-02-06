@@ -298,12 +298,18 @@ button.prev:hover, button.next:hover {
     position: relative; /* 자식 요소가 absolute로 배치될 수 있게 함 */
     width: 180px;
     height: 180px;
-    padding-bottom: 56.25%; /* 16:9 비율 (높이 = 9/16 * 너비) */
+    
     background-color: #ccc; /* 배경색으로 확인용 */
     background-size: cover;
     background-position: center;
+    border-radius: 8px; /* 모서리 둥글게 */
 }
-
+.img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 이미지가 요소 크기에 맞춰짐 */
+    border-radius: 8px; /* 이미지 모서리 둥글게 */
+}
 
 
 

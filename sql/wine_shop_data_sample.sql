@@ -1,26 +1,27 @@
 -- Member 테이블에 샘플 데이터 20개 추가
-INSERT INTO Member (username, password, email, address, zipcode, profile_image_name, real_profile_image_name)
+INSERT INTO Member (username, password, email, address, zipcode, profile_image_name, real_profile_image_name, phone_number)
 VALUES 
-('user1', 'password1', 'user1@example.com', 'Address 1', '11111', 'user1_profile.jpg', 'user1_real_profile.jpg'),
-('user2', 'password2', 'user2@example.com', 'Address 2', '22222', 'user2_profile.jpg', 'user2_real_profile.jpg'),
-('user3', 'password3', 'user3@example.com', 'Address 3', '33333', 'user3_profile.jpg', 'user3_real_profile.jpg'),
-('user4', 'password4', 'user4@example.com', 'Address 4', '44444', 'user4_profile.jpg', 'user4_real_profile.jpg'),
-('user5', 'password5', 'user5@example.com', 'Address 5', '55555', 'user5_profile.jpg', 'user5_real_profile.jpg'),
-('user6', 'password6', 'user6@example.com', 'Address 6', '66666', 'user6_profile.jpg', 'user6_real_profile.jpg'),
-('user7', 'password7', 'user7@example.com', 'Address 7', '77777', 'user7_profile.jpg', 'user7_real_profile.jpg'),
-('user8', 'password8', 'user8@example.com', 'Address 8', '88888', 'user8_profile.jpg', 'user8_real_profile.jpg'),
-('user9', 'password9', 'user9@example.com', 'Address 9', '99999', 'user9_profile.jpg', 'user9_real_profile.jpg'),
-('user10', 'password10', 'user10@example.com', 'Address 10', '10000', 'user10_profile.jpg', 'user10_real_profile.jpg'),
-('user11', 'password11', 'user11@example.com', 'Address 11', '11111', 'user11_profile.jpg', 'user11_real_profile.jpg'),
-('user12', 'password12', 'user12@example.com', 'Address 12', '12222', 'user12_profile.jpg', 'user12_real_profile.jpg'),
-('user13', 'password13', 'user13@example.com', 'Address 13', '13333', 'user13_profile.jpg', 'user13_real_profile.jpg'),
-('user14', 'password14', 'user14@example.com', 'Address 14', '14444', 'user14_profile.jpg', 'user14_real_profile.jpg'),
-('user15', 'password15', 'user15@example.com', 'Address 15', '15555', 'user15_profile.jpg', 'user15_real_profile.jpg'),
-('user16', 'password16', 'user16@example.com', 'Address 16', '16666', 'user16_profile.jpg', 'user16_real_profile.jpg'),
-('user17', 'password17', 'user17@example.com', 'Address 17', '17777', 'user17_profile.jpg', 'user17_real_profile.jpg'),
-('user18', 'password18', 'user18@example.com', 'Address 18', '18888', 'user18_profile.jpg', 'user18_real_profile.jpg'),
-('user19', 'password19', 'user19@example.com', 'Address 19', '19999', 'user19_profile.jpg', 'user19_real_profile.jpg'),
-('user20', 'password20', 'user20@example.com', 'Address 20', '20000', 'user20_profile.jpg', 'user20_real_profile.jpg');
+('user1', 'password1', 'user1@example.com', 'Address 1', '11111', 'user1_profile.jpg', 'user1_real_profile.jpg', '0103141592'),
+('user2', 'password2', 'user2@example.com', 'Address 2', '22222', 'user2_profile.jpg', 'user2_real_profile.jpg', '0103141593'),
+('user3', 'password3', 'user3@example.com', 'Address 3', '33333', 'user3_profile.jpg', 'user3_real_profile.jpg', '0103141594'),
+('user4', 'password4', 'user4@example.com', 'Address 4', '44444', 'user4_profile.jpg', 'user4_real_profile.jpg', '0103141595'),
+('user5', 'password5', 'user5@example.com', 'Address 5', '55555', 'user5_profile.jpg', 'user5_real_profile.jpg', '0103141596'),
+('user6', 'password6', 'user6@example.com', 'Address 6', '66666', 'user6_profile.jpg', 'user6_real_profile.jpg', '0103141597'),
+('user7', 'password7', 'user7@example.com', 'Address 7', '77777', 'user7_profile.jpg', 'user7_real_profile.jpg', '0103141598'),
+('user8', 'password8', 'user8@example.com', 'Address 8', '88888', 'user8_profile.jpg', 'user8_real_profile.jpg', '0103141599'),
+('user9', 'password9', 'user9@example.com', 'Address 9', '99999', 'user9_profile.jpg', 'user9_real_profile.jpg', '0103141600'),
+('user10', 'password10', 'user10@example.com', 'Address 10', '10000', 'user10_profile.jpg', 'user10_real_profile.jpg', '0103141601'),
+('user11', 'password11', 'user11@example.com', 'Address 11', '11111', 'user11_profile.jpg', 'user11_real_profile.jpg', '0103141602'),
+('user12', 'password12', 'user12@example.com', 'Address 12', '12222', 'user12_profile.jpg', 'user12_real_profile.jpg', '0103141603'),
+('user13', 'password13', 'user13@example.com', 'Address 13', '13333', 'user13_profile.jpg', 'user13_real_profile.jpg', '0103141604'),
+('user14', 'password14', 'user14@example.com', 'Address 14', '14444', 'user14_profile.jpg', 'user14_real_profile.jpg', '0103141605'),
+('user15', 'password15', 'user15@example.com', 'Address 15', '15555', 'user15_profile.jpg', 'user15_real_profile.jpg', '0103141606'),
+('user16', 'password16', 'user16@example.com', 'Address 16', '16666', 'user16_profile.jpg', 'user16_real_profile.jpg', '0103141607'),
+('user17', 'password17', 'user17@example.com', 'Address 17', '17777', 'user17_profile.jpg', 'user17_real_profile.jpg', '0103141608'),
+('user18', 'password18', 'user18@example.com', 'Address 18', '18888', 'user18_profile.jpg', 'user18_real_profile.jpg', '0103141609'),
+('user19', 'password19', 'user19@example.com', 'Address 19', '19999', 'user19_profile.jpg', 'user19_real_profile.jpg', '0103141610'),
+('user20', 'password20', 'user20@example.com', 'Address 20', '20000', 'user20_profile.jpg', 'user20_real_profile.jpg', '0103141611');
+
 
 -- Auth 테이블에 샘플 데이터 20개 추가
 INSERT INTO Auth (auth, username)
@@ -94,29 +95,32 @@ VALUES
 ('Wine', '레드 와인 19', 'wine_red19.jpg', 'wine_red19_DOT_jpg', 'wine_red19_detail.jpg', 'wine_red19_detail_DOT_jpg', 24000, TRUE),
 ('Wine', '화이트 와인 20', 'wine_white20.jpg', 'wine_white20_DOT_jpg', 'wine_white20_detail.jpg', 'wine_white20_detail_DOT_jpg', 25000, FALSE);
 
+
+
+
 -- Wine 테이블에 샘플 데이터 20개 추가
-INSERT INTO Wine (type, original_name, volume, origin, vintage, alcohol_content, acidity, sweetness, tannins)
+INSERT INTO Wine (wine_id, type, original_name, volume, origin, vintage, alcohol_content, acidity, sweetness, tannins)
 VALUES 
-('Red', 'Wine A', 750, 'France', 2018, 12.5, 3, 2, 5),
-('White', 'Wine B', 750, 'Italy', 2019, 13.0, 2, 3, 4),
-('Red', 'Wine C', 750, 'Spain', 2017, 14.0, 4, 1, 3),
-('White', 'Wine D', 750, 'USA', 2020, 11.5, 1, 4, 2),
-('Red', 'Wine E', 750, 'Chile', 2015, 15.0, 5, 2, 6),
-('White', 'Wine F', 750, 'Argentina', 2016, 12.0, 3, 5, 4),
-('Red', 'Wine G', 750, 'France', 2014, 13.5, 2, 3, 5),
-('White', 'Wine H', 750, 'Australia', 2021, 11.0, 4, 1, 2),
-('Red', 'Wine I', 750, 'Italy', 2019, 14.5, 3, 4, 6),
-('White', 'Wine J', 750, 'Spain', 2018, 13.0, 2, 2, 5),
-('Red', 'Wine K', 750, 'USA', 2020, 15.5, 4, 3, 4),
-('White', 'Wine L', 750, 'Argentina', 2020, 12.5, 1, 4, 3),
-('Red', 'Wine M', 750, 'Chile', 2017, 13.5, 5, 2, 6),
-('White', 'Wine N', 750, 'Australia', 2019, 11.5, 3, 5, 2),
-('Red', 'Wine O', 750, 'France', 2020, 14.0, 2, 4, 4),
-('White', 'Wine P', 750, 'Italy', 2018, 12.0, 4, 1, 3),
-('Red', 'Wine Q', 750, 'Spain', 2016, 13.0, 3, 2, 5),
-('White', 'Wine R', 750, 'USA', 2020, 12.5, 2, 3, 4),
-('Red', 'Wine S', 750, 'Chile', 2015, 14.0, 4, 2, 6),
-('White', 'Wine T', 750, 'Argentina', 2021, 11.5, 3, 5, 3);
+(1, 'Red', 'Wine A', 750, 'France', 2018, 12.5, 3, 2, 5),
+(2, 'White', 'Wine B', 750, 'Italy', 2019, 13.0, 2, 3, 4),
+(3, 'Red', 'Wine C', 750, 'Spain', 2017, 14.0, 4, 1, 3),
+(4, 'White', 'Wine D', 750, 'USA', 2020, 11.5, 1, 4, 2),
+(5, 'Red', 'Wine E', 750, 'Chile', 2015, 15.0, 5, 2, 6),
+(6, 'White', 'Wine F', 750, 'Argentina', 2016, 12.0, 3, 5, 4),
+(7, 'Red', 'Wine G', 750, 'France', 2014, 13.5, 2, 3, 5),
+(8, 'White', 'Wine H', 750, 'Australia', 2021, 11.0, 4, 1, 2),
+(9, 'Red', 'Wine I', 750, 'Italy', 2019, 14.5, 3, 4, 6),
+(10, 'White', 'Wine J', 750, 'Spain', 2018, 13.0, 2, 2, 5),
+(11, 'Red', 'Wine K', 750, 'USA', 2020, 15.5, 4, 3, 4),
+(12, 'White', 'Wine L', 750, 'Argentina', 2020, 12.5, 1, 4, 3),
+(13, 'Red', 'Wine M', 750, 'Chile', 2017, 13.5, 5, 2, 6),
+(14, 'White', 'Wine N', 750, 'Australia', 2019, 11.5, 3, 5, 2),
+(15, 'Red', 'Wine O', 750, 'France', 2020, 14.0, 2, 4, 4),
+(16, 'White', 'Wine P', 750, 'Italy', 2018, 12.0, 4, 1, 3),
+(17, 'Red', 'Wine Q', 750, 'Spain', 2016, 13.0, 3, 2, 5),
+(18, 'White', 'Wine R', 750, 'USA', 2020, 12.5, 2, 3, 4),
+(19, 'Red', 'Wine S', 750, 'Chile', 2015, 14.0, 4, 2, 6),
+(20, 'White', 'Wine T', 750, 'Argentina', 2021, 11.5, 3, 5, 3);
 
 -- Cart 테이블에 샘플 데이터 20개 추가
 INSERT INTO Cart (member_id, product_id, quantity, total_amount)
@@ -314,14 +318,14 @@ VALUES
 (20, 20);
 
 
--- present_set 카테고리 상품 삽입
+-- gift_set 카테고리 상품 삽입
 INSERT INTO Product (category, korean_name, product_image_name, real_product_image_name, detail_image_name, real_detail_image_name, original_price, once)
 VALUES
-('present_set', '선물 세트 1', 'present_set1.jpg', 'present_set1_real.jpg', 'present_set1_detail.jpg', 'present_set1_detail_real.jpg', 50000, TRUE),
-('present_set', '선물 세트 2', 'present_set2.jpg', 'present_set2_real.jpg', 'present_set2_detail.jpg', 'present_set2_detail_real.jpg', 60000, FALSE),
-('present_set', '선물 세트 3', 'present_set3.jpg', 'present_set3_real.jpg', 'present_set3_detail.jpg', 'present_set3_detail_real.jpg', 70000, TRUE),
-('present_set', '선물 세트 4', 'present_set4.jpg', 'present_set4_real.jpg', 'present_set4_detail.jpg', 'present_set4_detail_real.jpg', 75000, FALSE),
-('present_set', '선물 세트 5', 'present_set5.jpg', 'present_set5_real.jpg', 'present_set5_detail.jpg', 'present_set5_detail_real.jpg', 80000, TRUE);
+('gift_set', '선물 세트 1', 'gift_set1.jpg', 'gift_set1_real.jpg', 'gift_set1_detail.jpg', 'gift_set1_detail_real.jpg', 50000, TRUE),
+('gift_set', '선물 세트 2', 'gift_set2.jpg', 'gift_set2_real.jpg', 'gift_set2_detail.jpg', 'gift_set2_detail_real.jpg', 60000, FALSE),
+('gift_set', '선물 세트 3', 'gift_set3.jpg', 'gift_set3_real.jpg', 'gift_set3_detail.jpg', 'gift_set3_detail_real.jpg', 70000, TRUE),
+('gift_set', '선물 세트 4', 'gift_set4.jpg', 'gift_set4_real.jpg', 'gift_set4_detail.jpg', 'gift_set4_detail_real.jpg', 75000, FALSE),
+('gift_set', '선물 세트 5', 'gift_set5.jpg', 'gift_set5_real.jpg', 'gift_set5_detail.jpg', 'gift_set5_detail_real.jpg', 80000, TRUE);
 
 -- pairing 카테고리 상품 삽입
 INSERT INTO Product (category, korean_name, product_image_name, real_product_image_name, detail_image_name, real_detail_image_name, original_price, once)
@@ -331,3 +335,37 @@ VALUES
 ('pairing', '페어링 세트 3', 'pairing_set3.jpg', 'pairing_set3_real.jpg', 'pairing_set3_detail.jpg', 'pairing_set3_detail_real.jpg', 55000, TRUE),
 ('pairing', '페어링 세트 4', 'pairing_set4.jpg', 'pairing_set4_real.jpg', 'pairing_set4_detail.jpg', 'pairing_set4_detail_real.jpg', 60000, FALSE),
 ('pairing', '페어링 세트 5', 'pairing_set5.jpg', 'pairing_set5_real.jpg', 'pairing_set5_detail.jpg', 'pairing_set5_detail_real.jpg', 65000, TRUE);
+
+
+
+-- Wine 카테고리에서 Sparkle Wine 샘플 데이터 10개 추가
+
+INSERT INTO Product (category, korean_name, product_image_name, real_product_image_name, detail_image_name, real_detail_image_name, original_price, once)
+VALUES 
+('Wine', '스파클 와인 1', 'sparkle_wine1.jpg', 'sparkle_wine1_DOT_jpg', 'sparkle_wine1_detail.jpg', 'sparkle_wine1_detail_DOT_jpg', 15000, TRUE),
+('Wine', '스파클 와인 2', 'sparkle_wine2.jpg', 'sparkle_wine2_DOT_jpg', 'sparkle_wine2_detail.jpg', 'sparkle_wine2_detail_DOT_jpg', 18000, FALSE),
+('Wine', '스파클 와인 3', 'sparkle_wine3.jpg', 'sparkle_wine3_DOT_jpg', 'sparkle_wine3_detail.jpg', 'sparkle_wine3_detail_DOT_jpg', 20000, TRUE),
+('Wine', '스파클 와인 4', 'sparkle_wine4.jpg', 'sparkle_wine4_DOT_jpg', 'sparkle_wine4_detail.jpg', 'sparkle_wine4_detail_DOT_jpg', 25000, FALSE),
+('Wine', '스파클 와인 5', 'sparkle_wine5.jpg', 'sparkle_wine5_DOT_jpg', 'sparkle_wine5_detail.jpg', 'sparkle_wine5_detail_DOT_jpg', 30000, TRUE),
+('Wine', '스파클 와인 6', 'sparkle_wine6.jpg', 'sparkle_wine6_DOT_jpg', 'sparkle_wine6_detail.jpg', 'sparkle_wine6_detail_DOT_jpg', 35000, FALSE),
+('Wine', '스파클 와인 7', 'sparkle_wine7.jpg', 'sparkle_wine7_DOT_jpg', 'sparkle_wine7_detail.jpg', 'sparkle_wine7_detail_DOT_jpg', 22000, TRUE),
+('Wine', '스파클 와인 8', 'sparkle_wine8.jpg', 'sparkle_wine8_DOT_jpg', 'sparkle_wine8_detail.jpg', 'sparkle_wine8_detail_DOT_jpg', 24000, FALSE),
+('Wine', '스파클 와인 9', 'sparkle_wine9.jpg', 'sparkle_wine9_DOT_jpg', 'sparkle_wine9_detail.jpg', 'sparkle_wine9_detail_DOT_jpg', 27000, TRUE),
+('Wine', '스파클 와인 10', 'sparkle_wine10.jpg', 'sparkle_wine10_DOT_jpg', 'sparkle_wine10_detail.jpg', 'sparkle_wine10_detail_DOT_jpg', 32000, FALSE);
+
+
+-- Wine 테이블에 샘플 데이터 15개 추가 (5개의 pairing + 10개의 sparkle)
+INSERT INTO Wine (wine_id, type, original_name, volume, origin, vintage, alcohol_content, acidity, sweetness, tannins)
+VALUES 
+-- Sparkle 와인 (10개)
+(31, 'Sparkle', 'Sparkle Wine 1', 750, 'France', 2018, 12.5, 3, 2, 5),
+(32, 'Sparkle', 'Sparkle Wine 2', 750, 'Italy', 2019, 13.0, 2, 3, 4),
+(33, 'Sparkle', 'Sparkle Wine 3', 750, 'Spain', 2017, 14.0, 4, 1, 3),
+(34, 'Sparkle', 'Sparkle Wine 4', 750, 'USA', 2020, 11.5, 1, 4, 2),
+(35, 'Sparkle', 'Sparkle Wine 5', 750, 'Chile', 2015, 15.0, 5, 2, 6),
+(36, 'Sparkle', 'Sparkle Wine 6', 750, 'Argentina', 2016, 12.0, 3, 5, 4),
+(37, 'Sparkle', 'Sparkle Wine 7', 750, 'France', 2014, 13.5, 2, 3, 5),
+(38, 'Sparkle', 'Sparkle Wine 8', 750, 'Australia', 2021, 11.0, 4, 1, 2),
+(39, 'Sparkle', 'Sparkle Wine 9', 750, 'Italy', 2019, 14.5, 3, 4, 6),
+(40, 'Sparkle', 'Sparkle Wine 10', 750, 'Spain', 2018, 13.0, 2, 2, 5);
+

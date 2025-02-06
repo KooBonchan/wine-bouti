@@ -23,6 +23,7 @@ CREATE TABLE Member (
     email VARCHAR(255),
     address VARCHAR(255),
     zipcode VARCHAR(20),
+    phone_number VARCHAR(15),
     profile_image_name VARCHAR(255), 
     real_profile_image_name VARCHAR(255)
 );
@@ -52,7 +53,7 @@ CREATE TABLE Product (
     once BOOLEAN
 );
 CREATE TABLE Wine (
-    wine_id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    wine_id BIGINT PRIMARY KEY,
     type VARCHAR(255),
     original_name VARCHAR(255),
     volume INT,
@@ -74,7 +75,7 @@ CREATE TABLE Cart (
     FOREIGN KEY (product_id) REFERENCES Product(product_id) ON DELETE CASCADE
 );
 CREATE TABLE Purchase (
-    purchase_id BINARY(16) primary key default (UUID_TO_BIN(UUID())), -- purchase_id를 BIGINT로 변경
+    purchase_id BINARY(16) primary key not null, -- purchase_id를 BIGINT로 변경
     member_id BIGINT, -- member_id를 BIGINT로 변경
     address VARCHAR(255),
     total_amount INT,

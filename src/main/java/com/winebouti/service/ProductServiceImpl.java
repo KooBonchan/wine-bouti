@@ -2,6 +2,7 @@ package com.winebouti.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.winebouti.mapper.ProductMapper;
@@ -12,8 +13,8 @@ import com.winebouti.vo.WineVO;
 import lombok.RequiredArgsConstructor;
 
 @Service
-@RequiredArgsConstructor
-public class ProductServiceImpl implements ProductService {
+
+public class ProductServiceImpl  implements ProductService {
 
 	private final ProductMapper productMapper;
 
@@ -42,10 +43,19 @@ public class ProductServiceImpl implements ProductService {
     
     /* 이창현 */
     
-    @Override
-    public List<ProductVO> getRedWines() {
-        // ProductRepository를 사용하여 레드 와인 상품 목록을 조회하는 로직 구현
-        return productMapper.selectWineListByType("red");
+
+    @Autowired
+    public ProductServiceImpl (ProductMapper productMapper) {
+        this.productMapper = productMapper;
     }
+    
+    
+    @Override
+    public List<ProductVO> getWines(String category) {
+        return productMapper.selectWineListByType(category);
+    }
+    
+    
+    
 
 }

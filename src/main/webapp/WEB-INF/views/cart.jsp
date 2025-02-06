@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <script src="https://cdn.portone.io/v2/browser-sdk.js" defer async></script>
 <div class="cart-container">
 	<div class="title">SHOPPING</div>
@@ -61,24 +63,37 @@
 	</div>
 
 	<div class="shopping-continue">
-		<button class="action-button" onclick="history.back()">쇼핑계속하기</button>                                                
+		<button class="action-button" onclick='location.href=&#39;<c:url value="/product" />&#39;'>쇼핑계속하기</button>                                                
 	</div>
 </div>
+<sec:authentication property='principal.memberVO.email' var="email"/>
 <script>
+const setup = () => new Promise((resolve) => {
+	const polling = setInterval(() => {
+    if (window.PortOne != null) {
+      clearInterval(polling)
+      resolve()
+    }
+  }, 50)
+})
 
-PortOne.requestPayment({
-  storeId: "store-3c95c4dc-7ec4-48fa-8f7c-af83c1813c96",
-  // 채널 키 설정
-  channelKey: "channel-key-967853e6-c6bf-48be-8707-06177e2d5624",
-  paymentId: "SuPERTESTTEST TTTT",
-  orderName: "김김김김 조미조미김김",
-  totalAmount: 1000,
-  currency: "CURRENCY_KRW",
-  payMethod: "CARD",
-  customer: {
-	  email: "TEST_MASTER@retsa.set",
-	  phoneNumber: "12",
-	  fullName: "TESTSER",
-  },
+setup().then(_ => {
+	const customer = {
+			    email: "${fn:replace(fn:replace(email, '&#64;', '@'), '&#46;', '.')}",
+		      phoneNumber: '<sec:authentication property="principal.memberVO.phoneNumber"/>',
+		      fullName: '<sec:authentication property="principal.memberVO.username"/>',
+		    };
+	console.log(customer);
+	PortOne.requestPayment({
+    storeId: "store-3c95c4dc-7ec4-48fa-8f7c-af83c1813c96",
+    // 채널 키 설정
+    channelKey: "channel-key-967853e6-c6bf-48be-8707-06177e2d5624",
+    paymentId: "SuPERTESTTEST TTTT",
+    orderName: "김김김김 조미조미김김",
+    totalAmount: 1000,
+    currency: "CURRENCY_KRW",
+    payMethod: "CARD",
+    customer: customer,
+  })	
 })
 </script>

@@ -5,14 +5,12 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -75,13 +73,7 @@ public class MemberController {
         return "redirect:/member/login.tiles";
     }
 
-    @GetMapping("/")
-    public String findAll(Model model) {
-        List<MemberVO> memberVOList = memberService.findAll(); // List<MemberVO>로 변경
-        model.addAttribute("memberList", memberVOList);
-        return "member/list.tiles";
-    }
-
+    
     @GetMapping("/delete")
     public String delete(@RequestParam("memberId") Long memberId) {
         memberService.delete(memberId);

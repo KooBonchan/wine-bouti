@@ -67,9 +67,9 @@ public class ReviewController {
     ) {
     	
     	 System.out.println("Received productId: " + productId);
-    	    System.out.println("Received memberId: " + memberId);
-    	    System.out.println("Received content: " + content);
-    	    System.out.println("Received star: " + star);
+  	    System.out.println("Received memberId: " + memberId);
+  	    System.out.println("Received content: " + content);
+  	    System.out.println("Received star: " + star);
     	    
         // 리뷰 객체 생성 및 데이터 설정
         ReviewVO review = new ReviewVO();

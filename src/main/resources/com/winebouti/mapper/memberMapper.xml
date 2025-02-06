@@ -10,6 +10,7 @@
 	    <result property="email" column="email"/>
 	    <result property="address" column="address"/>
 	    <result property="zipcode" column="zipcode"/>
+	    <result property="phoneNumber" column="phone_number"/>
 	    <result property="profileImageName" column="profile_image_name"/>
 	    <result property="realProfileImageName" column="real_profile_image_name"/>
 	    
@@ -22,8 +23,8 @@
 
 
     <insert id="save" parameterType="com.winebouti.vo.MemberVO">
-        INSERT INTO member (email, password, phone, username, address, zipcode)
-        VALUES (#{email}, #{password}, #{phone}, #{username}, #{address}, #{zipcode})
+        INSERT INTO member (email, password, username, address, zipcode, phone_number)
+        VALUES (#{email}, #{password}, #{username}, #{address}, #{zipcode}, #{phoneNumber})
     </insert>
     <!-- 회원 정보 수정 -->
     <update id="update" parameterType="com.winebouti.vo.MemberVO">
@@ -31,8 +32,9 @@
         SET
         	username = #{username},
         	address = #{address},
-        	phone = #{phone},
-        	zipcode = #{zipcode}
+        	zipcode = #{zipcode},
+        	phone_number = #{phoneNumber}
+
         WHERE email = #{email} and password = #{password}
     </update>
     <insert id="grantAuth" parameterType="com.winebouti.vo.MemberVO">
@@ -49,29 +51,11 @@
 
     <!-- 이메일로 회원 조회 -->
     <select id="findByMemberEmail" resultMap="MemberResultMap" parameterType="String">
-	    SELECT m.member_id, m.username, m.password, m.phone, m.email, m.address, m.zipcode, 
+	    SELECT m.member_id, m.username, m.password, m.email, m.address, m.zipcode, m.phone_number,
 	           m.profile_image_name, m.real_profile_image_name, 
 	           a.auth
 	    FROM member m
 	    LEFT JOIN auth a ON m.username = a.username
 	    WHERE m.email = #{loginEmail}
 	</select>
-
-
-    <!-- ##################################################### -->
-    
-        <!-- 로그인 -->
-    <select id="login" resultType="com.winebouti.vo.MemberVO" parameterType="com.winebouti.vo.MemberVO">
-        SELECT * FROM member WHERE email = #{email} AND password = #{password}
-    </select>
-
-    <!-- 모든 회원 조회 -->
-    <select id="findAll" resultType="com.winebouti.vo.MemberVO">
-        SELECT * FROM member
-    </select>
-
-    <!-- 회원 ID로 조회 -->
-    <select id="findById" resultType="com.winebouti.vo.MemberVO" parameterType="long">
-        SELECT * FROM member WHERE id = #{id}
-    </select>
 </mapper>
