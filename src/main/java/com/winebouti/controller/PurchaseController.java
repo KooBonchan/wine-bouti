@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
+import javax.swing.text.html.parser.Entity;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -20,8 +21,8 @@ import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequiredArgsConstructor
-@SessionAttributes("cartDTO")
-public class CartController {
+@SessionAttributes(names = {"cartDTO", "purchase"})
+public class PurchaseController {
   private final ProductService productService;
   /*
    * 장바구니 정책: 세션, DB 사용 X, 결제 시 결제 정보만 저장.
@@ -67,5 +68,9 @@ public class CartController {
     return "cart.tiles";
   }
   
-  
+  @PostMapping("order")
+  public ResponseEntity<Void> temporaryPurchase(HttpSession session){
+    
+    return ResponseEntity.ok().build();
+  }  
 }

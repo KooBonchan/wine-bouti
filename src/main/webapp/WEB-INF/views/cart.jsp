@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<script src="https://cdn.portone.io/v2/browser-sdk.js" defer async></script>
 <div class="cart-container">
 	<div class="title">SHOPPING</div>
 
@@ -40,7 +41,7 @@
 			총 상품가격<br>50,000원
 		</div>
 		<div>
-			구매 예정가<br>+ 3,000원
+			배송비<br>+ 3,000원
 		</div>
 		<div>
 			총액<br>
@@ -48,9 +49,8 @@
 		</div>
 	</div>
 
-	<div class="action-buttons">
-		<button class="action-button">선택상품 주문</button>
-		<button class="action-button">전체상품 주문</button>
+	<div class="order-buttons">
+		<button class="order-button">주문하기</button>
 	</div>
 
 	<div class="notes">
@@ -64,73 +64,21 @@
 		<button class="action-button" onclick="history.back()">쇼핑계속하기</button>                                                
 	</div>
 </div>
-<%-- 
-<!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>1달러샵</title>
-    <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script>
-        var IMP = window.IMP;
-        IMP.init("가맹점식별코드를 입력합니다.");
+<script>
 
-        function requestPay() {
-
-            var orderUid = '[[${requestDto.orderUid}]]';
-            var itemName = '[[${requestDto.itemName}]]';
-            var paymentPrice = [[${requestDto.paymentPrice}]];
-            var buyerName = '[[${requestDto.buyerName}]]';
-            var buyerEmail = '[[${requestDto.buyerEmail}]]';
-            var buyerAddress = '[[${requestDto.buyerAddress}]]';
-
-            IMP.request_pay({
-                    pg : 'html5_inicis.INIpayTest',
-                    pay_method : 'card',
-                    merchant_uid: orderUid, // 주문 번호
-                    name : itemName, // 상품 이름
-                    amount : paymentPrice, // 상품 가격
-                    buyer_email : buyerEmail, // 구매자 이메일
-                    buyer_name : buyerName, // 구매자 이름
-                    buyer_tel : '010-1234-5678', // 임의의 값
-                    buyer_addr : buyerAddress, // 구매자 주소
-                    buyer_postcode : '123-456', // 임의의 값
-                },
-                function(rsp) {
-                    if (rsp.success) {
-                        alert('call back!!: ' + JSON.stringify(rsp));
-                        // 결제 성공 시: 결제 승인 또는 가상계좌 발급에 성공한 경우
-                        // jQuery로 HTTP 요청
-                        jQuery.ajax({
-                            url: "/payment",
-                            method: "POST",
-                            headers: {"Content-Type": "application/json"},
-                            data: JSON.stringify({
-                                "payment_uid": rsp.imp_uid,      // 결제 고유번호
-                                "order_uid": rsp.merchant_uid   // 주문번호
-                            })
-                        }).done(function (response) {
-                            console.log(response);
-                            // 가맹점 서버 결제 API 성공시 로직
-                            //alert('Please, Check your payment result page!!' + rsp);
-                            alert('결제 완료!' + rsp);
-                            window.location.href = "/success-payment";
-                        })
-                    } else {
-                        // alert("success? "+ rsp.success+ ", 결제에 실패하였습니다. 에러 내용: " + JSON.stringify(rsp));
-                        alert('결제 실패!' + rsp);
-                        window.location.href = "/fail-payment";
-                    }
-                });
-        }
-    </script>
-</head>
-<body>
-    <h1>결제 페이지</h1>
-    <button th:with="requestDto = ${requestDto}" onclick="requestPay()">
-        결제하기
-    </button>
-</body>
-</html>
- --%>
+PortOne.requestPayment({
+  storeId: "store-3c95c4dc-7ec4-48fa-8f7c-af83c1813c96",
+  // 채널 키 설정
+  channelKey: "channel-key-967853e6-c6bf-48be-8707-06177e2d5624",
+  paymentId: "SuPERTESTTEST TTTT",
+  orderName: "김김김김 조미조미김김",
+  totalAmount: 1000,
+  currency: "CURRENCY_KRW",
+  payMethod: "CARD",
+  customer: {
+	  email: "TEST_MASTER@retsa.set",
+	  phoneNumber: "12",
+	  fullName: "TESTSER",
+  },
+})
+</script>

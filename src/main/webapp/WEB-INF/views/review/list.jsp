@@ -21,11 +21,19 @@
 						<span>${review.userName}</span> 
 						<span><fmt:formatDate value="${review.writeDate}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
 					</div>
+					
+					<!--리뷰 제목 -->
+                   <%--  <h3 class="review-title">${review.title}</h3>  --%>
+                   
+                   
+					
 					<p>${review.content}</p>
 					<c:if test="${not empty review.imagePath}">
-						<img class="review-image" src="/uploads/${review.imagePath}"
-							alt="리뷰 이미지">
+						<img class="review-image" src="/upload/${review.imagePath}"
+							alt="리뷰 이미지" onerror="this.style.display='none'">
 					</c:if>
+					
+					<!-- 삭제 -->
 					<button class="delete-btn"
 						onclick="deleteReview(${review.reviewId})">삭제</button>
 				</div>
@@ -71,7 +79,7 @@ $(document).ready(function () {
                                 <span>${review.writeDate}</span>
                             </div>
                             <p>${review.content}</p>
-                            ${review.imagePath ? '<img class="review-image" src="/uploads/${review.imagePath}" alt="리뷰 이미지">' : ''}
+                            ${review.imagePath ? '<img class="review-image" src="/upload/${review.imagePath}" alt="리뷰 이미지">' : ''}
                             <button class="delete-btn" onclick="deleteReview(${review.reviewId})">삭제</button>
                         </div>
                     `;
@@ -93,19 +101,20 @@ $(document).ready(function () {
         loadMoreReviews();
     });
 
-    function deleteReview(reviewId) {
+    window.deleteReview = function(reviewId) {
         if (!confirm("정말 삭제하시겠습니까?")) return;
 
         $.ajax({
             url: "/review/delete/" + reviewId,
             type: "DELETE",
-            success: function () {
-                $("#review-" + reviewId).remove();
+            success: function (response) {
+                alert("리뷰가 삭제되었습니다!");
+                $("#review-" + reviewId).remove();  //UI에서 삭제
             },
-            error: function () {
+            error: function (xhr) {
                 alert("리뷰 삭제 중 오류가 발생했습니다.");
             }
         });
-    }
-});
+    };
+
 </script>

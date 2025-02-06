@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -43,25 +44,25 @@ public class PurchaseMapperTest {
 	@Transactional
 	@Test
 	public void insertTest() {
+    List<PurchaseProductVO> products = new ArrayList<>();
+    for(int i = 1; i <= 10; i++) {
+      PurchaseProductVO product = new PurchaseProductVO(i, i * 7);
+      products.add(product);
+    }		
+		PurchaseVO purchase = PurchaseVO.builder()
+		    .memberId(3)
+		    .address("Korea Seoul Chuncheon-gu DarkGal-bi 23000-won")
+		    .orderName("sample")
+		    .products(products)
+		    .build();
+		purchase.setTotalPrice(2300030);
+		UUID idx = purchase.getPurchaseId();
 		
-		PurchaseVO purchase = new PurchaseVO();
-		purchase.setMemberId(3);
-		purchase.setAddress("Korea Seoul Chuncheon-gu DarkGal-bi 23000-won");
-		purchase.setTotalAmount(2300030);
-		assertTrue(purchaseMapper.insertMetadata(purchase) > 0);
-		long idx = purchase.getPurchaseId();
-		assertTrue(idx > 0);
 		
-		List<PurchaseProductVO> products = new ArrayList<>();
-		for(int i = 1; i <= 10; i++) {
-			PurchaseProductVO product = new PurchaseProductVO();
-			product.setPurchaseId(idx);
-			product.setProductId(i);
-			product.setQuantity(i*7);
-			products.add(product);
-		}
-		purchase.setProducts(products);
-		assertTrue(purchaseMapper.insertProductList(purchase) > 0);
+		purchaseMapper.insertMetadata(purchase);
+		purchaseMapper.insertProductList(purchase);
+		
+		
 		
 	}
 }

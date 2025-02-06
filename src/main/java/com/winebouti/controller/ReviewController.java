@@ -2,6 +2,8 @@ package com.winebouti.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.List;
 import java.util.UUID;
 
@@ -60,7 +62,15 @@ public class ReviewController {
         @RequestParam("star") int star,
         @RequestParam(value = "file", required = false) MultipartFile file,
         RedirectAttributes redirectAttributes
+        
+        
     ) {
+    	
+    	 System.out.println("Received productId: " + productId);
+    	    System.out.println("Received memberId: " + memberId);
+    	    System.out.println("Received content: " + content);
+    	    System.out.println("Received star: " + star);
+    	    
         // 리뷰 객체 생성 및 데이터 설정
         ReviewVO review = new ReviewVO();
         review.setProductId(productId);
@@ -91,7 +101,7 @@ public class ReviewController {
         reviewService.insertReview(review);
         redirectAttributes.addFlashAttribute("message", "리뷰가 성공적으로 등록되었습니다!");
 
-        return "redirect:/review/list";
+        return "redirect:/product/details/" + productId;
     }
 
     // 리뷰 수정
@@ -105,19 +115,9 @@ public class ReviewController {
         return "review/edit.tiles";
     }
 
+    
     // 삭제
-    @DeleteMapping("/delete/{reviewId}")
-    public ResponseEntity<String> deleteReview(@PathVariable("reviewId") Long reviewId) {
+  
 
-        if (reviewId == null || reviewId == 0) {
-            return ResponseEntity.badRequest().body("잘못된 리뷰 ID입니다.");
-        }
 
-        int result = reviewService.deleteReview(reviewId);
-        if (result > 0) {
-            return ResponseEntity.ok("리뷰가 삭제되었습니다.");
-        } else {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("리뷰 삭제 실패");
-        }
-    }
 }

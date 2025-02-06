@@ -8,4 +8,8 @@
   	<typeAlias type="com.winebouti.vo.ProductVO" alias="ProductVO"/>
   	<typeAlias type="com.winebouti.vo.WineVO" alias="WineVO"/>
   </typeAliases>
+  
+  <typeHandlers>
+    <typeHandler handler="com.winebouti.config.UuidTypeHandler"/>
+  </typeHandlers>
 </configuration>
