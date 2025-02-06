@@ -31,7 +31,7 @@ public class ProductController {
     /* 양정민 */
     // 상품 상세페이지
     
-    @GetMapping("/details/{productId}")  // ✅ URL에 {productId} 포함
+    @GetMapping("/details/{productId}")  //  URL에 {productId} 포함
     public String getProductDetail(@PathVariable("productId") long productId, Model model) {
 
         ProductVO product = productService.getProductById(productId);
