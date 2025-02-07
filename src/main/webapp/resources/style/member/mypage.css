@@ -15,8 +15,17 @@
 }
 
 /* 환영 메시지 */
+
+main-container_welcome img {
+    margin-bottom: 20px;
+    }
+.main-container_welcome h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    }
+
 .main-container_welcome h2 {
-    font-size: 28px;
+    font-size: 20px;
     color: #2c3e50;
     font-weight: 600;
     text-align: center;

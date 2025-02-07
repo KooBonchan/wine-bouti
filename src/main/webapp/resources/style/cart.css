@@ -4,6 +4,7 @@
 	padding: 20px;
 	border-radius: 4px;
 	margin: 0 auto;
+
 }
 
 .title {
@@ -11,6 +12,8 @@
 	font-size: 24px;
 	font-weight: bold;
 	margin-bottom: 20px;
+	margin-top: 50px;
+	margin-bottom: 50px;
 }
 
 .cart-header {
@@ -64,6 +67,7 @@
 	text-align: center;
 	padding: 10px;
 	background: #f9f9f9;
+	margin-top: 50px;
 }
 
 .summary .total {
@@ -87,6 +91,7 @@
 
 .notes {
 	margin: 20px 0;
+	margin-top: 50px;
 }
 
 .notes ol {
@@ -96,3 +101,28 @@
 .shopping-continue {
 	text-align: right;
 }
+
+
+.action-button {
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.action-button:hover {
+    background-color: #333;
+    color: #fff;
+    transform: scale(1.05);
+}
+
+.action-button:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(51, 51, 51, 0.5);
+}
+

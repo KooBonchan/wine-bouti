@@ -33,7 +33,7 @@
        value="${product.originalPrice}" /></div>
 				<div>
 					<button class="button">삭제</button>
-					<button class="button">주문하기</button>
+					<button class="button">주문</button>
 				</div>
 			</div>
 		</c:forEach>
