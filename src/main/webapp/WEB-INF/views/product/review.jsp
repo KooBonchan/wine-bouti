@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -148,7 +149,7 @@ input[type="file"] {
 			method="post" enctype="multipart/form-data">
 			<input type="hidden" name="productId" value="${param.productId}">
 			<%-- <input type="hidden" name="memberId" value="${sessionScope.loggedInUserId}"> --%>
-			<input type="hidden" name="memberId" value="3">
+			<input type="hidden" name="memberId" value="<sec:authentication property='principal.memberVO.memberId'/>">
 
 
 			<div class="title-rating">
@@ -186,9 +187,7 @@ input[type="file"] {
 			<input type="submit" id="submitBtn" value="리뷰 제출">
 
 		</form>
-
-		<!-- jQuery 추가 -->
-		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</div>
 
 		<script>
     document.getElementById("reviewForm").addEventListener("submit", function(event) {
@@ -212,14 +211,16 @@ input[type="file"] {
         }
         
         let formData = new FormData();
-        formData.append("productId", productId);
-        formData.append("memberId", memberId);
+        formData.append("productId", ${param.productId});
+        formData.append("memberId", "<sec:authentication property='principal.memberVO.memberId'/>");
         formData.append("title", title);
         formData.append("content", content);
         formData.append("star", rating);
 
+        console.log("파일 업로드 전")
         // 이미지가 있으면 먼저 업로드 (Ajax)
         if (image) {
+        	console.log(formData);
             formData.append("uploadFile", image);
 
             $.ajax({
@@ -243,27 +244,30 @@ input[type="file"] {
             });
         } else {
             // 이미지가 없으면 파일 정보 없이 리뷰 전송
+            console.log("이미지 없음");
             sendReviewData(title, content, rating, null);
         }
     });
 
-    // 서버로 리뷰 데이터 전송
+    
+   	function sendReviewData(title, content, rating, image){
+     // 서버로 리뷰 데이터 전송
 		let formData = new FormData();
-		formData.append("productId", productId);  // ✅ productId 추가
-		formData.append("memberId", memberId);    // ✅ memberId 추가
+		formData.append("productId", ${param.productId});  // productId 추가
+		formData.append("memberId", "<sec:authentication property='principal.memberVO.memberId'/>");    // memberId 추가
 		formData.append("content", content);
 		formData.append("star", rating);
 		
 		if (image) {
-		    formData.append("file", image);  // ✅ 파일 추가
+		    formData.append("file", image);  // 파일 추가
 		}
 		
 		$.ajax({
 		    url: "/review/write",
 		    type: "POST",
 		    data: formData,
-		    processData: false,  // 🚀 `FormData` 사용 시 필수
-		    contentType: false,  // 🚀 `FormData` 사용 시 필수
+		    processData: false,  // `FormData` 사용 시 필수
+		    contentType: false,  
 		    success: function(response) {
 		        alert("리뷰가 성공적으로 등록되었습니다!");
 		        window.location.href = "/product/details/" + productId;
@@ -295,5 +299,6 @@ input[type="file"] {
         }
     });
 </script>
+
 </body>
 </html>

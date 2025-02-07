@@ -34,8 +34,8 @@
 					</c:if>
 					
 					<!-- 삭제 -->
-					<button class="delete-btn"
-						onclick="deleteReview(${review.reviewId})">삭제</button>
+					<button class="delete-btn" data-review-id="${review.reviewId}">삭제</button>
+
 				</div>
 			</c:forEach>
 		</c:otherwise>
@@ -101,20 +101,38 @@ $(document).ready(function () {
         loadMoreReviews();
     });
 
-    window.deleteReview = function(reviewId) {
-        if (!confirm("정말 삭제하시겠습니까?")) return;
+    
+ // 리뷰 삭제 함수
+    function deleteReview(reviewId) {
+        console.log("삭제 요청 reviewId:", reviewId); // 오류 수정
+
+        if (!confirm("정말 삭제하시겠습니까?")) {
+            return; // 사용자가 취소하면 삭제 요청 중단
+        }
 
         $.ajax({
-            url: "/review/delete/" + reviewId,
             type: "DELETE",
-            success: function (response) {
-                alert("리뷰가 삭제되었습니다!");
-                $("#review-" + reviewId).remove();  //UI에서 삭제
+            url: "<c:url value='/review/' />"+ reviewId,
+            dataType: "text",
+            success: function (result) {
+                console.log("삭제 성공:", result);
+                alert("리뷰가 삭제되었습니다.");
+                $("#review-" + reviewId).remove(); // 삭제된 리뷰를 화면에서 제거
             },
-            error: function (xhr) {
-                alert("리뷰 삭제 중 오류가 발생했습니다.");
-            }
+            error: function (xhr, status, er) {
+                console.log("삭제 실패:", er);
+                alert("삭제 실패: " + er);
+            },
         });
-    };
+    }
+
+    // 삭제 버튼 클릭 이벤트 (이벤트 리스너 수정)
+    $(document).on("click", ".delete-btn", function () {
+        let reviewId = $(this).data("review-id"); // 버튼의 data-review-id 값 가져오기
+        console.log("삭제 버튼 클릭됨, reviewId:", reviewId); // 확인 로그
+        deleteReview(reviewId); // 함수 호출
+    });
+});
+
 
 </script>

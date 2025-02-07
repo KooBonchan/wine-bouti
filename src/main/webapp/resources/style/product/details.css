@@ -15,7 +15,6 @@ body {
 .container {
     display: flex;
     flex-direction: column;  /* 세로 방향으로 나누기 */
-    height: 800px;  /* 고정된 높이 설정 */
     width: 1200px;  /* 고정된 너비 설정 */
     margin: 0 auto;  /* 수평 중앙 정렬 */
     align-items: center;  /* 수직 중앙 정렬 */
