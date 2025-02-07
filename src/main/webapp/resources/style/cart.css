@@ -31,7 +31,10 @@
 	padding: 10px;
 	border-bottom: 1px solid #eee;
 	align-items: center;
+	font-size: 16px;
 }
+
+
 
 .product-image {
 	width: 80px;
@@ -51,13 +54,21 @@
 	padding: 5px;
 }
 
+.price {
+	padding-left:0.5rem;
+}
+.etc {
+	width: 130px;
+}
 .button {
+	width: 60px;
 	background: #666;
 	color: white;
 	border: none;
 	padding: 5px 15px;
 	border-radius: 15px;
 	cursor: pointer;
+	gap:10px;
 }
 
 .summary {
@@ -92,6 +103,7 @@
 .notes {
 	margin: 20px 0;
 	margin-top: 50px;
+	font-size: 16px;
 }
 
 .notes ol {

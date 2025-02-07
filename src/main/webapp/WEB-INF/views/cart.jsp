@@ -12,8 +12,8 @@
 		<div>상품사진</div>
 		<div>상품정보</div>
 		<div>수량</div>
-		<div>가격</div>
-		<div>기타</div>
+		<div class="price">가격</div>
+		<div class="etc">기타</div>
 	</div>
 
   <div class="cart-items">
@@ -29,9 +29,9 @@
 					<input type="number" value="${quantity }" min="1" class="quantity-input">
 					<button class="button">수정</button>
 				</div>
-				<div><fmt:formatNumber type="currency" maxFractionDigits="0" currencySymbol="￦"
+				<div class="price"><fmt:formatNumber type="currency" maxFractionDigits="0" currencySymbol="￦"
        value="${product.originalPrice}" /></div>
-				<div>
+				<div class="etc">
 					<button class="button">삭제</button>
 					<button class="button">주문</button>
 				</div>
