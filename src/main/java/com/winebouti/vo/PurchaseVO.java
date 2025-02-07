@@ -22,7 +22,7 @@ public class PurchaseVO {
   
 	@Builder
 	public PurchaseVO(long memberId, String address, 
-      List<PurchaseProductVO> products, String orderName) {
+      List<PurchaseProductVO> products, String orderName, int totalPrice) {
     this.purchaseId = UUID.randomUUID();
     this.memberId = memberId;
     this.address = address;
@@ -31,5 +31,6 @@ public class PurchaseVO {
     }
     this.products = products;
     this.orderName = orderName;
+    this.totalPrice = totalPrice;
   }
 }
