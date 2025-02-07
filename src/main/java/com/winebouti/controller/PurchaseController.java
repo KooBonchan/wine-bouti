@@ -84,14 +84,15 @@ public class PurchaseController {
     }
     ProductVO productVO = productService.getProductById(productId);
     cartDTO.getCartItems().put(productVO, quantity);
-    
-    return ResponseEntity.ok().body(cartDTO.getCartItems().size());
+    cartDTO.setTotalPrice();
+    return ResponseEntity.ok().body(cartDTO.getTotalPrice());
   }
   
   @PostMapping("api/order")
   public ResponseEntity<PurchaseVO> temporaryPurchase(
       HttpSession session, Principal principal
     ){
+    // change I am a Teapot to Meaningful name
     PurchaseVO tempPurchase = (PurchaseVO)session.getAttribute("order");
     CartDTO cart = (CartDTO) session.getAttribute("cartDTO");
     MemberVO user = ((CustomUser) ((Authentication)principal).getPrincipal()).getMemberVO();
