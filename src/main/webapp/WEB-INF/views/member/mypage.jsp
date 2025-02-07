@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="<c:url value='/resources/style/member/mypage.css' />" />
 
 <div class="main-container_welcome">
-     <img src="<c:url value='/resources/images/icon/login3.png'/>" alt="login">
+   <img src="<c:url value='/resources/images/icon/login3.png'/>" alt="login" width="70" height="70">
     <h2>
         [ <sec:authentication property="principal.memberVO.username"/> ] 님<br>
         환영합니다.
