@@ -30,8 +30,8 @@
             </div>
             
               <div>
-                <label for="phone">전화번호:</label>
-                <input type="phone" name="phone" id="phone">
+                <label for="phoneNumber">전화번호:</label>
+                <input type="text" name="phoneNumber" id="phoneNumber" value="<sec:authentication property='principal.memberVO.phoneNumber'/>">
             </div>
             
             <div>

@@ -3,7 +3,7 @@
     margin-top: 100px;
     margin-left: auto;
     margin-right: auto;
-    width: 100%;
+    width: auto; /* 100% -> auto로 변경 */
     max-width: 400px;
     padding: 30px;
     border-radius: 8px;
@@ -19,8 +19,13 @@
     font-size: 28px;
     color: #2c3e50;
     font-weight: 600;
-    margin-bottom: 50psx;
+   	padding-bottom: 20px;
+    display: flex;               /* flexbox로 설정 */
+    justify-content: center;     /* 수평 중앙 정렬 */
+    align-items: center;         /* 수직 중앙 정렬 */
+    text-align: center;          /* 텍스트 중앙 정렬 */
 }
+
 
 /* 레이블 텍스트 왼쪽 정렬 */
 .main-container_update form div {
@@ -34,7 +39,6 @@
     font-size: 16px;
     color: #333;
     display: block;
-
 }
 
 /* 입력 폼 스타일 */
@@ -57,7 +61,7 @@ input[disabled] {
 
 /* 수정 버튼 스타일 */
 input[type="button"] {
-	width: 100%;
+    width: 100%;
     padding: 12px 20px;
     background-color: #808080;
     color: white;

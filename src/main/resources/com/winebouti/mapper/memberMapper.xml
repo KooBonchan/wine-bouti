@@ -4,10 +4,9 @@
 <mapper namespace="com.winebouti.mapper.MemberMapper">
 	<resultMap id="MemberResultMap" type="com.winebouti.vo.MemberVO">
 	    <id property="memberId" column="member_id"/>
+        <result property="email" column="email"/>
 	    <result property="username" column="username"/>
 	    <result property="password" column="password"/>
-	    <result property="phone" column="phone"/>
-	    <result property="email" column="email"/>
 	    <result property="address" column="address"/>
 	    <result property="zipcode" column="zipcode"/>
 	    <result property="phoneNumber" column="phone_number"/>
@@ -16,7 +15,7 @@
 	    
 	    <!-- AuthVO 리스트를 위한 SubResultMap -->
 	    <collection property="auths" ofType="com.winebouti.vo.AuthVO">
-	        <result property="username" column="username"/>
+	        <result property="email" column="email"/>
 	        <result property="auth" column="auth"/>
 	    </collection>
 	</resultMap>
@@ -34,12 +33,11 @@
         	address = #{address},
         	zipcode = #{zipcode},
         	phone_number = #{phoneNumber}
-
         WHERE email = #{email} and password = #{password}
     </update>
     <insert id="grantAuth" parameterType="com.winebouti.vo.MemberVO">
-        INSERT INTO auth (auth, username)
-        VALUES ('ROLE_USER', #{username})
+        INSERT INTO auth (auth, email)
+        VALUES ('ROLE_USER', #{email})
     </insert>
     
 
@@ -55,7 +53,7 @@
 	           m.profile_image_name, m.real_profile_image_name, 
 	           a.auth
 	    FROM member m
-	    LEFT JOIN auth a ON m.username = a.username
+	    LEFT JOIN auth a ON m.email = a.email
 	    WHERE m.email = #{loginEmail}
 	</select>
 </mapper>

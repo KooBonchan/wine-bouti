@@ -80,51 +80,6 @@ input[type="submit"]:hover {
     }
 }
 
-/* 메인 페이지에서 환영 메시지 스타일 */
-.main-container_welcome h2 {
-    font-size: 28px;
-    color: #2c3e50;
-    font-weight: 600;
-    margin-bottom: 20px;
-    text-align: center; /* 중앙 정렬 */
-    padding: 10px; /* 여백 추가 */
-    background-color: none;
-    border-radius: 8px;
-    border-radius: 5px; /* 둥근 모서리 */
-    width: 100%;
-    max-width: 500px; /* 최대 너비 설정 */
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* 로그인 페이지에서 h2 스타일 */
-.main-container_welcome h2 { 
-    font-size: 24px;
-    color: #333;
-    font-weight: 600;
-    margin-bottom: 20px;
-    text-align: center; /* 중앙 정렬 */
-    padding: 10px; /* 여백 추가 */
-    border-radius: 5px; /* 둥근 모서리 */
-    width: 100%;
-    max-width: 400px; /* 최대 너비 설정 */
-    margin-left: auto;
-    margin-right: auto;
-}
-/* 메인 컨테이너 스타일 */
-.main-container_welcome {
-	 margin-top: 200px; 
-    margin-left: auto;
-    margin-right: auto; 
-    width: 100%;
-    max-width: 400px;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 
 /* 버튼 컨테이너 */
 .button-container {
@@ -173,7 +128,7 @@ input[type="submit"]:hover {
 
 /* �α��� �� ��Ÿ�� */
 .login-form-container {           /* ȭ���� �߰� ��ġ */
-   margin-top: 200px; 
+   margin-top: 100px; 
     margin-left: auto;
     margin-right: auto; 
     width: 100%;

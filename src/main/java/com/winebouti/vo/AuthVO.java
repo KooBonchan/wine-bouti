@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AuthVO {
-	private String username;
+	private String email;
 	private String auth;
   public AuthVO(String auth) {
     super();

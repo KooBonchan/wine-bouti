@@ -97,8 +97,8 @@ button.prev:hover, button.next:hover {
     height: 200px;
     margin: 0 auto;
     gap: 20px;
-    margin-bottom:55px;
-   	margin-top:55px;
+    margin-bottom:70px;
+   	margin-top:70px;
 }
 
 .gallery {
@@ -162,7 +162,7 @@ button.prev:hover, button.next:hover {
     margin: 20px auto; /* 상하 여백 */
     flex-wrap: wrap; /* 줄 바꿈이 가능하도록 설정 */
     width: 1250px;
- 	margin-bottom:55px;
+ 	margin-bottom:60px;
 }
 
 
