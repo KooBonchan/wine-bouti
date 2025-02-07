@@ -7,7 +7,9 @@
 </head>
 <body>
 <div class="login-form-container">
-    <h2>로그인</h2>
+     
+    <h2>login</h2>
+    <img src="<c:url value='/resources/images/icon/login2.png'/>" alt="login">
     <form action="<c:url value='/member/login'/>" method="post">
         <p>
             <input type="text" name="email" placeholder="이메일" required>

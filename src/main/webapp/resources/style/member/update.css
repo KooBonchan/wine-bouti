@@ -19,9 +19,13 @@
     font-size: 28px;
     color: #2c3e50;
     font-weight: 600;
-    margin-bottom: 100px;
-    text-align: center;
+   	padding-bottom: 20px;
+    display: flex;               /* flexbox로 설정 */
+    justify-content: center;     /* 수평 중앙 정렬 */
+    align-items: center;         /* 수직 중앙 정렬 */
+    text-align: center;          /* 텍스트 중앙 정렬 */
 }
+
 
 /* 레이블 텍스트 왼쪽 정렬 */
 .main-container_update form div {
