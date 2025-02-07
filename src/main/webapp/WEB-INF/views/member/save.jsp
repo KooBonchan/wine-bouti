@@ -12,7 +12,8 @@
 </head>
 <body>
     <div class="form-container">
-        <h2>회원가입</h2> 
+        <h2>Sign up</h2> 
+        <img src="<c:url value='/resources/images/icon/login4.png'/>" alt="login" width="70" height="70">
         <form action="<c:url value='/member/save' />" method="post">
             <p>e-mail: <input type="email" name="email" id="email" placeholder="이메일" onblur="emailCheck()"></p>
             <p id="check-result"></p>
@@ -55,19 +56,13 @@
             });
         }
 
-        // 회원가입 완료 후 팝업창 표시
-        $(document).ready(function() {
+        // 회원가입 완료 후 알림창 표시
+        window.onload = function() {
             const urlParams = new URLSearchParams(window.location.search);
             if (urlParams.get('success') === 'true') {
-                // alert("회원가입이 완료되었습니다!");
-                $("#successModal").dialog();
+                alert("회원가입이 성공적으로 완료되었습니다!");
             }
-        });
+        };
     </script>
-
-    <!-- 모달 창 -->
-    <div id="successModal" title="회원가입 완료" style="display:none;">
-        <p>회원가입이 성공적으로 완료되었습니다!</p>
-    </div>
 </body>
 </html>
