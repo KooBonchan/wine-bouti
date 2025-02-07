@@ -18,9 +18,9 @@ set foreign_key_checks = 1;
 
 CREATE TABLE Member (
     member_id BIGINT PRIMARY KEY AUTO_INCREMENT,
-    username VARCHAR(255) UNIQUE NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
-    email VARCHAR(255),
+    username VARCHAR(255),
     address VARCHAR(255),
     zipcode VARCHAR(20),
     phone_number VARCHAR(15),
@@ -31,15 +31,15 @@ CREATE TABLE Member (
 
 CREATE TABLE Auth (
     auth VARCHAR(255),
-    username VARCHAR(255) UNIQUE NOT NULL,
-    FOREIGN KEY (username) REFERENCES Member(username) ON DELETE CASCADE
+    email VARCHAR(255) UNIQUE NOT NULL,
+    FOREIGN KEY (email) REFERENCES Member(email) ON DELETE CASCADE
 );
 CREATE TABLE persistent_login (
     series VARCHAR(255) PRIMARY KEY,
     username VARCHAR(255) NOT NULL,
     token VARCHAR(255) NOT NULL,
     last_used TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (username) REFERENCES Member(username) ON DELETE CASCADE
+    FOREIGN KEY (username) REFERENCES Member(email) ON DELETE CASCADE
 );
 CREATE TABLE Product (
     product_id BIGINT PRIMARY KEY AUTO_INCREMENT,
