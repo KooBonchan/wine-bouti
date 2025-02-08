@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.UUID;
 
@@ -55,20 +56,22 @@ public class ReviewController {
 	}
 
 	@PostMapping("/write")
-	public String submitReview(@RequestParam("productId") Long productId, @RequestParam("memberId") Long memberId,
+	public String submitReview(@RequestParam("productId") Long productId,
+			@RequestParam("memberId") Long memberId,
+			@RequestParam("title") String title,
 			@RequestParam("content") String content, @RequestParam("star") int star,
 			@RequestParam(value = "file", required = false) MultipartFile file, RedirectAttributes redirectAttributes
 
 	) {
-		log.info("📌 [리뷰 작성 요청] productId: " + productId + ", memberId: " + memberId);
-		log.info("📌 [리뷰 내용] " + content + " (별점: " + star + ")");
 
 		// 리뷰 객체 생성 및 데이터 설정
 		ReviewVO review = new ReviewVO();
 		review.setProductId(productId);
+		review.setTitle(title);
 		review.setMemberId(memberId);
 		review.setContent(content);
 		review.setStar(star);
+		review.setWriteDate(new Timestamp(System.currentTimeMillis()));
 
 		// 업로드된 파일이 있으면 저장
 		if (file != null && !file.isEmpty()) {

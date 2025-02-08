@@ -40,12 +40,12 @@
 	<!-- 리뷰 추가 -->
 	<insert id="insertReview"
 		parameterType="com.winebouti.vo.ReviewVO">
-		INSERT INTO Review (product_id, member_id, content,
+		INSERT INTO Review (product_id, member_id, title, content,
 		star, image_path,
 		write_date)
-		VALUES (#{productId}, #{memberId},
+		VALUES (#{productId}, #{memberId}, #{title},
 		#{content}, #{star}, #{imagePath},
-		NOW());
+		#{writeDate});
 	</insert>
 
 	<!-- 리뷰 수정 -->

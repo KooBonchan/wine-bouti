@@ -23,7 +23,7 @@
 					</div>
 					
 					<!--리뷰 제목 -->
-                   <%--  <h3 class="review-title">${review.title}</h3>  --%>
+                    <h3 class="review-title">${review.title}</h3>
                    
                    
 					

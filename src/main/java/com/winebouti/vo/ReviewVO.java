@@ -1,6 +1,7 @@
 package com.winebouti.vo;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 import lombok.Data;
 import lombok.Getter;
@@ -24,12 +25,13 @@ public class ReviewVO {
 	private int star;
 	private boolean isOpen;
 	private String response;
-	private Date writeDate;
+	private Timestamp writeDate;
 	private Date updateDate;
 //	private long purchaseId;
 	
 	
 	private String imagePath; //이미지경로
+	private String title;
 	
 
 }

@@ -255,6 +255,7 @@ input[type="file"] {
 		let formData = new FormData();
 		formData.append("productId", ${param.productId});  // productId 추가
 		formData.append("memberId", "<sec:authentication property='principal.memberVO.memberId'/>");    // memberId 추가
+		formData.append("title", title);
 		formData.append("content", content);
 		formData.append("star", rating);
 		
@@ -266,7 +267,7 @@ input[type="file"] {
 		    url: "/review/write",
 		    type: "POST",
 		    data: formData,
-		    processData: false,  // `FormData` 사용 시 필수
+		    processData: false, 
 		    contentType: false,  
 		    success: function(response) {
 		        alert("리뷰가 성공적으로 등록되었습니다!");
