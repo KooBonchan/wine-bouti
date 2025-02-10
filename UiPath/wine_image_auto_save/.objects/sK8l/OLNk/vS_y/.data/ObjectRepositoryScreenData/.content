@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryScreenData ContentHash="FSLUOoxHGUS79IL1mTtozA" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryScreenData.Data>
+    <TargetApp x:Key="TargetApp" Area="-8, -8, 1936, 1056" BrowserType="Chrome" IconBase64="iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFjSURBVDhP1ZK/SwJhGMfNoiIiiqKUe88UM4yIkoSaJBodIiioNdqagramhiBwjHDuHxBrq4iyMdyC7NTLFNTUsyEzNS79dj/eOI4cioboA8/wfvk+H57hNeCX/CNB6TaOTOCEvjS+JXgvV3Bqm8ORcRTC1TVNVXSC+lMWjbcqfWncbO4iaBhBqNUKbmGNpio6QXHDheK6E6/HB2hUy0qWOgwg2OLApdGGSAcBZx5T8k90gvyyGYWVIWWSiw6EvavK8oW83EkQ6yVIMCxtq+gEvHMWXB+DcLdFWZIn3GYB10XADxAkhwmyHjdtq+gEua0dRNqJNtLJ0R6CexNBys4iM8HieW+btlV0AjEvIG53IdrPIG5ikLAxSDkZpKcIHmcICt5J1IU8bavoBDK1SAwP7nnwg9LJVoL0OIvcNAthyQORv6MtjS8CmYYoonJ+htK+Dy9+H2oh6QNJWTOaCn7CXwuAD6rAjbPyehqlAAAAAElFTkSuQmCC" Selector="&lt;html app='chrome.exe' title='WINENARA 1987 ㅣ WINE' /&gt;" Title="WINENARA 1987 ㅣ WINE" Url="https://www.winenara.com/shop/product/product_lists?sh_category1_cd=10000&amp;sh_category2_cd=10100&amp;sh_category3_cd=10101&amp;page=2" Version="V2">
+      <imageRef attrName="InformativeScreenshot" originalValue="2ab9ead166c1b49f650d0cdb0ff53e67.jpg" xmlns="">0vtEyfDl53Ei1EE8xQ_WD6Q</imageRef>
+    </TargetApp>
+  </ObjectRepositoryScreenData.Data>
+</ObjectRepositoryScreenData>

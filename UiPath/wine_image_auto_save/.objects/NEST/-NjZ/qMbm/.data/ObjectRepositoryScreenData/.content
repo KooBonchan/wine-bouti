@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryScreenData ContentHash="FaC4CHMUp0ubhW5glqtqGg" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryScreenData.Data>
+    <TargetApp x:Key="TargetApp" Area="855, 5, 899, 1020" BrowserType="Chrome" IconBase64="iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHaSURBVDhPlZPPS1RRFMdvUUqF2aZgcOWmFm38A9KFSJCtlCBIbBNtqo1hbUwdo5xoUZAQrYwKYRSKEheFhEFJoJsIAiGiUBFdmFRCjDp9+p5377z3Rmvhgc8w9/z43nPuu9eVWZZKcULkxbxYD9h/81msMmRvsiwZMSBWBBF9KbzPYpaTCVXBfPELUUr0RWfGcGfHcS2PcZdm0kKWG0SyVIh7IeDpFdfWcEdP45pyuNpG3LmpJO6xmgoTaBbLwRlx/AlcGCty8MonXOcShzo/cnG0wMkh2JF0YTXNJmCHExfvvQlvvsGX71BzV74eaB2BP8Ctd1pbd0l+3gTmYoeCRwZgaRWez8Du6953W4Um0DqstQTjfKvVj30m71CwJQ9FZXe91robDuTg/Rws/oLDEt/UwfoWgfOj2krW8RL23IDLr2CjCBNfYZ/Gi3NTAskIEmh4CCu/YUE7Ts7C/A8v+I/5jWiEskPcpblP6dDuT0PPhN/ZBOsHFS+f34gOsewz7tfMbU+h/Rk8+gCrBci99cKlnED8GZOLpBbrHqj9nypcg8/LcHUcqvp9LMpJCBfJ38b4KlerAzuHY2q55g7sDMIWS5G6yiXzIv4x2azG1sL/PKaSbfs5O/cXLAdPYAw2u2sAAAAASUVORK5CYII=" Selector="&lt;html app='chrome.exe' title='국내도서 종합 베스트 - 예스24' /&gt;" Title="국내도서 종합 베스트 - 예스24" Url="https://www.yes24.com/Product/Category/BestSeller?categoryNumber=001&amp;pageNumber=1&amp;pageSize=24" Version="V2">
+      <imageRef attrName="InformativeScreenshot" originalValue="64223705423550dae06bcdc49eecc90b.jpg" xmlns="">0IeNI6SC290CBIJ7h0T0wpw</imageRef>
+    </TargetApp>
+  </ObjectRepositoryScreenData.Data>
+</ObjectRepositoryScreenData>

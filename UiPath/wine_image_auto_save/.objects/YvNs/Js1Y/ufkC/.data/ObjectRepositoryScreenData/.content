@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryScreenData ContentHash="klztPHRloUy0R0nMhBCF7w" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryScreenData.Data>
+    <TargetApp x:Key="TargetApp" Area="0, 0, 0, 0" Selector="&lt;html app='chrome.exe' title='국내도서 종합 베스트 - 예스24' /&gt;" Url="yes24.com/Product/Category/BestSeller" />
+  </ObjectRepositoryScreenData.Data>
+</ObjectRepositoryScreenData>
