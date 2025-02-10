@@ -15,9 +15,16 @@
     <img src="<c:url value='/resources/images/logo/wine.png' />" alt="Company Logo" width="200" height="169">
         
     <div class="subtitle">
-        안녕하세요 팀 [김양구이]입니다 :)
-    </div>
+      안녕하세요 팀 [김양구이]입니다 :)
+       <div class="subtitle2">
+	    <a href="https://github.com/KooBonchan/wine-bouti" target="_blank" title="팀 프로젝트 깃 주소로 이동합니다" style="display: flex; align-items: center; gap: 10px;">
+	        <img src="<c:url value='/resources/images/icon/github.png' />" alt="github" width="25" height="25">
+	        <div class="subtitle_text">https://github.com/KooBonchan/wine-bouti</div>
+	    </a>
+	</div>
   </div>
+
+
 
   <div class="container">
       <div class="card">
@@ -30,9 +37,11 @@
             <li></li>
        		<li></li>
           </ul>
-          <div class="qr_code">
-            <img src="<c:url value='/resources/images/icon/1gu.png' />" alt="Company Logo" width="90" height="90">
-          </div>
+     	 <div class="qr_code">
+		    <a href="<c:url value='https://github.com/KooBonchan'/>" target="_blank" title="프로필을 누르면 개인 깃 주소로 이동됩니다.">
+		        <img src="<c:url value='/resources/images/icon/1gu.png' />" alt="Company Logo" width="90" height="90">
+		    </a>
+		</div>
         </div>
       </div>
 
@@ -47,7 +56,9 @@
 			<li></li>
           </ul>
           <div class="qr_code">
+          <a href="<c:url value='https://github.com/yk0988'/>" target="_blank" title="프로필을 누르면 개인 깃 주소로 이동됩니다.">
             <img src="<c:url value='/resources/images/icon/2kim.png' />" alt="Company Logo" width="90" height="90">
+          </a>
           </div>
         </div>
       </div>
@@ -63,7 +74,9 @@
 			<li></li>
           </ul>
           <div class="qr_code">
+    		 <a href="<c:url value='https://github.com/skrnldudna1'/>" target="_blank" title="프로필을 누르면 개인 깃 주소로 이동됩니다.">
             <img src="<c:url value='/resources/images/icon/3yang.png' />" alt="Company Logo" width="90" height="90">
+          </a>
           </div>
         </div>
       </div>
@@ -79,7 +92,9 @@
             <li>MyBatis</li>
           </ul>
           <div class="qr_code">
+           <a href="<c:url value='https://github.com/CHANG-LGTM'/>" target="_blank" title="프로필을 누르면 개인 깃 주소로 이동됩니다.">
             <img src="<c:url value='/resources/images/icon/4lee.png' />" alt="Company Logo" width="90" height="90">
+          </a>
           </div>
         </div>
       </div>
@@ -95,7 +110,9 @@
        		<li></li>
           </ul>
           <div class="qr_code">
+          
             <img src="<c:url value='/resources/images/icon/5lee.png' />" alt="Company Logo" width="90" height="90">
+          </a>
           </div>
         </div>
       </div>

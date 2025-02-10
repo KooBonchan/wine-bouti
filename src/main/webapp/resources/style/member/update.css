@@ -1,52 +1,95 @@
-.title {
-    text-align: center; /* 텍스트 중앙 정렬 */
-    font-size: 18px; /* 폰트 크기 조정 */
-    font-weight: bold; /* 볼드 처리 */
-    margin: 20px 0; /* 상하 마진 추가 */
-}
-
+/* 메인 컨테이너 */
 .main-container_update {
-	margin-top: 150px; 
+    margin-top: 100px;
     margin-left: auto;
-    margin-right: auto; 
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    margin-right: auto;
+    width: auto; /* 100% -> auto로 변경 */
+    max-width: 400px;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
+/* 타이틀 */
+.title {
+    font-size: 28px;
+    color: #2c3e50;
+    font-weight: 600;
+   	padding-bottom: 20px;
+    display: flex;               /* flexbox로 설정 */
+    justify-content: center;     /* 수평 중앙 정렬 */
+    align-items: center;         /* 수직 중앙 정렬 */
+    text-align: center;          /* 텍스트 중앙 정렬 */
+}
+
+
+/* 레이블 텍스트 왼쪽 정렬 */
+.main-container_update form div {
+    text-align: left;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+/* 레이블 스타일 */
+.main-container_update label {
+    font-size: 16px;
+    color: #333;
+    display: block;
+}
+
+/* 입력 폼 스타일 */
+input[type="text"],
+input[type="phone"],
 input[type="password"] {
     width: 100%;
-    padding: 10px;
-    margin: 5px 0;
+    padding: 12px;
+    margin: 10px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
-    box-sizing: border-box;
+    font-size: 16px;
 }
 
-
-input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
+/* disabled된 입력 필드 스타일 */
+input[disabled] {
+    background-color: #f0f0f0;
+    color: #7d7d7d;
 }
 
+/* 수정 버튼 스타일 */
 input[type="button"] {
     width: 100%;
-    padding: 10px;
-    background: #808080;    
+    padding: 12px 20px;
+    background-color: #808080;
+    color: white;
     border: none;
     border-radius: 5px;
+    font-size: 16px;
     cursor: pointer;
-    margin-top: 10px;
-    color: white;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
 }
 
+/* 수정 버튼 호버 효과 */
 input[type="button"]:hover {
-    background: #333;
-  	color: white;
+    background-color: #333;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 600px) {
+    .main-container_update {
+        padding: 20px;
+        width: 90%;
+    }
+
+    .title {
+        font-size: 24px;
+    }
+
+    input[type="text"], input[type="password"], input[type="button"] {
+        font-size: 14px;
+    }
 }

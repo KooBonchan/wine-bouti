@@ -24,53 +24,53 @@ VALUES
 
 
 -- Auth 테이블에 샘플 데이터 20개 추가
-INSERT INTO Auth (auth, username)
+INSERT INTO Auth (auth, email)
 VALUES 
-('ROLE_ADMIN', 'user1'),
-('ROLE_ADMIN', 'user2'),
-('ROLE_ADMIN', 'user3'),
-('ROLE_USER', 'user4'),
-('ROLE_USER', 'user5'),
-('ROLE_USER', 'user6'),
-('ROLE_USER', 'user7'),
-('ROLE_USER', 'user8'),
-('ROLE_USER', 'user9'),
-('ROLE_ADMIN', 'user10'),
-('ROLE_ADMIN', 'user11'),
-('ROLE_ADMIN', 'user12'),
-('ROLE_USER', 'user13'),
-('ROLE_USER', 'user14'),
-('ROLE_USER', 'user15'),
-('ROLE_ADMIN', 'user16'),
-('ROLE_USER', 'user17'),
-('ROLE_USER', 'user18'),
-('ROLE_USER', 'user19'),
-('ROLE_ADMIN', 'user20');
+('ROLE_ADMIN', 'user1@example.com'),
+('ROLE_ADMIN', 'user2@example.com'),
+('ROLE_ADMIN', 'user3@example.com'),
+('ROLE_USER', 'user4@example.com'),
+('ROLE_USER', 'user5@example.com'),
+('ROLE_USER', 'user6@example.com'),
+('ROLE_USER', 'user7@example.com'),
+('ROLE_USER', 'user8@example.com'),
+('ROLE_USER', 'user9@example.com'),
+('ROLE_ADMIN', 'user10@example.com'),
+('ROLE_ADMIN', 'user11@example.com'),
+('ROLE_ADMIN', 'user12@example.com'),
+('ROLE_USER', 'user13@example.com'),
+('ROLE_USER', 'user14@example.com'),
+('ROLE_USER', 'user15@example.com'),
+('ROLE_ADMIN', 'user16@example.com'),
+('ROLE_USER', 'user17@example.com'),
+('ROLE_USER', 'user18@example.com'),
+('ROLE_USER', 'user19@example.com'),
+('ROLE_ADMIN', 'user20@example.com');
 
 
 -- persistent_login 테이블에 샘플 데이터 20개 추가
 INSERT INTO persistent_login (series, username, token)
 VALUES 
-('series1', 'user1', 'token1'),
-('series2', 'user2', 'token2'),
-('series3', 'user3', 'token3'),
-('series4', 'user4', 'token4'),
-('series5', 'user5', 'token5'),
-('series6', 'user6', 'token6'),
-('series7', 'user7', 'token7'),
-('series8', 'user8', 'token8'),
-('series9', 'user9', 'token9'),
-('series10', 'user10', 'token10'),
-('series11', 'user11', 'token11'),
-('series12', 'user12', 'token12'),
-('series13', 'user13', 'token13'),
-('series14', 'user14', 'token14'),
-('series15', 'user15', 'token15'),
-('series16', 'user16', 'token16'),
-('series17', 'user17', 'token17'),
-('series18', 'user18', 'token18'),
-('series19', 'user19', 'token19'),
-('series20', 'user20', 'token20');
+('series1', 'user1@example.com', 'token1'),
+('series2', 'user2@example.com', 'token2'),
+('series3', 'user3@example.com', 'token3'),
+('series4', 'user4@example.com', 'token4'),
+('series5', 'user5@example.com', 'token5'),
+('series6', 'user6@example.com', 'token6'),
+('series7', 'user7@example.com', 'token7'),
+('series8', 'user8@example.com', 'token8'),
+('series9', 'user9@example.com', 'token9'),
+('series10', 'user10@example.com', 'token10'),
+('series11', 'user11@example.com', 'token11'),
+('series12', 'user12@example.com', 'token12'),
+('series13', 'user13@example.com', 'token13'),
+('series14', 'user14@example.com', 'token14'),
+('series15', 'user15@example.com', 'token15'),
+('series16', 'user16@example.com', 'token16'),
+('series17', 'user17@example.com', 'token17'),
+('series18', 'user18@example.com', 'token18'),
+('series19', 'user19@example.com', 'token19'),
+('series20', 'user20@example.com', 'token20');
 
 INSERT INTO Product (category, korean_name, product_image_name, real_product_image_name, detail_image_name, real_detail_image_name, original_price, once)
 VALUES 
@@ -121,30 +121,6 @@ VALUES
 (18, 'White', 'Wine R', 750, 'USA', 2020, 12.5, 2, 3, 4),
 (19, 'Red', 'Wine S', 750, 'Chile', 2015, 14.0, 4, 2, 6),
 (20, 'White', 'Wine T', 750, 'Argentina', 2021, 11.5, 3, 5, 3);
-
--- Cart 테이블에 샘플 데이터 20개 추가
-INSERT INTO Cart (member_id, product_id, quantity, total_amount)
-VALUES 
-(1, 1, 2, 20000),
-(2, 2, 1, 15000),
-(3, 3, 3, 60000),
-(4, 4, 2, 36000),
-(5, 5, 1, 22000),
-(6, 6, 4, 100000),
-(7, 7, 2, 44000),
-(8, 8, 3, 63000),
-(9, 9, 1, 28000),
-(10, 10, 2, 44000),
-(11, 11, 2, 48000),
-(12, 12, 1, 26000),
-(13, 13, 3, 72000),
-(14, 14, 2, 34000),
-(15, 15, 2, 30000),
-(16, 16, 1, 22000),
-(17, 17, 2, 44000),
-(18, 18, 1, 23000),
-(19, 19, 3, 72000),
-(20, 20, 2, 50000);
 
 -- Purchase 테이블에 샘플 데이터 20개 추가
 INSERT INTO Purchase (purchase_id, member_id, address, total_amount)

@@ -15,7 +15,6 @@ body {
 .container {
     display: flex;
     flex-direction: column;  /* 세로 방향으로 나누기 */
-    height: 800px;  /* 고정된 높이 설정 */
     width: 1200px;  /* 고정된 너비 설정 */
     margin: 0 auto;  /* 수평 중앙 정렬 */
     align-items: center;  /* 수직 중앙 정렬 */
@@ -68,7 +67,6 @@ body {
 
 /* .top-left-top을 더 크게 보이게 설정 */
 .top-left-top {
-    background-color: #d0d0d0;
     width: 100%;  /* 너비 100%로 설정 */
     height: 450px;  /* 고정된 높이 설정 */
     margin: 0 auto;  /* 수평 중앙 정렬 */
@@ -120,6 +118,7 @@ body {
     height: auto;  /* 높이가 자동으로 늘어나게 설정 */
     max-height: none;  /* 최대 높이 제한 없애기 */
 }
+
 
 /* 바디, 산도, 타닌 */
 .wine-details div {
@@ -256,19 +255,119 @@ body {
 
 }
 
+/* 리뷰 전체 컨텐츠 스타일 */
 .review-content {
-    padding: 10px 15px;
+    width: 100%;
+    padding: 15px;
     background-color: #fff; /* 배경을 흰색으로 설정 */
     color: black; /* 글자색 검정으로 설정 */
-    cursor: pointer;
-    font-size: 10px;  /* 글자 크기를 줄임 */
-    margin-bottom: 50px; /* 아래쪽 여백 추가 */
+    font-size: 14px;
+    margin-bottom: 50px; /* 푸터와 겹치지 않도록 여백 추가 */
+    border-radius: 8px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1); /* 약간의 그림자 효과 추가 */
 }
 
-.review-pagination {
+/* 리뷰 박스 스타일 */
+.review-box {
+    border-bottom: 1px solid #ddd;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+/* 리뷰 작성자 및 날짜 정렬 */
+.review-box div {
     display: flex;
     justify-content: space-between;
-    margin-top: 50px; /* 위쪽 여백 추가 */
+    align-items: center;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* 리뷰 내용 */
+.review-box p {
+    font-size: 14px;
+    color: #333;
+    margin-top: 5px;
+}
+
+/* 리뷰 이미지 */
+.review-box img.review-image {
+    width: 100px;
+    height: auto;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+/* 삭제 버튼 스타일 */
+.review-box .delete-btn {
+    background: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    align-self: flex-end;
+    margin-top: 10px;
+}
+
+.review-box .delete-btn:hover {
+    background: #cc0000;
+}
+
+/* 리뷰 작성 폼 */
+.review-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.review-form textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    resize: vertical;
+    font-size: 14px;
+}
+
+.review-form button {
+    padding: 10px 15px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.review-form button:hover {
+    background-color: #f0f0f0;
+}
+
+/* 리뷰 더보기 버튼 */
+#load-more {
+    padding: 8px 12px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+#load-more:hover {
+    background-color: #f0f0f0;
+}
+
+/* 리뷰 페이지네이션 */
+.review-pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
 }
 
 .review-pagination button {
@@ -283,65 +382,28 @@ body {
     background-color: #f0f0f0;
 }
 
-.review-form {
-    display: flex;
-    justify-content: center; /* 수평 중앙 정렬 */
-    align-items: center; /* 수직 중앙 정렬 */
-}
-
-.review-form textarea {
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    resize: vertical;
-}
-
-.review-form button {
-    padding: 10px 15px;
-    background-color: #fff;
-    color: black;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-.review-form button:hover {
-    background-color: #f0f0f0;
-}
-
-/* 상품 만족도와 리뷰 개수 표시 영역 */
+/* 상품 만족도 및 리뷰 개수 표시 */
 .rating-summary {
-    border-top: 1px solid #c0c0c0; /* 윗부분에 3px 두께의 검은색 선 추가 */
-    border-bottom: 1px solid #c0c0c0; 
+    border-top: 1px solid #c0c0c0;
+    border-bottom: 1px solid #c0c0c0;
     padding: 15px;
     border-radius: 8px;
     text-align: center;
     box-sizing: border-box;
-    width: 100%;  /* 너비를 100%로 설정 */
+    width: 100%;
     height: 130px;
-    margin-bottom: 20px;  /* 아래쪽 여백 추가 */
-    display: flex;  /* 가로로 배치 */
-    justify-content: center;  /* 수평 중앙 정렬 */
-    align-items: center;  /* 수직 중앙 정렬 */
-    gap: 20px;  /* 간격 추가 */
-}
-
-/* 상품 만족도와 리뷰 개수 각각 div 스타일 */
-.rating-summary .rating{
-    width: 500px;
+    margin-bottom: 20px;
     display: flex;
-    flex-direction: column; /* 세로로 정렬 */
     justify-content: center;
     align-items: center;
-    border-right: 1px solid #c0c0c0; 
+    gap: 20px;
 }
 
+.rating-summary .rating,
 .rating-summary .reviews {
-    width: 500px;
+    width: 50%;
     display: flex;
-    flex-direction: column; /* 세로로 정렬 */
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -354,8 +416,44 @@ body {
     color: #333;
 }
 
-/* 리뷰 개수 영역의 폰트 스타일을 다르게 지정 */
+/* 리뷰 개수 색상 변경 */
 .rating-summary .reviews h3 {
     font-size: 18px;
     color: #777;
 }
+
+
+/* 와인 이미지 모달 */
+.modal {
+    display: none; /* 기본적으로 숨김 */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 확대된 이미지 스타일 */
+.modal-content {
+    max-width: 80%;
+    max-height: 80%;
+    border-radius: 10px;
+}
+
+/* 닫기 버튼 스타일 */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    color: white;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+

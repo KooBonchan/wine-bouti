@@ -15,14 +15,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import lombok.extern.log4j.Log4j;
+
 @RestController
 @RequestMapping("/upload")
+@Log4j
 public class UploadController {
 
     private final String uploadDir = "C:/upload/review/";
 
     @PostMapping("/image")
     public ResponseEntity<Map<String, String>> uploadImage(@RequestParam("uploadFile") MultipartFile file) {
+    	log.info("파일 업로드 컨트롤러 작동중");
         Map<String, String> response = new HashMap<>();
 
         // 업로드할 폴더가 없으면 생성

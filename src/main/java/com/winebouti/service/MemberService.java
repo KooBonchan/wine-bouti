@@ -1,6 +1,5 @@
 package com.winebouti.service;
 
-import java.util.List;
 import com.winebouti.vo.MemberVO;
 
 public interface MemberService {

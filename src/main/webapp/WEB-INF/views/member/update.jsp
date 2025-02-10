@@ -10,16 +10,41 @@
 	<div class="main-container_update">
         <form action="<c:url value='/member/update'/>" method="post" name="updateForm">
            	<div class="title">회원정보 수정</div>
-            <input type="hidden" name="memberId" value="<sec:authentication property="principal.memberVO.memberId"/>">
-            email: <input type="text" value="<sec:authentication property="principal.memberVO.email"/>" disabled>
-            <input type="hidden" name="email" value="<sec:authentication property="principal.memberVO.email"/>">
-            password: <input type="password" name="password" id="password">
-            이름: <input type="text" name="username" value="<sec:authentication property="principal.memberVO.username"/>">
-            주소: <input type="text" name="address" value="<sec:authentication property="principal.memberVO.address"/>">
-            우편번호: <input type="text" name="zipcode" value="<sec:authentication property="principal.memberVO.zipcode"/>">
+            <input type="hidden" name="memberId" value="<sec:authentication property='principal.memberVO.memberId'/>">
+            
+            <div>
+                <label for="email">email:</label>
+                <input type="text" value="<sec:authentication property='principal.memberVO.email'/>" disabled>
+                <input type="hidden" name="email" value="<sec:authentication property='principal.memberVO.email'/>">
+            </div>
+            
+            <div>
+                <label for="password">password:</label>
+                <input type="password" name="password" id="password">
+            </div>
+          
+              
+            <div>
+                <label for="username">이름:</label>
+                <input type="text" name="username" value="<sec:authentication property='principal.memberVO.username'/>">
+            </div>
+            
+              <div>
+                <label for="phoneNumber">전화번호:</label>
+                <input type="text" name="phoneNumber" id="phoneNumber" value="<sec:authentication property='principal.memberVO.phoneNumber'/>">
+            </div>
+            
+            <div>
+                <label for="address">주소:</label>
+                <input type="text" name="address" value="<sec:authentication property='principal.memberVO.address'/>">
+            </div>
+            
+            <div>
+                <label for="zipcode">우편번호:</label>
+                <input type="text" name="zipcode" value="<sec:authentication property='principal.memberVO.zipcode'/>">
+            </div>
+            
             <input type="button" value="수정" onclick="update()">
-            
-            
         </form>
    </div>
 </body>

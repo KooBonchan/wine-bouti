@@ -6,7 +6,6 @@ DROP TABLE IF EXISTS Auth  cascade;
 DROP TABLE IF EXISTS persistent_login cascade;
 DROP TABLE IF EXISTS Product         cascade;
 DROP TABLE IF EXISTS Wine            cascade;
-DROP TABLE IF EXISTS Cart            cascade;
 DROP TABLE IF EXISTS Purchase        cascade;
 DROP TABLE IF EXISTS Review         cascade;
 DROP TABLE IF EXISTS Purchase_Product cascade;
@@ -18,9 +17,9 @@ set foreign_key_checks = 1;
 
 CREATE TABLE Member (
     member_id BIGINT PRIMARY KEY AUTO_INCREMENT,
-    username VARCHAR(255) UNIQUE NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
-    email VARCHAR(255),
+    username VARCHAR(255),
     address VARCHAR(255),
     zipcode VARCHAR(20),
     phone_number VARCHAR(15),
@@ -31,15 +30,15 @@ CREATE TABLE Member (
 
 CREATE TABLE Auth (
     auth VARCHAR(255),
-    username VARCHAR(255) UNIQUE NOT NULL,
-    FOREIGN KEY (username) REFERENCES Member(username) ON DELETE CASCADE
+    email VARCHAR(255) UNIQUE NOT NULL,
+    FOREIGN KEY (email) REFERENCES Member(email) ON DELETE CASCADE
 );
 CREATE TABLE persistent_login (
     series VARCHAR(255) PRIMARY KEY,
     username VARCHAR(255) NOT NULL,
     token VARCHAR(255) NOT NULL,
     last_used TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (username) REFERENCES Member(username) ON DELETE CASCADE
+    FOREIGN KEY (username) REFERENCES Member(email) ON DELETE CASCADE
 );
 CREATE TABLE Product (
     product_id BIGINT PRIMARY KEY AUTO_INCREMENT,
@@ -65,15 +64,6 @@ CREATE TABLE Wine (
     tannins INT,
     FOREIGN KEY (wine_id) REFERENCES Product(product_id) -- product_id와 연결
 );
-CREATE TABLE Cart (
-    member_id BIGINT, -- member_id를 BIGINT로 변경
-    product_id BIGINT, -- product_id를 BIGINT로 변경
-    quantity INT,
-    total_amount INT,
-    PRIMARY KEY (member_id, product_id),
-    FOREIGN KEY (member_id) REFERENCES Member(member_id) ON DELETE CASCADE,
-    FOREIGN KEY (product_id) REFERENCES Product(product_id) ON DELETE CASCADE
-);
 CREATE TABLE Purchase (
     purchase_id BINARY(16) primary key not null, -- purchase_id를 BIGINT로 변경
     member_id BIGINT, -- member_id를 BIGINT로 변경
@@ -86,6 +76,7 @@ CREATE TABLE Review (
     product_id BIGINT, -- product_id를 BIGINT로 변경
     member_id BIGINT, -- member_id를 BIGINT로 변경
     purchase_id BINARY(16),
+    title VARCHAR(255) NOT NULL,
     content TEXT,
     star INT,
     is_open BOOLEAN, -- is_open 수정

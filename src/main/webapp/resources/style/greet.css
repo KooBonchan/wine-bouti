@@ -8,17 +8,33 @@
 		    
 		}
 
-        .subtitle {
-            font-size: 25px;
-		    font-weight: bold;
-		    margin-bottom: 10px;
-            text-align: center;
-            margin-bottom: 50px;
-            margin-top: 30px;
-            justify-content: center;  /* 가로 중앙 정렬 */
-		    align-items: center;      /* 세로 중앙 정렬 */
-    
-        }
+       .subtitle {
+	    font-size: 18px;  /* Adjusted font size */
+	    font-weight: bold;
+	    margin-bottom: 10px;
+	    text-align: center;
+	    margin-bottom: 50px;
+	    margin-top: 30px;
+	    justify-content: center;  /* 가로 중앙 정렬 */
+	    align-items: center;      /* 세로 중앙 정렬 */
+	}
+	
+	        
+      .subtitle2 {
+	    display: flex;           /* Flexbox 적용 */
+	    align-items: center;     /* 세로로 중앙 정렬 */
+	    gap: 10px;               /* 이미지와 텍스트 사이의 간격 */
+	    justify-content: center; /* 가로로 중앙 정렬 */
+	    margin-top: 5px;
+	}
+	
+	.subtitle_text {
+	    font-size: 16px;         /* 텍스트 크기 설정 */
+	    color: #333;  
+	    font-weight: 100;        /* 텍스트 색상 */
+	}
+
+        
 	     .container {
 	    display: flex;
 	    flex-wrap: wrap;

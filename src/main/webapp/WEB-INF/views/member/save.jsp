@@ -12,12 +12,14 @@
 </head>
 <body>
     <div class="form-container">
-        <h2>회원가입</h2> 
+        <h2>Sign up</h2> 
+        <img src="<c:url value='/resources/images/icon/login4.png'/>" alt="login" width="70" height="70">
         <form action="<c:url value='/member/save' />" method="post">
             <p>e-mail: <input type="email" name="email" id="email" placeholder="이메일" onblur="emailCheck()"></p>
             <p id="check-result"></p>
             <p>비밀번호 : <input type="password" name="password" placeholder="비밀번호"></p>
             <p>이   름 : <input type="text" name="username" placeholder="이름"></p>
+            <p>전화번호 : <input type="text" name="phone" placeholder="번호"></p>
             <p>주   소 : <input type="text" name="address" placeholder="주소"></p>
             <p>우편번호 : <input type="text" name="zipcode" placeholder="우편번호"></p>
             <input type="submit" value="회원가입">
@@ -54,19 +56,13 @@
             });
         }
 
-        // 회원가입 완료 후 팝업창 표시
-        $(document).ready(function() {
+        // 회원가입 완료 후 알림창 표시
+        window.onload = function() {
             const urlParams = new URLSearchParams(window.location.search);
             if (urlParams.get('success') === 'true') {
-                // alert("회원가입이 완료되었습니다!");
-                $("#successModal").dialog();
+                alert("회원가입이 성공적으로 완료되었습니다!");
             }
-        });
+        };
     </script>
-
-    <!-- 모달 창 -->
-    <div id="successModal" title="회원가입 완료" style="display:none;">
-        <p>회원가입이 성공적으로 완료되었습니다!</p>
-    </div>
 </body>
 </html>

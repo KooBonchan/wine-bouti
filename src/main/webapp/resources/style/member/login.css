@@ -1,0 +1,96 @@
+
+
+/* 로그인 폼 컨테이너 */
+.login-form-container {    
+    margin-left: auto;
+    margin-right: auto; 
+    width: 100%;
+    max-width: 400px;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px; /* 여기를 줄이면 마진 탑을 줄일 수 있습니다. */
+}
+
+.login-form-container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* �Է� �ʵ� ��Ÿ�� */
+.login-form-container input[type="text"],
+.login-form-container input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border 0.3s ease;
+}
+
+/* �Է� �ʵ� ��Ŀ�� �� ��Ÿ�� */
+.login-form-container input[type="text"]:focus,
+.login-form-container input[type="password"]:focus {
+    border-color: #333;
+    outline: none;
+     padding: 12px;
+}
+
+
+.login-form-container input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color:  #808080;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* ���� ��ư ȣ�� �� ��Ÿ�� */
+.login-form-container input[type="submit"]:hover {
+    background-color: #333; /* �������� #333���� ���� */
+}
+
+
+/* 회원 가입 텍스트 스타일 */
+.login-form-container p {
+    font-size: 16px;
+    color: #333;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.login-form-container p a {
+    color: #0080ff; /* 링크 기본 색상 */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.login-form-container p a:hover {
+    color: #333; /* 마우스를 올렸을 때 색상 변화 */
+    text-decoration: underline;
+}
+
+
+/* ���� ȭ�鿡�� ���� �ٷ�� ���� ������ ������ */
+@media (max-width: 600px) {
+    .form-container, .login-form-container {
+        padding: 20px;
+    }
+
+    
+
+
+
+
+
+    

@@ -28,6 +28,10 @@
 
         <!-- SNS 아이콘 -->
         <div class="social-media">
+        
+          <a href="https://github.com/KooBonchan/wine-bouti" target="_blank">
+		        <img src="<c:url value='/resources/images/icon/github2.png'/>" alt="winebouti">
+		    </a>
 		    <a href="https://facebook.com" target="_blank">
 		        <img src="<c:url value='/resources/images/icon/facebook.svg'/>" alt="Facebook">
 		    </a>
