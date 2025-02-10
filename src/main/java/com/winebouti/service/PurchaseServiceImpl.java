@@ -41,25 +41,9 @@ public class PurchaseServiceImpl implements PurchaseService {
 	
 	@Transactional
 	public void storePurchaseInfo(PurchaseVO purchaseVO) throws ArithmeticException {
-		if(purchaseVO.getTotalPrice() <= 0) {
-			purchaseVO.setTotalPrice(calculateTotalPrice(purchaseVO));
-		}
 		purchaseMapper.insertMetadata(purchaseVO);
 		purchaseMapper.insertProductList(purchaseVO);
 	}
 	
-	public int calculateTotalPrice(PurchaseVO purchaseVO) throws ArithmeticException{
-		int total = 0;
-		for(var purchaseProduct : purchaseVO.getProducts()) {
-			ProductVO productVO = productMapper.getProductById(purchaseProduct.getProductId());
-			int price = productVO.getOriginalPrice();
-			int tempTotal = total + price * purchaseProduct.getQuantity();
-			if(total > tempTotal) {
-				throw new ArithmeticException("Overflow occurred or unexpected negative value for quantity or price.");
-			}
-			total = tempTotal;
-		}
-		return total;
-	}
 
 }

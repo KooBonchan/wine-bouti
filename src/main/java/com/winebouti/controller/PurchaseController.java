@@ -1,5 +1,10 @@
 package com.winebouti.controller;
 
+import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,19 +15,18 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.authority.AuthorityUtils;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.client.RestTemplate;
 
 import com.winebouti.security.CustomUser;
 import com.winebouti.service.ProductService;
+import com.winebouti.service.PurchaseService;
+import com.winebouti.service.PurchaseVerificationService;
 import com.winebouti.vo.CartDTO;
 import com.winebouti.vo.MemberVO;
 import com.winebouti.vo.ProductVO;
@@ -33,11 +37,14 @@ import lombok.extern.log4j.Log4j;
 
 @PreAuthorize("isAuthenticated()")
 @Controller
-@RequiredArgsConstructor
 @SessionAttributes(names = {"cartDTO", "purchase"})
+@RequiredArgsConstructor
 @Log4j
 public class PurchaseController {
   private final ProductService productService;
+  private final PurchaseService purchaseService;
+  private final PurchaseVerificationService verificationService;
+  private final RestTemplate restTemplate;
   
   @GetMapping("cart")
   public String cart(HttpSession session, Model model) {
@@ -47,7 +54,7 @@ public class PurchaseController {
       cartDTO = new CartDTO();
       cartDTO.setMemberId(33); //TODO: use member ID from security
       Map<ProductVO, Integer> cartItems = new HashMap<>();
-      for(int i = 1; i <= 5; i++) {
+      for(int i = 1; i <= 3; i++) {
         ProductVO productVO = productService.getProductById(i);
         cartItems.merge(productVO, i, (q1,q2)->q1+q2);
       }
@@ -62,11 +69,6 @@ public class PurchaseController {
     return "cart.tiles";
   }
   
-  
-  /*
-   * 장바구니 정책: 세션, DB 사용 X, 결제 시 결제 정보만 저장.
-   * 추후 SQL에서 Cart table 제거
-   */
   @PutMapping("api/cart")
   public ResponseEntity<Integer> addToCart(
       long productId,
@@ -74,6 +76,57 @@ public class PurchaseController {
       HttpSession session,
       Principal principal
   ) {
+    CartDTO cartDTO = getCartFromSession(session, principal);
+    ProductVO productVO = productService.getProductById(productId);
+    cartDTO.getCartItems().put(productVO, quantity);
+    cartDTO.setTotalPrice();
+    session.removeAttribute("order");
+    return ResponseEntity.ok().body(cartDTO.getTotalPrice());
+  }
+  
+  @GetMapping("api/cart/count")
+  public ResponseEntity<Integer> countCartItems(
+    HttpSession session,
+    Principal principal
+  ){
+    return ResponseEntity.ok().body(getCartFromSession(session, principal).getCartItems().size());
+  }
+  
+  @PostMapping("api/order")
+  public ResponseEntity<PurchaseVO> temporaryPurchase(
+    HttpSession session, Principal principal
+  ){
+    PurchaseVO tempPurchase = (PurchaseVO)session.getAttribute("order");
+    CartDTO cart = (CartDTO) session.getAttribute("cartDTO");
+    MemberVO user = ((CustomUser) ((Authentication)principal).getPrincipal()).getMemberVO();
+    if(cart == null || cart.getCartItems().isEmpty()) return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+    if(tempPurchase == null) {
+      tempPurchase = cart.order(user);
+      session.setAttribute("order", tempPurchase);
+    }
+    return ResponseEntity.ok().body(tempPurchase);
+  }
+  
+  @PostMapping("api/purchase/complete")
+  public ResponseEntity<Void> purchase(
+    HttpSession session
+  ){
+    PurchaseVO purchase = (PurchaseVO)session.getAttribute("order");
+    
+    try {
+      verificationService.verifyPurchaseData(purchase);
+      purchaseService.storePurchaseInfo(purchase);
+      return ResponseEntity.ok().build();
+    } catch(Exception e) {
+      log.error(e.getMessage());
+      return ResponseEntity.badRequest().build();
+    }
+    
+ 
+  }
+  
+  // if no cart exists in session, create cart based on principal.
+  private CartDTO getCartFromSession(HttpSession session, Principal principal) {
     MemberVO user = ((CustomUser) ((Authentication)principal).getPrincipal()).getMemberVO();
     CartDTO cartDTO = (CartDTO) session.getAttribute("cartDTO");
     if (cartDTO == null) {
@@ -82,28 +135,6 @@ public class PurchaseController {
       cartDTO.setCartItems(new HashMap<>());
       session.setAttribute("cartDTO", cartDTO);
     }
-    ProductVO productVO = productService.getProductById(productId);
-    cartDTO.getCartItems().put(productVO, quantity);
-    cartDTO.setTotalPrice();
-    return ResponseEntity.ok().body(cartDTO.getTotalPrice());
-  }
-  
-  @PostMapping("api/order")
-  public ResponseEntity<PurchaseVO> temporaryPurchase(
-      HttpSession session, Principal principal
-    ){
-    // change I am a Teapot to Meaningful name
-    PurchaseVO tempPurchase = (PurchaseVO)session.getAttribute("order");
-    CartDTO cart = (CartDTO) session.getAttribute("cartDTO");
-    MemberVO user = ((CustomUser) ((Authentication)principal).getPrincipal()).getMemberVO();
-    if(tempPurchase == null && cart == null) return ResponseEntity.status(HttpStatus.I_AM_A_TEAPOT).build();
-    if(tempPurchase == null) {
-      if(cart == null || cart.getCartItems().isEmpty()) {
-        return ResponseEntity.status(HttpStatus.I_AM_A_TEAPOT).build();
-      }
-      tempPurchase = cart.order(user);
-      session.setAttribute("order", tempPurchase);
-    }
-    return ResponseEntity.ok().body(tempPurchase);
-  }
+    return cartDTO;
+  } 
 }
