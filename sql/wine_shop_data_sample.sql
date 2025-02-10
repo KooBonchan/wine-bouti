@@ -74,26 +74,26 @@ VALUES
 
 INSERT INTO Product (category, korean_name, product_image_name, real_product_image_name, detail_image_name, real_detail_image_name, original_price, once)
 VALUES 
-('Wine', '레드 와인 1', 'wine_red1.jpg', 'wine_red1_DOT_jpg', 'wine_red1_detail.jpg', 'wine_red1_detail_DOT_jpg', 10000, TRUE),
-('Wine', '화이트 와인 2', 'wine_white2.jpg', 'wine_white2_DOT_jpg', 'wine_white2_detail.jpg', 'wine_white2_detail_DOT_jpg', 15000, FALSE),
-('Wine', '레드 와인 3', 'wine_red3.jpg', 'wine_red3_DOT_jpg', 'wine_red3_detail.jpg', 'wine_red3_detail_DOT_jpg', 20000, TRUE),
-('Wine', '화이트 와인 4', 'wine_white4.jpg', 'wine_white4_DOT_jpg', 'wine_white4_detail.jpg', 'wine_white4_detail_DOT_jpg', 18000, FALSE),
-('Wine', '레드 와인 5', 'wine_red5.jpg', 'wine_red5_DOT_jpg', 'wine_red5_detail.jpg', 'wine_red5_detail_DOT_jpg', 22000, TRUE),
-('Wine', '화이트 와인 6', 'wine_white6.jpg', 'wine_white6_DOT_jpg', 'wine_white6_detail.jpg', 'wine_white6_detail_DOT_jpg', 25000, FALSE),
-('Wine', '레드 와인 7', 'wine_red7.jpg', 'wine_red7_DOT_jpg', 'wine_red7_detail.jpg', 'wine_red7_detail_DOT_jpg', 30000, TRUE),
-('Wine', '화이트 와인 8', 'wine_white8.jpg', 'wine_white8_DOT_jpg', 'wine_white8_detail.jpg', 'wine_white8_detail_DOT_jpg', 35000, FALSE),
-('Wine', '레드 와인 9', 'wine_red9.jpg', 'wine_red9_DOT_jpg', 'wine_red9_detail.jpg', 'wine_red9_detail_DOT_jpg', 28000, TRUE),
-('Wine', '화이트 와인 10', 'wine_white10.jpg', 'wine_white10_DOT_jpg', 'wine_white10_detail.jpg', 'wine_white10_detail_DOT_jpg', 22000, FALSE),
-('Wine', '레드 와인 11', 'wine_red11.jpg', 'wine_red11_DOT_jpg', 'wine_red11_detail.jpg', 'wine_red11_detail_DOT_jpg', 24000, TRUE),
-('Wine', '화이트 와인 12', 'wine_white12.jpg', 'wine_white12_DOT_jpg', 'wine_white12_detail.jpg', 'wine_white12_detail_DOT_jpg', 26000, FALSE),
-('Wine', '레드 와인 13', 'wine_red13.jpg', 'wine_red13_DOT_jpg', 'wine_red13_detail.jpg', 'wine_red13_detail_DOT_jpg', 20000, TRUE),
-('Wine', '화이트 와인 14', 'wine_white14.jpg', 'wine_white14_DOT_jpg', 'wine_white14_detail.jpg', 'wine_white14_detail_DOT_jpg', 17000, FALSE),
-('Wine', '레드 와인 15', 'wine_red15.jpg', 'wine_red15_DOT_jpg', 'wine_red15_detail.jpg', 'wine_red15_detail_DOT_jpg', 15000, TRUE),
-('Wine', '화이트 와인 16', 'wine_white16.jpg', 'wine_white16_DOT_jpg', 'wine_white16_detail.jpg', 'wine_white16_detail_DOT_jpg', 19000, FALSE),
-('Wine', '레드 와인 17', 'wine_red17.jpg', 'wine_red17_DOT_jpg', 'wine_red17_detail.jpg', 'wine_red17_detail_DOT_jpg', 22000, TRUE),
-('Wine', '화이트 와인 18', 'wine_white18.jpg', 'wine_white18_DOT_jpg', 'wine_white18_detail.jpg', 'wine_white18_detail_DOT_jpg', 23000, FALSE),
-('Wine', '레드 와인 19', 'wine_red19.jpg', 'wine_red19_DOT_jpg', 'wine_red19_detail.jpg', 'wine_red19_detail_DOT_jpg', 24000, TRUE),
-('Wine', '화이트 와인 20', 'wine_white20.jpg', 'wine_white20_DOT_jpg', 'wine_white20_detail.jpg', 'wine_white20_detail_DOT_jpg', 25000, FALSE);
+('Wine', '레드 와인 1', 'wine_red1.jpg', 'wine_red1_DOT_png', 'wine_red1_detail.jpg', 'wine_red1_detail_DOT_png', 10000, TRUE),
+('Wine', '화이트 와인 2', 'wine_white2.jpg', 'wine_white2_DOT_png', 'wine_white2_detail.jpg', 'wine_white2_detail_DOT_png', 15000, FALSE),
+('Wine', '레드 와인 3', 'wine_red3.jpg', 'wine_red3_DOT_png', 'wine_red3_detail.jpg', 'wine_red3_detail_DOT_png', 20000, TRUE),
+('Wine', '화이트 와인 4', 'wine_white4.jpg', 'wine_white4_DOT_png', 'wine_white4_detail.jpg', 'wine_white4_detail_DOT_png', 18000, FALSE),
+('Wine', '레드 와인 5', 'wine_red5.jpg', 'wine_red5_DOT_png', 'wine_red5_detail.jpg', 'wine_red5_detail_DOT_png', 22000, TRUE),
+('Wine', '화이트 와인 6', 'wine_white6.jpg', 'wine_white6_DOT_png', 'wine_white6_detail.jpg', 'wine_white6_detail_DOT_png', 25000, FALSE),
+('Wine', '레드 와인 7', 'wine_red7.jpg', 'wine_red7_DOT_png', 'wine_red7_detail.jpg', 'wine_red7_detail_DOT_png', 30000, TRUE),
+('Wine', '화이트 와인 8', 'wine_white8.jpg', 'wine_white8_DOT_png', 'wine_white8_detail.jpg', 'wine_white8_detail_DOT_png', 35000, FALSE),
+('Wine', '레드 와인 9', 'wine_red9.jpg', 'wine_red9_DOT_png', 'wine_red9_detail.jpg', 'wine_red9_detail_DOT_png', 28000, TRUE),
+('Wine', '화이트 와인 10', 'wine_white10.jpg', 'wine_white10_DOT_png', 'wine_white10_detail.jpg', 'wine_white10_detail_DOT_png', 22000, FALSE),
+('Wine', '레드 와인 11', 'wine_red11.jpg', 'wine_red11_DOT_png', 'wine_red11_detail.jpg', 'wine_red11_detail_DOT_png', 24000, TRUE),
+('Wine', '화이트 와인 12', 'wine_white12.jpg', 'wine_white12_DOT_png', 'wine_white12_detail.jpg', 'wine_white12_detail_DOT_png', 26000, FALSE),
+('Wine', '레드 와인 13', 'wine_red13.jpg', 'wine_red13_DOT_png', 'wine_red13_detail.jpg', 'wine_red13_detail_DOT_png', 20000, TRUE),
+('Wine', '화이트 와인 14', 'wine_white14.jpg', 'wine_white14_DOT_png', 'wine_white14_detail.jpg', 'wine_white14_detail_DOT_png', 17000, FALSE),
+('Wine', '레드 와인 15', 'wine_red15.jpg', 'wine_red15_DOT_png', 'wine_red15_detail.jpg', 'wine_red15_detail_DOT_png', 15000, TRUE),
+('Wine', '화이트 와인 16', 'wine_white16.jpg', 'wine_white16_DOT_png', 'wine_white16_detail.jpg', 'wine_white16_detail_DOT_png', 19000, FALSE),
+('Wine', '레드 와인 17', 'wine_red17.jpg', 'wine_red17_DOT_png', 'wine_red17_detail.jpg', 'wine_red17_detail_DOT_png', 22000, TRUE),
+('Wine', '화이트 와인 18', 'wine_white18.jpg', 'wine_white18_DOT_png', 'wine_white18_detail.jpg', 'wine_white18_detail_DOT_png', 23000, FALSE),
+('Wine', '레드 와인 19', 'wine_red19.jpg', 'wine_red19_DOT_png', 'wine_red19_detail.jpg', 'wine_red19_detail_DOT_png', 24000, TRUE),
+('Wine', '화이트 와인 20', 'wine_white20.jpg', 'wine_white20_DOT_png', 'wine_white20_detail.jpg', 'wine_white20_detail_DOT_png', 25000, FALSE);
 
 
 
@@ -318,16 +318,16 @@ VALUES
 
 INSERT INTO Product (category, korean_name, product_image_name, real_product_image_name, detail_image_name, real_detail_image_name, original_price, once)
 VALUES 
-('Wine', '스파클 와인 1', 'sparkle_wine1.jpg', 'sparkle_wine1_DOT_jpg', 'sparkle_wine1_detail.jpg', 'sparkle_wine1_detail_DOT_jpg', 15000, TRUE),
-('Wine', '스파클 와인 2', 'sparkle_wine2.jpg', 'sparkle_wine2_DOT_jpg', 'sparkle_wine2_detail.jpg', 'sparkle_wine2_detail_DOT_jpg', 18000, FALSE),
-('Wine', '스파클 와인 3', 'sparkle_wine3.jpg', 'sparkle_wine3_DOT_jpg', 'sparkle_wine3_detail.jpg', 'sparkle_wine3_detail_DOT_jpg', 20000, TRUE),
-('Wine', '스파클 와인 4', 'sparkle_wine4.jpg', 'sparkle_wine4_DOT_jpg', 'sparkle_wine4_detail.jpg', 'sparkle_wine4_detail_DOT_jpg', 25000, FALSE),
-('Wine', '스파클 와인 5', 'sparkle_wine5.jpg', 'sparkle_wine5_DOT_jpg', 'sparkle_wine5_detail.jpg', 'sparkle_wine5_detail_DOT_jpg', 30000, TRUE),
-('Wine', '스파클 와인 6', 'sparkle_wine6.jpg', 'sparkle_wine6_DOT_jpg', 'sparkle_wine6_detail.jpg', 'sparkle_wine6_detail_DOT_jpg', 35000, FALSE),
-('Wine', '스파클 와인 7', 'sparkle_wine7.jpg', 'sparkle_wine7_DOT_jpg', 'sparkle_wine7_detail.jpg', 'sparkle_wine7_detail_DOT_jpg', 22000, TRUE),
-('Wine', '스파클 와인 8', 'sparkle_wine8.jpg', 'sparkle_wine8_DOT_jpg', 'sparkle_wine8_detail.jpg', 'sparkle_wine8_detail_DOT_jpg', 24000, FALSE),
-('Wine', '스파클 와인 9', 'sparkle_wine9.jpg', 'sparkle_wine9_DOT_jpg', 'sparkle_wine9_detail.jpg', 'sparkle_wine9_detail_DOT_jpg', 27000, TRUE),
-('Wine', '스파클 와인 10', 'sparkle_wine10.jpg', 'sparkle_wine10_DOT_jpg', 'sparkle_wine10_detail.jpg', 'sparkle_wine10_detail_DOT_jpg', 32000, FALSE);
+('Wine', '스파클 와인 1', 'sparkle_wine1.jpg', 'sparkle_wine1_DOT_png', 'sparkle_wine1_detail.jpg', 'sparkle_wine1_detail_DOT_png', 15000, TRUE),
+('Wine', '스파클 와인 2', 'sparkle_wine2.jpg', 'sparkle_wine2_DOT_png', 'sparkle_wine2_detail.jpg', 'sparkle_wine2_detail_DOT_png', 18000, FALSE),
+('Wine', '스파클 와인 3', 'sparkle_wine3.jpg', 'sparkle_wine3_DOT_png', 'sparkle_wine3_detail.jpg', 'sparkle_wine3_detail_DOT_png', 20000, TRUE),
+('Wine', '스파클 와인 4', 'sparkle_wine4.jpg', 'sparkle_wine4_DOT_png', 'sparkle_wine4_detail.jpg', 'sparkle_wine4_detail_DOT_png', 25000, FALSE),
+('Wine', '스파클 와인 5', 'sparkle_wine5.jpg', 'sparkle_wine5_DOT_png', 'sparkle_wine5_detail.jpg', 'sparkle_wine5_detail_DOT_png', 30000, TRUE),
+('Wine', '스파클 와인 6', 'sparkle_wine6.jpg', 'sparkle_wine6_DOT_png', 'sparkle_wine6_detail.jpg', 'sparkle_wine6_detail_DOT_png', 35000, FALSE),
+('Wine', '스파클 와인 7', 'sparkle_wine7.jpg', 'sparkle_wine7_DOT_png', 'sparkle_wine7_detail.jpg', 'sparkle_wine7_detail_DOT_png', 22000, TRUE),
+('Wine', '스파클 와인 8', 'sparkle_wine8.jpg', 'sparkle_wine8_DOT_png', 'sparkle_wine8_detail.jpg', 'sparkle_wine8_detail_DOT_png', 24000, FALSE),
+('Wine', '스파클 와인 9', 'sparkle_wine9.jpg', 'sparkle_wine9_DOT_png', 'sparkle_wine9_detail.jpg', 'sparkle_wine9_detail_DOT_png', 27000, TRUE),
+('Wine', '스파클 와인 10', 'sparkle_wine10.jpg', 'sparkle_wine10_DOT_png', 'sparkle_wine10_detail.jpg', 'sparkle_wine10_detail_DOT_png', 32000, FALSE);
 
 
 -- Wine 테이블에 샘플 데이터 15개 추가 (5개의 pairing + 10개의 sparkle)

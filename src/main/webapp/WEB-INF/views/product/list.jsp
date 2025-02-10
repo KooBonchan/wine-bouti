@@ -83,7 +83,7 @@
 			<div class="product-item">
 			    <!-- 이미지 삽입 부분 -->
 			   <div class="image-placeholder" onclick="openPopup(this)">
-			       <img src="<c:url value='/api/image/thumbnail/test/${product.realProductImageName }' />" alt="레드와인">
+			       <img src="<c:url value='/api/image/thumbnail/wine/${product.realProductImageName }' />" alt="레드와인">
 			   </div>
 			   <div class="product-info">
 			       <p class="wine-name">${product.koreanName}</p>

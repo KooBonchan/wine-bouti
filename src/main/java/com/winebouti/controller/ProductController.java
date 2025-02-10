@@ -2,7 +2,6 @@ package com.winebouti.controller;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,20 +25,21 @@ public class ProductController {
     /* 양정민 */
     // 상품 상세페이지
     
-    @GetMapping("/details/{productId}")
+    @GetMapping("/details/{productId}")  //  URL에 {productId} 포함
     public String getProductDetail(@PathVariable("productId") long productId, Model model) {
+
         ProductVO product = productService.getProductById(productId);
         List<ReviewVO> reviews = reviewService.getReviewsByProductId(productId);
-        
+
         model.addAttribute("product", product);
         model.addAttribute("reviews", reviews);
         model.addAttribute("productId", productId);
-        
-        return "product/details.tiles"; // 상세 페이지로 이동
-    }
 
-    
+        return "product/details.tiles";
+    }
+    		
     /* 이창현 */
+
     @GetMapping("/red-wine")
     public String getRedWines(Model model) {
         // ProductService에서 getRedWines 메서드를 호출하여 레드 와인 목록을 가져옴
@@ -58,6 +58,7 @@ public class ProductController {
         model.addAttribute("products", sparkleWine); // 모델에 "products" 속성으로 추가
         return "product/list.tiles"; // 해당 JSP 페이지를 반환
     }
+    
     
 //    @GetMapping("/gift-wine")
 //    public String giftWineList(Model model) {
