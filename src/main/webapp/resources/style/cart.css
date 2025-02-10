@@ -68,8 +68,25 @@
 	padding: 5px 15px;
 	border-radius: 15px;
 	cursor: pointer;
-	gap:10px;
+	gap: 10px;
+	transition: background-color 0.3s ease;
 }
+
+/* 수정 버튼 호버 색상 (파란색) */
+.button:hover {
+	background-color: #007bff; /* 파란색 */
+}
+
+/* 삭제 버튼 호버 색상 (빨간색) */
+.etc .button:first-of-type:hover {
+	background-color: #dc3545; /* 빨간색 */
+}
+
+/* 주문 버튼 호버 색상 (초록색) */
+.etc .button:last-of-type:hover {
+	background-color: #28a745; /* 초록색 */
+}
+
 
 .summary {
 	display: grid;
@@ -99,6 +116,21 @@
 	background: white;
 	cursor: pointer;
 }
+
+
+.order-button:hover {
+    background-color: #fff !important;
+    color: #333 !important;
+    transform: scale(1.05) !important;
+}
+
+/* 쇼핑 계속하기 버튼 호버 스타일 */
+.shopping-continue .action-button:hover {
+    background-color: #333 !important;
+    color: #fff !important;
+    transform: scale(1.05) !important;
+}
+
 
 .notes {
 	margin: 20px 0;
