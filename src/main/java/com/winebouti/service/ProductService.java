@@ -2,6 +2,9 @@ package com.winebouti.service;
 
 import java.util.List;
 
+import org.eclipse.core.internal.runtime.Product;
+
+import com.winebouti.mapper.ProductMapper;
 import com.winebouti.vo.ProductVO;
 import com.winebouti.vo.ReviewVO;
 
@@ -15,9 +18,16 @@ public interface ProductService {
 	// 상품 ID로 리뷰 리스트 조회
 	List<ReviewVO> getReviewsByProductId(long product_id);
 
-	// 카테고리별 상품 리스트 조회
-	List<ProductVO> findProductsByCategory(String category);
+	
     
-
+    
+	/* 이창현 */
+	List<ProductVO> findProductsByCategory(String category);
     List<ProductVO> getWines(String category);
+
+    List<ProductVO> getAllProducts();  // 모든 상품 목록 가져오기
+    Product getProductById(Long productId);  // 특정 상품 상세 정보 가져오기
 }
+	
+
+
