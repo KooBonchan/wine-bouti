@@ -97,8 +97,8 @@ button.prev:hover, button.next:hover {
     height: 200px;
     margin: 0 auto;
     gap: 20px;
-    margin-bottom:70px;
-   	margin-top:70px;
+    margin-bottom:90px;
+   	margin-top:90px;
 }
 
 .gallery {
@@ -190,6 +190,7 @@ button.prev:hover, button.next:hover {
 }
 
 .menu-item {
+	width: 100px;
     font-size: 15px;
     font-weight: bold;
     color: #333;
@@ -323,6 +324,9 @@ button.prev:hover, button.next:hover {
     justify-content: center; /* 가로로 중앙 정렬 */
     align-items: center; /* 세로로 중앙 정렬 */
     margin: 0 auto; /* 수평으로 중앙 정렬 */
+  	margin-bottom: 30px;
+  	margin-top: 100px;
+
 }
 
 
@@ -332,7 +336,8 @@ button.prev:hover, button.next:hover {
     color: #333;
     text-align: center;
     width: 100%;
-    margin-top: 100px;
+    margin-top: 80px;
+    
 }
 
 .cs-title2 {
@@ -394,6 +399,7 @@ button.prev:hover, button.next:hover {
     height: 200px;  /* 부모 컨테이너 높이 설정 */
     min-width: 1024px;
     gap: 20px;
+    margin-bottom:100px;
 }
 
 

@@ -171,7 +171,6 @@ VALUES
 (19, 19, UNHEX('f79d71ef90b9419f9a43f748010caa45'), '내가 제일 좋아하는 와인!', '제일 좋아하는 레드 와인입니다.', 5, TRUE, 'password19', '이렇게 좋아해 주셔서 감사합니다!'),
 (20, 20, UNHEX('f79d71ef90b9419f9a43f748010caa45'), '좋지만 다른 와인을 선호해요.', '좋지만 다른 종류를 선호합니다.', 3, FALSE, 'password20', '피드백 감사합니다!');
 
-
 -- Purchase_Product 테이블에 샘플 데이터 20개 추가
 INSERT INTO Purchase_Product (purchase_id, product_id, quantity)
 VALUES 

@@ -53,201 +53,44 @@
 <!--  -->
 
 <div class="container">
-    <div class="main-title">Shop Showcase
+    <div class="main-title">상품추천
         <div class="menu_Shop">
-            <div class="menu-item">Menu 1</div>
-            <div class="menu-item">Menu 2</div>
-            <div class="menu-item">Menu 3</div>
-            <div class="menu-item">Menu 4</div>
+            <div class="menu-item">전체</div>
+            <div class="menu-item">레드와인</div>
+            <div class="menu-item">화이트와인</div>
+            <div class="menu-item">스파클링</div>
         </div>
     </div> <!-- 제목 추가 -->
-<div class="shop">
-    <div class="img">
-        <a href="<c:url value='product/details/${product.id}' />">
-            <img src="<c:url value='api/image/thumbnail/test/redwine1_DOT_jpg' />" alt="Shop Image">
-        </a>
-    </div>
-    <div class="title shop-title">
-        <a href="<c:url value='product/details/${product.id}' />">루이라뚜르 피노누아</a>
-    </div>
-    
-    <div class="title shop-content">
-        <a href="<c:url value='product/details/${product.id}' />">
-            <img src="https://flagcdn.com/w40/fr.png" alt="France Flag" width="20" height="15" class="flag">
-            [프랑스]
-        </a>
-    </div>
-    <div class="title shop-price">
-        <a href="<c:url value='product/details/${product.id}' />">45,000원</a>
-    </div>
-</div>
 
-
-
+    <c:forEach items="${products}" var="product">
     <div class="shop">
-    <div class="img">
-        <img src="<c:url value='api/image/thumbnail/test/sparkle_wine1_DOT_jpg' />" alt="Shop Image">
+        <div class="img">
+            <a href="<c:url value='/product/details/${product.productId}' />">
+                <!-- productImageName을 사용하여 이미지 경로를 동적으로 생성 -->
+                <img src="<c:url value='/api/image/thumbnail/test/${product.realProductImageName}' />" alt="Shop Image">
+            </a>
+        </div>
+        <div class="title shop-title">
+            <a href="<c:url value='/product/details/${product.productId}' />">${product.koreanName}</a>
+        </div>
+        
+        <div class="title shop-content">
+            <a href="<c:url value='/product/details/${product.productId}' />">
+                <img src="https://flagcdn.com/w40/fr.png" alt="France Flag" width="20" height="15" class="flag">
+                [프랑스] <!-- 국가를 WineVO에서 동적으로 처리할 수 있다면, 해당 필드를 사용 -->
+            </a>
+        </div>
+        <div class="title shop-price">
+            <a href="<c:url value='/product/details/${product.productId}' />">${product.originalPrice}원</a>
+        </div>
     </div>
-    <div class="title shop-title">고네 메디빌 그랑크뤼..</div>
-    
-    <div class="title shop-content">
-    <img src="https://flagcdn.com/w40/fr.png" alt="France Flag" width="20" height="15" class="flag">
-    [프랑스]
-</div>
-    <div class="title shop-price">390,000원</div>
-</div>
-    
-  <div class="shop">
-    <div class="img">
-        <img src="<c:url value='api/image/thumbnail/test/redwine2_DOT_jpg' />" alt="Shop Image">
-    </div>
-    <div class="title shop-title">피리아토 하모니엄 네로 다..</div>
-    
-   <div class="title shop-content">
-    <img src="https://flagcdn.com/w40/it.png" alt="Italy Flag" width="20" height="15" class="flag">
-    [이탈리아]
-</div>
-    <div class="title shop-price">90,000원</div>
-</div>
+    </c:forEach>
 
 
-    
-    
-  <div class="shop">
-    <div class="img">
-        <img src="<c:url value='api/image/thumbnail/test/redwine3_DOT_jpg' />" alt="Shop Image">
-    </div>
-    <div class="title shop-title">이즈웨이 롭 앤 레스</div>
-    
-  <div class="title shop-content">
-    <img src="https://flagcdn.com/w40/au.png" alt="Australia Flag" width="20" height="15" class="flag">
-    [호주]
-</div>
-
-    <div class="title shop-price">45,000원</div>
-</div>
-    
-    
-    
-       
-<div class="shop">
-    <div class="img">
-        <img src="<c:url value='api/image/thumbnail/test/redwine4_DOT_jpg' />" alt="Shop Image">
-    </div>
-    <div class="title shop-title">마틴 레이 오크빌 카베르..</div>
-    
-    <div class="title shop-content">
-        <img src="https://flagcdn.com/w40/us.png" alt="USA Flag" width="20" height="15" class="flag">
-        [미국]
-    </div>
-
-    <div class="title shop-price">200,000원</div>
-</div>
-
-    
-    
-    
-   <div class="shop">
-    <div class="img">
-        <img src="<c:url value='api/image/thumbnail/test/redwine5_DOT_jpg' />" alt="Shop Image">
-    </div>
-    <div class="title shop-title">하디스 틴타라 카베르네 소..</div>
-     <div class="title shop-content">
-    <img src="https://flagcdn.com/w40/au.png" alt="Australia Flag" width="20" height="15" class="flag">
-    [호주]
-</div>
-    <div class="title shop-price">25,900원</div>
-</div>
-    
-    
-    
-      <div class="shop">
-    <div class="img">
-        <img src="<c:url value='api/image/thumbnail/test/sparkle_wine2_DOT_jpg' />" alt="Shop Image">
-    </div>
-    <div class="title shop-title">고네 메디빌 프리미에크뤼..</div>
-     <div class="title shop-content">
-    <img src="https://flagcdn.com/w40/fr.png" alt="France Flag" width="20" height="15" class="flag">
-    [프랑스]
-</div>
-    
-    <div class="title shop-price">120,000원</div>
-</div>
 
 
-           
-<div class="shop">
-    <div class="img">
-        <img src="<c:url value='api/image/thumbnail/test/whitewine1_DOT_jpg' />" alt="Shop Image">
-    </div>
-    <div class="title shop-title">본테라 더 루스트</div>
-    
-    <div class="title shop-content">
-        <img src="https://flagcdn.com/w40/us.png" alt="USA Flag" width="20" height="15" class="flag">
-        [미국]
-    </div>
-
-    <div class="title shop-price">100,000원</div>
-</div>
 
     
-    
-    
-             
-<div class="shop">
-    <div class="img">
-        <img src="<c:url value='api/image/thumbnail/test/whitewine2_DOT_jpg' />" alt="Shop Image">
-    </div>
-    <div class="title shop-title">노떼 로사 베르멘티노</div>
-   <div class="title shop-content">
-    <img src="https://flagcdn.com/w40/it.png" alt="Italy Flag" width="20" height="15" class="flag">
-    [이탈리아]
-</div>
-    <div class="title shop-price">31,000원</div>
-</div>
-    
-    
-  <div class="shop">
-    <div class="img">
-        <img src="<c:url value='api/image/thumbnail/test/sparkle_wine3_DOT_jpg' />" alt="Shop Image">
-    </div>
-    <div class="title shop-title">슐럼베르거 로제 스페셜 브..</div>
-   <div class="title shop-content">
-    <img src="https://flagcdn.com/w40/at.png" alt="Austria Flag" width="20" height="15" class="flag">
-    [오스트리아]
-</div>
-    <div class="title shop-price">32,000원</div>
-</div>
-    
-    
-   <div class="shop">
-    <div class="img">
-        <img src="<c:url value='api/image/thumbnail/test/whitewine3_DOT_jpg' />" alt="Shop Image">
-    </div>
-    <div class="title shop-title">에리미나 화이트 </div>
-    
-    <div class="title shop-content">
-    <img src="https://flagcdn.com/w40/fr.png" alt="France Flag" width="20" height="15" class="flag">
-    [프랑스]
-</div>
-    <div class="title shop-price">65,000원</div>
-</div>
-    
-    
-    <div class="shop">
-    <div class="img">
-        <img src="<c:url value='api/image/thumbnail/test/redwine6_DOT_jpg' />" alt="Shop Image">
-    </div>
-    <div class="title shop-title">토르치코다</div>
-   <div class="title shop-content">
-    <img src="https://flagcdn.com/w40/it.png" alt="Italy Flag" width="20" height="15" class="flag">
-    [이탈리아]
-</div>
-    <div class="title shop-price">50,000원</div>
-</div>
-</div>
-
-<!--  -->
 
 <div class="cs">
 	<div class="cs-title">MD 추천</div>

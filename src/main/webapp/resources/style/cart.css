@@ -1,16 +1,19 @@
 .cart-container {
 	min-width: 900px;
 	width: 1000px;
-	padding: 20px;
+	padding: 50px;
 	border-radius: 4px;
 	margin: 0 auto;
+
 }
 
 .title {
 	text-align: center;
-	font-size: 24px;
+	font-size: 30px;
 	font-weight: bold;
 	margin-bottom: 20px;
+	margin-top: 50px;
+	margin-bottom: 50px;
 }
 
 .cart-header {
@@ -28,7 +31,10 @@
 	padding: 10px;
 	border-bottom: 1px solid #eee;
 	align-items: center;
+	font-size: 16px;
 }
+
+
 
 .product-image {
 	width: 80px;
@@ -48,22 +54,48 @@
 	padding: 5px;
 }
 
+.price {
+	padding-left:0.5rem;
+}
+.etc {
+	width: 130px;
+}
 .button {
+	width: 60px;
 	background: #666;
 	color: white;
 	border: none;
 	padding: 5px 15px;
 	border-radius: 15px;
 	cursor: pointer;
+	gap: 10px;
+	transition: background-color 0.3s ease;
 }
+
+/* 수정 버튼 호버 색상 (파란색) */
+.button:hover {
+	background-color: #007bff; /* 파란색 */
+}
+
+/* 삭제 버튼 호버 색상 (빨간색) */
+.etc .button:first-of-type:hover {
+	background-color: #dc3545; /* 빨간색 */
+}
+
+/* 주문 버튼 호버 색상 (초록색) */
+.etc .button:last-of-type:hover {
+	background-color: #28a745; /* 초록색 */
+}
+
 
 .summary {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	margin: 20px 0;
 	text-align: center;
-	padding: 10px;
+	padding: 20px;
 	background: #f9f9f9;
+	margin-top: 50px;
 }
 
 .summary .total {
@@ -85,8 +117,26 @@
 	cursor: pointer;
 }
 
+
+.order-button:hover {
+    background-color: #fff !important;
+    color: #333 !important;
+    transform: scale(1.05) !important;
+}
+
+/* 쇼핑 계속하기 버튼 호버 스타일 */
+.shopping-continue .action-button:hover {
+    background-color: #333 !important;
+    color: #fff !important;
+    transform: scale(1.05) !important;
+}
+
+
+
 .notes {
 	margin: 20px 0;
+	margin-top: 50px;
+	font-size: 16px;
 }
 
 .notes ol {
@@ -95,4 +145,34 @@
 
 .shopping-continue {
 	text-align: right;
+    margin-bottom: -50px; /* 아래쪽 마진을 줄여보세요 */
 }
+
+
+.action-button {
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.action-button:hover {
+    background-color: #333;
+    color: #fff;
+    transform: scale(1.05);
+}
+
+.action-button:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(51, 51, 51, 0.5);
+}
+.cart-container {
+    padding-bottom: 20px; /* 아래쪽 패딩을 줄여보세요 */
+}
+
+

@@ -13,12 +13,16 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 	
-	<bean id="propertyPlaceholderConfigurer"
-		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	<bean id="propertyConfigurer"
+		class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
 		<property name="locations">
-			<value>classpath:jdbc.properties</value>
+			<list>
+				<value>classpath:jdbc.properties</value>
+				<value>classpath:/portone.properties</value>
+			</list>
 		</property>
 	</bean>
+	
 
 	<!-- HikariCP -->
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
@@ -52,6 +56,12 @@
   <aop:aspectj-autoproxy />
   <context:component-scan base-package="com.winebouti.aop" />
   <context:component-scan base-package="com.winebouti.service" />
+  
+  <bean class="org.springframework.web.client.RestTemplate" id="restTemplate" />
+  <bean id="secretKey" class="java.lang.String">
+    <constructor-arg value="${portone.secretKey}" />
+  </bean>
+  
   
   
 </beans>

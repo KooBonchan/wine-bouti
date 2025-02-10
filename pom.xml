@@ -60,6 +60,13 @@
 			<artifactId>spring-test</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
+		<dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-web</artifactId>
+      <version>${org.springframework-version}</version>
+    </dependency>
+    
+		
 		
 		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
     <dependency>
@@ -239,11 +246,7 @@
       <artifactId>thumbnailator</artifactId>
       <version>0.4.8</version>
     </dependency>
-    <dependency>
-      <groupId>com.github.iamport</groupId>
-      <artifactId>iamport-rest-client-java</artifactId>
-      <version>0.2.23</version>
-	  </dependency>
+	  
 	</dependencies>
 	<build>
 		<plugins>

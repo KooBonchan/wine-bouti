@@ -30,11 +30,7 @@
 		FROM Review
 		WHERE product_id = #{productId}
 	</select>
-	<!-- 카테고리를 기준으로 Product 테이블에서 데이터를 조회 -->
-	<select id="findProductsByCategory" parameterType="string"
-		resultType="com.winebouti.vo.ProductVO">
-		SELECT * FROM Product WHERE category = #{category}
-	</select>
+	
 
 
   <!-- 이창현 -->
@@ -69,7 +65,7 @@
     
     
     <!-- 상품 목록 조회 -->
-    <select id="selectProductList" resultMap="productResultMap" parameterType="string">
+    <select id="findProductsByCategory" resultMap="productResultMap" parameterType="string">
         <![CDATA[
         SELECT
             product_id,
@@ -83,7 +79,7 @@
             once
         FROM product
         WHERE category = #{category}
-        ORDER BY product_id DESC
+        ORDER BY product_id
         LIMIT 24
         ]]>
     </select>
