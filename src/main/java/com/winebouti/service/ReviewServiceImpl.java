@@ -42,6 +42,12 @@ public class ReviewServiceImpl implements ReviewService {
 	    public int deleteReview(long reviewId) {
 	        return reviewMapper.deleteReview(reviewId);
 	    }
+	    
+	    
+	    @Override
+	    public int updateResponse(ReviewVO review) {
+	        return reviewMapper.updateResponse(review);
+	    }
     
 }
 

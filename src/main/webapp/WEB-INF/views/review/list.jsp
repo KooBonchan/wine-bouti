@@ -29,9 +29,26 @@
 					
 					<p>${review.content}</p>
 					<c:if test="${not empty review.imagePath}">
-						<img class="review-image" src="/upload/${review.imagePath}"
+						<img class="review-image" src="/upload/review/${review.imagePath}"
 							alt="리뷰 이미지" onerror="this.style.display='none'">
 					</c:if>
+					
+					
+					<!-- 관리자 답글 -->
+                    <c:if test="${not empty review.response}">
+                        <div class="review-response">
+                            <strong>관리자 답변:</strong>
+                            <p>${review.response}</p>
+                        </div>
+                    </c:if>
+                    
+                 <!-- ✅ 관리자 답글 입력창 -->
+                    <c:if test="${isAdmin}">
+                        <div class="admin-response">
+                            <input type="text" id="response-${review.reviewId}" placeholder="답글 입력">
+                            <button onclick="addResponse(${review.reviewId})">답글 등록</button>
+                        </div>
+                    </c:if>
 					
 					<!-- 삭제 -->
 					<button class="delete-btn" data-review-id="${review.reviewId}">삭제</button>
@@ -47,11 +64,11 @@
 
 <script>
 $(document).ready(function () {
-    let page = 2; // 첫 페이지(1)는 이미 불러왔으므로 2부터 시작
+    let page = 2;
     let totalPages = "${totalPages}" !== "" ? parseInt("${totalPages}") : 1;
-    let productId = $("#productId").val(); 
+    let productId = $("#productId").val();
 
-    console.log("Product ID:", productId); // 디버깅
+    console.log("Product ID:", productId);
 
     if (!productId) {
         alert("상품 ID가 유효하지 않습니다!");
@@ -71,6 +88,24 @@ $(document).ready(function () {
             dataType: "json",
             success: function (response) {
                 response.reviews.forEach(review => {
+                	
+                    let imageHtml = "";
+                    if (review.imagePath) {
+                        imageHtml = `<img class="review-image" src="/upload/review/${review.imagePath}" 
+                                     alt="리뷰 이미지" onerror="this.style.display='none'">`;
+                    }
+                    
+                    let responseHtml = "";
+                    if (review.response) {
+                        responseHtml = `
+                            <div class="review-response">
+                                <strong>관리자 답변:</strong>
+                                <p>${review.response}</p>
+                            </div>
+                        `;
+                    }
+                    
+
                     let reviewHtml = `
                         <div class="review-box" id="review-${review.reviewId}">
                             <div>
@@ -78,15 +113,16 @@ $(document).ready(function () {
                                 <span>${review.userName}</span>
                                 <span>${review.writeDate}</span>
                             </div>
+                            <h3 class="review-title">${review.title}</h3>
                             <p>${review.content}</p>
-                            ${review.imagePath ? '<img class="review-image" src="/upload/${review.imagePath}" alt="리뷰 이미지">' : ''}
+                            ${imageHtml} <!-- ✅ 이미지 추가 -->
                             <button class="delete-btn" onclick="deleteReview(${review.reviewId})">삭제</button>
                         </div>
                     `;
                     $("#review-container").append(reviewHtml);
                 });
 
-                page++; // 페이지 증가
+                page++;
                 if (page > totalPages) {
                     $("#load-more").hide();
                 }
@@ -133,6 +169,28 @@ $(document).ready(function () {
         deleteReview(reviewId); // 함수 호출
     });
 });
+
+
+function addResponse(reviewId) {
+    let responseText = document.getElementById(`response-${reviewId}`).value;
+    if (!responseText) {
+        alert("답글을 입력하세요.");
+        return;
+    }
+
+    $.ajax({
+        url: "<c:url value='/review/response' />",
+        type: "POST",
+        data: { reviewId: reviewId, response: responseText },
+        success: function () {
+            alert("답글이 등록되었습니다!");
+            location.reload(); // 새로고침하여 답글 표시
+        },
+        error: function () {
+            alert("답글 등록 중 오류가 발생했습니다.");
+        }
+    });
+}
 
 
 </script>

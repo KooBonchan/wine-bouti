@@ -456,4 +456,25 @@ body {
     cursor: pointer;
 }
 
+/* 관리자 답글 스타일 */
+.review-response {
+    background: #f8f9fa;
+    border-left: 4px solid #007bff;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 8px;
+}
+
+.review-response strong {
+    color: #007bff;
+    font-size: 14px;
+}
+
+.review-response p {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.5;
+}
+
+
 

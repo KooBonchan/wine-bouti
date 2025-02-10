@@ -18,6 +18,8 @@ public interface ReviewService {
     void updateReview(ReviewVO review);
     
     int deleteReview(long reviewId);
+   
+    int updateResponse(ReviewVO review); 
 
 }
 

@@ -51,8 +51,8 @@ public class UploadController {
 
             response.put("fileName", uniqueFilename);
             response.put("uploadPath", uploadDir);
-            response.put("imageUrl", "/api/image/" + uniqueFilename); //이미지 조최 url추가
-            response.put("thumbnailUrl", "/api/image/thumbnail/" + uniqueFilename); // 썸네일
+            response.put("imageUrl", "/upload/review/" + uniqueFilename); //이미지 조최 url추가
+            response.put("thumbnailUrl", "/image/thumbnail/" + uniqueFilename); // 썸네일
             return ResponseEntity.ok(response);
         } catch (IOException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Map.of("error", "파일 업로드 실패"));
