@@ -67,7 +67,7 @@
         <div class="img">
             <a href="<c:url value='/product/details/${product.productId}' />">
                 <!-- productImageName을 사용하여 이미지 경로를 동적으로 생성 -->
-                <img src="<c:url value='/api/image/thumbnail/test/${product.realProductImageName}' />" alt="Shop Image">
+                <img src="<c:url value='/api/image/thumbnail/wine/${product.realProductImageName}' />" alt="Shop Image">
             </a>
         </div>
         <div class="title shop-title">

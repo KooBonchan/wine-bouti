@@ -2,7 +2,6 @@ package com.winebouti.controller;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,6 +39,10 @@ public class ProductController {
     }
     		
     /* 이창현 */
+<<<<<<< HEAD
+
+=======
+>>>>>>> 819d7f7a6708647ecdf44e5963250a7e8f391008
     @GetMapping("/red-wine")
     public String getRedWines(Model model) {
         // ProductService에서 getRedWines 메서드를 호출하여 레드 와인 목록을 가져옴
