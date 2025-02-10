@@ -4,58 +4,55 @@
 
 <script src="<c:url value='/resources/js/product/details.js' />"></script>
 <div class="container">
-	<div class="top">
-		<div class="top-left">
-			<div class="top-left-top" id="wine-image">
-				<img id="main-wine-image"
-					src="<c:url value='/resources/images/wine1.jpg' />" alt="와인 이미지"
-					style="width: 100%; height: auto;">
+    <div class="top">
+        <!-- 왼쪽 (와인 이미지) -->
+        <div class="top-left">
+            <div class="top-left-top" id="wine-image">
+                <img id="main-wine-image"
+                    src="<c:url value='/resources/images/review/wine1.jpg' />" 
+                    alt="와인 이미지"
+                     onclick="openModal(this)"
+       				 style="width: 100%; height: auto; cursor: pointer;">
+                    
+            </div>
+			            <!-- 확대된 이미지 모달 -->
+			<div id="imageModal" class="modal">
+			    <span class="close" onclick="closeModal()">&times;</span>
+			    <img class="modal-content" id="modalImage">
 			</div>
-			<div class="top-left-bottom">
-				<div onclick="changeWineImage(1)">
-					<h3>와인 이미지 1</h3>
-				</div>
-				<div onclick="changeWineImage(2)">
-					<h3>와인 이미지 2</h3>
-				</div>
-				<div onclick="changeWineImage(3)">
-					<h3>와인 이미지 3</h3>
-				</div>
-			</div>
-		</div>
-		<div class="top-right-container">
-			<div class="top-right">
-				<h2>와인이름</h2>
-				<div class="popup-content">
-					<div class="wine-info">
-						<!-- 바디 상세 설명 -->
-						<div class="wine-body">
-							<label for="body">바디:</label>
-							<div class="body-option">가벼운</div>
-							<div class="body-option">중간</div>
-							<div class="body-option">무거운</div>
-						</div>
-						<!-- 산도 상세 설명 -->
-						<div class="wine-acidity">
-							<label for="acidity">산도:</label>
-							<div class="acidity-option">낮은</div>
-							<div class="acidity-option">중간</div>
-							<div class="acidity-option">높은</div>
-						</div>
-						<!-- 타닌 상세 설명 -->
-						<div class="wine-tannins">
-							<label for="tannins">타닌:</label>
-							<div class="tannin-option">부드러운</div>
-							<div class="tannin-option">중간</div>
-							<div class="tannin-option">강한</div>
-						</div>
-					</div>
-				</div>
-				<ul>
-					<li>가격: 50,000원</li>
-					<li>할인: 10% (5,000원 할인)</li>
-					<li>배송비: 무료</li>
-				</ul>
+        </div>
+
+        <!-- 오른쪽 (와인 정보) -->
+        <div class="top-right-container">
+            <div class="top-right">
+                <h2>와인이름</h2>
+                <div class="popup-content">
+                    <div class="wine-info">
+                        <div class="wine-body">
+                            <label for="body">바디:</label>
+                            <div class="body-option">가벼운</div>
+                            <div class="body-option">중간</div>
+                            <div class="body-option">무거운</div>
+                        </div>
+                        <div class="wine-acidity">
+                            <label for="acidity">산도:</label>
+                            <div class="acidity-option">낮은</div>
+                            <div class="acidity-option">중간</div>
+                            <div class="acidity-option">높은</div>
+                        </div>
+                        <div class="wine-tannins">
+                            <label for="tannins">타닌:</label>
+                            <div class="tannin-option">부드러운</div>
+                            <div class="tannin-option">중간</div>
+                            <div class="tannin-option">강한</div>
+                        </div>
+                    </div>
+                </div>
+                <ul>
+                    <li>가격: 50,000원</li>
+                    <li>할인: 10% (5,000원 할인)</li>
+                    <li>배송비: 무료</li>
+                </ul>
 				<!-- 수량, 바로구매, 장바구니 입력 폼 추가 -->
 				<div class="price-info">
 					<label for="quantity">수량:</label> <input type="number"
@@ -120,4 +117,3 @@
 		</div>
 	</div>
 </div>
-q

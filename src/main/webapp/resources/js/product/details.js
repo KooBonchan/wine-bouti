@@ -49,3 +49,29 @@ function updateReviewPage() {
     // 여기에 페이지에 맞는 리뷰 데이터를 보여주는 로직 추가 가능
     console.log('현재 페이지:', currentPage);
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    const modal = document.getElementById("imageModal");
+    const modalImage = document.getElementById("modalImage");
+
+    // 이미지 클릭 시 모달 열기
+    window.openModal = function (img) {
+        modal.style.display = "flex"; // ✅ 클릭한 경우에만 모달이 열리도록 설정
+        modalImage.src = img.src;
+    };
+
+    // 모달 닫기 기능
+    window.closeModal = function () {
+        modal.style.display = "none"; // ✅ 클릭해야만 모달이 닫히도록 설정
+    };
+
+    // 모달 영역 클릭 시 닫기
+    modal.addEventListener("click", function (e) {
+        if (e.target === modal || e.target.classList.contains("close")) {
+            closeModal();
+        }
+    });
+
+    modal.style.display = "none";
+});
+
