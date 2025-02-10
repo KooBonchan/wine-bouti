@@ -1,9 +1,9 @@
 
 
 /* 로그인 폼 컨테이너 */
-.login-form-container {    
+.login-form-container {
     margin-left: auto;
-    margin-right: auto; 
+    margin-right: auto;
     width: 100%;
     max-width: 400px;
     padding: 30px;
@@ -12,8 +12,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px; /* 여기를 줄이면 마진 탑을 줄일 수 있습니다. */
+    margin-top: 100px !important; /* 강제로 위쪽 마진 적용 */
 }
+
 
 .login-form-container h2 {
     font-size: 24px;

@@ -53,12 +53,12 @@
 <!--  -->
 
 <div class="container">
-    <div class="main-title">Shop Showcase
+    <div class="main-title">상품추천
         <div class="menu_Shop">
-            <div class="menu-item">Menu 1</div>
-            <div class="menu-item">Menu 2</div>
-            <div class="menu-item">Menu 3</div>
-            <div class="menu-item">Menu 4</div>
+            <div class="menu-item">전체</div>
+            <div class="menu-item">레드와인</div>
+            <div class="menu-item">화이트와인</div>
+            <div class="menu-item">스파클링</div>
         </div>
     </div> <!-- 제목 추가 -->
 
