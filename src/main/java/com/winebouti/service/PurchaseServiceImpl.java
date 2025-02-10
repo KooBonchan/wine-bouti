@@ -42,13 +42,13 @@ public class PurchaseServiceImpl implements PurchaseService {
 	@Transactional
 	public void storePurchaseInfo(PurchaseVO purchaseVO) throws ArithmeticException {
 		if(purchaseVO.getTotalPrice() <= 0) {
-			purchaseVO.setTotalPrice(calculateTotalAmount(purchaseVO));
+			purchaseVO.setTotalPrice(calculateTotalPrice(purchaseVO));
 		}
 		purchaseMapper.insertMetadata(purchaseVO);
 		purchaseMapper.insertProductList(purchaseVO);
 	}
 	
-	public int calculateTotalAmount(PurchaseVO purchaseVO) throws ArithmeticException{
+	public int calculateTotalPrice(PurchaseVO purchaseVO) throws ArithmeticException{
 		int total = 0;
 		for(var purchaseProduct : purchaseVO.getProducts()) {
 			ProductVO productVO = productMapper.getProductById(purchaseProduct.getProductId());

@@ -61,12 +61,12 @@
 			<li>상품의 가격, 옵션은 예고없이 변경될 수 있으며, 주문 전 꼭 확인해 주시기 바랍니다.</li>
 		</ol>
 	</div>
-
 	<div class="shopping-continue">
 		<button class="action-button" onclick='location.href=&#39;<c:url value="/product" />&#39;'>쇼핑계속하기</button>                                                
 	</div>
 </div>
 <sec:authentication property='principal.memberVO.email' var="email"/>
+
 <script>
 const setup = () => new Promise((resolve) => {
 	const polling = setInterval(() => {
@@ -77,23 +77,32 @@ const setup = () => new Promise((resolve) => {
   }, 50)
 })
 
-setup().then(_ => {
-	const customer = {
-			    email: "${fn:replace(fn:replace(email, '&#64;', '@'), '&#46;', '.')}",
-		      phoneNumber: '<sec:authentication property="principal.memberVO.phoneNumber"/>',
-		      fullName: '<sec:authentication property="principal.memberVO.username"/>',
-		    };
-	console.log(customer);
-	PortOne.requestPayment({
-    storeId: "store-3c95c4dc-7ec4-48fa-8f7c-af83c1813c96",
-    // 채널 키 설정
-    channelKey: "channel-key-967853e6-c6bf-48be-8707-06177e2d5624",
-    paymentId: "SuPERTESTTEST TTTT",
-    orderName: "김김김김 조미조미김김",
-    totalAmount: 1000,
-    currency: "CURRENCY_KRW",
-    payMethod: "CARD",
-    customer: customer,
-  })	
-})
+window.onload = () => {
+	setup()
+	.then(_ => fetch(
+			"<c:url value='/api/order/' />",{method:'POST',}))
+	.then(response => {
+		if( ! response.ok) throw new Error(response.status); return response.json();})
+	.then(data => {
+	  const customer = {
+	          email: "${fn:replace(fn:replace(email, '&#64;', '@'), '&#46;', '.')}",
+	          phoneNumber: '<sec:authentication property="principal.memberVO.phoneNumber"/>',
+	          fullName: '<sec:authentication property="principal.memberVO.username"/>',
+	        };
+	  const inicisData = {
+	        storeId: "store-3c95c4dc-7ec4-48fa-8f7c-af83c1813c96",
+	        // 채널 키 설정
+	        channelKey: "channel-key-967853e6-c6bf-48be-8707-06177e2d5624",
+	        paymentId: data.purchaseId ?? "주문번호",
+	        orderName: data.orderName ?? "주문명",
+	        totalAmount: 1000,
+	        //totalAmount: data.totalPrice,
+	        currency: "CURRENCY_KRW",
+	        payMethod: "CARD",
+	        customer: customer,
+	      };
+	  PortOne.requestPayment(inicisData); 
+	})
+	.catch(console.log)
+}
 </script>
