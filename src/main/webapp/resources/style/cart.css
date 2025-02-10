@@ -1,7 +1,7 @@
 .cart-container {
 	min-width: 900px;
 	width: 1000px;
-	padding: 20px;
+	padding: 50px;
 	border-radius: 4px;
 	margin: 0 auto;
 
@@ -9,7 +9,7 @@
 
 .title {
 	text-align: center;
-	font-size: 24px;
+	font-size: 30px;
 	font-weight: bold;
 	margin-bottom: 20px;
 	margin-top: 50px;
@@ -93,7 +93,7 @@
 	grid-template-columns: 1fr 1fr 1fr;
 	margin: 20px 0;
 	text-align: center;
-	padding: 10px;
+	padding: 20px;
 	background: #f9f9f9;
 	margin-top: 50px;
 }
@@ -132,6 +132,7 @@
 }
 
 
+
 .notes {
 	margin: 20px 0;
 	margin-top: 50px;
@@ -144,6 +145,7 @@
 
 .shopping-continue {
 	text-align: right;
+    margin-bottom: -50px; /* 아래쪽 마진을 줄여보세요 */
 }
 
 
@@ -169,4 +171,8 @@
     outline: none;
     box-shadow: 0 0 5px rgba(51, 51, 51, 0.5);
 }
+.cart-container {
+    padding-bottom: 20px; /* 아래쪽 패딩을 줄여보세요 */
+}
+
 

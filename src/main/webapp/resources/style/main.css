@@ -323,7 +323,8 @@ button.prev:hover, button.next:hover {
     justify-content: center; /* 가로로 중앙 정렬 */
     align-items: center; /* 세로로 중앙 정렬 */
     margin: 0 auto; /* 수평으로 중앙 정렬 */
-  	margin-bottom: 100px;
+  	margin-bottom: 30px;
+  	margin-top: 100px;
 
 }
 

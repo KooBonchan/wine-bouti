@@ -6,8 +6,7 @@
     <link rel="stylesheet" href="<c:url value='/resources/style/member/save.css' />" />
 </head>
 <body>
-<div class="login-form-container">
-     
+<div class="login-form-container" style="margin-top: 50px;">
     <h2>login</h2>
     <img src="<c:url value='/resources/images/icon/login2.png'/>" alt="login" width="70" height="70">
     <form action="<c:url value='/member/login'/>" method="post">
@@ -21,10 +20,7 @@
             <input type="submit" value="로그인">
         </p>
     </form>
-    <!-- 회원 가입 링크 추가 -->
     <p>
         아직 회원이 아니신가요? <a href="<c:url value='/member/save' />">[ 회원 가입 ]</a>
     </p>
 </div>
-</body>
-</html>
