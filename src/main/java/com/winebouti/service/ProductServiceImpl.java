@@ -2,18 +2,18 @@ package com.winebouti.service;
 
 import java.util.List;
 
+import org.eclipse.core.internal.runtime.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.winebouti.mapper.ProductMapper;
 import com.winebouti.vo.ProductVO;
 import com.winebouti.vo.ReviewVO;
-import com.winebouti.vo.WineVO;
 
 import lombok.RequiredArgsConstructor;
 
 @Service
-
+@RequiredArgsConstructor
 public class ProductServiceImpl  implements ProductService {
 
 	private final ProductMapper productMapper;
@@ -44,16 +44,24 @@ public class ProductServiceImpl  implements ProductService {
     /* 이창현 */
     
 
-    @Autowired
-    public ProductServiceImpl (ProductMapper productMapper) {
-        this.productMapper = productMapper;
-    }
     
     
     @Override
     public List<ProductVO> getWines(String category) {
         return productMapper.selectWineListByType(category);
     }
+
+	@Override
+	public List<ProductVO> getAllProducts() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Product getProductById(Long productId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
     
     
     

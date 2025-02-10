@@ -76,6 +76,7 @@ CREATE TABLE Review (
     product_id BIGINT, -- product_id를 BIGINT로 변경
     member_id BIGINT, -- member_id를 BIGINT로 변경
     purchase_id BINARY(16),
+    title VARCHAR(255) NOT NULL,
     content TEXT,
     star INT,
     is_open BOOLEAN, -- is_open 수정
