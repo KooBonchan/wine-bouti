@@ -32,5 +32,9 @@ public interface ReviewMapper {
 
     // 전체 리뷰 개수 가져오기
 	int getTotalReviews();
+	
+	  ReviewVO getReviewById(@Param("reviewId") Long reviewId);
+	    int updateResponse(ReviewVO review);
+	
 
 }
