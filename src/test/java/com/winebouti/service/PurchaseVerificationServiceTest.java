@@ -20,6 +20,7 @@ public class PurchaseVerificationServiceTest {
 
   @Autowired private PurchaseVerificationService service;
   
+  // change purchase id with known purchase
   private static final UUID paymentId = UUID.fromString("f0d5b93d-696d-4166-be37-1a0315b881ac");
   private static final int total = 1000;
   

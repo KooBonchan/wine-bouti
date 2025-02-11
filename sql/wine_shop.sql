@@ -13,6 +13,7 @@ DROP TABLE IF EXISTS Coupon          cascade;
 DROP TABLE IF EXISTS CouponDetail    cascade;
 DROP TABLE IF EXISTS Purchase_Coupon cascade;
 DROP TABLE IF EXISTS RecentVisits   cascade;
+DROP TABLE IF EXISTS cart cascade;
 set foreign_key_checks = 1;
 
 CREATE TABLE Member (

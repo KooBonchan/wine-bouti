@@ -1,12 +1,8 @@
 package com.winebouti.vo;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.stream.Collectors;
-import java.util.Set;
-import java.util.UUID;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -33,8 +29,6 @@ public class CartDTO {
   
 
   public PurchaseVO order(MemberVO memberVO) {
-    String orderName = "";
-    
     List<PurchaseProductVO> products = cartItems.entrySet()
         .stream()
         .map(e->new PurchaseProductVO(
