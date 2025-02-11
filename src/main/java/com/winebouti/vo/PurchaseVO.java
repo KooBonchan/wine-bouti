@@ -6,19 +6,21 @@ import java.util.UUID;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Getter @ToString
+@Getter @Setter @ToString
 @AllArgsConstructor
+@NoArgsConstructor
 public class PurchaseVO {
-  @Setter private UUID purchaseId;
+  private UUID purchaseId;
 	private long memberId;
 	private String address;
 	private String orderName;
 	private List<PurchaseProductVO> products;
 	
-	@Setter private long totalPrice;
+	private long totalPrice;
   
 	@Builder
 	public PurchaseVO(long memberId, String address, 

@@ -123,28 +123,28 @@ VALUES
 (20, 'White', 'Wine T', 750, 'Argentina', 2021, 11.5, 3, 5, 3);
 
 -- Purchase 테이블에 샘플 데이터 20개 추가
-INSERT INTO Purchase (purchase_id, member_id, address, total_amount)
+INSERT INTO Purchase (purchase_id, member_id, address, total_price, order_name)
 VALUES 
-(UNHEX('6b3a9b1d98d84cfc8d9edc8d2d8f02c4'), 1, 'Address 1', 20000),
-(UNHEX('6d3f0b1a98374f00bc79fdb5b8f92827'), 2, 'Address 2', 15000),
-(UNHEX('f91b3f0b86ff46b4a8bb9065d8b94030'), 3, 'Address 3', 60000),
-(UNHEX('2a6c0cdaaf7b4a758d24245c7731a94e'), 4, 'Address 4', 36000),
-(UNHEX('3c8c98beccbd466dbb07decb8c5fc8a6'), 5, 'Address 5', 22000),
-(UNHEX('b192c5bc592a4666b57a6c3b045b0d88'), 6, 'Address 6', 100000),
-(UNHEX('968b6f0b30c74ee9bf748b1b0ff34818'), 7, 'Address 7', 44000),
-(UNHEX('429a3cc8d47a49229b3fd67f09a1d201'), 8, 'Address 8', 63000),
-(UNHEX('19891d8b383a4be7b42fb2826d2e122e'), 9, 'Address 9', 28000),
-(UNHEX('5e31940bb2274a479fb4e90e7b5473c9'), 10, 'Address 10', 44000),
-(UNHEX('d12571c05ac745ff9d56a58ff5d6db4a'), 11, 'Address 11', 48000),
-(UNHEX('5a5e7386a24f4a2a8380739f029dd1ff'), 12, 'Address 12', 26000),
-(UNHEX('a6b7468ad29f4c16b43e4cfb7a593bfa'), 13, 'Address 13', 72000),
-(UNHEX('8cc5fa3b5c6b418189d00477bca4c6c7'), 14, 'Address 14', 34000),
-(UNHEX('b9f9e4f8ca634fcb8d54b9b92647e0f7'), 15, 'Address 15', 30000),
-(UNHEX('4e32029c5db64044a89061cd5ad21d83'), 16, 'Address 16', 22000),
-(UNHEX('99ed1798d8a7405c8a50a6c29a433107'), 17, 'Address 17', 44000),
-(UNHEX('f346cb2bb9c94fa79925c8716e49fcdf'), 18, 'Address 18', 23000),
-(UNHEX('268d27898686461f9c5055f2a8e79c0b'), 19, 'Address 19', 72000),
-(UNHEX('f79d71ef90b9419f9a43f748010caa45'), 20, 'Address 20', 50000);
+(UNHEX('6b3a9b1d98d84cfc8d9edc8d2d8f02c4'), 1, 'Address 1', 20000  , 'test order 01'),
+(UNHEX('6d3f0b1a98374f00bc79fdb5b8f92827'), 2, 'Address 2', 15000  , 'test order 02'),
+(UNHEX('f91b3f0b86ff46b4a8bb9065d8b94030'), 3, 'Address 3', 60000  , 'test order 03'),
+(UNHEX('2a6c0cdaaf7b4a758d24245c7731a94e'), 4, 'Address 4', 36000  , 'test order 04'),
+(UNHEX('3c8c98beccbd466dbb07decb8c5fc8a6'), 5, 'Address 5', 22000  , 'test order 05'),
+(UNHEX('b192c5bc592a4666b57a6c3b045b0d88'), 6, 'Address 6', 100000 , 'test order 06'),
+(UNHEX('968b6f0b30c74ee9bf748b1b0ff34818'), 7, 'Address 7', 44000  , 'test order 07'),
+(UNHEX('429a3cc8d47a49229b3fd67f09a1d201'), 8, 'Address 8', 63000  , 'test order 08'),
+(UNHEX('19891d8b383a4be7b42fb2826d2e122e'), 9, 'Address 9', 28000  , 'test order 09'),
+(UNHEX('5e31940bb2274a479fb4e90e7b5473c9'), 10, 'Address 10', 44000, 'test order 10'),
+(UNHEX('d12571c05ac745ff9d56a58ff5d6db4a'), 11, 'Address 11', 48000, 'test order 11'),
+(UNHEX('5a5e7386a24f4a2a8380739f029dd1ff'), 12, 'Address 12', 26000, 'test order 12'),
+(UNHEX('a6b7468ad29f4c16b43e4cfb7a593bfa'), 13, 'Address 13', 72000, 'test order 13'),
+(UNHEX('8cc5fa3b5c6b418189d00477bca4c6c7'), 14, 'Address 14', 34000, 'test order 14'),
+(UNHEX('b9f9e4f8ca634fcb8d54b9b92647e0f7'), 15, 'Address 15', 30000, 'test order 15'),
+(UNHEX('4e32029c5db64044a89061cd5ad21d83'), 16, 'Address 16', 22000, 'test order 16'),
+(UNHEX('99ed1798d8a7405c8a50a6c29a433107'), 17, 'Address 17', 44000, 'test order 17'),
+(UNHEX('f346cb2bb9c94fa79925c8716e49fcdf'), 18, 'Address 18', 23000, 'test order 18'),
+(UNHEX('268d27898686461f9c5055f2a8e79c0b'), 19, 'Address 19', 72000, 'test order 19'),
+(UNHEX('f79d71ef90b9419f9a43f748010caa45'), 20, 'Address 20', 50000, 'test order 20');
 
 
 -- Review 테이블에 샘플 데이터 20개 추가 (한국어 리뷰 내용)

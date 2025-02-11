@@ -68,7 +68,8 @@ CREATE TABLE Purchase (
     purchase_id BINARY(16) primary key not null, -- purchase_id를 BIGINT로 변경
     member_id BIGINT, -- member_id를 BIGINT로 변경
     address VARCHAR(255),
-    total_amount INT,
+    order_name VARCHAR(255),
+    total_price INT,
     FOREIGN KEY (member_id) REFERENCES Member(member_id) ON DELETE CASCADE
 );
 CREATE TABLE Review (

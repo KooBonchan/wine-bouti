@@ -1,7 +1,6 @@
 package com.winebouti.persistence;
 
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +8,7 @@ import java.util.UUID;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,10 +23,10 @@ import lombok.extern.log4j.Log4j;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src\\main\\webapp\\WEB-INF\\spring\\root-context.xml")
 @Log4j
-@RequiredArgsConstructor
 public class PurchaseMapperTest {
 	
-	private final PurchaseMapper purchaseMapper;
+  @Autowired
+	private PurchaseMapper purchaseMapper;
 	
 	@Test
 	public void readTest() {

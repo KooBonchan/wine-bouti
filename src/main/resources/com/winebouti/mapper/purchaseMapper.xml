@@ -6,7 +6,8 @@
     	<id column="purchase_id" property="purchaseId" />
     	<result column="member_id" property="memberId" />
     	<result column="address" property="address" />
-    	<result column="total_amount" property="totalAmount" />
+    	<result column="order_name" property="orderName" />
+    	<result column="total_price" property="totalPrice" />
     	<collection property="products" resultMap="PurchaseProduct"></collection>
     </resultMap>
     
@@ -18,14 +19,14 @@
     
     
     <select id="findAll" resultMap="PurchaseMap">
-    	SELECT p.purchase_id, member_id, address, total_amount, product_id, quantity
+    	SELECT p.purchase_id, member_id, address, order_name, total_price, product_id, quantity
     	FROM purchase p
     		LEFT OUTER JOIN purchase_product pp
     		ON p.purchase_id = pp.purchase_id
     	ORDER BY p.purchase_id
     </select>
     <select id="findByMemberId" resultMap="PurchaseMap">
-    	SELECT p.purchase_id, member_id, address, total_amount, product_id, quantity
+    	SELECT p.purchase_id, member_id, address, order_name, total_price, product_id, quantity
     	FROM purchase p
     		LEFT OUTER JOIN purchase_product pp
     		ON p.purchase_id = pp.purchase_id
@@ -33,7 +34,7 @@
     	ORDER BY p.purchase_id
     </select>
     <select id="findById" resultMap="PurchaseMap">
-    	SELECT p.purchase_id, member_id, address, total_amount, product_id, quantity
+    	SELECT p.purchase_id, member_id, address, order_name, total_price, product_id, quantity
     	FROM purchase p
     		LEFT OUTER JOIN purchase_product pp
     		ON p.purchase_id = pp.purchase_id
@@ -45,8 +46,8 @@
     
     <insert id="insertMetadata" parameterType="PurchaseVO"
     	useGeneratedKeys="true" keyColumn="purchase_id" keyProperty="purchaseId">
-    	INSERT INTO purchase (member_id, address, total_amount)
-    	VALUES (#{memberId}, #{address}, #{totalAmount})
+    	INSERT INTO purchase (purchase_id, member_id, address, order_name, total_price)
+    	VALUES (#{purchaseId}, #{memberId}, #{address}, #{orderName}, #{totalPrice})
     </insert>
     <insert id="insertProductList" parameterType="PurchaseVO">
     	INSERT INTO purchase_product (purchase_id, product_id, quantity)
