@@ -1,6 +1,7 @@
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
  <div class="container">
   <div class="left">
       <div class="title-container">
@@ -83,15 +84,24 @@
 			<div class="product-item">
 			    <!-- 이미지 삽입 부분 -->
 			   <div class="image-placeholder" onclick="openPopup(this)">
-			       <img src="<c:url value='/api/image/thumbnail/wine/${product.realProductImageName }' />" alt="레드와인">
+			    <a href="<c:url value='/product/details/${product.productId}' />">
+			       <img src="<c:url value='/api/image/thumbnail/wine/${product.realProductImageName }' />" alt="${product.koreanName}">
+			       </a>
 			   </div>
+			  
 			   <div class="product-info">
+			    <a href="<c:url value='/product/details/${product.productId}' />">
 			       <p class="wine-name">${product.koreanName}</p>
+			       </a>
 			       <c:if test="${not empty product.wineDetails}">
+			        <a href="<c:url value='/product/details/${product.productId}' />">
 			       	<p class="origin">원산지: ${product.wineDetails.origin}</p>
+			       	
 			       </c:if>
-			       <p class="price">가격: ${product.originalPrice}원</p>
-			
+			       <a href="<c:url value='/product/details/${product.productId}' />">
+   					 <fmt:formatNumber value="${product.originalPrice}" pattern="#,###" />원
+					</a>
+		
 			       <div class="wine-details">
 			           <p class="body">바디: ${product.wineDetails.sweetness}</p> <!-- 바디 추가 -->
 			           <p class="acidity">산도: ${product.wineDetails.acidity}</p> <!-- 산도 추가 -->

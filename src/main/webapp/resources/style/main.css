@@ -299,8 +299,8 @@ button.prev:hover, button.next:hover {
     position: relative; /* 자식 요소가 absolute로 배치될 수 있게 함 */
     width: 180px;
     height: 180px;
-    
-    background-color: #ccc; /* 배경색으로 확인용 */
+    background-color: #E0EBF8; /* 배경색을 푸른색으로 설정 */
+
     background-size: cover;
     background-position: center;
     border-radius: 8px; /* 모서리 둥글게 */

@@ -57,19 +57,19 @@ public class ProductController {
         model.addAttribute("products", sparkleWine); // 모델에 "products" 속성으로 추가
         return "product/list.tiles"; // 해당 JSP 페이지를 반환
     }
+    @GetMapping("/pairing-wine")
+    public String pairingWineList(Model model) {
+        List<ProductVO> pairingWine = productService.findProductsByCategory("pairing"); // 서비스에서 화이트 와인 목록을 가져옵니다.
+        model.addAttribute("products", pairingWine); // 모델에 "products" 속성으로 추가
+        return "product/list.tiles"; // 해당 JSP 페이지를 반환
+    }
+    @GetMapping("/gift-set")
+    public String giftsetList(Model model) {
+        List<ProductVO> giftSet = productService.findProductsByCategory("gift_set"); // 서비스에서 화이트 와인 목록을 가져옵니다.
+        model.addAttribute("products", giftSet); // 모델에 "products" 속성으로 추가
+        return "product/list.tiles"; // 해당 JSP 페이지를 반환
+    }
     
     
-//    @GetMapping("/gift-wine")
-//    public String giftWineList(Model model) {
-//        List<ProductVO> giftWine = productService.getWines(""); // 서비스에서 화이트 와인 목록을 가져옵니다.
-//        model.addAttribute("products", giftWine); // 모델에 "products" 속성으로 추가
-//        return "product/gift-wine.tiles"; // 해당 JSP 페이지를 반환
-//    }
-//    
-//    @GetMapping("/pairing-wine")
-//    public String pairingWineList(Model model) {
-//        List<ProductVO> pairingWine = productService.getRedWines(); // 서비스에서 화이트 와인 목록을 가져옵니다.
-//        model.addAttribute("products", pairingWine); // 모델에 "products" 속성으로 추가
-//        return "product/pairingwine.tiles"; // 해당 JSP 페이지를 반환
-//    }
+
 }

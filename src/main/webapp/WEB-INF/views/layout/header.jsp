@@ -23,7 +23,7 @@
 					<!-- 스파클링 와인 페이지로 이동 -->
 					<li><a href="<c:url value='/product/pairing-wine' />">페어링</a></li>
 					<!-- 페어링 페이지로 이동 -->
-					<li><a href="<c:url value='/product/gift-wine' />">선물세트</a></li>
+					<li><a href="<c:url value='/product/gift-set' />">선물세트</a></li>
 					<!-- 기프트 와인 페이지로 이동 -->
 				</ul></li>
 			<li><a href="#">이벤트</a>

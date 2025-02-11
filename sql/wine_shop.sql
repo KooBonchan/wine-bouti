@@ -13,6 +13,7 @@ DROP TABLE IF EXISTS Coupon          cascade;
 DROP TABLE IF EXISTS CouponDetail    cascade;
 DROP TABLE IF EXISTS Purchase_Coupon cascade;
 DROP TABLE IF EXISTS RecentVisits   cascade;
+DROP TABLE IF EXISTS CART CASCADE;
 set foreign_key_checks = 1;
 
 CREATE TABLE Member (
@@ -70,6 +71,7 @@ CREATE TABLE Purchase (
     address VARCHAR(255),
     order_name VARCHAR(255),
     total_price INT,
+
     FOREIGN KEY (member_id) REFERENCES Member(member_id) ON DELETE CASCADE
 );
 CREATE TABLE Review (
@@ -77,8 +79,8 @@ CREATE TABLE Review (
     product_id BIGINT, -- product_id를 BIGINT로 변경
     member_id BIGINT, -- member_id를 BIGINT로 변경
     purchase_id BINARY(16),
-    title VARCHAR(255) NOT NULL,
-    content TEXT,
+     title VARCHAR(255) NOT NULL,
+    content text,
     star INT,
     is_open BOOLEAN, -- is_open 수정
     password VARCHAR(255),

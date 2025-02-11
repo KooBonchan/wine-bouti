@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
 
 
@@ -38,13 +39,13 @@
         <img src="<c:url value="/resources/images/shop/gallery3.png" />" alt="이미지3" />
         <span>스파클링와인</span>
 			</a></li>
-			<li><a href="#">
+			<li><a href="/winebouti/product/pairing-wine">
         <img src="<c:url value="/resources/images/shop/gallery4.png" />" alt="이미지4" />
-        <span>세트1</span>
+        <span>페어링</span>
 			</a></li>
-			<li><a href="#">
+			<li><a href="/winebouti/product/gift-set">
         <img src="<c:url value="/resources/images/shop/gallery5.png" />" alt="이미지5" />
-        <span>세트2</span>
+        <span>선물세트</span>
 			</a></li>
 		</ul>
 	</div>
@@ -81,7 +82,10 @@
             </a>
         </div>
         <div class="title shop-price">
-            <a href="<c:url value='/product/details/${product.productId}' />">${product.originalPrice}원</a>
+            <a href="<c:url value='/product/details/${product.productId}' />">
+    <fmt:formatNumber value="${product.originalPrice}" pattern="#,###" />원
+			</a>
+
         </div>
     </div>
     </c:forEach>
