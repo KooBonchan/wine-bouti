@@ -79,7 +79,7 @@
 
 /* 삭제 버튼 호버 색상 (빨간색) */
 .etc .button:first-of-type:hover {
-	background-color: #dc3545; /* 빨간색 */
+	background-color: #e74c3c; /* 빨간색 */
 }
 
 /* 주문 버튼 호버 색상 (초록색) */

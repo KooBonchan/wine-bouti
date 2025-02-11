@@ -190,8 +190,8 @@ button.prev:hover, button.next:hover {
 }
 
 .menu-item {
-	width: 100px;
-    font-size: 15px;
+	width: 85px;
+    font-size: 12px;
     font-weight: bold;
     color: #333;
     cursor: pointer; /* 마우스 커서를 포인터로 변경 */
