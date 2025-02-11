@@ -68,7 +68,7 @@
 		<div class="details-reviews">
 			<!-- 상세 페이지 -->
 			<div class="details" onclick="showContent('details')">
-				<h3>상세 페이지</h3>
+				<h3>상세설명</h3>
 			</div>
 			<!-- 리뷰 리스트 -->
 			<div class="reviews-list" onclick="showContent('reviews')">
@@ -78,8 +78,8 @@
 		</div>
 		<div class="detailsview">
 			<div id="details-content" class="details-content">
-				<h3>상세 페이지</h3>
-				<p>여기에는 와인에 대한 소개나 추가적인 설명을 추가할 수 있습니다.</p>
+				<div id="details-image-wrapper"><img id="details-image" alt="상세 이미지" 
+					src="<c:url value='/api/image/wine/redwine_details_DOT_jpg' />" /></div>
 			</div>
 			<div id="reviews-content" class="review-content"
 				style="display: none;">
