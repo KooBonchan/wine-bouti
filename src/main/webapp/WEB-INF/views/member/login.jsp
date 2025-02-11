@@ -9,6 +9,16 @@
 <div class="login-form-container" style="margin-top: 50px;">
     <h2>login</h2>
     <img src="<c:url value='/resources/images/icon/login2.png'/>" alt="login" width="70" height="70">
+    
+    <!-- 회원가입 성공 메시지 -->
+ <c:if test="${param.success == 'true'}">
+    <div class="success-message">
+        <p class="message-title">회원가입 완료!</p>
+        <p class="message-subtitle">로그인 해주세요.</p>
+    </div>
+</c:if>
+
+    
     <form action="<c:url value='/member/login'/>" method="post">
         <p>
             <input type="text" name="email" placeholder="이메일" required>
@@ -24,3 +34,5 @@
         아직 회원이 아니신가요? <a href="<c:url value='/member/save' />">[ 회원 가입 ]</a>
     </p>
 </div>
+</body>
+</html>
