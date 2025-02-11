@@ -13,7 +13,6 @@ public class MemberVO {
 	private long memberId;
 	private String username;
 	private String password;
-	private String phone;
 	private String email;
 	private String address;
 	private String zipcode;

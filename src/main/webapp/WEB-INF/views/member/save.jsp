@@ -14,21 +14,30 @@
     <div class="form-container">
         <h2>Sign up</h2> 
         <img src="<c:url value='/resources/images/icon/login4.png'/>" alt="login" width="70" height="70">
-        <form action="<c:url value='/member/save' />" method="post">
+        <form name="signupForm" action="<c:url value='/member/save' />" method="post">
             <p>e-mail: <input type="email" name="email" id="email" placeholder="이메일" onblur="emailCheck()"></p>
             <p id="check-result"></p>
-            <p>비밀번호 : <input type="password" name="password" placeholder="비밀번호"></p>
-            <p>이   름 : <input type="text" name="username" placeholder="이름"></p>
-            <p>전화번호 : <input type="text" name="phone" placeholder="번호"></p>
-            <p>주   소 : <input type="text" name="address" placeholder="주소"></p>
-            <p>우편번호 : <input type="text" name="zipcode" placeholder="우편번호"></p>
-            <input type="submit" value="회원가입">
+
+            <p>비밀번호: <input type="password" name="password" id="password" placeholder="6자 이상 입력"></p>
+
+            <p>이름: <input type="text" name="username" placeholder="이름"></p>
+
+            <p>전화번호: <input type="text" name="phoneNumber" id="phoneNumber" placeholder="01012345678"></p>
+
+            <p>주소: <input type="text" name="address" placeholder="서울시 강남구 테헤란로 123"></p>
+
+            <p>우편번호: <input type="text" name="zipcode" placeholder="12345"></p>
+
+
+			<input type="submit" value="회원가입" onclick="return validateForm()" />
+
         </form>
     </div>
 
     <c:url value="/member/email-check" var="emailCheckUrl" />
     
     <script>
+        // 이메일 중복 체크
         function emailCheck() {
             const email = document.getElementById("email").value;
             const checkResult = document.getElementById("check-result");
@@ -54,6 +63,63 @@
                     console.log("에러발생", err);
                 }
             });
+        }
+
+        // 비밀번호 및 기타 필드 유효성 검사
+        function validateForm() {
+            const email = document.signupForm.email.value;
+            const password = document.signupForm.password.value;
+            const username = document.signupForm.username.value;
+            const phoneNumber = document.signupForm.phoneNumber.value;
+            const address = document.signupForm.address.value;
+            const zipcode = document.signupForm.zipcode.value;
+
+            const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
+            const phonePattern = /^[0-9]{10,11}$/;
+            const addressPattern = /^(?=.*[a-zA-Z가-힣])(?=.*\d)[a-zA-Z0-9가-힣\s,.-]+$/;
+            const zipcodePattern = /^[0-9]{5}$/;
+           
+            // 이메일 유효성 검사
+            if (!email || !/\S+@\S+\.\S+/.test(email)) {
+                alert("유효한 이메일을 입력해주세요.");
+                return false;
+            }
+
+
+            if (!password || !passwordPattern.test(password)) {
+                alert("비밀번호는 최소 6자 이상이어야 하며, 대문자, 소문자, 숫자, 특수문자를 포함해야 합니다.");
+                return false;
+            }
+
+
+            // 이름 유효성 검사 (빈 값 체크)
+            if (!username) {
+                alert("이름을 입력해주세요.");
+                return false;
+            }
+
+            // 전화번호 유효성 검사 (010xxxxxxx 형식)
+            
+            if (!phoneNumber || !phonePattern.test(phoneNumber)) {
+                alert("전화번호는 010xxxxxxxx 형식이어야 합니다.");
+                return false;
+            }
+
+            // 주소 유효성 검사 (글자와 숫자 각각 최소 하나 이상 포함)
+            
+            if (!address || !addressPattern.test(address)) {
+                alert("주소는 반드시 글자와 숫자가 포함되어야 합니다.");
+                return false;
+            }
+
+            // 우편번호 유효성 검사 (5자리 숫자)
+            
+            if (!zipcode || !zipcodePattern.test(zipcode)) {
+                alert("우편번호는 5자리 숫자여야 합니다.");
+                return false;
+            }
+            document.signupForm.submit();
+            return true;
         }
 
         // 회원가입 완료 후 알림창 표시
