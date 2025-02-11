@@ -225,34 +225,29 @@ body {
 }
 
 /* 리뷰와 상세 페이지 영역 동일한 스타일 적용 */
-.detailsview .details-content {
+.detailsview #details-content {
+	border: 1px solid #ccc; /* 테두리를 추가 */
     padding: 10px 15px;
     background-color: #fff; /* 배경을 흰색으로 설정 */
     color: black; /* 글자색 검정으로 설정 */
     border: 1px solid #ccc; /* 테두리를 추가 */
     cursor: pointer;
     font-size: 10px;  /* 글자 크기를 줄임 */
-    
+}
+#details-image-wrapper {
+	margin: 0 auto;
+	width: fit-content;
 }
 
-.detailsview .details-content h3,
-.review-content h3 {
+
+
+
+.detailsview .review-content h3 {
     margin-bottom: 10px;  /* 제목과 내용 사이에 간격 추가 */
 }
 
-.detailsview .details-content p,
-.review-content p {
+.detailsview .review-content p {
     margin: 5px 0;  /* 각 문단 간 간격 추가 */
-}
-
-.details-content h3, .details-content p {
-    padding-left: 30px;  /* 왼쪽 여백을 10px로 설정 */
-}
-
-
-.details-content{
-    border: 1px solid #ccc; /* 테두리를 추가 */
-
 }
 
 /* 리뷰 전체 컨텐츠 스타일 */
