@@ -224,7 +224,7 @@ input[type="file"] {
             formData.append("uploadFile", image);
 
             $.ajax({
-                url: "/winebouti/upload/image",
+                url: "<c:url value='/upload/image' />",
                 type: "POST",
                 data: formData,
                 contentType: false,
@@ -232,7 +232,7 @@ input[type="file"] {
                 dataType: "json",
                 success: function (response) {
                     console.log("파일 업로드 성공:", response);
-                    let uploadedFile = response[0]; // 업로드된 파일 정보 저장
+                    let uploadedFile = response.fileName; // 업로드된 파일 정보 저장
 
                     // 파일 업로드 성공 후 리뷰 데이터 서버로 전송
                     sendReviewData(title, content, rating, uploadedFile);
@@ -250,28 +250,28 @@ input[type="file"] {
     });
 
     
-   	function sendReviewData(title, content, rating, image){
+   	function sendReviewData(title, content, rating, imagePath){
      // 서버로 리뷰 데이터 전송
 		let formData = new FormData();
-		formData.append("productId", ${param.productId});  // productId 추가
+		formData.append("productId", `${param.productId}`);  // productId 추가
 		formData.append("memberId", "<sec:authentication property='principal.memberVO.memberId'/>");    // memberId 추가
 		formData.append("title", title);
 		formData.append("content", content);
 		formData.append("star", rating);
 		
-		if (image) {
-		    formData.append("file", image);  // 파일 추가
+		if (imagePath) {
+		    formData.append("imagePath", imagePath);  // 파일 추가
 		}
 		
 		$.ajax({
-		    url: "/review/write",
+		    url: "<c:url value='/review/write' />",
 		    type: "POST",
 		    data: formData,
 		    processData: false, 
 		    contentType: false,  
 		    success: function(response) {
 		        alert("리뷰가 성공적으로 등록되었습니다!");
-		        window.location.href = "/product/details/" + productId;
+		        window.location.href = "/winebouti/product/details/" + `${param.productId}`;
 		    },
 		    error: function(xhr) {
 		        console.error("리뷰 등록 실패:", xhr.responseText);

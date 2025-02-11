@@ -12,7 +12,7 @@ import lombok.ToString;
 @Getter @ToString
 @AllArgsConstructor
 public class PurchaseVO {
-	private UUID purchaseId;
+  @Setter private UUID purchaseId;
 	private long memberId;
 	private String address;
 	private String orderName;

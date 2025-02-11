@@ -43,6 +43,15 @@ public class ReviewController {
 	@GetMapping("/{productId}")
 	public ResponseEntity<List<ReviewVO>> getReviewsByProduct(@PathVariable("productId") long productId) {
 		List<ReviewVO> reviews = reviewService.getReviewsByProductId(productId);
+		 // 업로드된 이미지 경로를 포함해서 반환
+	    for (ReviewVO review : reviews) {
+	    	
+	    	 System.out.println("📌 리뷰 ID: " + review.getReviewId() + ", Response: " + review.getResponse());
+	    	 
+	        if (review.getImagePath() != null && !review.getImagePath().isEmpty()) {
+	            review.setImagePath("/upload/review/" + review.getImagePath()); // 클라이언트에서 접근 가능한 URL로 변경
+	        }
+	    }
 		return new ResponseEntity<>(reviews, HttpStatus.OK);
 	}
 
@@ -55,49 +64,37 @@ public class ReviewController {
 		return "product/review.tiles";
 	}
 
-	@PostMapping("/write")
-	public String submitReview(@RequestParam("productId") Long productId,
-			@RequestParam("memberId") Long memberId,
-			@RequestParam("title") String title,
-			@RequestParam("content") String content, @RequestParam("star") int star,
-			@RequestParam(value = "file", required = false) MultipartFile file, RedirectAttributes redirectAttributes
+    @PostMapping("/write")
+    public String submitReview(@RequestParam("productId") Long productId,
+                               @RequestParam("memberId") Long memberId,
+                               @RequestParam("title") String title,
+                               @RequestParam("content") String content,
+                               @RequestParam("star") int star,
+                               @RequestParam(value = "imagePath", required = false) String imagePath,
+                               RedirectAttributes redirectAttributes) {
 
-	) {
+        // 리뷰 객체 생성 및 데이터 설정
+        ReviewVO review = new ReviewVO();
+        review.setProductId(productId);
+        review.setTitle(title);
+        review.setMemberId(memberId);
+        review.setContent(content);
+        review.setStar(star);
+        review.setWriteDate(new Timestamp(System.currentTimeMillis()));
 
-		// 리뷰 객체 생성 및 데이터 설정
-		ReviewVO review = new ReviewVO();
-		review.setProductId(productId);
-		review.setTitle(title);
-		review.setMemberId(memberId);
-		review.setContent(content);
-		review.setStar(star);
-		review.setWriteDate(new Timestamp(System.currentTimeMillis()));
+        // 업로드된 이미지가 있을 경우 저장
+        if (imagePath != null && !imagePath.isEmpty()) {
+            review.setImagePath(imagePath);
+        }
 
-		// 업로드된 파일이 있으면 저장
-		if (file != null && !file.isEmpty()) {
+        log.info("📌 리뷰 저장 전 imagePath: " + review.getImagePath());
 
-			if (!uploadFolder.exists()) {
-				uploadFolder.mkdirs(); // 폴더가 없으면 생성
-			}
+        // 리뷰 저장
+        reviewService.insertReview(review);
+        redirectAttributes.addFlashAttribute("message", "리뷰가 성공적으로 등록되었습니다!");
 
-			try {
-				String originalFilename = file.getOriginalFilename();
-				String uniqueFilename = UUID.randomUUID().toString() + "_" + originalFilename;
-				File destFile = new File(uploadFolder, uniqueFilename);
-				file.transferTo(destFile);
-				review.setImagePath(uniqueFilename); // 저장된 파일명을 DB에 저장
-			} catch (IOException e) {
-				e.printStackTrace();
-				redirectAttributes.addFlashAttribute("error", "파일 업로드 중 오류 발생!");
-				return "redirect:/review/write";
-			}
-		}
-		// 리뷰 저장
-		reviewService.insertReview(review);
-		redirectAttributes.addFlashAttribute("message", "리뷰가 성공적으로 등록되었습니다!");
-
-		return "redirect:/product/details/" + productId;
-	}
+        return "redirect:/product/details/" + productId;
+    }
 
 	// 리뷰 수정
 	@GetMapping("/edit/{reviewId}")
@@ -119,5 +116,24 @@ public class ReviewController {
 				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 
 	}
+	
+	  // ✅ 관리자 답글 추가 API
+    @PreAuthorize("hasRole('ADMIN')") // 관리자만 답글 가능
+    @PostMapping("/response")
+    public ResponseEntity<String> addResponse(@RequestParam("reviewId") Long reviewId,
+                                              @RequestParam("response") String response) {
+        log.info("📌 관리자 답글 추가 - 리뷰 ID: " + reviewId);
+
+        ReviewVO review = reviewService.getReviewById(reviewId);
+        if (review == null) {
+            return ResponseEntity.badRequest().body("해당 리뷰를 찾을 수 없습니다.");
+        }
+
+        review.setResponse(response); // ✅ 관리자 답글만 업데이트
+
+        int result = reviewService.updateResponse(review);
+        return (result > 0) ? ResponseEntity.ok("답글이 등록되었습니다.") :
+                              ResponseEntity.status(500).body("답글 등록 실패");
+    }
 
 }

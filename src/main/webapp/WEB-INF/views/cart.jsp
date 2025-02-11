@@ -52,7 +52,7 @@
 	</div>
 
 	<div class="order-buttons">
-		<button class="order-button">주문하기</button>
+		<button id="order-button" class="order-button">주문하기</button>
 	</div>
 
 	<div class="notes">
@@ -76,33 +76,51 @@ const setup = () => new Promise((resolve) => {
     }
   }, 50)
 })
-
 window.onload = () => {
 	setup()
-	.then(_ => fetch(
-			"<c:url value='/api/order/' />",{method:'POST',}))
-	.then(response => {
-		if( ! response.ok) throw new Error(response.status); return response.json();})
-	.then(data => {
-	  const customer = {
-	          email: "${fn:replace(fn:replace(email, '&#64;', '@'), '&#46;', '.')}",
-	          phoneNumber: '<sec:authentication property="principal.memberVO.phoneNumber"/>',
-	          fullName: '<sec:authentication property="principal.memberVO.username"/>',
-	        };
-	  const inicisData = {
-	        storeId: "store-3c95c4dc-7ec4-48fa-8f7c-af83c1813c96",
-	        // 채널 키 설정
-	        channelKey: "channel-key-967853e6-c6bf-48be-8707-06177e2d5624",
-	        paymentId: data.purchaseId ?? "주문번호",
-	        orderName: data.orderName ?? "주문명",
-	        totalAmount: 1000,
-	        //totalAmount: data.totalPrice,
-	        currency: "CURRENCY_KRW",
-	        payMethod: "CARD",
-	        customer: customer,
-	      };
-	  PortOne.requestPayment(inicisData); 
-	})
-	.catch(console.log)
+	
+	document.getElementById("order-button").addEventListener("click",async () => purchase())
+}
+
+function purchase(){
+	// order (backend)
+	// payment(frontend)
+	// payment verification (backend)
+	return fetch(
+		    "<c:url value='/api/order/' />",{method:'POST',})
+		    .then(response => {
+		      if( ! response.ok) throw new Error(response.status); return response.json();})
+		    .then(data => {
+		      const customer = {
+		              email: "${fn:replace(fn:replace(email, '&#64;', '@'), '&#46;', '.')}",
+		              phoneNumber: '<sec:authentication property="principal.memberVO.phoneNumber"/>',
+		              fullName: '<sec:authentication property="principal.memberVO.username"/>',
+		            };
+		      const inicisData = {
+		            storeId: "store-3c95c4dc-7ec4-48fa-8f7c-af83c1813c96",
+		            // 채널 키 설정
+		            channelKey: "channel-key-967853e6-c6bf-48be-8707-06177e2d5624",
+		            paymentId: data.purchaseId ?? "주문번호",
+		            orderName: data.orderName ?? "주문명",
+		            totalAmount: data.totalPrice,
+		            currency: "CURRENCY_KRW",
+		            payMethod: "CARD",
+		            customer: customer,
+		          };
+		      return PortOne.requestPayment(inicisData); 
+		    })
+		    .then(payment => {
+		    	if(payment.code !== undefined){
+		    		console.log(payment)
+		    		throw new Error("payment failure")
+		    	}
+		    	return fetch("<c:url value='/api/purchase/complete' />")
+		    })
+		    .then(response => {
+          if( ! response.ok) throw new Error(response.status); return response.json();})
+		    .catch(e => {
+		    	console.log(e);
+		    	alert("결제에 실패했습니다. 나중에 다시 시도해주세요.")
+		    }) 
 }
 </script>

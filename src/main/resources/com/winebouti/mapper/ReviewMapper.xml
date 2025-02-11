@@ -88,4 +88,14 @@
 		image_path AS imagePath  <!-- ⭐ 추가된 부분 -->
 		FROM Review
 	</select>
+
+
+	   <!-- 관리자 답글 업데이트 -->
+    <update id="updateResponse" parameterType="ReviewVO">
+        UPDATE review 
+        SET response = #{response}
+        WHERE review_id = #{reviewId}
+    </update>
+	
+	
 </mapper>
