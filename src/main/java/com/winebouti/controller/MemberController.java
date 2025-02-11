@@ -36,18 +36,18 @@ public class MemberController {
 
   @PostMapping("save")
   public String save(@ModelAttribute MemberVO memberVO, RedirectAttributes redirectAttributes) {
-    try {
-      memberService.save(memberVO);
-      // 회원가입 완료 후 success=true 파라미터를 포함하여 리다이렉트
-      return "redirect:/member/save?success=true"; // success 파라미터 추가
-
-    } catch (Exception e) {
-      log.error(e.getMessage());
-      log.error("회원 저장에 실패했습니다."); // 예외 처리
-      redirectAttributes.addFlashAttribute("error", "회원 저장에 실패했습니다. 다시 시도해 주세요.");
-      return "redirect:/member/save.tiles";
-    }
+      try {
+          memberService.save(memberVO);
+          // 회원가입 후 로그인 페이지로 리다이렉트
+          return "redirect:/member/login?success=true"; // 로그인 페이지로 리다이렉트
+      } catch (Exception e) {
+          log.error(e.getMessage());
+          log.error("회원 저장에 실패했습니다."); // 예외 처리
+          redirectAttributes.addFlashAttribute("error", "회원 저장에 실패했습니다. 다시 시도해 주세요.");
+          return "redirect:/member/save.tiles";
+      }
   }
+  
 
   @GetMapping("login")
   public String loginForm() {
