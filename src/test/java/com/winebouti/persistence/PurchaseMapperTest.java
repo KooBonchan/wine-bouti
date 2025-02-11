@@ -17,7 +17,6 @@ import com.winebouti.mapper.PurchaseMapper;
 import com.winebouti.vo.PurchaseProductVO;
 import com.winebouti.vo.PurchaseVO;
 
-import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -57,12 +56,9 @@ public class PurchaseMapperTest {
 		    .build();
 		purchase.setTotalPrice(2300030);
 		UUID idx = purchase.getPurchaseId();
-		
+		log.info("purchase id: " + idx.toString());
 		
 		purchaseMapper.insertMetadata(purchase);
 		purchaseMapper.insertProductList(purchase);
-		
-		
-		
 	}
 }

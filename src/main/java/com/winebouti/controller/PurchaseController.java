@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.winebouti.security.CustomUser;
@@ -64,8 +65,8 @@ public class PurchaseController {
   
   @PutMapping("api/cart")
   public ResponseEntity<Integer> addToCart(
-      long productId,
-      int quantity,
+      @RequestParam long productId,
+      @RequestParam int quantity,
       HttpSession session,
       Principal principal
   ) {
@@ -120,9 +121,9 @@ public class PurchaseController {
   
   // if no cart exists in session, create cart based on principal.
   private CartDTO getCartFromSession(HttpSession session, Principal principal) {
-    MemberVO user = ((CustomUser) ((Authentication)principal).getPrincipal()).getMemberVO();
     CartDTO cartDTO = (CartDTO) session.getAttribute("cartDTO");
     if (cartDTO == null) {
+      MemberVO user = ((CustomUser) ((Authentication)principal).getPrincipal()).getMemberVO();
       cartDTO = new CartDTO();
       cartDTO.setMemberId(user.getMemberId()); //TODO: use member ID from security
       cartDTO.setCartItems(new HashMap<>());
