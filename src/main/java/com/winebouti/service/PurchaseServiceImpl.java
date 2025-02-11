@@ -6,10 +6,8 @@ import java.util.UUID;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.winebouti.mapper.ProductMapper;
 import com.winebouti.mapper.PurchaseMapper;
 import com.winebouti.vo.MemberVO;
-import com.winebouti.vo.ProductVO;
 import com.winebouti.vo.PurchaseVO;
 
 import lombok.RequiredArgsConstructor;
@@ -18,7 +16,6 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class PurchaseServiceImpl implements PurchaseService {
 	private final PurchaseMapper purchaseMapper;
-	private final ProductMapper productMapper;
 	
 	// 관리자용 
 	public List<PurchaseVO> getPurchaseList(){

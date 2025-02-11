@@ -1,10 +1,5 @@
 package com.winebouti.controller;
 
-import java.io.IOException;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,7 +16,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.client.RestTemplate;
 
 import com.winebouti.security.CustomUser;
 import com.winebouti.service.ProductService;
@@ -44,7 +38,6 @@ public class PurchaseController {
   private final ProductService productService;
   private final PurchaseService purchaseService;
   private final PurchaseVerificationService verificationService;
-  private final RestTemplate restTemplate;
   
   @GetMapping("cart")
   public String cart(HttpSession session, Model model) {
