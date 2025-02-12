@@ -122,22 +122,24 @@ public class ReviewController {
 	}
 	
 	  // ✅ 관리자 답글 추가 API
-    @PreAuthorize("hasRole('ADMIN')") // 관리자만 답글 가능
-    @PostMapping("/response")
-    public ResponseEntity<String> addResponse(@RequestParam("reviewId") Long reviewId,
-                                              @RequestParam("response") String response) {
-        log.info("📌 관리자 답글 추가 - 리뷰 ID: " + reviewId);
+	 @PostMapping("/response")
+	    public ResponseEntity<String> addResponse(@RequestParam("reviewId") Long reviewId,
+	                                              @RequestParam("response") String response) {
+	        log.info("📌 관리자 답글 추가 - 리뷰 ID: " + reviewId);
 
-        ReviewVO review = reviewService.getReviewById(reviewId);
-        if (review == null) {
-            return ResponseEntity.badRequest().body("해당 리뷰를 찾을 수 없습니다.");
-        }
+	        // ✅ 리뷰 조회
+	        ReviewVO review = reviewService.getReviewById(reviewId);
+	        if (review == null) {
+	            return ResponseEntity.badRequest().body("해당 리뷰를 찾을 수 없습니다.");
+	        }
 
-        review.setResponse(response); // ✅ 관리자 답글만 업데이트
+	        // ✅ 관리자 답글 업데이트
+	        review.setResponse(response); 
+	        int result = reviewService.updateResponse(review);
 
-        int result = reviewService.updateResponse(review);
-        return (result > 0) ? ResponseEntity.ok("답글이 등록되었습니다.") :
-                              ResponseEntity.status(500).body("답글 등록 실패");
-    }
+	        // ✅ 응답 처리
+	        return (result > 0) ? ResponseEntity.ok("답글이 등록되었습니다.") :
+	                              ResponseEntity.status(500).body("답글 등록 실패");
+	    }
 
 }

@@ -31,15 +31,12 @@
 					<!-- 썸네일 이미지 출력 -->
 					<p>${review.content}</p>
 					<c:if test="${not empty review.imagePath}">
-						<a href="<c:url value='/api/image/review/${review.imagePath}' />" target="_blank">
-							<img class="review-thumbnail"
-								src="<c:url value='/api/image/thumbnail/review/${review.imagePath}' />" 
-								onerror="this.style.display='none'">
+						<a href="<c:url value='/api/image/review/${review.imagePath}' />"
+							target="_blank"> <img class="review-thumbnail"
+							src="<c:url value='/api/image/thumbnail/review/${review.imagePath}' />"
+							onerror="this.style.display='none'">
 						</a>
 					</c:if>
-
-
-
 
 
 					<!-- 관리자 답글 -->
@@ -51,13 +48,14 @@
 					</c:if>
 
 					<!-- ✅ 관리자 답글 입력창 -->
-					<c:if test="${isAdmin}">
+					<c:if test="${not empty review.reviewId}">
 						<div class="admin-response">
 							<input type="text" id="response-${review.reviewId}"
 								placeholder="답글 입력">
 							<button onclick="addResponse(${review.reviewId})">답글 등록</button>
 						</div>
 					</c:if>
+
 
 					<!-- 삭제 -->
 					<button class="delete-btn" data-review-id="${review.reviewId}">삭제</button>
@@ -176,25 +174,63 @@ $(document).ready(function () {
 
 
 function addResponse(reviewId) {
-    let responseText = document.getElementById(`response-${reviewId}`).value;
+    console.log("📌 addResponse() 실행됨 - reviewId:", reviewId);
+
+    let inputField = document.getElementById(`response-${reviewId}`);
+    if (!inputField) {
+        console.warn(`📌 입력창이 존재하지 않음! reviewId: ${reviewId} → 동적으로 생성`);
+        
+        let parentDiv = document.querySelector(`#review-${reviewId}`);
+        if (!parentDiv) {
+            alert("리뷰 컨테이너를 찾을 수 없습니다.");
+            return;
+        }
+
+        inputField = document.createElement("input");
+        inputField.type = "text";
+        inputField.id = `response-${reviewId}`;
+        inputField.placeholder = "답글 입력";
+
+        let button = document.createElement("button");
+        button.innerText = "답글 등록";
+        button.onclick = function() { addResponse(reviewId); };
+
+        parentDiv.appendChild(inputField);
+        parentDiv.appendChild(button);
+    }
+
+    let responseText = inputField.value;
     if (!responseText) {
         alert("답글을 입력하세요.");
         return;
     }
 
     $.ajax({
-        url: "<c:url value='/review/response' />",
+        url: "/review/response",
         type: "POST",
-        data: { reviewId: reviewId, response: responseText },
-        success: function () {
-            alert("답글이 등록되었습니다!");
-            location.reload(); // 새로고침하여 답글 표시
+        data: {
+            reviewId: reviewId,
+            response: responseText
         },
-        error: function () {
+        success: function() {
+            alert("답글이 등록되었습니다!");
+
+            let responseContainer = document.createElement("div");
+            responseContainer.classList.add("review-response");
+            responseContainer.innerHTML = `<strong>관리자 답변:</strong><p>${responseText}</p>`;
+
+            inputField.parentElement.insertAdjacentElement("beforebegin", responseContainer);
+            inputField.value = "";
+        },
+        error: function(xhr) {
             alert("답글 등록 중 오류가 발생했습니다.");
+            console.error("📌 관리자 답글 등록 실패:", xhr.responseText);
         }
     });
 }
+
+
+
 
 
 </script>
