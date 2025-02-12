@@ -63,32 +63,27 @@
         </div>
     </div> <!-- 제목 추가 -->
 
-    <c:forEach items="${products}" var="product">
+   <c:forEach items="${products}" var="product">
     <div class="shop">
-        <div class="img">
-            <a href="<c:url value='/product/details/${product.productId}' />">
+        <!-- 전체 제품을 하나의 <a> 태그로 감싸기 -->
+        <a href="<c:url value='/product/details/${product.productId}' />">
+            <div class="img">
                 <!-- productImageName을 사용하여 이미지 경로를 동적으로 생성 -->
                 <img src="<c:url value='/api/image/thumbnail/wine/${product.realProductImageName}' />" alt="Shop Image">
-            </a>
-        </div>
-        <div class="title shop-title">
-            <a href="<c:url value='/product/details/${product.productId}' />">${product.koreanName}</a>
-        </div>
-        
-        <div class="title shop-content">
-            <a href="<c:url value='/product/details/${product.productId}' />">
+            </div>
+            <div class="title shop-title">
+                ${product.koreanName}
+            </div>
+            <div class="title shop-content">
                 <img src="https://flagcdn.com/w40/fr.png" alt="France Flag" width="20" height="15" class="flag">
                 [프랑스] <!-- 국가를 WineVO에서 동적으로 처리할 수 있다면, 해당 필드를 사용 -->
-            </a>
-        </div>
-        <div class="title shop-price">
-            <a href="<c:url value='/product/details/${product.productId}' />">
-    <fmt:formatNumber value="${product.originalPrice}" pattern="#,###" />원
-			</a>
-
-        </div>
+            </div>
+            <div class="title shop-price">
+                <fmt:formatNumber value="${product.originalPrice}" pattern="#,###" />원
+            </div>
+        </a>
     </div>
-    </c:forEach>
+</c:forEach>
 
 
 
