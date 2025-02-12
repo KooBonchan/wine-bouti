@@ -204,6 +204,9 @@ input[type="file"] {
         let rating = document.querySelector('input[name="star"]:checked')?.value;
         let image = document.getElementById("imageUpload").files[0];
         
+        let reviewIdElement = document.querySelector('input[name="reviewId"]');
+        let reviewId = reviewIdElement ? reviewIdElement.value : null; 
+        
 
         if (!title || !content || !rating) {
             alert("모든 필드를 채워주세요.");
@@ -216,6 +219,10 @@ input[type="file"] {
         formData.append("title", title);
         formData.append("content", content);
         formData.append("star", rating);
+        
+        if (reviewId) {
+            formData.append("reviewId", reviewId); 
+        }
 
         console.log("파일 업로드 전")
         // 이미지가 있으면 먼저 업로드 (Ajax)
@@ -232,10 +239,11 @@ input[type="file"] {
                 dataType: "json",
                 success: function (response) {
                     console.log("파일 업로드 성공:", response);
+                    
                     let uploadedFile = response.fileName; // 업로드된 파일 정보 저장
-
+                    let thumbnailUrl = response.thumbnailUrl;
                     // 파일 업로드 성공 후 리뷰 데이터 서버로 전송
-                    sendReviewData(title, content, rating, uploadedFile);
+                    sendReviewData(title, content, rating, uploadedFile, thumbnailUrl);
                 },
                 error: function (xhr) {
                     console.error("파일 업로드 실패:", xhr.responseText);
@@ -245,7 +253,7 @@ input[type="file"] {
         } else {
             // 이미지가 없으면 파일 정보 없이 리뷰 전송
             console.log("이미지 없음");
-            sendReviewData(title, content, rating, null);
+            sendReviewData(title, content, rating, null, null);
         }
     });
 

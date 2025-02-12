@@ -479,5 +479,18 @@ body {
     line-height: 1.5;
 }
 
+/* 썸네일  */
+
+.review-thumbnail {
+    width: 100px; /* 썸네일 크기 조정 */
+    height: auto;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.review-thumbnail:hover {
+    transform: scale(1.1);
+}
 
 

@@ -48,6 +48,11 @@ public class ReviewServiceImpl implements ReviewService {
 	    public int updateResponse(ReviewVO review) {
 	        return reviewMapper.updateResponse(review);
 	    }
+	    
+	    @Override
+	    public void saveImagePath(long reviewId, String imagePath, String thumbnailPath) {
+	        reviewMapper.updateImagePath(reviewId, imagePath, thumbnailPath); 
+	    }
     
 }
 
