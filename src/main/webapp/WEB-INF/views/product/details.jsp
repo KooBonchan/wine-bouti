@@ -105,7 +105,7 @@
 						<h3>☆☆☆☆☆</h3>
 					</div>
 					<div class="reviews">
-						<h3>총 리뷰 120개</h3>
+						<h3 id="reviewCount">총 리뷰 ${reviews.size()} 개</h3>
 						<!-- 리뷰 남기기 -->
 						<div class="review-form">
 							<button onclick="window.location.href='<c:url value="/review/write?productId=${product.productId}"/>'">리뷰 남기기</button>
@@ -113,12 +113,10 @@
 						</div>
 					</div>
 				</div>
-				<h3>리뷰 내용</h3>
-				<p>여기에는 리뷰 리스트</p>
 				<section>
 					<!-- 리뷰 목록 -->
 					<div class="review-section">
-						<h2>리뷰</h2>
+						<h2>Reivew</h2>
 
 						<%@ include file="../review/list.jsp" %>
 

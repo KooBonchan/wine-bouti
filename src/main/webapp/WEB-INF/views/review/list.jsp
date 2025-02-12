@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
 
 <!-- 현재 상품 ID 저장 -->
 <input type="hidden" id="productId"
@@ -48,13 +49,13 @@
 					</c:if>
 
 					<!-- ✅ 관리자 답글 입력창 -->
-					<c:if test="${not empty review.reviewId}">
-						<div class="admin-response">
-							<input type="text" id="response-${review.reviewId}"
-								placeholder="답글 입력">
-							<button onclick="addResponse(${review.reviewId})">답글 등록</button>
-						</div>
-					</c:if>
+					<sec:authorize access="hasRole('ROLE_ADMIN')">
+				        <div class="response-form">
+				            <textarea id="response-${review.reviewId}" placeholder="답글 입력">${review.response}</textarea>
+				            <button class="submitResponse" data-review-id="${review.reviewId}">답글 등록</button>
+				            <button class="deleteResponse" data-review-id="${review.reviewId}">답글 삭제</button>
+				        </div>
+				    </sec:authorize>
 
 
 					<!-- 삭제 -->
@@ -108,7 +109,7 @@ $(document).ready(function () {
                     }
 
                     let reviewHtml = `
-                        <div class="review-box" id="review-${review.reviewId}">
+                        <div class="review-box" id="review-<c:out value='${review.reviewId}'/>">
                             <div>
                                 <span>${'★'.repeat(review.star)}</span>
                                 <span>${review.userName}</span>
@@ -138,14 +139,34 @@ $(document).ready(function () {
     $("#load-more").click(function () {
         loadMoreReviews();
     });
+    
+    function updateReviewCount() {
+        let productId = $("#productId").val(); // 상품 ID 가져오기
+
+        $.ajax({
+            url: `/review/${productId}`,
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                console.log("📌 [updateReviewCount] 응답 데이터:", data); // ✅ 디버깅 로그 추가
+
+                let reviewCount = data.reviewCount; // ✅ JSON 응답에서 reviewCount 가져오기
+                $("#reviewCount").text('총 리뷰 ${reviews.size()}개'); // ✅ 리뷰 개수 업데이트
+            },
+            error: function (xhr) {
+                console.error("⛔ [updateReviewCount] 오류 발생:", xhr.responseText);
+                alert("리뷰 개수를 불러오는 중 오류가 발생했습니다.");
+            }
+        });
+    }
+
 
     
  // 리뷰 삭제 함수
     function deleteReview(reviewId) {
-        console.log("삭제 요청 reviewId:", reviewId); // 오류 수정
 
         if (!confirm("정말 삭제하시겠습니까?")) {
-            return; // 사용자가 취소하면 삭제 요청 중단
+            return; 
         }
 
         $.ajax({
@@ -153,8 +174,8 @@ $(document).ready(function () {
             url: "<c:url value='/review/' />"+ reviewId,
             dataType: "text",
             success: function (result) {
-                console.log("삭제 성공:", result);
                 alert("리뷰가 삭제되었습니다.");
+                loadReviews();
                 $("#review-" + reviewId).remove(); // 삭제된 리뷰를 화면에서 제거
             },
             error: function (xhr, status, er) {
@@ -173,63 +194,73 @@ $(document).ready(function () {
 });
 
 
-function addResponse(reviewId) {
-    console.log("📌 addResponse() 실행됨 - reviewId:", reviewId);
+function loadResponse(reviewId) {
+    console.log(`📌 [Ajax] 리뷰 ID 확인:`, reviewId); // 🔥 reviewId 값 확인
 
-    let inputField = document.getElementById(`response-${reviewId}`);
-    if (!inputField) {
-        console.warn(`📌 입력창이 존재하지 않음! reviewId: ${reviewId} → 동적으로 생성`);
-        
-        let parentDiv = document.querySelector(`#review-${reviewId}`);
-        if (!parentDiv) {
-            alert("리뷰 컨테이너를 찾을 수 없습니다.");
-            return;
-        }
-
-        inputField = document.createElement("input");
-        inputField.type = "text";
-        inputField.id = `response-${reviewId}`;
-        inputField.placeholder = "답글 입력";
-
-        let button = document.createElement("button");
-        button.innerText = "답글 등록";
-        button.onclick = function() { addResponse(reviewId); };
-
-        parentDiv.appendChild(inputField);
-        parentDiv.appendChild(button);
-    }
-
-    let responseText = inputField.value;
-    if (!responseText) {
-        alert("답글을 입력하세요.");
-        return;
-    }
-
-    $.ajax({
-        url: "/review/response",
-        type: "POST",
-        data: {
-            reviewId: reviewId,
-            response: responseText
-        },
-        success: function() {
-            alert("답글이 등록되었습니다!");
-
-            let responseContainer = document.createElement("div");
-            responseContainer.classList.add("review-response");
-            responseContainer.innerHTML = `<strong>관리자 답변:</strong><p>${responseText}</p>`;
-
-            inputField.parentElement.insertAdjacentElement("beforebegin", responseContainer);
-            inputField.value = "";
-        },
-        error: function(xhr) {
-            alert("답글 등록 중 오류가 발생했습니다.");
-            console.error("📌 관리자 답글 등록 실패:", xhr.responseText);
-        }
-    });
+    $.get(`/review/response/${reviewId}`)
+        .done(function (data) {
+            console.log(`✅ [Ajax] 리뷰(${reviewId}) 답변 응답:`, data);
+            let responseContainer = $(`#reviewResponse-${reviewId}`);
+            responseContainer.html(data === "답변이 없습니다." ? "<p>아직 답변이 없습니다.</p>" : `<strong>관리자 답변:</strong><p>${data}</p>`);
+        })
+        .fail(function (xhr) {
+            console.error(`⛔ [Ajax] 답변 불러오기 실패 - 상태 코드: ${xhr.status}, 응답:`, xhr.responseText);
+            alert("답변을 불러오는 중 오류가 발생했습니다.");
+        });
 }
 
 
+    // 답변 등록/수정 (관리자만 가능)
+   $(".submitResponse").click(function () {
+        let reviewId = $(this).data("review-id");
+        let responseText = $(`#response-${reviewId}`).val();
+
+        if (!responseText) {
+            alert("답글을 입력하세요.");
+            return;
+        }
+
+        $.ajax({
+            url: "/review/response",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({
+                reviewId: reviewId,
+                response: responseText
+            }),
+            success: function (response) {
+                alert(response);
+                loadResponse(reviewId);
+            },
+            error: function (xhr) {
+                alert(xhr.responseText);
+            }
+        });
+    });
+
+    // 답변 삭제 (관리자만 가능)
+    $(".deleteResponse").click(function () {
+        let reviewId = $(this).data("review-id");
+
+        $.ajax({
+            url: `/review/response/${reviewId}`,
+            type: "DELETE",
+            success: function (response) {
+                alert(response);
+                loadResponse(reviewId);
+            },
+            error: function (xhr) {
+                alert(xhr.responseText);
+            }
+        });
+    });
+
+    // 페이지 로드 시 답변 불러오기
+    $(".review-box").each(function () {
+        let reviewId = $(this).data("review-id");
+        loadResponse(reviewId);
+    });
+});
 
 
 

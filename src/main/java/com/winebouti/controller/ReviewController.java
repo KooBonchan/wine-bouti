@@ -1,26 +1,29 @@
 package com.winebouti.controller;
 
 import java.io.File;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 import java.sql.Timestamp;
 import java.util.List;
-import java.util.UUID;
+import java.util.Map;
+import java.util.HashMap;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.winebouti.service.ReviewService;
@@ -41,21 +44,26 @@ public class ReviewController {
 
 	// 특정 productId의 리뷰 목록 조회 (AJAX 비동기 요청 지원)
 	@GetMapping("/{productId}")
-	public ResponseEntity<List<ReviewVO>> getReviewsByProduct(@PathVariable("productId") long productId) {
-		List<ReviewVO> reviews = reviewService.getReviewsByProductId(productId);
-		 // 업로드된 이미지 경로를 포함해서 반환
+	public ResponseEntity<Map<String, Object>> getReviewsByProduct(@PathVariable("productId") long productId) {
+	    List<ReviewVO> reviews = reviewService.getReviewsByProductId(productId);
+	    int reviewCount = reviews.size(); // 리뷰 개수 계산
+
+	    // ✅ 응답 데이터를 Map으로 구성
+	    Map<String, Object> responseData = new HashMap<>();
+	    responseData.put("reviews", reviews);
+	    responseData.put("reviewCount", reviewCount); // ✅ 리뷰 개수 포함
+
+	    // ✅ 업로드된 이미지 경로 설정
 	    for (ReviewVO review : reviews) {
-	    	
-	    	 System.out.println("📌 리뷰 ID: " + review.getReviewId() + ", Response: " + review.getResponse());
-	    	 
 	        if (review.getImagePath() != null && !review.getImagePath().isEmpty()) {
-	            review.setImagePath("/upload/review/" + review.getImagePath()); // 클라이언트에서 접근 가능한 URL로 변경
+	            review.setImagePath("/upload/review/" + review.getImagePath());
 	        }
 	        if (review.getThumbnailPath() != null && !review.getThumbnailPath().isEmpty()) {
-	            review.setThumbnailPath("/upload/review/thumbs/" + review.getThumbnailPath()); // 썸네일 경로 추가
+	            review.setThumbnailPath("/upload/review/thumbs/" + review.getThumbnailPath());
 	        }
 	    }
-		return new ResponseEntity<>(reviews, HttpStatus.OK);
+
+	    return ResponseEntity.ok(responseData); // ✅ 명확하게 Map 타입 지정
 	}
 
 	// 리뷰 작성
@@ -121,25 +129,65 @@ public class ReviewController {
 
 	}
 	
-	  // ✅ 관리자 답글 추가 API
-	 @PostMapping("/response")
-	    public ResponseEntity<String> addResponse(@RequestParam("reviewId") Long reviewId,
-	                                              @RequestParam("response") String response) {
-	        log.info("📌 관리자 답글 추가 - 리뷰 ID: " + reviewId);
+	//리뷰 답글 조회 (모두)
+	
+	  @GetMapping("/response/{reviewId}")
+	    public ResponseEntity<String> getResponse(@PathVariable Long reviewId) {
+	        String response = reviewService.getReviewResponse(reviewId);
 
-	        // ✅ 리뷰 조회
-	        ReviewVO review = reviewService.getReviewById(reviewId);
-	        if (review == null) {
-	            return ResponseEntity.badRequest().body("해당 리뷰를 찾을 수 없습니다.");
+	        if (response == null || response.trim().isEmpty()) {
+	            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("답변이 없습니다.");
+	        }
+	        return ResponseEntity.ok(response);
+	    }
+	  
+	  
+	// 리뷰 답글 추가/수정 (관리자만)
+	  @PostMapping("/response")
+	    public ResponseEntity<String> updateResponse(
+	            @RequestParam Long reviewId,
+	            @RequestParam String response,
+	            @AuthenticationPrincipal UserDetails userDetails) {
+
+	        if (!isAdmin(userDetails)) {
+	            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("관리자만 답변을 등록할 수 있습니다.");
 	        }
 
-	        // ✅ 관리자 답글 업데이트
-	        review.setResponse(response); 
-	        int result = reviewService.updateResponse(review);
-
-	        // ✅ 응답 처리
-	        return (result > 0) ? ResponseEntity.ok("답글이 등록되었습니다.") :
-	                              ResponseEntity.status(500).body("답글 등록 실패");
+	        int result = reviewService.updateReviewResponse(reviewId, response);
+	        return (result > 0) ? ResponseEntity.ok("답변이 등록/수정되었습니다.")
+	                            : ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("답변 등록 실패");
 	    }
+	    
+	    // 리뷰 답글 삭제 (관리자만 가능)
+	  @DeleteMapping("/response/{reviewId}")
+	    public ResponseEntity<String> deleteResponse(
+	            @PathVariable Long reviewId,
+	            @AuthenticationPrincipal UserDetails userDetails) {
 
+	        if (!isAdmin(userDetails)) {
+	            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("관리자만 답변을 삭제할 수 있습니다.");
+	        }
+
+	        int result = reviewService.deleteReviewResponse(reviewId);
+	        return (result > 0) ? ResponseEntity.ok("답변이 삭제되었습니다.")
+	                            : ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("답변 삭제 실패");
+	    }
+	  
+	 // 관리자 여부 확인 메서드 추가
+	    private boolean isAdmin(UserDetails userDetails) {
+	        return userDetails != null && userDetails.getAuthorities().stream()
+	                .anyMatch(auth -> auth.getAuthority().equals("ROLE_ADMIN"));
+	    }
+	    
+	    
+	    @ModelAttribute
+	    public void addIsAdminAttribute(Model model) {
+	        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	        
+	        boolean isAdmin = auth.getAuthorities().stream()
+	                .anyMatch(role -> role.getAuthority().equals("ROLE_ADMIN"));
+
+	        model.addAttribute("isAdmin", isAdmin);
+	    }
+	    
 }

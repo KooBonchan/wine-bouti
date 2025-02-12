@@ -34,7 +34,9 @@ public interface ReviewMapper {
 
 	ReviewVO getReviewById(@Param("reviewId") Long reviewId);
 
-	int updateResponse(ReviewVO review);
+	 String getReviewResponse(@Param("reviewId") Long reviewId); //  답글 조회
+	  int updateReviewResponse(@Param("reviewId") Long reviewId, @Param("response") String response); // 답글 추가/수정
+	  int deleteReviewResponse(@Param("reviewId") Long reviewId); //  답글 삭제
 
 	void updateImagePath(long reviewId, String imagePath, String thumbnailPath);
 }

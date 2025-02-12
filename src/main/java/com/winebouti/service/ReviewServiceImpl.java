@@ -45,8 +45,18 @@ public class ReviewServiceImpl implements ReviewService {
 	    
 	    
 	    @Override
-	    public int updateResponse(ReviewVO review) {
-	        return reviewMapper.updateResponse(review);
+	    public String getReviewResponse(Long reviewId) {
+	        return reviewMapper.getReviewResponse(reviewId);
+	    }
+
+	    @Override
+	    public int updateReviewResponse(Long reviewId, String response) {
+	        return reviewMapper.updateReviewResponse(reviewId, response);
+	    }
+
+	    @Override
+	    public int deleteReviewResponse(Long reviewId) {
+	        return reviewMapper.deleteReviewResponse(reviewId);
 	    }
 	    
 	    @Override
