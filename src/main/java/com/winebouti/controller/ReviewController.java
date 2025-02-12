@@ -51,6 +51,9 @@ public class ReviewController {
 	        if (review.getImagePath() != null && !review.getImagePath().isEmpty()) {
 	            review.setImagePath("/upload/review/" + review.getImagePath()); // 클라이언트에서 접근 가능한 URL로 변경
 	        }
+	        if (review.getThumbnailPath() != null && !review.getThumbnailPath().isEmpty()) {
+	            review.setThumbnailPath("/upload/review/thumbs/" + review.getThumbnailPath()); // 썸네일 경로 추가
+	        }
 	    }
 		return new ResponseEntity<>(reviews, HttpStatus.OK);
 	}
@@ -84,7 +87,8 @@ public class ReviewController {
 
         // 업로드된 이미지가 있을 경우 저장
         if (imagePath != null && !imagePath.isEmpty()) {
-            review.setImagePath(imagePath);
+            review.setImagePath(FileUtils.encodeRealFileName(imagePath));
+            
         }
 
         log.info("📌 리뷰 저장 전 imagePath: " + review.getImagePath());
