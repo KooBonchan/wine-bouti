@@ -17,17 +17,18 @@ import lombok.extern.log4j.Log4j;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src\\main\\webapp\\WEB-INF\\spring\\root-context.xml")
 @Log4j
-public class ConnectionTest{
+public class ConnectionTest {
 
-	@Autowired
-	private DataSource dataSource;
-	@Test
-	public void testConnectionPool() {
-		try(Connection connection = dataSource.getConnection()){
-			log.info(connection);
-		} catch(Exception e) {
-			fail(e.getMessage());
-		}
-	}
-	
+  @Autowired
+  private DataSource dataSource;
+
+  @Test
+  public void testConnectionPool() {
+    try (Connection connection = dataSource.getConnection()) {
+      log.info(connection);
+    } catch (Exception e) {
+      fail(e.getMessage());
+    }
+  }
+
 }

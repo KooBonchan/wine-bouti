@@ -37,7 +37,7 @@ Not Working since spring security issue. need other way for testing.
   })
 @TestPropertySource("classpath:jdbc.properties")
 @Log4j
-public class CartControllerIntegralTest {
+public class CartControllerTest {
   @Autowired
   private WebApplicationContext context;
   private MockMvc mockMvc;
@@ -47,11 +47,9 @@ public class CartControllerIntegralTest {
     this.mockMvc = MockMvcBuilders.webAppContextSetup(context).build();
   }
   
-  
   @Test
   @WithMockUser(username = "tester", roles= {"USER"})
   public void testAddToCart() throws UnsupportedEncodingException, Exception {
-    
     String itemsCount = mockMvc.perform(
         put("/api/cart")
         .param("productId", String.valueOf(1L))

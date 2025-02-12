@@ -1,3 +1,21 @@
+use project_winebouti;
+
+set foreign_key_checks = 0;
+TRUNCATE TABLE Member;
+TRUNCATE TABLE Auth  ;
+TRUNCATE TABLE persistent_login;
+TRUNCATE TABLE Product;
+TRUNCATE TABLE Wine  ;
+TRUNCATE TABLE Purchase;
+TRUNCATE TABLE Review;
+TRUNCATE TABLE Purchase_Product;
+TRUNCATE TABLE Coupon;
+TRUNCATE TABLE CouponDetail;
+TRUNCATE TABLE Purchase_Coupon;
+TRUNCATE TABLE RecentVisits;
+set foreign_key_checks = 1;
+
+
 -- Member 테이블에 샘플 데이터 20개 추가
 INSERT INTO Member (username, password, email, address, zipcode, profile_image_name, real_profile_image_name, phone_number)
 VALUES 
