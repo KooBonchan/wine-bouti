@@ -14,10 +14,12 @@ import com.winebouti.vo.ProductVO;
 import com.winebouti.vo.ReviewVO;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j;
 
 @Controller
 @RequestMapping("/product")
 @RequiredArgsConstructor
+@Log4j
 public class ProductController {
     private final ProductService productService;
     private final ReviewService reviewService;
@@ -31,6 +33,7 @@ public class ProductController {
         ProductVO product = productService.getProductById(productId);
         List<ReviewVO> reviews = reviewService.getReviewsByProductId(productId);
 
+        log.info(product);
         model.addAttribute("product", product);
         model.addAttribute("reviews", reviews);
         model.addAttribute("productId", productId);

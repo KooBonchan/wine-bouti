@@ -1,17 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <script src="<c:url value='/resources/js/product/details.js' />"></script>
+<c:if test="${empty product }">
+  <% response.sendRedirect("/"); %>
+</c:if>
 <div class="container">
     <div class="top">
         <!-- 왼쪽 (와인 이미지) -->
         <div class="top-left">
             <div class="top-left-top" id="wine-image">
                 <img id="main-wine-image"
-                    src="<c:url value='/resources/images/review/wine1.jpg' />" 
-                    alt="와인 이미지"
-                     onclick="openModal(this)"
+                    src="<c:url value='/api/image/wine/${product.realProductImageName }' />" 
+                    alt="<c:out value="${product.koreanName}" />"
+                    onclick="openModal(this)"
        				 style="width: 100%; height: auto; cursor: pointer;">
                     
             </div>
@@ -25,44 +29,48 @@
         <!-- 오른쪽 (와인 정보) -->
         <div class="top-right-container">
             <div class="top-right">
-                <h2>와인이름</h2>
+                <h2><c:out value="${product.koreanName}" /></h2>
                 <div class="popup-content">
+                  <c:if test="${not empty product.wineDetails}">
+                    <c:set var="wine" value="${product.wineDetails }" />
                     <div class="wine-info">
                         <div class="wine-body">
                             <label for="body">바디:</label>
-                            <div class="body-option">가벼운</div>
-                            <div class="body-option">중간</div>
-                            <div class="body-option">무거운</div>
+                            <div class="body-option <c:if test='${wine.sweetness lt 3 }'>selected</c:if>">가벼운</div>
+                            <div class="body-option <c:if test='${wine.sweetness lt 5 and wine.sweetness gt 2 }'>selected</c:if>">중간</div>
+                            <div class="body-option <c:if test='${wine.sweetness gt 4 }'>selected</c:if>">무거운</div>
                         </div>
                         <div class="wine-acidity">
                             <label for="acidity">산도:</label>
-                            <div class="acidity-option">낮은</div>
-                            <div class="acidity-option">중간</div>
-                            <div class="acidity-option">높은</div>
+                            <div class="acidity-option <c:if test='${wine.acidity lt 3 }'>selected</c:if>">낮은</div>
+                            <div class="acidity-option <c:if test='${wine.acidity lt 5 and wine.acidity gt 2 }'>selected</c:if>">중간</div>
+                            <div class="acidity-option <c:if test='${wine.acidity gt 4 }'>selected</c:if>">높은</div>
                         </div>
                         <div class="wine-tannins">
                             <label for="tannins">타닌:</label>
-                            <div class="tannin-option">부드러운</div>
-                            <div class="tannin-option">중간</div>
-                            <div class="tannin-option">강한</div>
+                            <div class="tannin-option <c:if test='${wine.tannins lt 3 }'>selected</c:if>">부드러운</div>
+                            <div class="tannin-option <c:if test='${wine.tannins lt 5 and wine.tannins gt 2 }'>selected</c:if>">중간</div>
+                            <div class="tannin-option <c:if test='${wine.tannins gt 4 }'>selected</c:if>">강한</div>
                         </div>
                     </div>
+                  </c:if>
                 </div>
                 <ul>
-                    <li>가격: 50,000원</li>
-                    <li>할인: 10% (5,000원 할인)</li>
-                    <li>배송비: 무료</li>
+                    <li>개당가격: <fmt:formatNumber value="${product.originalPrice}" pattern="#,###" />원</li>
+                    <li>배송비: 3,000원 (50,000원 이상 구매 시 무료)</li>
                 </ul>
 				<!-- 수량, 바로구매, 장바구니 입력 폼 추가 -->
 				<div class="price-info">
 					<label for="quantity">수량:</label> <input type="number"
 						id="quantity" name="quantity" value="1" min="1">
-					<button type="button">바로 구매</button>
-					<button type="button">장바구니</button>
+					<!-- <button type="button">바로 구매</button> -->
+					<button type="button">장바구니에 담기</button>
 				</div>
 			</div>
 		</div>
 	</div>
+<script>
+</script>
 	<div class="bottom">
 		<!-- 상세 페이지 및 리뷰 리스트 -->
 		<div class="details-reviews">
@@ -78,8 +86,16 @@
 		</div>
 		<div class="detailsview">
 			<div id="details-content" class="details-content">
-				<div id="details-image-wrapper"><img id="details-image" alt="상세 이미지" 
-					src="<c:url value='/api/image/wine/redwine_details_DOT_jpg' />" /></div>
+			 <div id="details-image-wrapper">
+			   <c:choose>
+           <c:when test="${not empty product.wineDetails and product.wineDetails.type == 'White' }">
+           <img id="details-image" alt="상세 이미지" src="<c:url value='/api/image/wine/whitewine_details_DOT_jpg' />" />
+           </c:when>
+           <c:otherwise>
+           <img id="details-image" alt="상세 이미지" src="<c:url value='/api/image/wine/redwine_details_DOT_jpg' />" />
+           </c:otherwise>
+         </c:choose>
+			 </div>
 			</div>
 			<div id="reviews-content" class="review-content"
 				style="display: none;">

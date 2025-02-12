@@ -43,22 +43,27 @@ public class PurchaseMapperTest {
 	@Transactional
 	@Test
 	public void insertTest() {
-    List<PurchaseProductVO> products = new ArrayList<>();
+	  PurchaseVO purchaseVO = generateTestPurchaseVO();
+    UUID idx = purchaseVO.getPurchaseId();
+		log.info("purchase id: " + idx.toString());
+		
+		purchaseMapper.insertMetadata(purchaseVO);
+		purchaseMapper.insertProductList(purchaseVO);
+	}
+	
+	private PurchaseVO generateTestPurchaseVO () {
+	  List<PurchaseProductVO> products = new ArrayList<>();
     for(int i = 1; i <= 10; i++) {
       PurchaseProductVO product = new PurchaseProductVO(i, i * 7);
       products.add(product);
-    }		
-		PurchaseVO purchase = PurchaseVO.builder()
-		    .memberId(3)
-		    .address("Korea Seoul Chuncheon-gu DarkGal-bi 23000-won")
-		    .orderName("sample")
-		    .products(products)
-		    .build();
-		purchase.setTotalPrice(2300030);
-		UUID idx = purchase.getPurchaseId();
-		log.info("purchase id: " + idx.toString());
-		
-		purchaseMapper.insertMetadata(purchase);
-		purchaseMapper.insertProductList(purchase);
+    }   
+    PurchaseVO purchaseVO = PurchaseVO.builder()
+        .memberId(3)
+        .address("Korea Seoul Chuncheon-gu DarkGal-bi 23000-won")
+        .orderName("sample")
+        .products(products)
+        .build();
+    purchaseVO.setTotalPrice(2300030);
+    return purchaseVO;
 	}
 }
