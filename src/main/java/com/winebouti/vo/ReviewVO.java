@@ -31,6 +31,7 @@ public class ReviewVO {
 	
 	
 	private String imagePath; //이미지경로
+	private String thumbnailPath; //썸네일 경로
 	private String title;
 	
 

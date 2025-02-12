@@ -20,6 +20,8 @@ public interface ReviewService {
     int deleteReview(long reviewId);
    
     int updateResponse(ReviewVO review); 
+    
+    void saveImagePath(long reviewId, String imagePath, String thumbnailPath);
 
 }
 

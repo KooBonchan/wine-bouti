@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <!-- 현재 상품 ID 저장 -->
-<input type="hidden" id="productId" value="<c:out value='${productId}' default='0' />">
+<input type="hidden" id="productId"
+	value="<c:out value='${productId}' default='0' />">
 
 <div id="review-container">
 	<c:choose>
@@ -18,38 +19,44 @@
 						<c:forEach begin="1" end="${review.star}">
         						★
     					</c:forEach>
-						<span>${review.userName}</span> 
-						<span><fmt:formatDate value="${review.writeDate}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
+						<span>${review.userName}</span> <span><fmt:formatDate
+								value="${review.writeDate}" pattern="yyyy-MM-dd HH:mm:ss" /></span>
 					</div>
-					
+
 					<!--리뷰 제목 -->
-                    <h3 class="review-title">${review.title}</h3>
-                   
-                   
-					
+					<h3 class="review-title">${review.title}</h3>
+
+
+
+					<!-- 썸네일 이미지 출력 -->
 					<p>${review.content}</p>
 					<c:if test="${not empty review.imagePath}">
-						<img class="review-image" src="/upload/review/${review.imagePath}"
-							alt="리뷰 이미지" onerror="this.style.display='none'">
+						<a href="<c:url value='/api/image/review/${review.imagePath}' />"
+							target="_blank"> <img class="review-thumbnail"
+							src="<c:url value='/api/image/thumbnail/review/${review.imagePath}' />"
+							onerror="this.style.display='none'">
+						</a>
 					</c:if>
-					
-					
+
+
 					<!-- 관리자 답글 -->
-                    <c:if test="${not empty review.response}">
-                        <div class="review-response">
-                            <strong>관리자 답변:</strong>
-                            <p>${review.response}</p>
-                        </div>
-                    </c:if>
-                    
-                 <!-- ✅ 관리자 답글 입력창 -->
-                    <c:if test="${isAdmin}">
-                        <div class="admin-response">
-                            <input type="text" id="response-${review.reviewId}" placeholder="답글 입력">
-                            <button onclick="addResponse(${review.reviewId})">답글 등록</button>
-                        </div>
-                    </c:if>
-					
+					<c:if test="${not empty review.response}">
+						<div class="review-response">
+							<strong>관리자 답변:</strong>
+							<p>${review.response}</p>
+						</div>
+					</c:if>
+
+					<!-- ✅ 관리자 답글 입력창 -->
+					<c:if test="${not empty review.reviewId}">
+						<div class="admin-response">
+							<input type="text" id="response-${review.reviewId}"
+								placeholder="답글 입력">
+							<button onclick="addResponse(${review.reviewId})">답글 등록</button>
+						</div>
+					</c:if>
+
+
 					<!-- 삭제 -->
 					<button class="delete-btn" data-review-id="${review.reviewId}">삭제</button>
 
@@ -75,6 +82,7 @@ $(document).ready(function () {
         return;
     }
 
+    /* 리뷰  */
     function loadMoreReviews() {
         if (page > totalPages) {
             $("#load-more").hide();
@@ -88,23 +96,16 @@ $(document).ready(function () {
             dataType: "json",
             success: function (response) {
                 response.reviews.forEach(review => {
-                	
-                    let imageHtml = "";
-                    if (review.imagePath) {
-                        imageHtml = `<img class="review-image" src="/upload/review/${review.imagePath}" 
-                                     alt="리뷰 이미지" onerror="this.style.display='none'">`;
-                    }
                     
-                    let responseHtml = "";
-                    if (review.response) {
-                        responseHtml = `
-                            <div class="review-response">
-                                <strong>관리자 답변:</strong>
-                                <p>${review.response}</p>
-                            </div>
+                    let imageHtml = "";
+                    if (review.thumbnailPath) {
+                        imageHtml = `
+                            <a href="/upload/review/${review.imagePath}" target="_blank">
+                                <img class="review-thumbnail" src="/upload/review/thumbs/${review.thumbnailPath}" 
+                                     alt="리뷰 이미지" onerror="this.style.display='none'">
+                            </a>
                         `;
                     }
-                    
 
                     let reviewHtml = `
                         <div class="review-box" id="review-${review.reviewId}">
@@ -115,7 +116,7 @@ $(document).ready(function () {
                             </div>
                             <h3 class="review-title">${review.title}</h3>
                             <p>${review.content}</p>
-                            ${imageHtml} <!-- ✅ 이미지 추가 -->
+                            ${imageHtml} <!-- 썸네일 추가 -->
                             <button class="delete-btn" onclick="deleteReview(${review.reviewId})">삭제</button>
                         </div>
                     `;
@@ -132,6 +133,7 @@ $(document).ready(function () {
             }
         });
     }
+
 
     $("#load-more").click(function () {
         loadMoreReviews();
@@ -172,25 +174,63 @@ $(document).ready(function () {
 
 
 function addResponse(reviewId) {
-    let responseText = document.getElementById(`response-${reviewId}`).value;
+    console.log("📌 addResponse() 실행됨 - reviewId:", reviewId);
+
+    let inputField = document.getElementById(`response-${reviewId}`);
+    if (!inputField) {
+        console.warn(`📌 입력창이 존재하지 않음! reviewId: ${reviewId} → 동적으로 생성`);
+        
+        let parentDiv = document.querySelector(`#review-${reviewId}`);
+        if (!parentDiv) {
+            alert("리뷰 컨테이너를 찾을 수 없습니다.");
+            return;
+        }
+
+        inputField = document.createElement("input");
+        inputField.type = "text";
+        inputField.id = `response-${reviewId}`;
+        inputField.placeholder = "답글 입력";
+
+        let button = document.createElement("button");
+        button.innerText = "답글 등록";
+        button.onclick = function() { addResponse(reviewId); };
+
+        parentDiv.appendChild(inputField);
+        parentDiv.appendChild(button);
+    }
+
+    let responseText = inputField.value;
     if (!responseText) {
         alert("답글을 입력하세요.");
         return;
     }
 
     $.ajax({
-        url: "<c:url value='/review/response' />",
+        url: "/review/response",
         type: "POST",
-        data: { reviewId: reviewId, response: responseText },
-        success: function () {
-            alert("답글이 등록되었습니다!");
-            location.reload(); // 새로고침하여 답글 표시
+        data: {
+            reviewId: reviewId,
+            response: responseText
         },
-        error: function () {
+        success: function() {
+            alert("답글이 등록되었습니다!");
+
+            let responseContainer = document.createElement("div");
+            responseContainer.classList.add("review-response");
+            responseContainer.innerHTML = `<strong>관리자 답변:</strong><p>${responseText}</p>`;
+
+            inputField.parentElement.insertAdjacentElement("beforebegin", responseContainer);
+            inputField.value = "";
+        },
+        error: function(xhr) {
             alert("답글 등록 중 오류가 발생했습니다.");
+            console.error("📌 관리자 답글 등록 실패:", xhr.responseText);
         }
     });
 }
+
+
+
 
 
 </script>

@@ -22,29 +22,41 @@
 
 
 
-	<select id="selectAllReviews"
-		resultMap="reviewResultMap">
+	<select id="selectAllReviews" resultMap="reviewResultMap">
 		SELECT * FROM review; <!-- 리뷰 테이블 -->
 	</select>
 
 	<!-- 리뷰 ID로 리뷰 조회 -->
-	<select id="getReviewsByProductId"
-		resultMap="reviewResultMap">
-		SELECT * FROM review
-		WHERE product_id = #{productId}
-		ORDER BY write_date
-		DESC  <!-- 올바른 컬럼명으로 변경 -->
+	<select id="getReviewsByProductId" resultMap="reviewResultMap">
+		SELECT
+		r.review_id,
+		r.product_id,
+		r.member_id,
+		r.title,
+		r.content,
+		r.star,
+		r.is_open,
+		r.response,
+		r.image_path,
+		r.thumbnail_path,
+		r.write_date,
+		r.update_date
+		FROM review r
+		WHERE r.product_id = #{productId}
+		ORDER BY r.write_date DESC
 	</select>
 
 
 	<!-- 리뷰 추가 -->
 	<insert id="insertReview"
 		parameterType="com.winebouti.vo.ReviewVO">
-		INSERT INTO Review (product_id, member_id, title, content,
-		star, image_path,
+		INSERT INTO Review (product_id, member_id, title,
+		content,
+		star, image_path, thumbnail_path,
 		write_date)
-		VALUES (#{productId}, #{memberId}, #{title},
-		#{content}, #{star}, #{imagePath},
+		VALUES (#{productId}, #{memberId},
+		#{title},
+		#{content}, #{star}, #{imagePath}, #{thumbnailPath},
 		#{writeDate});
 	</insert>
 
@@ -54,7 +66,8 @@
 		UPDATE Review
 		SET content = #{content},
 		star = #{star},
-		is_open = #{isOpen},
+		is_open =
+		#{isOpen},
 		<!-- password = #{password}, -->
 		response = #{response}
 		WHERE review_id = #{reviewId}
@@ -62,7 +75,8 @@
 
 	<!-- 리뷰 정보 가져오기 (삭제 전 이미지 경로 확인) -->
 	<select id="getReviewById" resultMap="reviewResultMap">
-		SELECT * FROM review WHERE review_id = #{reviewId}
+		SELECT * FROM review WHERE
+		review_id = #{reviewId}
 	</select>
 
 	<!-- 리뷰 삭제 -->
@@ -73,8 +87,7 @@
 
 
 	<!-- 이미지 -->
-	<select id="getAllReviews"
-		resultMap="reviewResultMap">
+	<select id="getAllReviews" resultMap="reviewResultMap">
 		SELECT
 		review_id AS reviewId,
 		product_id AS productId,
@@ -89,13 +102,20 @@
 		FROM Review
 	</select>
 
+	<update id="updateImagePath">
+	    UPDATE Review
+	    SET image_path = #{imagePath}, thumbnail_path = #{thumbnailPath}
+	    WHERE review_id = #{reviewId};
+	</update>
 
-	   <!-- 관리자 답글 업데이트 -->
-    <update id="updateResponse" parameterType="ReviewVO">
-        UPDATE review 
-        SET response = #{response}
-        WHERE review_id = #{reviewId}
-    </update>
-	
-	
+
+
+	<!-- 관리자 답글 업데이트 -->
+	<update id="updateResponse" parameterType="ReviewVO">
+		UPDATE review
+		SET response = #{response}
+		WHERE review_id = #{reviewId}
+	</update>
+
+
 </mapper>
