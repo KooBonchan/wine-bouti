@@ -12,45 +12,59 @@
 		<div>상품사진</div>
 		<div>상품정보</div>
 		<div>수량</div>
-		<div class="price">가격</div>
+		<div class="price">개당가격</div>
+		<div class="price">총가격</div>
 		<div class="etc">기타</div>
 	</div>
 
   <div class="cart-items">
-    <c:forEach items="${sessionScope.cartDTO.cartItems }" var="node" >
+    <c:forEach items="${cartDTO.cartItems }" var="node" >
       <c:set value="${node.key}" var="product" />
       <c:set value="${node.value}" var="quantity" />
 			<div class="cart-item">
 				<div>
-					<img src="<c:url value='/api/image/thumbnail/test/${product.realProductImageName}' />" alt="Product" class="product-image" />
+					<img src="<c:url value='/api/image/thumbnail/test/${product.realProductImageName}' />"
+					alt="<c:out value='${product.koreanName}' />" class="product-image" />
 				</div>
 				<div><c:out value="${product.koreanName }" /></div>
 				<div class="quantity-control">
 					<input type="number" value="${quantity }" min="1" class="quantity-input">
 					<button class="button">수정</button>
 				</div>
-				<div class="price"><fmt:formatNumber type="currency" maxFractionDigits="0" currencySymbol="￦"
-       value="${product.originalPrice}" /></div>
+				<div class="price">
+					<fmt:formatNumber type="currency"
+					  maxFractionDigits="0" currencySymbol="￦"
+					  value="${product.originalPrice}" />
+	       </div>
+	       <div class="price">
+          <fmt:formatNumber type="currency"
+            maxFractionDigits="0" currencySymbol="￦"
+            value="${product.originalPrice * quantity}" />
+         </div>
 				<div class="etc">
 					<button class="button">삭제</button>
-					<button class="button">주문</button>
+					<!-- <button class="button">주문</button> -->
 				</div>
 			</div>
 		</c:forEach>
   </div>
 	<div class="summary">
 		<div>
-			총 상품가격<br>50,000원
+			총 상품가격<br>
+			<c:if var="existsBaesongB" test="${cartDTO.totalPrice lt 53000 }" />
+			<c:set var="baesongB" value="${existsBaesongB ? 3000 : 0 }" />
+			<fmt:formatNumber value="${cartDTO.totalPrice - baesongB}" pattern="#,###" />원
 		</div>
 		<div>
-			배송비<br>+ 3,000원
+			배송비<br>
+			<c:if test="${existsBaesongB}">+ 3,000원</c:if>
+			<c:if test="${not existsBaesongB}">      0원</c:if>
 		</div>
 		<div>
 			총액<br>
-			<span class="total">= 53,000원</span>
+			<span class="total">= <fmt:formatNumber value="${cartDTO.totalPrice}" pattern="#,###" />원</span>
 		</div>
 	</div>
-
 	<div class="order-buttons">
 		<button id="order-button" class="order-button">주문하기</button>
 	</div>

@@ -37,20 +37,20 @@
                         <div class="wine-body">
                             <label for="body">바디:</label>
                             <div class="body-option <c:if test='${wine.sweetness lt 3 }'>selected</c:if>">가벼운</div>
-                            <div class="body-option <c:if test='${wine.sweetness lt 5 and wine.sweetness gt 2 }'>selected</c:if>">중간</div>
-                            <div class="body-option <c:if test='${wine.sweetness gt 4 }'>selected</c:if>">무거운</div>
+                            <div class="body-option <c:if test='${wine.sweetness lt 5 and wine.sweetness ge 3 }'>selected</c:if>">중간</div>
+                            <div class="body-option <c:if test='${wine.sweetness ge 5 }'>selected</c:if>">무거운</div>
                         </div>
                         <div class="wine-acidity">
                             <label for="acidity">산도:</label>
                             <div class="acidity-option <c:if test='${wine.acidity lt 3 }'>selected</c:if>">낮은</div>
-                            <div class="acidity-option <c:if test='${wine.acidity lt 5 and wine.acidity gt 2 }'>selected</c:if>">중간</div>
-                            <div class="acidity-option <c:if test='${wine.acidity gt 4 }'>selected</c:if>">높은</div>
+                            <div class="acidity-option <c:if test='${wine.acidity lt 5 and wine.acidity ge 3 }'>selected</c:if>">중간</div>
+                            <div class="acidity-option <c:if test='${wine.acidity ge 5 }'>selected</c:if>">높은</div>
                         </div>
                         <div class="wine-tannins">
                             <label for="tannins">타닌:</label>
                             <div class="tannin-option <c:if test='${wine.tannins lt 3 }'>selected</c:if>">부드러운</div>
-                            <div class="tannin-option <c:if test='${wine.tannins lt 5 and wine.tannins gt 2 }'>selected</c:if>">중간</div>
-                            <div class="tannin-option <c:if test='${wine.tannins gt 4 }'>selected</c:if>">강한</div>
+                            <div class="tannin-option <c:if test='${wine.tannins lt 5 and wine.tannins ge 3 }'>selected</c:if>">중간</div>
+                            <div class="tannin-option <c:if test='${wine.tannins ge 5 }'>selected</c:if>">강한</div>
                         </div>
                     </div>
                   </c:if>

@@ -23,7 +23,11 @@ public class CartDTO {
         .map(e-> e.getKey().getOriginalPrice() * e.getValue())
         .reduce((a,b) -> a + b)
         .orElse(-1);
+    
     if(total < 0) throw new ArithmeticException("Error occurred while calculating the total amount");
+    /*** business logic ***/
+    if(this.totalPrice < 50000) this.totalPrice += 3000;
+    /**********************/
     this.totalPrice = total; 
   }
   
