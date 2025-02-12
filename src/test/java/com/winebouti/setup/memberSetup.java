@@ -31,7 +31,7 @@ public class memberSetup {
 //  @Test
   @Transactional @Commit
   public void signupSetup() {
-    for(int i = 1; i <= 20; i++ ) {
+    for(int i = 21; i <= 40; i++ ) {
       MemberVO memberVO = new MemberVO();
       memberVO.setUsername("user" + i);
       memberVO.setPassword(passwordEncoder.encode("password" + i));
@@ -42,7 +42,7 @@ public class memberSetup {
       memberVO.setProfileImageName("user" + i + "_profile.png");
       memberVO.setRealProfileImageName("user" + i + "_profile_DOT_png");
       mapper.save(memberVO);
-      if(i < 5) {
+      if(i < 25) {
         mapper.grantAdmin(memberVO);
       }else {
         mapper.grantAuth(memberVO);

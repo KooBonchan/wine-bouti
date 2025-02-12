@@ -161,6 +161,33 @@ header {
     height: auto;  /* 비율에 맞춰 높이 자동 조정 */
 }
 
+.iconcart {
+    position: relative;
+    display: inline-block;
+}
+
+.iconcart img {
+    width: 24px;  /* 아이콘 크기 줄이기 */
+    height: auto;  /* 비율에 맞춰 높이 자동 조정 */
+}
+
+.cart-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
 /* 아이콘을 나란히 배치할 부모 컨테이너 */
 .icon-wrapper {
     display: flex;  /* 아이콘을 수평으로 배치 */

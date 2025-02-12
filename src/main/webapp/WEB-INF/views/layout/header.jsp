@@ -72,11 +72,15 @@
 				</div>
 				<div class="iconcart">
 					<a href="<c:url value='/cart'/>">
-					<img
-						src="<c:url value='/resources/images/icon/cart.png'/>"
-						alt="카트 아이콘" />
+					
+					<img src="<c:url value='/resources/images/icon/cart.png'/>"
+						alt="0" />
+						<c:if test="${not empty cartDTO }">
+						<span class="cart-badge"><c:out value="${cartDTO.cartItems.size()}" /></span>
+						</c:if>
 					</a>
 				</div>
+
 			</sec:authorize>
 		</div>
 	</nav>

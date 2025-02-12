@@ -39,7 +39,7 @@
 					</c:if>
 
 
-					<!-- 관리자 답글 -->
+					<%-- <!-- 관리자 답글 -->
 					<c:if test="${not empty review.response}">
 						<div class="review-response">
 							<strong>관리자 답변:</strong>
@@ -54,7 +54,7 @@
 								placeholder="답글 입력">
 							<button onclick="addResponse(${review.reviewId})">답글 등록</button>
 						</div>
-					</c:if>
+					</c:if> --%>
 
 
 					<!-- 삭제 -->

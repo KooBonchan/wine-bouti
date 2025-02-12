@@ -2,6 +2,7 @@ package com.winebouti.service;
 
 import java.util.Optional;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,10 +18,12 @@ import lombok.extern.slf4j.Slf4j;
 public class MemberServiceImpl implements MemberService {
 
     private final MemberMapper memberMapper;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     @Transactional
     public void save(MemberVO memberVO) {
+      memberVO.setPassword(passwordEncoder.encode(memberVO.getPassword()));
     	log.info("Saving member: {}", memberVO); // 로그 추가
         memberMapper.save(memberVO);
         memberMapper.grantAuth(memberVO);
