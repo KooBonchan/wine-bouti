@@ -65,17 +65,29 @@
     <!-- 상품 목록 조회 -->
     <select id="findProductsByCategory" resultMap="productResultMap" parameterType="string">
         <![CDATA[
-        SELECT
-            product_id,
-            category,
-            korean_name,
-            product_image_name,
-            real_product_image_name,
-            detail_image_name,
-            real_detail_image_name,
-            original_price,
-            once
-        FROM product
+         SELECT 
+	        p.product_id,
+	        p.category,
+	        p.korean_name,
+	        p.product_image_name,
+	        p.real_product_image_name,
+	        p.detail_image_name,
+	        p.real_detail_image_name,
+	        p.original_price,
+	        p.once,
+	        w.wine_id,
+	        w.type,
+	        w.original_name,
+	        w.volume,
+	        w.origin,
+	        w.vintage,
+	        w.alcohol_content,
+	        w.acidity,
+	        w.sweetness,
+	        w.tannins
+	    FROM product p
+	   	LEFT OUTER JOIN wine w
+	        ON p.product_id = w.wine_id
         WHERE category = #{category}
         ORDER BY product_id
         LIMIT 24
@@ -112,5 +124,12 @@
 	    LIMIT 24
 	    ]]>
 	</select>
+	 <select id="getAllProducts" resultType="com.winebouti.vo.ProductVO">
+        SELECT * FROM Product
+    </select>
+
+    <select id="getProductsByCategory" parameterType="string" resultType="com.winebouti.vo.ProductVO">
+        SELECT * FROM Product WHERE category = #{category}
+    </select>
 	    
 </mapper>
