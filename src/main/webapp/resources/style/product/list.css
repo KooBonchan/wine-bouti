@@ -39,7 +39,7 @@ body {
 /* 오른쪽 div 설정 */
 .right {
     background-color: #ffffff;
-    width: 75%; /* 오른쪽 섩션을 75%로 넓힘 */
+    width: 75%; /* 오른쪽 섹션을 75%로 넓힘 */
     padding: 20px 40px; /* 좌우 여백을 추가 */
     box-sizing: border-box;
 }
@@ -163,6 +163,26 @@ body {
     box-sizing: border-box;
 }
 
+/* 반응형 디자인 (한 줄에 3개씩 보이도록) */
+@media screen and (max-width: 1200px) {
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr); /* 1200px 이하에서 한 줄에 3개씩 */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr); /* 768px 이하에서 한 줄에 2개씩 */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .product-grid {
+        grid-template-columns: 1fr; /* 480px 이하에서 한 줄에 1개씩 */
+    }
+}
+
+/* 상품 항목 스타일 */
 .product-item {
     width: 200px;
     height: 300px;
@@ -217,6 +237,7 @@ body {
     align-items: center;
     border-radius: 8px;
 }
+
 .product-item .image-placeholder img {
     border-radius: 20px; /* 이미지의 모서리 둥글게 */
     width: 100%;
