@@ -277,27 +277,52 @@ body {
     background-color: #f9f9f9;
     border-radius: 5px;
     margin-bottom: 10px;
+    display: flex;
+    flex-direction: column; /* 가로 정렬 */
+    justify-content: flex-start; /* 왼쪽 정렬 */
+    align-items: center;
+    width: 100%;
+    gap: 5px;
+    padding: 15px;
 }
 
-/* 리뷰 작성자 및 날짜 정렬 */
-.review-box div {
+/* 리뷰 상단 정보 (별점 + 작성자 + 날짜) */
+.review-header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    gap: 10px; /* 별점과 텍스트 사이 간격 추가 */
+}
+
+/* 리뷰 작성자 및 날짜 */
+.review-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     font-size: 14px;
     font-weight: bold;
 }
 
-/* 리뷰 내용 */
-.review-box p {
-    font-size: 14px;
+/* 리뷰 제목 (제목을 강조) */
+.review-title {
+    font-size: 16px;
+    font-weight: bold;
     color: #333;
     margin-top: 5px;
 }
 
+/* 리뷰 내용 */
+.review-content {
+    font-size: 14px;
+    color: #333;
+    margin-top: 5px;
+    text-align: left;
+    word-break: break-word;
+    width: 100%;
+}
+
 /* 리뷰 이미지 */
 .review-box img.review-image {
-    width: 100px;
+    width: 100px; /* 이미지 크기 조정 */
     height: auto;
     border-radius: 5px;
     margin-top: 10px;
@@ -312,13 +337,16 @@ body {
     border-radius: 5px;
     cursor: pointer;
     font-size: 12px;
-    align-self: flex-end;
+    align-self: center;
     margin-top: 10px;
+    margin-left: auto;
+    display: block;
 }
 
 .review-box .delete-btn:hover {
     background: #cc0000;
 }
+
 
 /* 리뷰 작성 폼 */
 .review-form {
@@ -461,10 +489,12 @@ body {
 
 /* 관리자 답글 스타일 */
 .review-response {
+    display: flex;
+    flex-direction: column;
     background: #f8f9fa;
     border-left: 4px solid #007bff;
     padding: 15px;
-    margin-top: 15px;
+    margin-top: 10px;
     border-radius: 8px;
 }
 
