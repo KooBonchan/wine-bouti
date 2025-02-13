@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
@@ -22,6 +23,7 @@ import com.winebouti.security.CustomUser;
 import com.winebouti.service.ProductService;
 import com.winebouti.service.PurchaseService;
 import com.winebouti.service.PurchaseVerificationService;
+import com.winebouti.vo.AddToCartDTO;
 import com.winebouti.vo.CartDTO;
 import com.winebouti.vo.MemberVO;
 import com.winebouti.vo.ProductVO;
@@ -66,11 +68,12 @@ public class PurchaseController {
   
   @PutMapping("api/cart")
   public ResponseEntity<Integer> addToCart(
-      @RequestParam long productId,
-      @RequestParam int quantity,
+      @RequestBody AddToCartDTO addToCartDTO,
       HttpSession session,
       Principal principal
   ) {
+    long productId  = addToCartDTO.getProductId();
+    int quantity = addToCartDTO.getQuantity();
     CartDTO cartDTO = getCartFromSession(session, principal);
     ProductVO productVO = productService.getProductById(productId);
     cartDTO.getCartItems().put(productVO, quantity);

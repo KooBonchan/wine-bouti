@@ -1,11 +1,10 @@
 package com.winebouti.vo;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-@Getter @Setter @ToString @EqualsAndHashCode
+@Getter @Setter @ToString
 public class ProductVO {
 
     private long productId;
@@ -19,6 +18,19 @@ public class ProductVO {
     private boolean once;
     
     private WineVO wineDetails;
+    
+    
+    @Override
+    public int hashCode() {
+        return (getClass().getSimpleName() + productId).hashCode();
+    }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        ProductVO other = (ProductVO) obj;
+        return this.productId == other.productId;
+    }
 }
 
