@@ -242,13 +242,15 @@ body {
     border: 1px solid #ccc; /* 테두리를 추가 */
     cursor: pointer;
     font-size: 10px;  /* 글자 크기를 줄임 */
+    
+    
 }
+
+
 #details-image-wrapper {
 	margin: 0 auto;
 	width: fit-content;
 }
-
-
 
 
 .detailsview .review-content h3 {
@@ -269,7 +271,23 @@ body {
     margin-bottom: 50px; /* 푸터와 겹치지 않도록 여백 추가 */
     border-radius: 8px;
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1); /* 약간의 그림자 효과 추가 */
+    
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-in-out;
+    display: none;
+    
 }
+
+.review-content.active {
+    opacity: 1;
+    visibility: visible;
+    display: block;
+}
+
+
+
 
 /* 리뷰 박스 스타일 */
 .review-box {
@@ -278,31 +296,97 @@ body {
     background-color: #f9f9f9;
     border-radius: 5px;
     margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* 전체 왼쪽 정렬 */
+    width: 100%;
+    gap: 10px;
+    padding-left: 60px;
 }
 
-/* 리뷰 작성자 및 날짜 정렬 */
-.review-box div {
+/* 리뷰 상단 정보 (별점 + 작성자 + 날짜) */
+.review-header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column; /* 별점 위, 날짜 아래 */
+    align-items: flex-start; /* 왼쪽 정렬 */
+    width: 100%;
+}
+
+/* 별점 아이콘 */
+.star-rating {
+    color: #FFCA1A; /* 노란색 */
+    font-size: 16px; 
+}
+
+
+.review-footer {
+     display: flex;
+    flex-direction: column; 
+    align-items: flex-end;
+    width: 100%;
+    margin-top: 10px;
+}
+
+
+/* 날짜를 별 아래 정렬 */
+.review-date {
+    font-size: 14px;
+    color: #777;
+    margin-top: 3px; /* 별과 날짜 간격 */
+    display: block;
+}
+
+/* 리뷰 작성자 및 날짜 */
+.review-meta {
+   	display: flex;
+    flex-direction: column; /* 세로 정렬 */
+    align-items: flex-start;
     font-size: 14px;
     font-weight: bold;
+    min-width: 150px;
+}
+
+.review-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-grow: 1;
+}
+
+
+/* 리뷰 제목 (제목을 강조) */
+.review-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
 }
 
 /* 리뷰 내용 */
-.review-box p {
+.review-content {
     font-size: 14px;
     color: #333;
-    margin-top: 5px;
+    word-break: break-word;
 }
 
+.review-content-wrapper {
+   	display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 15px;
+}
+
+
 /* 리뷰 이미지 */
-.review-box img.review-image {
-    width: 100px;
+.review-image {
+    width: 80px;
     height: auto;
     border-radius: 5px;
-    margin-top: 10px;
+    margin-left: auto;
+    display: flex;
+    justify-content: flex-end;
 }
+
 
 /* 삭제 버튼 스타일 */
 .review-box .delete-btn {
@@ -313,13 +397,17 @@ body {
     border-radius: 5px;
     cursor: pointer;
     font-size: 12px;
-    align-self: flex-end;
+    align-self: center;
     margin-top: 10px;
+    margin-left: auto;
+    display: block;
+    margin-top: 5px;
 }
 
 .review-box .delete-btn:hover {
     background: #cc0000;
 }
+
 
 /* 리뷰 작성 폼 */
 .review-form {
@@ -460,25 +548,120 @@ body {
     cursor: pointer;
 }
 
-/* 관리자 답글 스타일 */
+/* =========관리자 답글 스타일============ */
 .review-response {
-    background: #f8f9fa;
-    border-left: 4px solid #007bff;
-    padding: 15px;
-    margin-top: 15px;
-    border-radius: 8px;
-}
-
-.review-response strong {
-    color: #007bff;
+     position: relative;
+    display: flex;
+    flex-direction: column;
+    background: #E3F2FD; /* 연한 블루 배경 */
+    padding: 12px 30px;
+    margin-top: 10px;
+    max-width: 300px; /* 말풍선 크기 제한 */
+    word-wrap: break-word;
     font-size: 14px;
 }
 
 .review-response p {
-    font-size: 14px;
-    color: #555;
+    color: #444;
     line-height: 1.5;
+    margin: 0;
 }
+
+/* 말풍선 꼬리 */
+.review-response::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 15px;
+    width: 0;
+    height: 0;
+    border-top: 10px solid #E3F2FD;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+}
+
+.review-response .admin-name {
+    font-size: 12px;
+    font-weight: bold;
+    color: #007bff;
+    text-align: right; /* 오른쪽 정렬 */
+    margin-top: 8px; /* 위쪽 간격 추가 */
+}
+
+.response-form {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 800px;
+}
+
+
+/* 답글 입력창*/
+.response-form textarea {
+    width: 100%; /* 가로로 길게 */
+    height: 100px; /* 높이 키움 */
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 14px;
+    resize: none;
+    outline: none;
+}
+
+/* 입력창 포커스 시 효과 */
+.response-form textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+}
+
+/* 버튼 컨테이너 (오른쪽 정렬) */
+.response-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px; 
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* 버튼 공통 스타일 (연한 그레이 배경 + 검정 글씨) */
+.response-form button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    background: #e0e0e0; 
+    color: black; 
+    transition: background 0.3s ease, transform 0.1s ease;
+}
+
+.review-response .deleteResponse {
+    position: absolute;
+    bottom: 3px;
+    right: -75px;
+    padding: 2px 9px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    background: #e0e0e0; /* 연한 회색 배경 */
+    color: black; /* 검은색 글씨 */
+    transition: background 0.3s ease, transform 0.1s ease;
+}
+
+/* 마우스 호버 시 약간 진한 그레이 */
+.response-form button:hover {
+    background: #d6d6d6; /* 약간 더 진한 회색 */
+    transform: scale(1.05);
+}
+
+
 
 /* 썸네일  */
 
