@@ -8,7 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.winebouti.service.ProductService;
 import com.winebouti.service.ReviewService;
 import com.winebouti.vo.ProductVO;
@@ -73,24 +76,17 @@ public class ProductController {
         model.addAttribute("products", giftSet); // 모델에 "products" 속성으로 추가
         return "product/list.tiles"; // 해당 JSP 페이지를 반환
     }
-    
-    @GetMapping("/list")
-    public String getProductList(
-    	@RequestParam(name = "category", required = false) String category,
-    	Model model
-    ) {
-        List<ProductVO> products;
-
-        if (category == null || category.equals("all")) {
-            products = productService.getAllProducts();
-        } else {
-            products = productService.getWines(category);
-        }
-
-        model.addAttribute("products", products);
-        model.addAttribute("category", category);
-        return "product/list.tiles";
+ // 기존 Controller에 AJAX 요청을 처리할 메서드 추가
+    @GetMapping("ajax/category")
+    @ResponseBody
+    public List<ProductVO> getProductsByCategory(@RequestParam String category) {
+        List<ProductVO> products = productService.getWines(category); // 카테고리에 맞는 상품을 가져오는 서비스 메서드 호출
+        return products; // JSON 형식으로 반환됨
     }
-    
+
 
 }
+
+    
+
+
