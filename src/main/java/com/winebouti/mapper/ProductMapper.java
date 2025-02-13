@@ -19,7 +19,7 @@ public interface ProductMapper {
   List<ProductVO> selectProductList(String category);
   List<ProductVO> selectWineListByType(String category);
   List<ProductVO> getRedWines();
-  List<ProductVO> getAllProducts();
+  List<ProductVO> getAllProducts(String category);
   List<ProductVO> getProductsByCategory(String category); // 카테고리별 상품 조회
   
 }

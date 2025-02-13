@@ -1,5 +1,6 @@
 package com.winebouti.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -8,7 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.winebouti.service.ProductService;
 import com.winebouti.service.ReviewService;
 import com.winebouti.vo.ProductVO;
@@ -73,24 +77,33 @@ public class ProductController {
         model.addAttribute("products", giftSet); // 모델에 "products" 속성으로 추가
         return "product/list.tiles"; // 해당 JSP 페이지를 반환
     }
-    
-    @GetMapping("/list")
-    public String getProductList(
-    	@RequestParam(name = "category", required = false) String category,
-    	Model model
-    ) {
+    @GetMapping("/ajax/category")
+    @ResponseBody
+    public List<ProductVO> getProductsByCategory(@RequestParam("category") String category) {
         List<ProductVO> products;
 
-        if (category == null || category.equals("all")) {
-            products = productService.getAllProducts();
+        if ("all".equals(category)) {
+            // "전체" 카테고리인 경우, 전체 상품 목록을 반환
+            products = productService.findProductsByCategory("Wine");
+        } else if ("red".equals(category)) {
+            // 레드와인 카테고리인 경우, 레드와인 상품 목록을 반환
+            products = productService.getWinesByCategory("red");
+        } else if ("white".equals(category)) {
+            // 화이트와인 카테고리인 경우, 화이트와인 상품 목록을 반환
+            products = productService.getWinesByCategory("white");
+        } else if ("sparkle".equals(category)) {
+            // 스파클링 카테고리인 경우, 스파클링 상품 목록을 반환
+            products = productService.getWinesByCategory("sparkle");
         } else {
-            products = productService.getWines(category);
+            // 정의되지 않은 카테고리인 경우, 빈 리스트 반환
+            products = new ArrayList<>();
         }
 
-        model.addAttribute("products", products);
-        model.addAttribute("category", category);
-        return "product/list.tiles";
+        return products; // JSON 형식으로 반환됨
     }
-    
 
 }
+
+    
+
+

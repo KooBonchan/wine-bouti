@@ -22,42 +22,44 @@
 
 
     <insert id="save" parameterType="com.winebouti.vo.MemberVO">
-        INSERT INTO member (email, password, username, address, zipcode, phone_number)
+        INSERT INTO Member (email, password, username, address, zipcode, phone_number)
         VALUES (#{email}, #{password}, #{username}, #{address}, #{zipcode}, #{phoneNumber})
     </insert>
     <!-- 회원 정보 수정 -->
-    <update id="update" parameterType="com.winebouti.vo.MemberVO">
-        UPDATE member
-        SET
-        	username = #{username},
-        	address = #{address},
-        	zipcode = #{zipcode},
-        	phone_number = #{phoneNumber}
-        WHERE email = #{email} and password = #{password}
-    </update>
+   <update id="update" parameterType="com.winebouti.vo.MemberVO">
+    UPDATE Member
+    SET
+        username = #{username},
+        address = #{address},
+        zipcode = #{zipcode},
+        phone_number = #{phoneNumber}
+    WHERE
+    	member_id = #{memberId}
+	</update>
+	
     <insert id="grantAuth" parameterType="com.winebouti.vo.MemberVO">
-        INSERT INTO auth (auth, email)
+        INSERT INTO Auth (auth, email)
         VALUES ('ROLE_USER', #{email})
     </insert>
     <insert id="grantAdmin" parameterType="com.winebouti.vo.MemberVO">
-        INSERT INTO auth (auth, email)
+        INSERT INTO Auth (auth, email)
         VALUES ('ROLE_ADMIN', #{email})
     </insert>
     
 
 
     <!-- 회원 삭제 -->
-    <delete id="delete" parameterType="long">
-        DELETE FROM member WHERE id = #{id}
-    </delete>
+	<delete id="delete" parameterType="long">
+	    DELETE FROM Member WHERE member_id = #{memberId}
+	</delete>
 
     <!-- 이메일로 회원 조회 -->
     <select id="findByMemberEmail" resultMap="MemberResultMap" parameterType="String">
 	    SELECT m.member_id, m.username, m.password, m.email, m.address, m.zipcode, m.phone_number,
 	           m.profile_image_name, m.real_profile_image_name, 
 	           a.auth
-	    FROM member m
-	    LEFT JOIN auth a ON m.email = a.email
+	    FROM Member m
+	    LEFT JOIN Auth a ON m.email = a.email
 	    WHERE m.email = #{loginEmail}
 	</select>
 </mapper>

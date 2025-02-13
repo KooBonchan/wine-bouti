@@ -9,7 +9,6 @@ public interface MemberMapper {
     int grantAuth(MemberVO memberVO);
     int grantAdmin(MemberVO memberVO);
 
-
     void delete(Long memberId);
     int update(MemberVO memberVO);
 }

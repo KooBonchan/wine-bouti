@@ -229,7 +229,8 @@ body {
 }
 
 .price-info button:hover {
-    background-color: #f0f0f0; /* 호버 시 배경색 변경 */
+    background-color: #333; /* 호버 시 배경색 변경 */
+	color: white;
 }
 
 /* 리뷰와 상세 페이지 영역 동일한 스타일 적용 */
