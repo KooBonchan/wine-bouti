@@ -9,6 +9,8 @@
 ### 환경설정
 - 환경변수 UPLOAD_DIR를 설정합니다.
 - assets/upload 폴더의 내용을 해당 폴더로 이동합니다.
+- Main 브랜치와 Release 브랜치를 구분하였습니다. Main 브랜치는 개발용 환경, Release 브랜치는 AWS용 환경입니다.
+  - Release 브랜치의 중요 환경설정 내용은 AWS EC2에서만 조작 가능합니다.
 
 ### Repositories
  - [Figma Repository](https://www.figma.com/design/RndhZXRwcqwp1USI1bE5Ud/WINE-BOUTI?node-id=0-1&t=8rYDeam9JFPIerhG-1)
