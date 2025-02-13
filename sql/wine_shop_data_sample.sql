@@ -15,7 +15,7 @@ TRUNCATE TABLE Purchase_Coupon;
 TRUNCATE TABLE RecentVisits;
 set foreign_key_checks = 1;
 
-
+/*
 -- Member 테이블에 샘플 데이터 20개 추가
 INSERT INTO Member (username, password, email, address, zipcode, profile_image_name, real_profile_image_name, phone_number)
 VALUES 
@@ -89,6 +89,7 @@ VALUES
 ('series18', 'user18@example.com', 'token18'),
 ('series19', 'user19@example.com', 'token19'),
 ('series20', 'user20@example.com', 'token20');
+*/
 
 INSERT INTO Product (category, korean_name, product_image_name, real_product_image_name, detail_image_name, real_detail_image_name, original_price, once)
 VALUES 
@@ -140,6 +141,7 @@ VALUES
 (19, 'Red', 'Wine S', 750, 'Chile', 2015, 14.0, 4, 2, 6),
 (20, 'White', 'Wine T', 750, 'Argentina', 2021, 11.5, 3, 5, 3);
 
+/*
 -- Purchase 테이블에 샘플 데이터 20개 추가
 INSERT INTO Purchase (purchase_id, member_id, address, total_price, order_name)
 VALUES 
@@ -309,7 +311,7 @@ VALUES
 (18, 18),
 (19, 19),
 (20, 20);
-
+*/
 
 -- gift_set 카테고리 상품 삽입
 INSERT INTO Product (category, korean_name, product_image_name, real_product_image_name, detail_image_name, real_detail_image_name, original_price, once)
