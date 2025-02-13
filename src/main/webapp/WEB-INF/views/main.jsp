@@ -69,18 +69,18 @@
 </div>
 
 <c:url value="/product/ajax/category" var="categoryUrl" />
-<c:url value="/api/image/thumbnail/wine/" var="imageUrl" />
+<c:url value="/api/image/thumbnail/wine/" var="imagePath" />
 <script>
 
 function changeCategory(category) {
-	const url = "${categoryUrl}?category=" + category;
+    const url = "${categoryUrl}?category=" + category;
     const productList = document.getElementById('product-list');
-    productList.innerHTML = '<div class="loading">Loading...</div>'; // 로딩 표시
+    productList.innerHTML = '<div class="loading">Loading...</div>';
 
     fetch(url)
         .then(response => response.json())
         .then(data => {
-            productList.innerHTML = ''; // 로딩 표시 제거
+            productList.innerHTML = '';
             displayProducts(data);
         });
 }
@@ -107,30 +107,35 @@ function displayProducts(products) {
                 default: flagUrl = 'https://flagcdn.com/w40/default.png'; flagName = 'Unknown'; break;
             }
         }
-        
-        const imageUrl = "${imageUrl}" + product.realProductImageName;
+
+        const imageUrl = "${imagePath}" + product.realProductImageName;
         productDiv.innerHTML = `
             <div class="shop">
-        	 <a href="<c:url value='/product/details/\${product.productId}' />">
-                <div class="img">
-                    <img src="\${imageUrl}" alt="\${product.koreanName}">
-                </div>
-                <h3>\${product.koreanName}</h3>
-                <div class="title shop-content">
-                    <img src="\${flagUrl}" alt="\${flagName} Flag" width="20" height="15" class="flag">
-                    \${flagName}
-                </div>
-                <div class="title shop-price">
-                    <p>가격: \${product.originalPrice.toLocaleString()}원</p>
-                </div>
-              </a>        
+                <a href="<c:url value='/product/details/\${product.productId}' />">
+                    <div class="img">
+                        <img src=\${imageUrl} alt="\${product.koreanName}">
+                    </div>
+                    <h3>\${product.koreanName}</h3>
+                    <div class="title shop-content">
+                        <img src="\${flagUrl}" alt="\${flagName} Flag" width="20" height="15" class="flag">
+                        \${flagName}
+                    </div>
+                    <div class="title shop-price">
+                        <p>가격: \${product.originalPrice.toLocaleString()}원</p>
+                    </div>
+                </a>
             </div>`;
-	
+
         productList.appendChild(productDiv);
     });
 }
-</script>
 
+// 페이지 로드 시 "전체" 카테고리 내용을 보여주도록 수정
+window.addEventListener('DOMContentLoaded', () => {
+    changeCategory('all'); // 'all'은 전체 카테고리를 나타내는 값이라고 가정
+});
+
+</script>
 
 
 
