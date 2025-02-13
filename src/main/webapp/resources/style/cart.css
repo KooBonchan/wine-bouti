@@ -42,17 +42,19 @@
 }
 
 .quantity-control {
-	display: flex;
-	align-items: center;
-	gap: 10px;
+    display: inline-block;  /* `inline-block`으로 변경 */
+    gap: 5px;
 }
 
-.quantity-input {
-	width: 40px;
-	text-align: center;
-	padding: 5px;
+.quantity-control input[type="number"] {
+    width: 70px; /* 수량 입력란 폭을 좁게 설정 */
 }
 
+.quantity-btn {
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+}
 .price {
 	padding-left:0.5rem;
 }
@@ -60,6 +62,7 @@
 	width: 80px;
 }
 .button {
+	margin-top:5px;
 	width: 60px;
 	background: #666;
 	color: white;

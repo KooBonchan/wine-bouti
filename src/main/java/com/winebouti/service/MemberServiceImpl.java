@@ -24,9 +24,9 @@ public class MemberServiceImpl implements MemberService {
     @Transactional
     public void save(MemberVO memberVO) {
       memberVO.setPassword(passwordEncoder.encode(memberVO.getPassword()));
-    	log.info("Saving member: {}", memberVO); // 로그 추가
-        memberMapper.save(memberVO);
-        memberMapper.grantAuth(memberVO);
+		log.info("Saving member: {}", memberVO); // 로그 추가
+	    memberMapper.save(memberVO);
+	    memberMapper.grantAuth(memberVO);
     }
 
 
@@ -60,15 +60,21 @@ public class MemberServiceImpl implements MemberService {
 
     // 회원 정보 업데이트
     @Override
+    @Transactional
     public boolean update(MemberVO memberVO) {
         try {
-            log.info("Updating member: {}", memberVO);
-            int result = memberMapper.update(memberVO);
-            return result > 0;  // 성공 여부는 update 쿼리의 영향을 받은 행 수로 판단
+        	String currentPassword = memberVO.getPassword();
+        	MemberVO member = memberMapper.findByMemberEmail(memberVO.getEmail());
+        	if(member != null && passwordEncoder.matches(currentPassword, member.getPassword())) {
+                log.info("Updating member: {}", memberVO);
+        		int result = memberMapper.update(memberVO);
+        		return result > 0;
+        	}
         } catch (Exception e) {
             log.error("Error updating member: {}", memberVO, e);
             return false; // 실패 시 false 반환
         }
+        return false;
     }
 
     // 이메일 중복 체크

@@ -26,15 +26,17 @@
         VALUES (#{email}, #{password}, #{username}, #{address}, #{zipcode}, #{phoneNumber})
     </insert>
     <!-- 회원 정보 수정 -->
-    <update id="update" parameterType="com.winebouti.vo.MemberVO">
-        UPDATE Member
-        SET
-        	username = #{username},
-        	address = #{address},
-        	zipcode = #{zipcode},
-        	phone_number = #{phoneNumber}
-        WHERE email = #{email} and password = #{password}
-    </update>
+   <update id="update" parameterType="com.winebouti.vo.MemberVO">
+    UPDATE Member
+    SET
+        username = #{username},
+        address = #{address},
+        zipcode = #{zipcode},
+        phone_number = #{phoneNumber}
+    WHERE
+    	member_id = #{memberId}
+	</update>
+	
     <insert id="grantAuth" parameterType="com.winebouti.vo.MemberVO">
         INSERT INTO Auth (auth, email)
         VALUES ('ROLE_USER', #{email})
@@ -47,9 +49,9 @@
 
 
     <!-- 회원 삭제 -->
-    <delete id="delete" parameterType="long">
-        DELETE FROM Member WHERE id = #{id}
-    </delete>
+	<delete id="delete" parameterType="long">
+	    DELETE FROM Member WHERE member_id = #{memberId}
+	</delete>
 
     <!-- 이메일로 회원 조회 -->
     <select id="findByMemberEmail" resultMap="MemberResultMap" parameterType="String">

@@ -39,7 +39,7 @@ body {
 /* 오른쪽 div 설정 */
 .right {
     background-color: #ffffff;
-    width: 75%; /* 오른쪽 섩션을 75%로 넓힘 */
+    width: 75%; /* 오른쪽 섹션을 75%로 넓힘 */
     padding: 20px 40px; /* 좌우 여백을 추가 */
     box-sizing: border-box;
 }
@@ -163,6 +163,46 @@ body {
     box-sizing: border-box;
 }
 
+/* 반응형 디자인 (한 줄에 3개씩 보이도록) */
+@media screen and (max-width: 1200px) {
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr); /* 1200px 이하에서 한 줄에 3개씩 */
+
+    }
+}
+
+@media screen and (max-width: 1200px) {
+.left {
+    background-color: #ffffff;
+    width: 250px; /* 고정된 폭 */
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    height: 100vh; /* 화면 전체 높이로 설정 */
+    flex-shrink: 0; /* 화면 크기에 관계없이 크기 줄어들지 않도록 설정 */
+}
+}
+
+@media screen and (max-width: 1200px) {
+/* 아코디언 버튼 스타일 */
+.accordion {
+    color: #333;
+    cursor: pointer;
+    padding: 12px;
+    width: 80%;
+    text-align: left;
+    border: 1px solid #ffffff;
+    outline: none;
+    font-size: 16px;
+    font-weight: 600;
+    transition: 0.3s;
+    border-radius: 5px;
+    margin-bottom: 8px;
+    background-color: #ffffff;
+}
+}
+
+/* 상품 항목 스타일 */
 .product-item {
     width: 200px;
     height: 300px;
@@ -217,6 +257,7 @@ body {
     align-items: center;
     border-radius: 8px;
 }
+
 .product-item .image-placeholder img {
     border-radius: 20px; /* 이미지의 모서리 둥글게 */
     width: 100%;
