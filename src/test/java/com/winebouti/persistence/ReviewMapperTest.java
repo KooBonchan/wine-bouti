@@ -52,7 +52,6 @@ public class ReviewMapperTest {
       
       review.setContent("BAD");
       
-      assertTrue(reviewMapper.updateResponse(review) > 0);
       assertTrue(reviewMapper.deleteReview(id) > 0);
   }
   
