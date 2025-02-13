@@ -30,6 +30,7 @@
   <beans:bean class="org.springframework.web.multipart.support.StandardServletMultipartResolver" id="multipartResolver"></beans:bean>
 	
   <context:component-scan base-package="com.winebouti.controller" />
+  <context:component-scan base-package="com.winebouti.service" />
 
     
   <security:global-method-security pre-post-annotations="enabled" secured-annotations="enabled"></security:global-method-security>
