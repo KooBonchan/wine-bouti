@@ -1,5 +1,6 @@
 package com.winebouti.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -76,14 +77,30 @@ public class ProductController {
         model.addAttribute("products", giftSet); // 모델에 "products" 속성으로 추가
         return "product/list.tiles"; // 해당 JSP 페이지를 반환
     }
- // 기존 Controller에 AJAX 요청을 처리할 메서드 추가
-    @GetMapping("ajax/category")
+    @GetMapping("/ajax/category")
     @ResponseBody
-    public List<ProductVO> getProductsByCategory(@RequestParam String category) {
-        List<ProductVO> products = productService.getWines(category); // 카테고리에 맞는 상품을 가져오는 서비스 메서드 호출
+    public List<ProductVO> getProductsByCategory(@RequestParam("category") String category) {
+        List<ProductVO> products;
+
+        if ("all".equals(category)) {
+            // "전체" 카테고리인 경우, 전체 상품 목록을 반환
+            products = productService.findProductsByCategory("Wine");
+        } else if ("red".equals(category)) {
+            // 레드와인 카테고리인 경우, 레드와인 상품 목록을 반환
+            products = productService.getWinesByCategory("red");
+        } else if ("white".equals(category)) {
+            // 화이트와인 카테고리인 경우, 화이트와인 상품 목록을 반환
+            products = productService.getWinesByCategory("white");
+        } else if ("sparkle".equals(category)) {
+            // 스파클링 카테고리인 경우, 스파클링 상품 목록을 반환
+            products = productService.getWinesByCategory("sparkle");
+        } else {
+            // 정의되지 않은 카테고리인 경우, 빈 리스트 반환
+            products = new ArrayList<>();
+        }
+
         return products; // JSON 형식으로 반환됨
     }
-
 
 }
 

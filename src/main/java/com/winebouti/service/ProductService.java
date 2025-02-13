@@ -25,9 +25,12 @@ public interface ProductService {
 	List<ProductVO> findProductsByCategory(String category);
 	
     List<ProductVO> getWines(String category);
-
-    List<ProductVO> getAllProducts();  // 모든 상품 목록 가져오기
+    
     Product getProductById(Long productId);  // 특정 상품 상세 정보 가져오기
+
+	List<ProductVO> getWinesByCategory(String string);
+
+	List<ProductVO> getAllProducts(String category);
     
     
 }

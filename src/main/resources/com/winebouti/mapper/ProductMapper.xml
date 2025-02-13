@@ -124,12 +124,19 @@
 	    LIMIT 24
 	    ]]>
 	</select>
-	 <select id="getAllProducts" resultType="com.winebouti.vo.ProductVO">
-        SELECT * FROM Product
-    </select>
+	<select id="getAllProducts" resultMap="productResultMap">
+	    <![CDATA[
+	    SELECT product_id, category, korean_name, product_image_name, real_product_image_name, detail_image_name, real_detail_image_name, original_price, once
+	    FROM Product
+	    ORDER BY product_id DESC  -- 필요에 따라 정렬 기준 변경 가능
+	    LIMIT 24
+	    ]]>
+	</select>
 
-    <select id="getProductsByCategory" parameterType="string" resultType="com.winebouti.vo.ProductVO">
-        SELECT * FROM Product WHERE category = #{category}
-    </select>
+<select id="getProductsByCategory" parameterType="string" resultType="com.winebouti.vo.ProductVO">
+    SELECT product_id, category, korean_name, product_image_name, real_product_image_name, detail_image_name, real_detail_image_name, original_price, once
+    FROM Product
+    WHERE category = #{category}
+</select>
 	    
 </mapper>
