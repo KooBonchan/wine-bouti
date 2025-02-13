@@ -117,7 +117,7 @@ public class ReviewController {
 			return "redirect:/product/details.tiles"; // 리뷰가 없을 경우 상세 페이지로 이동
 		}
 		model.addAttribute("review", review);
-		return "review/edit.tiles";
+		return "review/review_edit.tiles";
 	}
 
 	// 삭제

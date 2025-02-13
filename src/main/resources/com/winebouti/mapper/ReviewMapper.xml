@@ -61,7 +61,7 @@
 	</insert>
 
 	<!-- 리뷰 수정 -->
-	<update id="updateReview"
+	<update id="updateReview" 
 		parameterType="com.winebouti.vo.ReviewVO">
 		UPDATE Review
 		SET content = #{content},
