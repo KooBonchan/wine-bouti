@@ -2,9 +2,9 @@ package com.winebouti.controller;
 
 import java.io.File;
 import java.sql.Timestamp;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.HashMap;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.winebouti.service.ReviewService;
@@ -142,36 +143,35 @@ public class ReviewController {
 	    }
 	  
 	  
-	// 리뷰 답글 추가/수정 (관리자만)
+	// 리뷰 답글 추가/수정
 	  @PostMapping("/response")
-	    public ResponseEntity<String> updateResponse(
-	            @RequestParam Long reviewId,
-	            @RequestParam String response,
-	            @AuthenticationPrincipal UserDetails userDetails) {
+	  @ResponseBody
+	  public ResponseEntity<String> updateResponse(@RequestBody ReviewVO review) {
+	      log.info("📌 updateResponse() 호출됨 - reviewId: " + review.getReviewId() + ", response: " + review.getResponse());
 
-	        if (!isAdmin(userDetails)) {
-	            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("관리자만 답변을 등록할 수 있습니다.");
-	        }
+	      int result = reviewService.updateReviewResponse(review.getReviewId(), review.getResponse());
+	      return (result > 0) 
+	             ? ResponseEntity.ok("답변이 등록/수정되었습니다.") 
+	             : ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("답변 등록 실패");
+	  }
 
-	        int result = reviewService.updateReviewResponse(reviewId, response);
-	        return (result > 0) ? ResponseEntity.ok("답변이 등록/수정되었습니다.")
-	                            : ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("답변 등록 실패");
-	    }
-	    
-	    // 리뷰 답글 삭제 (관리자만 가능)
-	  @DeleteMapping("/response/{reviewId}")
-	    public ResponseEntity<String> deleteResponse(
-	            @PathVariable Long reviewId,
-	            @AuthenticationPrincipal UserDetails userDetails) {
 
+
+	    // 리뷰 답글 삭제
+	    @DeleteMapping("/response/{reviewId}")
+	    @ResponseBody
+	    public ResponseEntity<String> deleteResponse(@PathVariable Long reviewId, 
+	                                                 @AuthenticationPrincipal UserDetails userDetails) {
 	        if (!isAdmin(userDetails)) {
 	            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("관리자만 답변을 삭제할 수 있습니다.");
 	        }
 
 	        int result = reviewService.deleteReviewResponse(reviewId);
-	        return (result > 0) ? ResponseEntity.ok("답변이 삭제되었습니다.")
-	                            : ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("답변 삭제 실패");
+	        return (result > 0) 
+	               ? ResponseEntity.ok("답변이 삭제되었습니다.") 
+	               : ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("답변 삭제 실패");
 	    }
+	    
 	  
 	 // 관리자 여부 확인 메서드 추가
 	    private boolean isAdmin(UserDetails userDetails) {
