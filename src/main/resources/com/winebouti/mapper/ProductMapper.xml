@@ -85,8 +85,8 @@
 	        w.acidity,
 	        w.sweetness,
 	        w.tannins
-	    FROM product p
-	   	LEFT OUTER JOIN wine w
+	    FROM Product p
+	   	LEFT OUTER JOIN Wine w
 	        ON p.product_id = w.wine_id
         WHERE category = #{category}
         ORDER BY product_id
@@ -116,8 +116,8 @@
 	        w.acidity,
 	        w.sweetness,
 	        w.tannins
-	    FROM product p
-	   	INNER JOIN wine w
+	    FROM Product p
+	   	INNER JOIN Wine w
 	        ON p.product_id = w.wine_id
 	    WHERE w.type = #{type}
 	    ORDER BY p.product_id DESC

@@ -64,6 +64,7 @@
 <body>
 	<div class="main-container_update">
         <form action="<c:url value='/member/update'/>" method="post" name="updateForm">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
            	<div class="title">회원정보 수정</div>
             <input type="hidden" name="memberId" value="<sec:authentication property='principal.memberVO.memberId'/>">
             

@@ -20,23 +20,23 @@
     
     <select id="findAll" resultMap="PurchaseMap">
     	SELECT p.purchase_id, member_id, address, order_name, total_price, product_id, quantity
-    	FROM purchase p
-    		LEFT OUTER JOIN purchase_product pp
+    	FROM Purchase p
+    		LEFT OUTER JOIN Purchase_Product pp
     		ON p.purchase_id = pp.purchase_id
     	ORDER BY p.purchase_id
     </select>
     <select id="findByMemberId" resultMap="PurchaseMap">
     	SELECT p.purchase_id, member_id, address, order_name, total_price, product_id, quantity
-    	FROM purchase p
-    		LEFT OUTER JOIN purchase_product pp
+    	FROM Purchase p
+    		LEFT OUTER JOIN Purchase_Product pp
     		ON p.purchase_id = pp.purchase_id
     	WHERE p.member_id = #{memberId}
     	ORDER BY p.purchase_id
     </select>
     <select id="findById" resultMap="PurchaseMap">
     	SELECT p.purchase_id, member_id, address, order_name, total_price, product_id, quantity
-    	FROM purchase p
-    		LEFT OUTER JOIN purchase_product pp
+    	FROM Purchase p
+    		LEFT OUTER JOIN Purchase_Product pp
     		ON p.purchase_id = pp.purchase_id
     	WHERE p.purchase_id = #{id}
     	ORDER BY p.purchase_id
@@ -46,11 +46,11 @@
     
     <insert id="insertMetadata" parameterType="PurchaseVO"
     	useGeneratedKeys="true" keyColumn="purchase_id" keyProperty="purchaseId">
-    	INSERT INTO purchase (purchase_id, member_id, address, order_name, total_price)
+    	INSERT INTO Purchase (purchase_id, member_id, address, order_name, total_price)
     	VALUES (#{purchaseId}, #{memberId}, #{address}, #{orderName}, #{totalPrice})
     </insert>
     <insert id="insertProductList" parameterType="PurchaseVO">
-    	INSERT INTO purchase_product (purchase_id, product_id, quantity)
+    	INSERT INTO Purchase_Product (purchase_id, product_id, quantity)
     	VALUES
     	<foreach collection="products" nullable="false" item="product" 
     		open="(" separator="),(" close=")">

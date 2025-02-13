@@ -4,6 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
 <script src="https://cdn.portone.io/v2/browser-sdk.js" defer async></script>
 <div class="cart-container">
 	<div class="title">SHOPPING</div>
@@ -52,43 +53,6 @@
 		</c:forEach>
   </div>
   <script>
-  const updateCart = (event) => {
-      const form = event.target.closest('.form-cart-update');
-      const productId = form.querySelector('.productId').value;
-      const quantity = form.querySelector('.quantity').value;
-      const data = {
-        productId: productId,
-        quantity: quantity
-      };
-      
-      fetch('/api/cart', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      })
-      .then(response => response.json())
-      .then(responseData => {
-        if (responseData.success) {
-          alert('Cart updated successfully!');
-          // Optionally, update the displayed cart item details
-        } else {
-          alert('Failed to update cart!');
-        }
-      })
-      .catch(error => {
-        console.error('Error:', error);
-        alert('An error occurred while updating the cart.');
-      });
-    };
-
-    // Event listener for "수정" button (Update button)
-    const updateButtons = document.querySelectorAll('.form-cart-update .button');
-    updateButtons.forEach(button => {
-      button.addEventListener('click', updateCart);
-    });
-  
   
   </script>
 	<div class="summary">
@@ -123,7 +87,7 @@
 	</div>
 </div>
 <sec:authentication property='principal.memberVO.email' var="email"/>
-
+<c:set var="csrfToken" value="${_csrf.token}"/>
 <script>
 const setup = () => new Promise((resolve) => {
 	const polling = setInterval(() => {
@@ -144,7 +108,12 @@ function purchase(){
 	// payment(frontend)
 	// payment verification (backend)
 	return fetch(
-		    "<c:url value='/api/order/' />",{method:'POST',})
+		    "<c:url value='/api/order/' />",{
+		    	method:'POST',
+		    	headers:{
+		    		"X-CSRF-TOKEN": "${csrfToken}",
+		    	},
+		    })
 		    .then(response => {
 		      if( ! response.ok) throw new Error(response.status); return response.json();})
 		    .then(data => {
@@ -180,4 +149,34 @@ function purchase(){
 		    	alert("결제에 실패했습니다. 나중에 다시 시도해주세요.")
 		    }) 
 }
+
+
+// Cart Update
+const updateCart = (event) => {
+  const form = event.target.closest('.form-cart-update');
+  const productId = form.querySelector('.productId').value;
+  const quantity = form.querySelector('.quantity').value;
+  const data = {
+    productId: productId,
+    quantity: quantity
+  };
+  $.ajax({
+    url: '<c:url value="/api/cart" />',
+    type: 'PUT',
+    contentType: 'application/json',
+    data: JSON.stringify(data),
+    success: function() {
+    	alert('Cart updated successfully!');
+    	location.reload();
+    },
+    error: function(xhr, status, error) {
+      console.error('Error:', error);
+      alert('An error occurred while updating the cart.');
+    }
+  });
+};
+const updateButtons = document.querySelectorAll('.form-cart-update .button');
+updateButtons.forEach(button => {
+  button.addEventListener('click', updateCart);
+});
 </script>
