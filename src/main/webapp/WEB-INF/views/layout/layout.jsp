@@ -11,8 +11,16 @@
 	<link rel="stylesheet" href="<c:url value='/resources/style/layout.css' />" />
 	<link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
 	<link rel="stylesheet" href='${contextPath}<tiles:getAsString name="style"/>' />
-  
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <c:set var="csrfToken" value="${_csrf.token}"/>
+  <script>
+  $.ajaxSetup({
+	  beforeSend: function(xhr) {
+	    xhr.setRequestHeader("AJAX", true);
+	    xhr.setRequestHeader("X-CSRF-TOKEN", "${csrfToken}"); 
+	  }
+	})
+  </script>
 </head>
 
 <body>

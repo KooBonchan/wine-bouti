@@ -41,6 +41,7 @@
 
     <!-- 폼 제출 시 validateForm() 함수 호출 -->
     <form name="loginForm" action="<c:url value='/member/login'/>" method="post" onsubmit="return validateForm()">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
         <p>
             <input type="text" name="email" placeholder="이메일" required>
         </p>

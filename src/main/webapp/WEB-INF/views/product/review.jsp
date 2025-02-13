@@ -188,8 +188,9 @@ input[type="file"] {
 
 		</form>
 </div>
-
 		<script>
+		
+		
     document.getElementById("reviewForm").addEventListener("submit", function(event) {
         event.preventDefault(); // 기본 폼 제출 방지
         

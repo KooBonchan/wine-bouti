@@ -75,16 +75,25 @@
                 alert("장바구니에 담을 수 없습니다.");
                 return;
               }
-              fetch("<c:url value='/api/cart' />?" +
-                  "productId=" + <c:out value="${product.productId}" /> + "&" +
-                  "quantity=" + quantity,
-                  {method:"PUT"})
-              .then(response => {
-            	  if(!response.ok) throw new Error();
-            	  return response.json()
-            	 })
-              .then(json => alert("장바구니에 성공적으로 담았습니다."))
-              .catch(e => {location.href = "<c:url value='/member/login' />"})
+              $.ajax({
+            	    url: "<c:url value='/api/cart' />",
+            	    method: "PUT",
+            	    data: JSON.stringify({
+            	        productId: "<c:out value='${product.productId}' />",
+            	        quantity: quantity
+            	    }),
+            	    contentType: "application/json",
+            	    success: function() {
+            	        alert("장바구니에 성공적으로 담았습니다.");
+            	    },
+            	    error: function(xhr) {
+            	    	if (xhr.status === 405) {
+           	            window.location.href = "<c:url value='/member/login' />";
+           	        } else {
+           	            alert("실패했습니다. 나중에 다시 시도해주세요.");
+           	        }
+            	    }
+            	});
             })
           </script>
 				</div>

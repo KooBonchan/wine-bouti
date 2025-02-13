@@ -15,6 +15,7 @@
         <h2>Sign up</h2> 
         <img src="<c:url value='/resources/images/icon/login4.png'/>" alt="login" width="70" height="70">
         <form name="signupForm" action="<c:url value='/member/save' />" method="post">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
             <p>e-mail: <input type="email" name="email" id="email" placeholder="이메일" onblur="emailCheck()"></p>
             <p id="check-result"></p>
 

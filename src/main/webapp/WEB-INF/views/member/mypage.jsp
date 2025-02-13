@@ -17,6 +17,7 @@
             정보수정
         </button>
         <form method="post" action="<c:url value='/logout' />">
+          <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
             <button class="action-btn">로그아웃</button>
         </form>
     </div>
