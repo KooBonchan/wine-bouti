@@ -160,3 +160,26 @@
 		</div>
 	</div>
 </div>
+
+<script>
+function showContent(type) {
+    const detailsContent = document.getElementById("details-content");
+    const reviewsContent = document.getElementById("reviews-content");
+
+    if (type === "details") {
+        // 리뷰 숨기기 (애니메이션 없이 즉시 변경)
+        reviewsContent.classList.remove("active");
+        reviewsContent.style.display = "none"; 
+        detailsContent.style.display = "block";
+    } else if (type === "reviews") {
+        // 리뷰 탭 클릭 시 애니메이션 효과 적용
+        reviewsContent.style.display = "block"; 
+        setTimeout(() => {
+            reviewsContent.classList.add("active"); 
+        }, 10); // display: block 적용 후 애니메이션 실행
+        detailsContent.style.display = "none";
+    }
+}
+</script>
+</body>
+</html>

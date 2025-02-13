@@ -241,13 +241,15 @@ body {
     border: 1px solid #ccc; /* 테두리를 추가 */
     cursor: pointer;
     font-size: 10px;  /* 글자 크기를 줄임 */
+    
+    
 }
+
+
 #details-image-wrapper {
 	margin: 0 auto;
 	width: fit-content;
 }
-
-
 
 
 .detailsview .review-content h3 {
@@ -268,7 +270,23 @@ body {
     margin-bottom: 50px; /* 푸터와 겹치지 않도록 여백 추가 */
     border-radius: 8px;
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1); /* 약간의 그림자 효과 추가 */
+    
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-in-out;
+    display: none;
+    
 }
+
+.review-content.active {
+    opacity: 1;
+    visibility: visible;
+    display: block;
+}
+
+
+
 
 /* 리뷰 박스 스타일 */
 .review-box {
