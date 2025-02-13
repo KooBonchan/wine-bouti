@@ -17,8 +17,8 @@
 		class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
 		<property name="locations">
 			<list>
-				<value>classpath:jdbc.properties</value>
-				<value>classpath:/portone.properties</value>
+				<value>classpath:jdbc_prod.properties</value>
+				<value>classpath:portone_prod.properties</value>
 			</list>
 		</property>
 	</bean>

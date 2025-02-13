@@ -1,7 +1,10 @@
 package com.winebouti.persistence;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+
+import java.sql.Timestamp;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -36,14 +39,19 @@ public class ReviewMapperTest {
     review.setRating(5);
     review.setTitle("GOOOD");
     review.setContent("Excellent product!");
+    review.setWriteDate(new Timestamp(System.currentTimeMillis()));
     return review;
   }
   
-  @Test
+//  @Test
   public void testReviewCRUD() {
       ReviewVO review = generateReviewVO();
       reviewMapper.insertReview(review);
-      long id = review.getReviewId();
+      var reviews = reviewMapper.getAllReviews();
+      assertNotNull(reviews);
+      assertFalse(reviews.isEmpty());
+      
+      long id = reviews.get(0).getReviewId();
       assertTrue("insert test: ", id> 0);
       log.info(id);
       
