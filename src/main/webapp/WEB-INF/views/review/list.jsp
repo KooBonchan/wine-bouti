@@ -40,7 +40,7 @@
 					</c:if>
 
 
-					<!-- 관리자 답글 -->
+					<%-- <!-- 관리자 답글 -->
 					<c:if test="${not empty review.response}">
 						<div class="review-response">
 							<strong>관리자 답변:</strong>
@@ -56,6 +56,14 @@
 				            <button class="deleteResponse" data-review-id="${review.reviewId}">답글 삭제</button>
 				        </div>
 				    </sec:authorize>
+				    
+					<c:if test="${not empty review.reviewId}">
+						<div class="admin-response">
+							<input type="text" id="response-${review.reviewId}"
+								placeholder="답글 입력">
+							<button onclick="addResponse(${review.reviewId})">답글 등록</button>
+						</div>
+					</c:if> --%>
 
 
 					<!-- 삭제 -->

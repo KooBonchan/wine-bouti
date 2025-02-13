@@ -54,43 +54,57 @@
 <!--  -->
 
 <div class="container">
-    <div class="main-title">상품추천
+    <div class="main-title" id="menu-shop">상품추천
         <div class="menu_Shop">
-            <div class="menu-item">전체</div>
-            <div class="menu-item">레드와인</div>
-            <div class="menu-item">화이트와인</div>
-            <div class="menu-item">스파클링</div>
-        </div>
+		    <div class="menu-item" onclick="changeCategory('all')">전체</div>
+		    <div class="menu-item" onclick="changeCategory('red')">레드와인</div>
+		    <div class="menu-item" onclick="changeCategory('white')">화이트와인</div>
+		    <div class="menu-item" onclick="changeCategory('sparkle')">스파클링</div>
+		</div>
+
+<script>
+function changeCategory(category) {
+    location.href = "<c:url value='/?category=' />" + category + "#menu-shop";
+}
+</script>
     </div> <!-- 제목 추가 -->
 
-    <c:forEach items="${products}" var="product">
+   <c:forEach items="${products}" var="product">
     <div class="shop">
-        <div class="img">
-            <a href="<c:url value='/product/details/${product.productId}' />">
+        <!-- 전체 제품을 하나의 <a> 태그로 감싸기 -->
+        <a href="<c:url value='/product/details/${product.productId}' />">
+            <div class="img">
                 <!-- productImageName을 사용하여 이미지 경로를 동적으로 생성 -->
                 <img src="<c:url value='/api/image/thumbnail/wine/${product.realProductImageName}' />" alt="Shop Image">
-            </a>
-        </div>
-        <div class="title shop-title">
-            <a href="<c:url value='/product/details/${product.productId}' />">${product.koreanName}</a>
-        </div>
-        
-        <div class="title shop-content">
-            <a href="<c:url value='/product/details/${product.productId}' />">
-                <img src="https://flagcdn.com/w40/fr.png" alt="France Flag" width="20" height="15" class="flag">
-                [프랑스] <!-- 국가를 WineVO에서 동적으로 처리할 수 있다면, 해당 필드를 사용 -->
-            </a>
-        </div>
-        <div class="title shop-price">
-            <a href="<c:url value='/product/details/${product.productId}' />">
-    <fmt:formatNumber value="${product.originalPrice}" pattern="#,###" />원
-			</a>
+            </div>
+            <div class="title shop-title">
+                ${product.koreanName}
+            </div>
+            <div class="title shop-content">
+		                <c:if test="${not empty product.wineDetails}">
+				    <img src="<c:choose>
+				                <c:when test='${product.wineDetails.origin == "France"}'>https://flagcdn.com/w40/fr.png</c:when>
+				                <c:when test='${product.wineDetails.origin == "Italy"}'>https://flagcdn.com/w40/it.png</c:when>
+				                <c:when test='${product.wineDetails.origin == "Spain"}'>https://flagcdn.com/w40/es.png</c:when>
+				                <c:when test='${product.wineDetails.origin == "USA"}'>https://flagcdn.com/w40/us.png</c:when>
+				                <c:when test='${product.wineDetails.origin == "Chile"}'>https://flagcdn.com/w40/cl.png</c:when>
+				                <c:when test='${product.wineDetails.origin == "Argentina"}'>https://flagcdn.com/w40/ar.png</c:when>
+				                <c:when test='${product.wineDetails.origin == "Australia"}'>https://flagcdn.com/w40/au.png</c:when>
+				                <c:otherwise>https://flagcdn.com/w40/default.png</c:otherwise>
+				             </c:choose>" alt="${product.wineDetails.origin} Flag" width="20" height="15" class="flag">
+				    ${product.wineDetails.origin}
+				</c:if>
 
-        </div>
+               
+            </div>
+            <div class="title shop-price">
+                <fmt:formatNumber value="${product.originalPrice}" pattern="#,###" />원
+            </div>
+        </a>
     </div>
-    </c:forEach>
+</c:forEach>
 
-
+</div>
 
 
 

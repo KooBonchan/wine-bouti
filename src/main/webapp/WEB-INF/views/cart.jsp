@@ -23,13 +23,16 @@
       <c:set value="${node.value}" var="quantity" />
 			<div class="cart-item">
 				<div>
-					<img src="<c:url value='/api/image/thumbnail/test/${product.realProductImageName}' />"
+					<img src="<c:url value='/api/image/thumbnail/wine/${product.realProductImageName}' />"
 					alt="<c:out value='${product.koreanName}' />" class="product-image" />
 				</div>
 				<div><c:out value="${product.koreanName }" /></div>
 				<div class="quantity-control">
-					<input type="number" value="${quantity }" min="1" class="quantity-input">
-					<button class="button">수정</button>
+					<form class="form-cart-update" onSubmit="return false;">
+					  <input type="hidden" class="productId" name="productId" value="${product.productId}" readonly>
+            <input type="number" class="quantity" value="${quantity }" min="1">
+            <button class="button">수정</button>
+          </form>
 				</div>
 				<div class="price">
 					<fmt:formatNumber type="currency"
@@ -48,6 +51,46 @@
 			</div>
 		</c:forEach>
   </div>
+  <script>
+  const updateCart = (event) => {
+      const form = event.target.closest('.form-cart-update');
+      const productId = form.querySelector('.productId').value;
+      const quantity = form.querySelector('.quantity').value;
+      const data = {
+        productId: productId,
+        quantity: quantity
+      };
+      
+      fetch('/api/cart', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+      .then(response => response.json())
+      .then(responseData => {
+        if (responseData.success) {
+          alert('Cart updated successfully!');
+          // Optionally, update the displayed cart item details
+        } else {
+          alert('Failed to update cart!');
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred while updating the cart.');
+      });
+    };
+
+    // Event listener for "수정" button (Update button)
+    const updateButtons = document.querySelectorAll('.form-cart-update .button');
+    updateButtons.forEach(button => {
+      button.addEventListener('click', updateCart);
+    });
+  
+  
+  </script>
 	<div class="summary">
 		<div>
 			총 상품가격<br>
@@ -76,7 +119,7 @@
 		</ol>
 	</div>
 	<div class="shopping-continue">
-		<button class="action-button" onclick='location.href=&#39;<c:url value="/product" />&#39;'>쇼핑계속하기</button>                                                
+		<button class="action-button" onclick='location.href=&#39;<c:url value="/product/red-wine" />&#39;'>쇼핑계속하기</button>                                                
 	</div>
 </div>
 <sec:authentication property='principal.memberVO.email' var="email"/>

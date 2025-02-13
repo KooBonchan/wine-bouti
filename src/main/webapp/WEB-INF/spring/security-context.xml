@@ -8,7 +8,7 @@
 	<security:http>
 		<!-- <security:access-denied-handler ref="customAccessDenied" /> -->
 		<security:form-login login-page="/member/login"
-			username-parameter="email" login-processing-url="/member/login" />
+			username-parameter="email" login-processing-url="/member/login" default-target-url="/"/>
 		<security:logout invalidate-session="true" />
 
 		<security:csrf disabled="true" />
@@ -16,8 +16,7 @@
 
 	<bean class="com.winebouti.security.CustomUserDetailsService"
 		id="userDetailsService" />
-	<bean class="com.winebouti.security.CustomNoOpPasswordEncoder"
-		id="passwordEncoder" />
+	<bean class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" id="passwordEncoder" />
 
 	<security:authentication-manager>
 		<security:authentication-provider

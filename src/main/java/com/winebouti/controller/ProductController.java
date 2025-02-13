@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.winebouti.service.ProductService;
 import com.winebouti.service.ReviewService;
@@ -73,6 +74,23 @@ public class ProductController {
         return "product/list.tiles"; // 해당 JSP 페이지를 반환
     }
     
+    @GetMapping("/list")
+    public String getProductList(
+    	@RequestParam(name = "category", required = false) String category,
+    	Model model
+    ) {
+        List<ProductVO> products;
+
+        if (category == null || category.equals("all")) {
+            products = productService.getAllProducts();
+        } else {
+            products = productService.getWines(category);
+        }
+
+        model.addAttribute("products", products);
+        model.addAttribute("category", category);
+        return "product/list.tiles";
+    }
     
 
 }

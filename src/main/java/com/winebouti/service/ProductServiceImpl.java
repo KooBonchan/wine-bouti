@@ -51,11 +51,11 @@ public class ProductServiceImpl  implements ProductService {
         return productMapper.selectWineListByType(category);
     }
 
-	@Override
-	public List<ProductVO> getAllProducts() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public List<ProductVO> getAllProducts() {
+        return productMapper.getAllProducts();
+    }
+    
 
 	@Override
 	public Product getProductById(Long productId) {

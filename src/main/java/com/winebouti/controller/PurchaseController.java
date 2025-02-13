@@ -42,19 +42,20 @@ public class PurchaseController {
   
   @GetMapping("cart")
   public String cart(HttpSession session, Model model) {
-    /*     For debug purpose, create dummy item in session on cart request             */
     CartDTO cartDTO = (CartDTO) session.getAttribute("cartDTO");
-    if (cartDTO == null) {
-      cartDTO = new CartDTO();
-      cartDTO.setMemberId(33); //TODO: use member ID from security
-      Map<ProductVO, Integer> cartItems = new HashMap<>();
-      for(int i = 1; i <= 3; i++) {
-        ProductVO productVO = productService.getProductById(i);
-        cartItems.merge(productVO, i, (q1,q2)->q1+q2);
-      }
-      cartDTO.setCartItems(cartItems);
-      session.setAttribute("cartDTO", cartDTO);
-    }
+    /*     For debug purpose, create dummy item in session on cart request             */
+//    
+//    if (cartDTO == null) {
+//      cartDTO = new CartDTO();
+//      cartDTO.setMemberId(33); //TODO: use member ID from security
+//      Map<ProductVO, Integer> cartItems = new HashMap<>();
+//      for(int i = 1; i <= 3; i++) {
+//        ProductVO productVO = productService.getProductById(i);
+//        cartItems.merge(productVO, i, (q1,q2)->q1+q2);
+//      }
+//      cartDTO.setCartItems(cartItems);
+//      session.setAttribute("cartDTO", cartDTO);
+//    }
     /***********************************************************************************/
     if(cartDTO != null) {
       cartDTO.setTotalPrice();

@@ -61,16 +61,36 @@
                 </ul>
 				<!-- 수량, 바로구매, 장바구니 입력 폼 추가 -->
 				<div class="price-info">
-					<label for="quantity">수량:</label> <input type="number"
-						id="quantity" name="quantity" value="1" min="1">
-					<!-- <button type="button">바로 구매</button> -->
-					<button type="button">장바구니에 담기</button>
+					<label for="quantity">수량:</label>
+					<form id="form-quantity" onSubmit="return false;">
+						<input type="number" id="quantity" name="quantity" value="1" min="1">
+	          <!-- <button type="button">바로 구매</button> -->
+	          <button type="button" id="add-to-cart">장바구니에 담기</button>
+					</form>
+					<script>
+            document.getElementById("add-to-cart").addEventListener("click", e => {
+              e.preventDefault();
+              const quantity = document.forms['form-quantity'].quantity.value; 
+              if(quantity < 1) {
+                alert("장바구니에 담을 수 없습니다.");
+                return;
+              }
+              fetch("<c:url value='/api/cart' />?" +
+                  "productId=" + <c:out value="${product.productId}" /> + "&" +
+                  "quantity=" + quantity,
+                  {method:"PUT"})
+              .then(response => {
+            	  if(!response.ok) throw new Error();
+            	  return response.json()
+            	 })
+              .then(json => alert("장바구니에 성공적으로 담았습니다."))
+              .catch(e => {location.href = "<c:url value='/member/login' />"})
+            })
+          </script>
 				</div>
 			</div>
 		</div>
 	</div>
-<script>
-</script>
 	<div class="bottom">
 		<!-- 상세 페이지 및 리뷰 리스트 -->
 		<div class="details-reviews">
