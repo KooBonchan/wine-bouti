@@ -34,5 +34,7 @@ public class ReviewVO {
 	private String thumbnailPath; //썸네일 경로
 	private String title;
 	
+	private String userEmail;
+	
 
 }

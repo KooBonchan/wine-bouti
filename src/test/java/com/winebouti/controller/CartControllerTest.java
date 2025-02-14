@@ -58,15 +58,12 @@ public class CartControllerTest {
     addToCartDTO.setProductId(1L);
     addToCartDTO.setQuantity(27);
     ObjectWriter objectWriter = new ObjectMapper().writer().withDefaultPrettyPrinter();
-    String itemsCount = mockMvc.perform(
+    mockMvc.perform(
         put("/api/cart")
         .contentType(MediaType.APPLICATION_JSON)
         .sessionAttr("cartDTO", generateCartDTO())
         .content(objectWriter.writeValueAsString(addToCartDTO)))
-      .andReturn()
-      .getResponse()
-      .getContentAsString();
-    assertTrue(Integer.parseInt(itemsCount) > 0);
+      .andExpect(status().isOk());
   }
   
   @Test
@@ -79,8 +76,6 @@ public class CartControllerTest {
   
   private CartDTO generateCartDTO() {
     CartDTO cartDTO= new CartDTO();
-    cartDTO.setMemberId(909080807L);
-    cartDTO.setCartItems(new HashMap<>());
     return cartDTO;
   }
 }

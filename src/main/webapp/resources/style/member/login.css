@@ -43,10 +43,11 @@
 }
 
 
+/* 버튼 기본 색상 */
 .login-form-container input[type="submit"] {
     width: 100%;
     padding: 12px;
-    background-color:  #808080;
+    background-color: #333;  /* 버튼 색상 수정 */
     color: white;
     border: none;
     border-radius: 4px;
@@ -55,9 +56,9 @@
     transition: background-color 0.3s ease;
 }
 
-/* ���� ��ư ȣ�� �� ��Ÿ�� */
+/* 버튼 hover 상태 */
 .login-form-container input[type="submit"]:hover {
-    background-color: #333; /* �������� #333���� ���� */
+    background-color: #444; /* hover 시 색상 변화 */
 }
 
 

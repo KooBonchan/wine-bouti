@@ -13,6 +13,7 @@
   - Release 브랜치의 중요 환경설정 내용은 AWS EC2에서만 조작 가능합니다.
 
 ### Repositories
+ - [배포 페이지](http://13.209.210.176:8092/winebouti/)
  - [Figma Repository](https://www.figma.com/design/RndhZXRwcqwp1USI1bE5Ud/WINE-BOUTI?node-id=0-1&t=8rYDeam9JFPIerhG-1)
 
 팀원 구본찬 김보민 이창현 양정민
