@@ -7,13 +7,13 @@
 <div class="imgslide">
 	<button class="prev">◀</button>
 	<ul class="slidelist">
-		<li class="slide-item"><a href="#">
+		<li class="slide-item"><a href="/winebouti/product/red-wine">
 		  <img src="<c:url value='/resources/images/slider/main1.jpg' />" alt="이미지1" />
 		</a></li>
-		<li class="slide-item"><a href="#">
+		<li class="slide-item"><a href="/winebouti/product/white-wine">
 		  <img src="<c:url value='/resources/images/slider/main2.jpg' />" alt="이미지2" />
 		</a></li>
-		<li class="slide-item"><a href="#">
+		<li class="slide-item"><a href="/winebouti/product/pairing-wine">
 		  <img src="<c:url value='/resources/images/slider/main3.jpg' />" alt="이미지3" />
 		</a></li>
 	</ul>
