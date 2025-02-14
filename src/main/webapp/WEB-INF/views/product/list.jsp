@@ -28,11 +28,10 @@
       <div class="panel closed"> <!-- 기본적으로 닫힌 상태로 설정 -->
           <div class="filter">
               <input type="checkbox" id="lowPrice" name="price" value="low">
-              <label for="lowPrice">저렴한 가격</label><br>
-              <input type="checkbox" id="mediumPrice" name="price" value="medium">
-              <label for="mediumPrice">중간 가격</label><br>
+              <label for="lowPrice">가격 높은 순 ⬆</label><br>
+              
               <input type="checkbox" id="highPrice" name="price" value="high">
-              <label for="highPrice">고급 가격</label>
+              <label for="highPrice">가격 낮은 순 ⬇</label>
           </div>
       </div>
 
