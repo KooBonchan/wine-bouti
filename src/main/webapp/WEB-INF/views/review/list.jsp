@@ -48,10 +48,11 @@
 							<strong>winebouti :</strong>
 							<p>${review.response}</p>
 
-							 <sec:authorize access="hasRole('ROLE_ADMIN')">
-							    <div class="delete-button-container">
-							        <button class="deleteResponse" data-review-id="${review.reviewId}">답글 삭제</button>
-							    </div>
+							<sec:authorize access="hasRole('ROLE_ADMIN')">
+								<div class="delete-button-container">
+									<button class="deleteResponse"
+										data-review-id="${review.reviewId}">답글 삭제</button>
+								</div>
 							</sec:authorize>
 
 						</div>
@@ -71,6 +72,12 @@
 
 					<!-- 삭제 -->
 					<button class="delete-btn" data-review-id="${review.reviewId}">삭제</button>
+
+					<!-- 수정 -->
+					<button class="edit-btn"
+						onclick="location.href='<c:url value="/review/edit/${review.reviewId}" />'">
+						수정</button>
+
 
 				</div>
 			</c:forEach>
