@@ -54,6 +54,8 @@
             return;
         }
 
+        
+        
         // 서버에 중복 이메일 확인 요청
         $.ajax({
             type: "post",
