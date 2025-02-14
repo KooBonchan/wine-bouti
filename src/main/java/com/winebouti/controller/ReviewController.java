@@ -124,6 +124,8 @@ public class ReviewController {
 
 	@DeleteMapping(value = "/{reviewId}", produces = { MediaType.TEXT_PLAIN_VALUE })
 	public ResponseEntity<String> deleteReview(@PathVariable("reviewId") Long reviewId) {
+		
+		   System.out.println("🚀 삭제 요청 수신! 리뷰 ID: " + reviewId);
 
 		return reviewService.deleteReview(reviewId) == 1 ? new ResponseEntity<>("success", HttpStatus.OK)
 				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

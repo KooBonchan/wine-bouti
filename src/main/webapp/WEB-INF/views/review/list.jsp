@@ -257,30 +257,6 @@ $(document).on("click", ".submitResponse", function() {
     });
 });
 
-//삭제
-$(document).on("click", ".deleteResponse", function() {
-    var reviewId = $(this).data("review-id");
-
-    console.log("🚀 삭제 버튼 클릭됨! reviewId:", reviewId);
-
-    $.ajax({
-        type: "DELETE",
-        url: "/review/response/" + reviewId,
-        beforeSend: function(xhr) {
-            xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
-        },
-        success: function(data) {
-            console.log("✅ 서버 응답:", data);
-            alert("답글이 삭제되었습니다.");
-            location.reload();
-        },
-        error: function(xhr, status, error) {
-            console.error("❌ AJAX 오류:", xhr.responseText);
-            alert("답글 삭제에 실패했습니다.");
-        }
-    });
-});
-
 
     // 페이지 로드 시 답변 불러오기
     $(".review-box").each(function () {
