@@ -49,8 +49,7 @@
         $.ajax({
             type: "post",
             url: "${emailCheckUrl}",
-            contentType: "application/json",
-            data: JSON.stringify({"memberEmail": email}),
+            data: "memberEmail="+email,
             success: function(res) {
                 console.log("서버 응답:", res); // 서버 응답 로그 확인
                 if (res === "ok") {

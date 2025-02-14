@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<html>
-<head>
+
     <title>로그인</title>
     <link rel="stylesheet" href="<c:url value='/resources/style/member/save.css' />" />
     <script>
@@ -25,10 +24,8 @@
             return true; // 유효성 검사 통과
         }
     </script>
-</head>
-<body>
 <div class="login-form-container" style="margin-top: 50px;">
-    <h2>login</h2>
+    <h2>로그인</h2>
     <img src="<c:url value='/resources/images/icon/login2.png'/>" alt="login" width="70" height="70">
     
     <!-- 회원가입 성공 메시지 -->
@@ -39,11 +36,11 @@
         </div>
     </c:if>
 
-    <!-- 폼 제출 시 validateForm() 함수 호출 -->
+    <!-- 로그인 폼 -->
     <form name="loginForm" action="<c:url value='/member/login'/>" method="post" onsubmit="return validateForm()">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
         <p>
-            <input type="text" name="email" placeholder="이메일" required>
+            <input type="email" name="email" placeholder="이메일" required>
         </p>
         <p>
             <input type="password" name="password" placeholder="비밀번호" required>
@@ -56,5 +53,3 @@
         아직 회원이 아니신가요? <a href="<c:url value='/member/save' />">[ 회원 가입 ]</a>
     </p>
 </div>
-</body>
-</html>
