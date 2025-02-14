@@ -9,7 +9,7 @@
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 	  	<div class="input-date-container">
 		<br>
-		   <p>생일을 입력하세요:  <input type="date" name="birthDate" id="birthDate"></p>
+		   <p>생일을 입력해주세요  <input type="date" name="birthDate" id="birthDate"></p>
 		    <i class="fa fa-calendar"></i> <!-- 달력 아이콘 -->
 		<br>	
 		</div>

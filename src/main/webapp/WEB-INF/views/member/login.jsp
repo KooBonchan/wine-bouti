@@ -50,6 +50,6 @@
         </p>
     </form>
     <p>
-        아직 회원이 아니신가요? <a href="<c:url value='/member/save' />">[ 회원 가입 ]</a>
+        아직 회원이 아니신가요? <a href="<c:url value='/member/save' />">👉[ 회원 가입 ]👈</a>
     </p>
 </div>
