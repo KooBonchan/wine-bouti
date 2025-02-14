@@ -16,7 +16,7 @@
 		</c:when>
 		<c:otherwise>
 			<c:forEach var="review" items="${reviews}">
-				<div class="review-box" id="review-${review.reviewId}">
+				<div class="review-box" id="review-${review.reviewId}" data-review-id="${review.reviewId }">
 					<div>
 						<span class="star-rating"> <c:forEach begin="1"
 								end="${review.star}">
@@ -209,13 +209,76 @@ $(document).ready(function () {
         console.log("삭제 버튼 클릭됨, reviewId:", reviewId); // 확인 로그
         deleteReview(reviewId); // 함수 호출
     });
+
+
+    <c:url value="/review/response/" var="responseUrl" />
+    $(document).on("click", ".submitResponse", function() {
+        var reviewId = $(this).data("review-id");
+        var responseText = $("#response-" + reviewId).val();
+    
+        console.log("🚀 등록 버튼 클릭됨! reviewId:", reviewId, "response:", responseText);
+    
+        $.ajax({
+            type: "POST",
+            url: "${responseUrl}",
+            contentType: "application/json",
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+            },
+            data: JSON.stringify({
+                reviewId: reviewId,
+                response: responseText
+            }),
+            success: function(data) {
+                console.log("✅ 서버 응답:", data);
+                alert("답글이 등록되었습니다.");
+                location.reload();
+            },
+            error: function(xhr, status, error) {
+                console.error("❌ AJAX 오류:", xhr.responseText);
+                alert("답글 등록에 실패했습니다.");
+            }
+        });
+    });
+    
+    //삭제
+    $(document).on("click", ".deleteResponse", function() {
+        var reviewId = $(this).data("review-id");
+    
+        console.log("🚀 삭제 버튼 클릭됨! reviewId:", reviewId);
+    
+        $.ajax({
+            type: "DELETE",
+            url: "${responseUrl}" + reviewId,
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+            },
+            success: function(data) {
+                console.log("✅ 서버 응답:", data);
+                alert("답글이 삭제되었습니다.");
+                location.reload();
+            },
+            error: function(xhr, status, error) {
+                console.error("❌ AJAX 오류:", xhr.responseText);
+                alert("답글 삭제에 실패했습니다.");
+            }
+        });
+    });
+    
+    
+        // 페이지 로드 시 답변 불러오기
+    $(".review-box").each(function () {
+        let reviewId = $(this).data("review-id");
+        loadResponse(reviewId);
+    });
+
 });
 
 
 function loadResponse(reviewId) {
     console.log(`📌 [Ajax] 리뷰 ID 확인:`, reviewId); // reviewId 값 확인
 
-    $.get(`/review/response/${reviewId}`)
+    $.get("${responseUrl}" + reviewId)
         .done(function (data) {
             console.log(`✅ [Ajax] 리뷰(${reviewId}) 답변 응답:`, data);
             let responseContainer = $(`#reviewResponse-${reviewId}`);
@@ -228,42 +291,6 @@ function loadResponse(reviewId) {
 }
 
 
-$(document).on("click", ".submitResponse", function() {
-    var reviewId = $(this).data("review-id");
-    var responseText = $("#response-" + reviewId).val();
-
-    console.log("🚀 등록 버튼 클릭됨! reviewId:", reviewId, "response:", responseText);
-
-    $.ajax({
-        type: "POST",
-        url: "/review/response",
-        contentType: "application/json",
-        beforeSend: function(xhr) {
-            xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
-        },
-        data: JSON.stringify({
-            reviewId: reviewId,
-            response: responseText
-        }),
-        success: function(data) {
-            console.log("✅ 서버 응답:", data);
-            alert("답글이 등록되었습니다.");
-            location.reload();
-        },
-        error: function(xhr, status, error) {
-            console.error("❌ AJAX 오류:", xhr.responseText);
-            alert("답글 등록에 실패했습니다.");
-        }
-    });
-});
-
-
-    // 페이지 로드 시 답변 불러오기
-    $(".review-box").each(function () {
-        let reviewId = $(this).data("review-id");
-        loadResponse(reviewId);
-    });
-});
 
 
 </script>

@@ -145,7 +145,7 @@
 				<section>
 					<!-- 리뷰 목록 -->
 					<div class="review-section">
-						<h2>Reivew</h2>
+						<h2>Review</h2>
 
 						<%@ include file="../review/list.jsp" %>
 
