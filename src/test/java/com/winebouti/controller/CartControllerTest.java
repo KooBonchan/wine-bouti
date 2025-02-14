@@ -79,7 +79,6 @@ public class CartControllerTest {
   
   private CartDTO generateCartDTO() {
     CartDTO cartDTO= new CartDTO();
-    cartDTO.setMemberId(909080807L);
     cartDTO.setCartItems(new HashMap<>());
     return cartDTO;
   }

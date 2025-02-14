@@ -75,8 +75,8 @@
 					
 					<img src="<c:url value='/resources/images/icon/cart.png'/>"
 						alt="0" />
-						<c:if test="${not empty cartDTO and not empty cartDTO.cartItems}">
-						<span class="cart-badge"><c:out value="${cartDTO.cartItems.size()}" /></span>
+						<c:if test="${not empty cartDTO and not empty cartDTO.itemDetail}">
+						<span class="cart-badge"><c:out value="${cartDTO.itemDetail.size()}" /></span>
 						</c:if>
 					</a>
 				</div>

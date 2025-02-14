@@ -77,7 +77,7 @@
               }
               $.ajax({
             	    url: "<c:url value='/api/cart' />",
-            	    method: "PUT",
+            	    method: "POST",
             	    data: JSON.stringify({
             	        productId: "<c:out value='${product.productId}' />",
             	        quantity: quantity

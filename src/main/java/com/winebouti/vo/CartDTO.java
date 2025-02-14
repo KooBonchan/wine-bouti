@@ -1,5 +1,6 @@
 package com.winebouti.vo;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -13,35 +14,17 @@ import lombok.Setter;
  */
 @Data
 public class CartDTO {
-  @Setter
-	private long memberId;
-  @Setter
-  private Map<ProductVO, Integer> cartItems;
-  
+  private Map<Long, Integer> itemQuantity = new HashMap<>();
+  private Map<Long, ProductVO> itemDetail = new HashMap<>();
   private int sumProduct;
   private int deliveryFee;
   private int totalPrice;
   
-  public void calculateOrderPrice() {
-    int sum = cartItems.entrySet().stream()
-        .map(e-> e.getKey().getOriginalPrice() * e.getValue())
-        .reduce((a,b) -> a + b)
-        .orElse(-1);
-    
-    if(sum < 0) throw new ArithmeticException("Error occurred while calculating the total amount");
-    this.sumProduct = sum;
-    
-    this.deliveryFee = calculateDeliveryFee(sum);
-    this.totalPrice = sum + this.deliveryFee; 
-  }
-  
-  
-
   public PurchaseVO order(MemberVO memberVO) {
-    List<PurchaseProductVO> products = cartItems.entrySet()
+    List<PurchaseProductVO> products = itemQuantity.entrySet()
         .stream()
         .map(e->new PurchaseProductVO(
-            e.getKey().getProductId(),
+            e.getKey(),
             e.getValue()))
         .collect(Collectors.toList()); 
     
@@ -55,16 +38,33 @@ public class CartDTO {
     return purchaseVO;
   }
   
+  public void calculatePrice() {
+    int sum = 0;
+    for(ProductVO productVO : this.itemDetail.values()) {
+      sum += productVO.getOriginalPrice() * itemQuantity.get(productVO.getProductId());
+    }
+    this.sumProduct = sum;
+    this.deliveryFee = calculateDeliveryFee(sum);
+    this.totalPrice = this.sumProduct + this.deliveryFee;
+  }
   
   private String createOrderName() {
     String baseName = "";
-    for(ProductVO product : cartItems.keySet()) {
-      baseName = product.getKoreanName();
-      break;
+    for(var productVO : this.itemDetail.values()) {
+      baseName = productVO.getKoreanName();
+      continue;
     }
-    if(cartItems.size() <= 1) return baseName;
-    return baseName + " 외 " + (cartItems.size() - 1) + "개";
+    int cartCount = this.itemDetail.size() ; 
+    if(cartCount<= 1) return baseName;
+    return baseName + " 외 " + (cartCount - 1) + "개";
   }
+  
+  public void resetCalculated() {
+    this.sumProduct = 0;
+    this.deliveryFee = 0;
+    this.totalPrice = 0;
+  }
+  
   
   private int calculateDeliveryFee(int sum){
     /*** business logic ***/

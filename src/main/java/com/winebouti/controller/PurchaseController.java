@@ -2,7 +2,6 @@ package com.winebouti.controller;
 
 import java.security.Principal;
 import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.winebouti.security.CustomUser;
@@ -49,12 +47,16 @@ public class PurchaseController {
   
   @GetMapping("api/cart")
   public ResponseEntity<CartDTO> cart(HttpSession session, Model model, Principal principal) {
-    CartDTO cartDTO = getCartFromSession(session, principal);
-    if(! cartDTO.getCartItems().isEmpty()) {
-      cartDTO.calculateOrderPrice();
+    CartDTO cartDTO = getCartFromSession(session);
+    if(! cartDTO.getItemDetail().isEmpty()) {
+      cartDTO.calculatePrice();
+    } else {
+      cartDTO.resetCalculated();
     }
     return ResponseEntity.ok().body(cartDTO);
   }
+  
+  
 
   @PostMapping("api/cart")
   public ResponseEntity<Void> addToCart(
@@ -64,10 +66,9 @@ public class PurchaseController {
   ) {
     long productId  = addToCartDTO.getProductId();
     int quantity = addToCartDTO.getQuantity();
-    CartDTO cartDTO = getCartFromSession(session, principal);
-    ProductVO productVO = productService.getProductById(productId);
-    cartDTO.getCartItems()
-      .merge(productVO, quantity, (a,b) -> a + b);
+    CartDTO cartDTO = getCartFromSession(session);
+    cartDTO.getItemDetail().computeIfAbsent(productId, id -> productService.getProductById(id));
+    cartDTO.getItemQuantity().merge(productId, quantity, (a,b) -> a + b);
     session.removeAttribute("order");
     return ResponseEntity.ok().build();
   }
@@ -80,9 +81,9 @@ public class PurchaseController {
   ) {
     long productId  = addToCartDTO.getProductId();
     int quantity = addToCartDTO.getQuantity();
-    CartDTO cartDTO = getCartFromSession(session, principal);
-    ProductVO productVO = productService.getProductById(productId);
-    cartDTO.getCartItems().put(productVO, quantity);
+    CartDTO cartDTO = getCartFromSession(session);
+    cartDTO.getItemDetail().computeIfAbsent(productId, id -> productService.getProductById(id));
+    cartDTO.getItemQuantity().put(productId, quantity);
     session.removeAttribute("order");
     return ResponseEntity.ok().build();
   }
@@ -91,9 +92,9 @@ public class PurchaseController {
   public ResponseEntity<Void> deleteFromCart(
       @PathVariable Long productId,
       HttpSession session){
-    CartDTO cartDTO = getCartFromSession(session, null);
-    ProductVO productVO = productService.getProductById(productId);
-    cartDTO.getCartItems().remove(productVO);
+    CartDTO cartDTO = getCartFromSession(session);
+    cartDTO.getItemDetail().remove(productId);
+    cartDTO.getItemQuantity().remove(productId);
     session.removeAttribute("order");  
     return ResponseEntity.ok().build();
   }
@@ -103,7 +104,7 @@ public class PurchaseController {
     HttpSession session,
     Principal principal
   ){
-    return ResponseEntity.ok().body(getCartFromSession(session, principal).getCartItems().size());
+    return ResponseEntity.ok().body(getCartFromSession(session).getItemDetail().size());
   }
   
   @PostMapping("api/order")
@@ -113,9 +114,9 @@ public class PurchaseController {
     PurchaseVO tempPurchase = (PurchaseVO)session.getAttribute("order");
     CartDTO cart = (CartDTO) session.getAttribute("cartDTO");
     MemberVO user = ((CustomUser) ((Authentication)principal).getPrincipal()).getMemberVO();
-    if(cart == null || cart.getCartItems().isEmpty()) return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+    if(cart == null || cart.getItemQuantity().isEmpty()) return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     if(tempPurchase == null) {
-      cart.calculateOrderPrice();
+      cart.calculatePrice();
       tempPurchase = cart.order(user);
       session.setAttribute("order", tempPurchase);
     }
@@ -139,16 +140,15 @@ public class PurchaseController {
   }
   
   // if no cart exists in session, create cart based on principal.
-  private CartDTO getCartFromSession(HttpSession session, Principal principal) {
+  private CartDTO getCartFromSession(HttpSession session) {
     CartDTO cartDTO = (CartDTO) session.getAttribute("cartDTO");
     if (cartDTO == null) {
-      if(principal == null) throw new RuntimeException("Invalid cart modifying access while cart is empty");
-      MemberVO user = ((CustomUser) ((Authentication)principal).getPrincipal()).getMemberVO();
       cartDTO = new CartDTO();
-      cartDTO.setMemberId(user.getMemberId()); //TODO: use member ID from security
-      cartDTO.setCartItems(new HashMap<>());
       session.setAttribute("cartDTO", cartDTO);
     }
     return cartDTO;
   } 
+  
+  
+  
 }

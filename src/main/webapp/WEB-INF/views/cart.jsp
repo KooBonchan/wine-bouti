@@ -18,56 +18,20 @@
 		<div class="etc">기타</div>
 	</div>
 
-  <div class="cart-items">
-    <c:forEach items="${cartDTO.cartItems }" var="node" >
-      <c:set value="${node.key}" var="product" />
-      <c:set value="${node.value}" var="quantity" />
-      <form class="form-cart-item" onSubmit="return false;">
-			<div class="cart-item">
-				<div>
-					<img src="<c:url value='/api/image/thumbnail/wine/${product.realProductImageName}' />"
-					alt="<c:out value='${product.koreanName}' />" class="product-image" />
-				</div>
-				<div><c:out value="${product.koreanName }" /></div>
-				<div class="quantity-control">
-					  <input type="hidden" class="productId" name="productId" value="${product.productId}" readonly>
-            <input type="number" class="quantity input-update-item" name="quantity" value="${quantity }" min="1">
-				</div>
-				<div class="price">
-					<fmt:formatNumber type="currency"
-					  maxFractionDigits="0" currencySymbol="￦"
-					  value="${product.originalPrice}" />
-	       </div>
-	       <div class="price">
-          <fmt:formatNumber type="currency"
-            maxFractionDigits="0" currencySymbol="￦"
-            value="${product.originalPrice * quantity}" />
-         </div>
-				<div class="etc">
-					<button type="button" class="button button-delete-item">삭제</button>
-				</div>
-			</div>
-			</form>
-		</c:forEach>
+  <div class="cart-items" id="cart-items">
   </div>
-  <script>
-  
-  </script>
-	<div class="summary">
+  <div class="summary">
 		<div>
 			총 상품가격<br>
-			<c:if var="existsBaesongB" test="${cartDTO.totalPrice lt 53000 }" />
-			<c:set var="baesongB" value="${existsBaesongB ? 3000 : 0 }" />
-			<fmt:formatNumber value="${cartDTO.totalPrice - baesongB}" pattern="#,###" />원
+			<span id="sumProduct"></span>원
 		</div>
 		<div>
 			배송비<br>
-			<c:if test="${existsBaesongB}">+ 3,000원</c:if>
-			<c:if test="${not existsBaesongB}">      0원</c:if>
+			<span id="deliveryFee"></span>원
 		</div>
 		<div>
 			총액<br>
-			<span class="total">= <fmt:formatNumber value="${cartDTO.totalPrice}" pattern="#,###" />원</span>
+			<span id="totalPrice"></span>원
 		</div>
 	</div>
 	<div class="order-buttons">
@@ -86,6 +50,7 @@
 </div>
 <sec:authentication property='principal.memberVO.email' var="email"/>
 <c:set var="csrfToken" value="${_csrf.token}"/>
+<c:url var="thumbnailBaseUrl" value="/api/image/thumbnail/wine/" />
 <script>
 const setup = () => new Promise((resolve) => {
 	const polling = setInterval(() => {
@@ -113,13 +78,47 @@ window.onload = () => {
 }
 
 function renderItems(jsonData){
+	const cartItemsContainer = document.getElementById("cart-items");
+	document.getElementById("sumProduct").innerText = jsonData.sumProduct;
+	document.getElementById("deliveryFee").innerText = jsonData.deliveryFee;
+	document.getElementById("totalPrice").innerText = jsonData.totalPrice;
+	
+	let cartItemsHTML = "";
+	console.log(jsonData);
+	console.log(jsonData['itemDetail'])
+	
+	
+	Object.entries(jsonData['itemDetail']).forEach(([id, product]) => {
+		const quantity = jsonData['itemQuantity'][id];
+		cartItemsHTML += `
+<form class="form-cart-item" onSubmit="return false;">
+	<div class="cart-item">
+		<div>
+			<img src="${thumbnailBaseUrl}\${product.realProductImageName}" 
+			alt="\${product.koreanName}" class="product-image" />
+	  </div>
+	<div>\${product.koreanName}</div>
+	<div class="quantity-control">
+		<input type="hidden" class="productId" name="productId" value="\${product.productId}" readonly>
+		<input type="number" class="quantity input-update-item" name="quantity" value="\${quantity}" min="1"
+			  onChange="updateCart(extractFormData(event))">
+	</div>
+	<div class="price">₩\${product.originalPrice}</div>
+	<div class="price">₩\${product.originalPrice * quantity}</div>
+	<div class="etc"><button type="button" class="button button-delete-item"
+		onClick="deleteCartItem(extractFormData(event))">삭제</button></div>
+</div>
+</form>
+		`;
+	})
+	cartItemsContainer.innerHTML = cartItemsHTML;
 	
 }
 
 function loadCartItems() {
 	return fetch("<c:url value='/api/cart/' />")
 	 .then(response=>response.json())
-	 .then(console.log)
+	 .then(renderItems)
 	 .catch(console.log);
 }
 
@@ -134,6 +133,7 @@ function extractFormData(event){
 }
 
 function updateCart (data) {
+	
 	// data: {productId, quantity}
   $.ajax({
     url: '<c:url value="/api/cart" />',
@@ -142,7 +142,7 @@ function updateCart (data) {
     data: JSON.stringify(data),
     success: function() {
     	console.log("update cart test")
-    	//location.reload();
+    	loadCartItems()
     },
     error: function(xhr, status, error) {
       console.error('Error:', error);
@@ -161,8 +161,7 @@ function deleteCartItem(data){
 	  data: JSON.stringify(data),
 	  success: function(response) {
 		  console.log("delete cart test")
-		  console.log(response)
-	    //location.reload();
+		  loadCartItems()
 	  },
 	  error: function(xhr, status, error) {
 	    console.error('Error:', error);
