@@ -193,8 +193,9 @@ $(document).ready(function () {
             dataType: "text",
             success: function (result) {
                 alert("리뷰가 삭제되었습니다.");
-                loadReviews();
-                $("#review-" + reviewId).remove(); // 삭제된 리뷰를 화면에서 제거
+                $("#review-" + reviewId).fadeOut(300, function () {
+                    $(this).remove();
+                });
             },
             error: function (xhr, status, er) {
                 console.log("삭제 실패:", er);
