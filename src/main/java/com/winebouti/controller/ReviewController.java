@@ -110,6 +110,7 @@ public class ReviewController {
     }
 
 	// 리뷰 수정
+    @PreAuthorize("isAuthenticated()")
 	@GetMapping("/edit/{reviewId}")
 	public String editReviewForm(@PathVariable long reviewId, Model model) {
 		ReviewVO review = reviewService.getReviewById(reviewId);
@@ -120,10 +121,14 @@ public class ReviewController {
 		return "review/review_edit.tiles";
 	}
 
+
+
 	// 삭제
 
 	@DeleteMapping(value = "/{reviewId}", produces = { MediaType.TEXT_PLAIN_VALUE })
 	public ResponseEntity<String> deleteReview(@PathVariable("reviewId") Long reviewId) {
+		
+		   System.out.println("🚀 삭제 요청 수신! 리뷰 ID: " + reviewId);
 
 		return reviewService.deleteReview(reviewId) == 1 ? new ResponseEntity<>("success", HttpStatus.OK)
 				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

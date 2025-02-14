@@ -143,7 +143,7 @@ textarea {
             <!-- 기존 리뷰 정보 유지 -->
             <input type="hidden" name="reviewId" value="${review.reviewId}">
             <input type="hidden" name="productId" value="${review.productId}">
-            <input type="hidden" name="memberId" value="<sec:authentication property='principal.memberVO.username'/>">
+            <input type="hidden" name="memberId" value="<sec:authentication property='principal.memberVO.memberId'/>">
 
             <div class="title-rating">
                 <label for="title"> 
