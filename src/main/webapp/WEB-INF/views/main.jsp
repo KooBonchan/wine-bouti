@@ -54,22 +54,94 @@
 <!--  -->
 
 <div class="container">
-    <div class="main-title" id="menu-shop">상품추천
+    <div class="main-title">상품추천
         <div class="menu_Shop">
-		    <div class="menu-item" onclick="changeCategory('all')">전체</div>
-		    <div class="menu-item" onclick="changeCategory('red')">레드와인</div>
-		    <div class="menu-item" onclick="changeCategory('white')">화이트와인</div>
-		    <div class="menu-item" onclick="changeCategory('sparkle')">스파클링</div>
-		</div>
+            <div class="menu-item" onclick="changeCategory('all')">전체</div>
+            <div class="menu-item" onclick="changeCategory('red')">레드와인</div>
+            <div class="menu-item" onclick="changeCategory('white')">화이트와인</div>
+            <div class="menu-item" onclick="changeCategory('sparkle')">스파클링</div>
+        </div>
+    </div>
 
+    <div id="product-list" class="container">
+        <!-- 상품 목록이 동적으로 여기 삽입됩니다 -->
+    </div>
+</div>
+
+<c:url value="/product/ajax/category" var="categoryUrl" />
+<c:url value="/api/image/thumbnail/wine/" var="imagePath" />
 <script>
-function changeCategory(category) {
-    location.href = "<c:url value='/?category=' />" + category + "#menu-shop";
-}
-</script>
-    </div> <!-- 제목 추가 -->
 
-   <c:forEach items="${products}" var="product">
+function changeCategory(category) {
+    const url = "${categoryUrl}?category=" + category;
+    const productList = document.getElementById('product-list');
+    productList.innerHTML = '<div class="loading">Loading...</div>';
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            productList.innerHTML = '';
+            displayProducts(data);
+        });
+}
+
+function displayProducts(products) {
+    const productList = document.getElementById('product-list');
+
+    products.forEach(product => {
+        const productDiv = document.createElement('div');
+        productDiv.classList.add('product');
+
+        let flagUrl = 'https://flagcdn.com/w40/default.png';
+        let flagName = '';
+
+        if (product.wineDetails && product.wineDetails.origin) {
+            switch (product.wineDetails.origin) {
+                case 'France': flagUrl = 'https://flagcdn.com/w40/fr.png'; flagName = 'France'; break;
+                case 'Italy': flagUrl = 'https://flagcdn.com/w40/it.png'; flagName = 'Italy'; break;
+                case 'Spain': flagUrl = 'https://flagcdn.com/w40/es.png'; flagName = 'Spain'; break;
+                case 'USA': flagUrl = 'https://flagcdn.com/w40/us.png'; flagName = 'USA'; break;
+                case 'Chile': flagUrl = 'https://flagcdn.com/w40/cl.png'; flagName = 'Chile'; break;
+                case 'Argentina': flagUrl = 'https://flagcdn.com/w40/ar.png'; flagName = 'Argentina'; break;
+                case 'Australia': flagUrl = 'https://flagcdn.com/w40/au.png'; flagName = 'Australia'; break;
+                default: flagUrl = 'https://flagcdn.com/w40/default.png'; flagName = 'Unknown'; break;
+            }
+        }
+
+        const imageUrl = "${imagePath}" + product.realProductImageName;
+        productDiv.innerHTML = `
+            <div class="shop">
+                <a href="<c:url value='/product/details/\${product.productId}' />">
+                    <div class="img">
+                        <img src=\${imageUrl} alt="\${product.koreanName}">
+                    </div>
+                    <h3>\${product.koreanName}</h3>
+                    <div class="title shop-content">
+                        <img src="\${flagUrl}" alt="\${flagName} Flag" width="20" height="15" class="flag">
+                        \${flagName}
+                    </div>
+                    <div class="title shop-price">
+                        <p>가격: \${product.originalPrice.toLocaleString()}원</p>
+                    </div>
+                </a>
+            </div>`;
+
+        productList.appendChild(productDiv);
+    });
+}
+
+// 페이지 로드 시 "전체" 카테고리 내용을 보여주도록 수정
+window.addEventListener('DOMContentLoaded', () => {
+    changeCategory('all'); // 'all'은 전체 카테고리를 나타내는 값이라고 가정
+});
+
+</script>
+
+
+
+
+  
+  <%-- <c:forEach items="${products}" var="product">
     <div class="shop">
         <!-- 전체 제품을 하나의 <a> 태그로 감싸기 -->
         <a href="<c:url value='/product/details/${product.productId}' />">
@@ -80,6 +152,7 @@ function changeCategory(category) {
             <div class="title shop-title">
                 ${product.koreanName}
             </div>
+            
             <div class="title shop-content">
 		                <c:if test="${not empty product.wineDetails}">
 				    <img src="<c:choose>
@@ -93,10 +166,9 @@ function changeCategory(category) {
 				                <c:otherwise>https://flagcdn.com/w40/default.png</c:otherwise>
 				             </c:choose>" alt="${product.wineDetails.origin} Flag" width="20" height="15" class="flag">
 				    ${product.wineDetails.origin}
-				</c:if>
-
-               
+				</c:if>        
             </div>
+            
             <div class="title shop-price">
                 <fmt:formatNumber value="${product.originalPrice}" pattern="#,###" />원
             </div>
@@ -104,6 +176,7 @@ function changeCategory(category) {
     </div>
 </c:forEach>
 
+ --%>
 </div>
 
 

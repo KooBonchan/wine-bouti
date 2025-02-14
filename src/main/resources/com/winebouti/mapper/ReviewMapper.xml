@@ -61,7 +61,7 @@
 	</insert>
 
 	<!-- 리뷰 수정 -->
-	<update id="updateReview"
+	<update id="updateReview" 
 		parameterType="com.winebouti.vo.ReviewVO">
 		UPDATE Review
 		SET content = #{content},
@@ -107,15 +107,24 @@
 	    SET image_path = #{imagePath}, thumbnail_path = #{thumbnailPath}
 	    WHERE review_id = #{reviewId};
 	</update>
+	
+	
+	 <!-- ✅ 리뷰 답글 조회 (단일 조회) -->
+    <select id="getReviewResponse" resultType="java.lang.String">
+        SELECT response FROM review WHERE review_id = #{reviewId}
+    </select>
 
+    <!-- ✅ 리뷰 답글 추가 또는 수정 -->
+    <update id="updateReviewResponse" parameterType="com.winebouti.vo.ReviewVO">
+        UPDATE review 
+        SET response = #{response}, update_date = NOW()
+        WHERE review_id = #{reviewId}
+    </update>
 
-
-	<!-- 관리자 답글 업데이트 -->
-	<update id="updateResponse" parameterType="ReviewVO">
-		UPDATE Review
-		SET response = #{response}
-		WHERE review_id = #{reviewId}
-	</update>
-
-
+    <!-- ✅ 리뷰 답글 삭제 -->
+    <update id="deleteReviewResponse" parameterType="com.winebouti.vo.ReviewVO">
+        UPDATE review 
+        SET response = NULL, update_date = NOW()
+        WHERE review_id = #{reviewId}
+    </update>
 </mapper>
