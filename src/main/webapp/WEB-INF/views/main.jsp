@@ -161,7 +161,7 @@ window.addEventListener('DOMContentLoaded', () => {
   <div class="modal-content">
     <span class="close-btn" onclick="closeModal()">&times;</span>
     <img src="<c:url value='/resources/images/shop/warning.png' />" alt="경고 이미지" />
-    <p></p>
+    <p>warning</p>
     <label>
       <input type="checkbox" id="dont-show-again" /> 오늘 하루만 보지 않기
     </label>
