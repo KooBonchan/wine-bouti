@@ -46,7 +46,7 @@ input[type="text"], textarea, input[type="file"] {
 input[type="submit"] {
 	width: 100%;
 	padding: 10px;
-	background-color: #007bff;
+	background-color:#333;
 	color: #fff;
 	border: none;
 	border-radius: 4px;
@@ -55,7 +55,7 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-	background-color: #0056b3;
+	background-color: #444;
 }
 
 textarea {
@@ -139,6 +139,8 @@ input[type="file"] {
 	height: 100%; /* 이미지가 50px 크기 내에 맞춰지도록 */
 	object-fit: cover; /* 비율을 유지하면서 영역에 맞게 이미지를 잘라서 맞춤 */
 }
+
+
 </style>
 </head>
 <body>
