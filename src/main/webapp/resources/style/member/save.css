@@ -196,7 +196,11 @@ input[type="submit"]:hover {
 /* �Է� �ʵ� ��Ÿ�� */
 .login-form-container input[type="text"],
 .login-form-container input[type="phone"],
-.login-form-container input[type="password"] {
+.login-form-container input[type="password"], 
+.login-form-container input[type="username"], 
+.login-form-container input[type="phoneNumber"],
+.login-form-container input[type="address"],
+.login-form-container input[type="birthDate"]{
     width: 100%;
     padding: 12px;
     margin: 5px 0;
@@ -209,7 +213,11 @@ input[type="submit"]:hover {
 /* �Է� �ʵ� ��Ŀ�� �� ��Ÿ�� */
 .login-form-container input[type="text"]:focus,
 .login-form-container input[type="phone"]:focus,
-.login-form-container input[type="password"]:focus {
+.login-form-container input[type="password"]:focus, 
+.login-form-container input[type="username"]:focus, 
+.login-form-container input[type="phoneNumber"]:focus,
+.login-form-container input[type="address"]:focus,
+.login-form-container input[type="birthDate"]{
     border-color: #333;
     outline: none;
      padding: 12px;
@@ -372,7 +380,28 @@ h2 {
 }
 
 
+/* 생년월일 입력 필드 스타일 */
+.input-date-container {
+    width: 400px; /* 원하는 고정 너비로 설정 */
+    margin: 20px 0; /* 위 아래 여백 추가 */
+	background-color: black;
+}
 
+.input-date-container input[type="date"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    padding-right: 35px; /* 아이콘 공간 확보 */
+    margin: 20px 0; /* 위 아래 여백 추가 */
+    display: block; /* block 설정 */
+    box-sizing: border-box; /* padding과 border 포함 */
+}
 
-
-    
+/* 포커스 시 스타일 */
+.input-date-container input[type="date"]:focus {
+    border-color: #007bff;
+    background-color: #eaf4ff;
+}

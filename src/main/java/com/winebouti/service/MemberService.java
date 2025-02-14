@@ -19,4 +19,7 @@ public interface MemberService {
 
     // 이메일 중복 체크
     public String emailCheck(String email);
+
+
+	public MemberVO login(String email, String password);
 }

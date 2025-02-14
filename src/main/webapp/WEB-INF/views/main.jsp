@@ -1,58 +1,55 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
 
-
+<!-- 이미지 슬라이더 -->
 <div class="imgslide">
 	<button class="prev">◀</button>
 	<ul class="slidelist">
-		<li class="slide-item"><a href="#">
-		  <img src="<c:url value="/resources/images/slider/main1.jpg" />" alt="이미지1" />
+		<li class="slide-item"><a href="/winebouti/product/red-wine">
+		  <img src="<c:url value='/resources/images/slider/main1.jpg' />" alt="이미지1" />
 		</a></li>
-		<li class="slide-item"><a href="#">
-		  <img src="<c:url value="/resources/images/slider/main2.jpg" />" alt="이미지2" />
+		<li class="slide-item"><a href="/winebouti/product/white-wine">
+		  <img src="<c:url value='/resources/images/slider/main2.jpg' />" alt="이미지2" />
 		</a></li>
-		<li class="slide-item"><a href="#">
-		  <img src="<c:url value="/resources/images/slider/main3.jpg" />" alt="이미지3" />
+		<li class="slide-item"><a href="/winebouti/product/pairing-wine">
+		  <img src="<c:url value='/resources/images/slider/main3.jpg' />" alt="이미지3" />
 		</a></li>
 	</ul>
 	<button class="next">▶</button>
 	<ul class="dot-nav"></ul>
 </div>
 
-<!--  -->
-
+<!-- 갤러리 -->
 <div class="parent">
 	<div class="gallery">
 		<ul>
 			<li><a href="/winebouti/product/red-wine">
-        <img src="<c:url value="/resources/images/shop/gallery1.png" />" alt="이미지1" />
+        <img src="<c:url value='/resources/images/shop/gallery1.png' />" alt="이미지1" />
         <span>레드와인</span>
 			</a></li>
 			<li><a href="/winebouti/product/white-wine">
-        <img src="<c:url value="/resources/images/shop/gallery2.png" />" alt="이미지2" />
+        <img src="<c:url value='/resources/images/shop/gallery2.png' />" alt="이미지2" />
         <span>화이트와인</span>
 			</a></li>
 			<li><a href="/winebouti/product/sparkle-wine">
-        <img src="<c:url value="/resources/images/shop/gallery3.png" />" alt="이미지3" />
+        <img src="<c:url value='/resources/images/shop/gallery3.png' />" alt="이미지3" />
         <span>스파클링와인</span>
 			</a></li>
 			<li><a href="/winebouti/product/pairing-wine">
-        <img src="<c:url value="/resources/images/shop/gallery4.png" />" alt="이미지4" />
+        <img src="<c:url value='/resources/images/shop/gallery4.png' />" alt="이미지4" />
         <span>페어링</span>
 			</a></li>
 			<li><a href="/winebouti/product/gift-set">
-        <img src="<c:url value="/resources/images/shop/gallery5.png" />" alt="이미지5" />
+        <img src="<c:url value='/resources/images/shop/gallery5.png' />" alt="이미지5" />
         <span>선물세트</span>
 			</a></li>
 		</ul>
 	</div>
 </div>
 
-<!--  -->
-
+<!-- 상품 추천 -->
 <div class="container">
     <div class="main-title">상품추천
         <div class="menu_Shop">
@@ -70,8 +67,8 @@
 
 <c:url value="/product/ajax/category" var="categoryUrl" />
 <c:url value="/api/image/thumbnail/wine/" var="imagePath" />
-<script>
 
+<script>
 function changeCategory(category) {
     const url = "${categoryUrl}?category=" + category;
     const productList = document.getElementById('product-list');
@@ -134,55 +131,9 @@ function displayProducts(products) {
 window.addEventListener('DOMContentLoaded', () => {
     changeCategory('all'); // 'all'은 전체 카테고리를 나타내는 값이라고 가정
 });
-
 </script>
 
-
-
-
-  
-  <%-- <c:forEach items="${products}" var="product">
-    <div class="shop">
-        <!-- 전체 제품을 하나의 <a> 태그로 감싸기 -->
-        <a href="<c:url value='/product/details/${product.productId}' />">
-            <div class="img">
-                <!-- productImageName을 사용하여 이미지 경로를 동적으로 생성 -->
-                <img src="<c:url value='/api/image/thumbnail/wine/${product.realProductImageName}' />" alt="Shop Image">
-            </div>
-            <div class="title shop-title">
-                ${product.koreanName}
-            </div>
-            
-            <div class="title shop-content">
-		                <c:if test="${not empty product.wineDetails}">
-				    <img src="<c:choose>
-				                <c:when test='${product.wineDetails.origin == "France"}'>https://flagcdn.com/w40/fr.png</c:when>
-				                <c:when test='${product.wineDetails.origin == "Italy"}'>https://flagcdn.com/w40/it.png</c:when>
-				                <c:when test='${product.wineDetails.origin == "Spain"}'>https://flagcdn.com/w40/es.png</c:when>
-				                <c:when test='${product.wineDetails.origin == "USA"}'>https://flagcdn.com/w40/us.png</c:when>
-				                <c:when test='${product.wineDetails.origin == "Chile"}'>https://flagcdn.com/w40/cl.png</c:when>
-				                <c:when test='${product.wineDetails.origin == "Argentina"}'>https://flagcdn.com/w40/ar.png</c:when>
-				                <c:when test='${product.wineDetails.origin == "Australia"}'>https://flagcdn.com/w40/au.png</c:when>
-				                <c:otherwise>https://flagcdn.com/w40/default.png</c:otherwise>
-				             </c:choose>" alt="${product.wineDetails.origin} Flag" width="20" height="15" class="flag">
-				    ${product.wineDetails.origin}
-				</c:if>        
-            </div>
-            
-            <div class="title shop-price">
-                <fmt:formatNumber value="${product.originalPrice}" pattern="#,###" />원
-            </div>
-        </a>
-    </div>
-</c:forEach>
-
- --%>
-</div>
-
-
-
-    
-
+<!-- MD 추천 -->
 <div class="cs">
 	<div class="cs-title">MD 추천</div>
 	<div class="cs-title2">매달 새로운 추천 상품을 만나보세요</div>
@@ -205,14 +156,75 @@ window.addEventListener('DOMContentLoaded', () => {
 	</div>
 </div>
 
-
 <!-- 모달 메시지 -->
+<div id="warning-modal" class="modal" style="display: none;">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal()">&times;</span>
+    <img src="<c:url value='/resources/images/shop/warning.png' />" alt="경고 이미지" />
+    <p>warning</p>
+    <label>
+      <input type="checkbox" id="dont-show-again" /> 오늘 하루만 보지 않기
+    </label>
+    <button onclick="closeModal()">닫기</button>
+  </div>
+</div>
+
 <c:if test="${not empty message}">
     <script>
        alert("<c:out value='${message}' />");
     </script>
 </c:if>
 
+<script>
+  // 모달 창을 열기 전에 "오늘 하루만 보기" 체크 여부 확인
+  window.addEventListener('DOMContentLoaded', function () {
+    if (!localStorage.getItem('dontShowWarning')) {
+      showModal();
+    }
+  });
+
+  // 모달 창 보이기
+  function showModal() {
+    document.getElementById('warning-modal').style.display = 'block';
+  }
+
+  // 모달 창 닫기
+  function closeModal() {
+    // "오늘 하루만 보기" 체크된 경우 LocalStorage에 기록
+    if (document.getElementById('dont-show-again').checked) {
+      localStorage.setItem('dontShowWarning', 'true');
+    }
+    document.getElementById('warning-modal').style.display = 'none';
+  }
+</script>
+
+<style>
+  /* 모달 스타일 */
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .modal-content {
+    background: none;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    position: relative;
+  }
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+</style>
 
 <script src="<c:url value='/resources/js/component/image-slider.js' />"></script>
-

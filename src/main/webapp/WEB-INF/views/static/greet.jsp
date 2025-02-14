@@ -15,7 +15,7 @@
     <img src="<c:url value='/resources/images/logo/wine.png' />" alt="Company Logo" width="200" height="169">
         
     <div class="subtitle">
-      안녕하세요 팀 [김양구이]입니다 :)
+      🍷안녕하세요 팀 [김양구이]입니다 :)🍾
        <div class="subtitle2">
 	    <a href="https://github.com/KooBonchan/wine-bouti" target="_blank" title="팀 프로젝트 깃 주소로 이동합니다" style="display: flex; align-items: center; gap: 10px;">
 	        <img src="<c:url value='/resources/images/icon/github.png' />" alt="github" width="25" height="25">

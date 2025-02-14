@@ -29,6 +29,23 @@ public class MemberServiceImpl implements MemberService {
 	    memberMapper.grantAuth(memberVO);
     }
 
+    
+    @Override
+    public MemberVO login(String email, String password) {
+        try {
+            // 이메일로 회원 조회
+            MemberVO member = memberMapper.findByMemberEmail(email);
+            if (member != null && passwordEncoder.matches(password, member.getPassword())) {
+                return member; // 비밀번호가 맞으면 회원 반환
+            } else {
+                return null; // 이메일이나 비밀번호가 틀리면 null 반환
+            }
+        } catch (Exception e) {
+            log.error("Error during login with email: {}", email, e);
+            return null; // 로그인 실패 시 null 반환
+        }
+    }
+
 
     // 회원 삭제
     @Override
