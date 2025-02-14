@@ -24,9 +24,7 @@ public interface ProductService {
 	/* 이창현 */
 	List<ProductVO> findProductsByCategory(String category);
 	
-    List<ProductVO> getWines(String category);
-    
-    Product getProductById(Long productId);  // 특정 상품 상세 정보 가져오기
+  List<ProductVO> getWines(String category);
 
 	List<ProductVO> getWinesByCategory(String string);
 

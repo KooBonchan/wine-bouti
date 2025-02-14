@@ -58,13 +58,7 @@ public class ProductServiceImpl  implements ProductService {
          // 전체 상품 목록을 반환
          return productMapper.getAllProducts(category);
      }
-
-     @Override
-     public Product getProductById(Long productId) {
-         // 상품 ID로 상품을 조회하는 메서드 (이건 나중에 구현 필요)
-         return null;
-     }
-
+     
      @Override
      public List<ProductVO> getWinesByCategory(String category) {
          // 카테고리별로 상품을 가져오는 메서드 (구체적인 로직을 작성)

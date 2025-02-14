@@ -12,7 +12,9 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -43,31 +45,35 @@ public class PurchaseController {
   private final PurchaseVerificationService verificationService;
   
   @GetMapping("cart")
-  public String cart(HttpSession session, Model model) {
-    CartDTO cartDTO = (CartDTO) session.getAttribute("cartDTO");
-    /*     For debug purpose, create dummy item in session on cart request             */
-//    
-//    if (cartDTO == null) {
-//      cartDTO = new CartDTO();
-//      cartDTO.setMemberId(33); //TODO: use member ID from security
-//      Map<ProductVO, Integer> cartItems = new HashMap<>();
-//      for(int i = 1; i <= 3; i++) {
-//        ProductVO productVO = productService.getProductById(i);
-//        cartItems.merge(productVO, i, (q1,q2)->q1+q2);
-//      }
-//      cartDTO.setCartItems(cartItems);
-//      session.setAttribute("cartDTO", cartDTO);
-//    }
-    /***********************************************************************************/
-    if(cartDTO != null) {
-      cartDTO.setTotalPrice();
+  public String cart() { return "cart.tiles"; }
+  
+  @GetMapping("api/cart")
+  public ResponseEntity<CartDTO> cart(HttpSession session, Model model, Principal principal) {
+    CartDTO cartDTO = getCartFromSession(session, principal);
+    if(! cartDTO.getCartItems().isEmpty()) {
+      cartDTO.calculateOrderPrice();
     }
-    
-    return "cart.tiles";
+    return ResponseEntity.ok().body(cartDTO);
+  }
+
+  @PostMapping("api/cart")
+  public ResponseEntity<Void> addToCart(
+      @RequestBody AddToCartDTO addToCartDTO,
+      HttpSession session,
+      Principal principal
+  ) {
+    long productId  = addToCartDTO.getProductId();
+    int quantity = addToCartDTO.getQuantity();
+    CartDTO cartDTO = getCartFromSession(session, principal);
+    ProductVO productVO = productService.getProductById(productId);
+    cartDTO.getCartItems()
+      .merge(productVO, quantity, (a,b) -> a + b);
+    session.removeAttribute("order");
+    return ResponseEntity.ok().build();
   }
   
   @PutMapping("api/cart")
-  public ResponseEntity<Integer> addToCart(
+  public ResponseEntity<Void> modifyCart(
       @RequestBody AddToCartDTO addToCartDTO,
       HttpSession session,
       Principal principal
@@ -77,9 +83,19 @@ public class PurchaseController {
     CartDTO cartDTO = getCartFromSession(session, principal);
     ProductVO productVO = productService.getProductById(productId);
     cartDTO.getCartItems().put(productVO, quantity);
-    cartDTO.setTotalPrice();
     session.removeAttribute("order");
-    return ResponseEntity.ok().body(cartDTO.getTotalPrice());
+    return ResponseEntity.ok().build();
+  }
+  
+  @DeleteMapping("api/cart/{productId}")
+  public ResponseEntity<Void> deleteFromCart(
+      @PathVariable Long productId,
+      HttpSession session){
+    CartDTO cartDTO = getCartFromSession(session, null);
+    ProductVO productVO = productService.getProductById(productId);
+    cartDTO.getCartItems().remove(productVO);
+    session.removeAttribute("order");  
+    return ResponseEntity.ok().build();
   }
   
   @GetMapping("api/cart/count")
@@ -99,6 +115,7 @@ public class PurchaseController {
     MemberVO user = ((CustomUser) ((Authentication)principal).getPrincipal()).getMemberVO();
     if(cart == null || cart.getCartItems().isEmpty()) return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     if(tempPurchase == null) {
+      cart.calculateOrderPrice();
       tempPurchase = cart.order(user);
       session.setAttribute("order", tempPurchase);
     }
@@ -119,14 +136,13 @@ public class PurchaseController {
       log.error(e.getMessage());
       return ResponseEntity.badRequest().build();
     }
-    
- 
   }
   
   // if no cart exists in session, create cart based on principal.
   private CartDTO getCartFromSession(HttpSession session, Principal principal) {
     CartDTO cartDTO = (CartDTO) session.getAttribute("cartDTO");
     if (cartDTO == null) {
+      if(principal == null) throw new RuntimeException("Invalid cart modifying access while cart is empty");
       MemberVO user = ((CustomUser) ((Authentication)principal).getPrincipal()).getMemberVO();
       cartDTO = new CartDTO();
       cartDTO.setMemberId(user.getMemberId()); //TODO: use member ID from security

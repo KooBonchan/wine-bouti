@@ -4,32 +4,37 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 /*
  * Since cart will have no DB access, used term DTO instead of VO. 
  */
-@Getter
+@Data
 public class CartDTO {
   @Setter
 	private long memberId;
   @Setter
   private Map<ProductVO, Integer> cartItems;
   
+  private int sumProduct;
+  private int deliveryFee;
   private int totalPrice;
-  public void setTotalPrice() {
-    int total = cartItems.entrySet().stream()
+  
+  public void calculateOrderPrice() {
+    int sum = cartItems.entrySet().stream()
         .map(e-> e.getKey().getOriginalPrice() * e.getValue())
         .reduce((a,b) -> a + b)
         .orElse(-1);
     
-    if(total < 0) throw new ArithmeticException("Error occurred while calculating the total amount");
-    /*** business logic ***/
-    if(this.totalPrice < 50000) this.totalPrice += 3000;
-    /**********************/
-    this.totalPrice = total; 
+    if(sum < 0) throw new ArithmeticException("Error occurred while calculating the total amount");
+    this.sumProduct = sum;
+    
+    this.deliveryFee = calculateDeliveryFee(sum);
+    this.totalPrice = sum + this.deliveryFee; 
   }
+  
   
 
   public PurchaseVO order(MemberVO memberVO) {
@@ -59,5 +64,12 @@ public class CartDTO {
     }
     if(cartItems.size() <= 1) return baseName;
     return baseName + " 외 " + (cartItems.size() - 1) + "개";
+  }
+  
+  private int calculateDeliveryFee(int sum){
+    /*** business logic ***/
+    /*정책에 맞게 수동으로 변경*/
+    if(sum == 0) return 0;
+    return sum < 50000 ? 3000 : 0;
   }
 }
