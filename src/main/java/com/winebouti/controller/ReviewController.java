@@ -121,54 +121,6 @@ public class ReviewController {
 		return "review/review_edit.tiles";
 	}
 
-    @PostMapping("/edit/{reviewId}")
-    public String editReview(
-            @PathVariable long reviewId,
-            @RequestParam("productId") Long productId,
-            @RequestParam("title") String title,
-            @RequestParam("content") String content,
-            @RequestParam("star") int star,
-            @RequestParam(value = "imagePath", required = false) String imagePath,
-            RedirectAttributes redirectAttributes,
-            Authentication authentication) {
-
-        // ✅ 현재 로그인한 사용자 가져오기
-        CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
-        Long currentMemberId = userDetails.getMemberId(); // 현재 로그인한 사용자 ID
-
-        // ✅ 기존 리뷰 가져오기
-        ReviewVO existingReview = reviewService.getReviewById(reviewId);
-        if (existingReview == null) {
-            redirectAttributes.addFlashAttribute("errorMessage", "리뷰가 존재하지 않습니다.");
-            return "redirect:/product/details/" + productId;
-        }
-
-        // ✅ 로그인한 사용자의 memberId와 리뷰 작성자의 memberId 비교
-        if (!existingReview.getMemberId().equals(currentMemberId) &&
-            !authentication.getAuthorities().toString().contains("ROLE_ADMIN")) {
-            redirectAttributes.addFlashAttribute("errorMessage", "수정 권한이 없습니다.");
-            return "redirect:/access-denied.tiles";
-        }
-
-        // ✅ 리뷰 수정 데이터 설정
-        existingReview.setTitle(title);
-        existingReview.setContent(content);
-        existingReview.setStar(star);
-        existingReview.setWriteDate(new Timestamp(System.currentTimeMillis())); 
-
-        // ✅ 업로드된 이미지가 있을 경우 저장
-        if (imagePath != null && !imagePath.isEmpty()) {
-            existingReview.setImagePath(FileUtils.encodeRealFileName(imagePath));
-        }
-
-        log.info("📌 리뷰 수정 후 imagePath: " + existingReview.getImagePath());
-
-        // ✅ 리뷰 업데이트 실행
-        reviewService.updateReview(existingReview);
-
-        redirectAttributes.addFlashAttribute("successMessage", "리뷰가 성공적으로 수정되었습니다.");
-        return "redirect:/product/details/" + productId;
-    }
 
 
 	// 삭제
