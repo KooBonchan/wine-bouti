@@ -1,6 +1,5 @@
 package com.winebouti.controller;
 
-import java.io.File;
 import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
@@ -41,7 +40,6 @@ import lombok.extern.log4j.Log4j;
 public class ReviewController {
 
 	private final ReviewService reviewService;
-	private final File uploadFolder = new File(FileUtils.BASE_PATH, "review");
 
 	// 특정 productId의 리뷰 목록 조회 (AJAX 비동기 요청 지원)
 	@GetMapping("/{productId}")

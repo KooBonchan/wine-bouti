@@ -7,7 +7,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.winebouti.service.ReviewService;
+import com.winebouti.util.FileUtils;
 
 import lombok.extern.log4j.Log4j;
 import net.coobird.thumbnailator.Thumbnails;
@@ -26,9 +25,8 @@ import net.coobird.thumbnailator.Thumbnails;
 @Log4j
 public class UploadController {
 
-    private final String uploadDir = "C:/upload/review/";
-    private final String thumbDir = "C:/upload/review/thumbnail/"; // 썸네일 저장
-    
+    private final File uploadFolder = new File(FileUtils.BASE_PATH, "review");
+    private final File thumbFolder = new File(uploadFolder, "thumbnail");
 
     @PostMapping("/image")
     public ResponseEntity<Map<String, String>> uploadImage(@RequestParam("uploadFile") MultipartFile file){
@@ -36,12 +34,10 @@ public class UploadController {
         Map<String, String> response = new HashMap<>();
 
         // 업로드할 폴더가 없으면 생성
-        File uploadFolder = new File(uploadDir);
+        
         if (!uploadFolder.exists()) {
             uploadFolder.mkdirs();
         }
-        
-        File thumbFolder = new File(thumbDir);
         if (!thumbFolder.exists()) {
             thumbFolder.mkdirs();
         }
@@ -57,25 +53,19 @@ public class UploadController {
         try {
             String originalFilename = file.getOriginalFilename();
             String uniqueFilename = UUID.randomUUID().toString() + "_" + originalFilename;
-            File destFile = new File(uploadDir + uniqueFilename);
+            File destFile = new File(uploadFolder, uniqueFilename);
             file.transferTo(destFile);
             
             // 썸네일 생성 (200x200)
             String thumbFilename = uniqueFilename;
-            File thumbFile = new File(thumbDir + thumbFilename);
+            File thumbFile = new File(thumbFolder, thumbFilename);
             Thumbnails.of(destFile)
                       .size(200, 200)
                       .toFile(thumbFile);
             
-            String imagePath = "/upload/review/" + uniqueFilename;  // 원본 이미지 경로
-            String thumbnailPath = "/upload/review/thumbs/" + thumbFilename;
-          
-
             response.put("fileName", uniqueFilename);
-            response.put("uploadPath", uploadDir);
-            response.put("imageUrl", "/upload/review/" + uniqueFilename); //이미지 조최 url추가
-            response.put("thumbnailU"
-            		+ "rl", "/upload/review/thuzmbs/" + thumbFilename); // 썸네일 URL
+            response.put("uploadPath", "review");
+            response.put("thumbnailUrl", thumbFilename); // 썸네일 URL
             return ResponseEntity.ok(response);
         } catch (IOException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Map.of("error", "파일 업로드 실패"));

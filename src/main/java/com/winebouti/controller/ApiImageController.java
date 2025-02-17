@@ -45,6 +45,9 @@ public class ApiImageController {
 					.headers(headers)
 					.body(FileCopyUtils.copyToByteArray(file));
 		} catch(IOException e) {
+		  log.warn("env var $UPLOAD_DIR: " + System.getenv("UPLOAD_DIR"));
+		  log.warn("Upload base dir: " + BASE_PATH);
+		  log.error(e.getMessage());
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
 		catch (Exception e) {
