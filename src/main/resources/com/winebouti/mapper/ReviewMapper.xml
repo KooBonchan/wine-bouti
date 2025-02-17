@@ -24,7 +24,7 @@
 
 
 	<select id="selectAllReviews" resultMap="reviewResultMap">
-		SELECT * FROM review; <!-- 리뷰 테이블 -->
+		SELECT * FROM Review; <!-- 리뷰 테이블 -->
 	</select>
 
 	<!-- 리뷰 ID로 리뷰 조회 -->
@@ -129,7 +129,7 @@
 	
 	 <!-- ✅ 리뷰 답글 조회 (단일 조회) -->
     <select id="getReviewResponse" resultType="java.lang.String">
-        SELECT response FROM review WHERE review_id = #{reviewId}
+        SELECT response FROM Review WHERE review_id = #{reviewId}
     </select>
 
     <!-- ✅ 리뷰 답글 추가 또는 수정 -->
