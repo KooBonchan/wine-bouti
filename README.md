@@ -1,5 +1,7 @@
 # 와인부띠: 와인샵 프로젝트
 
+2026.01.11. EC2 컨테이너 종료
+
 ### 팀 김양구이
 
 ![Backend Stacks](https://skillicons.dev/icons?i=spring,java,mysql&theme=light)
